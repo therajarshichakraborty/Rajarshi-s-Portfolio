@@ -24,7 +24,7 @@ export const DATA = {
   Full-Stack TypeScript Developer and Backend Engineer with a strong focus on building scalable, production-grade applications. `,
   summary: `**Hello :)** I’m **Rajarshi Chakraborty** - a **Computer Science** undergraduate at Techno Main Salt Lake (Class of 2027), passionate about building scalable **software and intelligent systems**. I’m a **Full-Stack TypeScript Developer** and **Backend Engineer** focused on creating production-grade applications with clean architecture, high performance, and strong system design.
 
-Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building AI-powered systems that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
+Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building **AI-powered systems** that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
 
   avatarUrl: "RajarshiImage.jpg",
   skills: [
@@ -96,7 +96,7 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
       start: "June 2023",
       end: "Present",
       description: `
-Actively exploring and mastering new skills and emerging technologies in the dynamic field of **Computer Science and Engineering**.
+Actively exploring and mastering new skills and emerging technologies in the dynamic field of Computer Science and Engineering.
 
 As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for **Artificial Intelligence** and **Data Science**.
 
