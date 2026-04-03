@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
@@ -12,7 +13,6 @@ import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import RajarshiImage from "../../public/RajarshiImage.jpg";
-import techno from "../../public/techno.jpg";
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
@@ -21,7 +21,7 @@ export const DATA = {
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Full-Stack TypeScript Developer turned builder, specializing in backend systems and AI-powered applications. Focused on Generative AI and Agentic AI, I build scalable products that solve real-world problems and push the boundaries of intelligent software.",
+    "Full-Stack TypeScript Developer turned builder, specializing in backend systems and AI-powered applications.",
   summary: `**Hello :)** I’m **Rajarshi Chakraborty** - a **Computer Science** undergraduate at Techno Main Salt Lake (Class of 2027), passionate about building scalable **software and intelligent systems**. I’m a **Full-Stack TypeScript Developer** and **Backend Engineer** focused on creating production-grade applications with clean architecture, high performance, and strong system design.
 
 Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building AI-powered systems that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
@@ -92,11 +92,10 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
       badges: [],
       location: "Remote",
       title: "Undergrad Engineering Fellow",
-      logoUrl: "techno.jpg",
+      logoUrl: "/techno.jpg",
       start: "June 2023",
-      end: "present",
-      description:
-        "Actively exploring and mastering new skills and emerging technologies in the dynamic field of Computer Science and Engineering. As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for Artificial Intelligence and Data Science. I thrive on continuous learning, innovation, and practical application to solve real-world challenges.",
+      end: "Present",
+      description:`Actively exploring and mastering new skills and emerging technologies in the dynamic field of **Computer Science and Engineering**. As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for Artificial Intelligence and Data Science. I thrive on continuous learning, innovation, and practical application to solve real-world challenges.`,
     },
     {
       company: "Shopify",
@@ -161,12 +160,12 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
   ],
   education: [
     {
-      school: "Buildspace",
+      school: "Techno Main Salt Lake",
       href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
+      degree: "B.Tech in Computer Science and Engineering",
+      logoUrl: "/techno.jpg",
+      start: " June 2023",
+      end: "Present",
     },
     {
       school: "University of Waterloo",
