@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
@@ -11,18 +12,21 @@ import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import RajarshiImage from "../../public/RajarshiImage.jpg";
 
 export const DATA = {
-  name: "Dillion Verma",
-  initials: "DV",
+  name: "Rajarshi Chakraborty",
+  initials: "RC",
   url: "https://dillion.io",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
-  summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/me.png",
+  description: ` I am a 
+  Full-Stack TypeScript Developer and Backend Engineer with a strong focus on building scalable, production-grade applications. `,
+  summary: `**Hello :)** I’m **Rajarshi Chakraborty** - a **Computer Science** undergraduate at Techno Main Salt Lake (Class of 2027), passionate about building scalable **software and intelligent systems**. I’m a **Full-Stack TypeScript Developer** and **Backend Engineer** focused on creating production-grade applications with clean architecture, high performance, and strong system design.
+
+Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building AI-powered systems that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
+
+  avatarUrl: "RajarshiImage.jpg",
   skills: [
     { name: "React", icon: ReactLight },
     { name: "Next.js", icon: NextjsIconDark },
@@ -41,33 +45,33 @@ export const DATA = {
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "rajarshi29032005@gmail.com",
+    tel: "+91 8001950250",
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/chakrabortyrajarshi2005",
         icon: Icons.github,
         navbar: true,
       },
 
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/rajarshi-c-06a3402b7/",
         icon: Icons.linkedin,
 
         navbar: true,
       },
       X: {
         name: "X",
-        url: "https://dub.sh/dillion-twitter",
+        url: "https://x.com/IamRajarshi_Dev",
         icon: Icons.x,
 
         navbar: true,
       },
       Youtube: {
         name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
+        url: "",
         icon: Icons.youtube,
         navbar: true,
       },
@@ -83,16 +87,21 @@ export const DATA = {
 
   work: [
     {
-      company: "Atomic Finance",
+      company: "Techno Main Salt Lake",
       href: "https://atomic.finance",
       badges: [],
       location: "Remote",
-      title: "Bitcoin Protocol Engineer",
-      logoUrl: "/atomic.png",
-      start: "May 2021",
-      end: "Oct 2022",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+      title: "Undergrad Engineering Fellow",
+      logoUrl: "/techno.jpg",
+      start: "June 2023",
+      end: "Present",
+      description: `
+Actively exploring and mastering new skills and emerging technologies in the dynamic field of **Computer Science and Engineering**.
+
+As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for **Artificial Intelligence** and **Data Science**.
+
+I thrive on continuous learning, innovation, and practical application to solve real-world challenges.
+`,
     },
     {
       company: "Shopify",
@@ -157,12 +166,12 @@ export const DATA = {
   ],
   education: [
     {
-      school: "Buildspace",
+      school: "Techno Main Salt Lake",
       href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
+      degree: "B.Tech in Computer Science and Engineering",
+      logoUrl: "/techno.jpg",
+      start: " June 2023",
+      end: "Present",
     },
     {
       school: "University of Waterloo",
