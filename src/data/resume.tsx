@@ -11,6 +11,7 @@ import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import RajarshiImage from "../../public/RajarshiImage.jpg"
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
@@ -24,7 +25,7 @@ export const DATA = {
 
 Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building AI-powered systems that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
 
-  avatarUrl: "/me.png",
+  avatarUrl: "RajarshiImage.jpg",
   skills: [
     { name: "React", icon: ReactLight },
     { name: "Next.js", icon: NextjsIconDark },
