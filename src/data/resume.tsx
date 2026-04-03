@@ -11,7 +11,8 @@ import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
-import RajarshiImage from "../../public/RajarshiImage.jpg"
+import RajarshiImage from "../../public/RajarshiImage.jpg";
+import techno from "../../public/techno.jpg";
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
@@ -44,33 +45,33 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "rajarshi29032005@gmail.com",
+    tel: "+91 8001950250",
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/chakrabortyrajarshi2005",
         icon: Icons.github,
         navbar: true,
       },
 
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/rajarshi-c-06a3402b7/",
         icon: Icons.linkedin,
 
         navbar: true,
       },
       X: {
         name: "X",
-        url: "https://dub.sh/dillion-twitter",
+        url: "https://x.com/IamRajarshi_Dev",
         icon: Icons.x,
 
         navbar: true,
       },
       Youtube: {
         name: "Youtube",
-        url: "https://dub.sh/dillion-youtube",
+        url: "",
         icon: Icons.youtube,
         navbar: true,
       },
@@ -86,16 +87,16 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
 
   work: [
     {
-      company: "Atomic Finance",
+      company: "Techno Main Salt Lake",
       href: "https://atomic.finance",
       badges: [],
       location: "Remote",
-      title: "Bitcoin Protocol Engineer",
-      logoUrl: "/atomic.png",
-      start: "May 2021",
-      end: "Oct 2022",
+      title: "Undergrad Engineering Fellow",
+      logoUrl: "techno.jpg",
+      start: "June 2023",
+      end: "present",
       description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+        "Actively exploring and mastering new skills and emerging technologies in the dynamic field of Computer Science and Engineering. As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for Artificial Intelligence and Data Science. I thrive on continuous learning, innovation, and practical application to solve real-world challenges.",
     },
     {
       company: "Shopify",
