@@ -24,8 +24,10 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line"
                 yOffset={8}
-                text={`Hello 👋, I am
-                ${DATA.name}`}
+                text={`Hello 👋, This is
+                ${DATA.name}
+                                
+                `}
               />
               <BlurFadeText
                 className="text-muted-foreground "
