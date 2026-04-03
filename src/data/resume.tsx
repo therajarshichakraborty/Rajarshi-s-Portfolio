@@ -13,15 +13,17 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
-  name: "Dillion Verma",
-  initials: "DV",
+  name: "Rajarshi Chakraborty",
+  initials: "RC",
   url: "https://dillion.io",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
-  summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+    "Full-Stack TypeScript Developer turned builder, specializing in backend systems and AI-powered applications. Focused on Generative AI and Agentic AI, I build scalable products that solve real-world problems and push the boundaries of intelligent software.",
+  summary: `**Hello :)** I’m **Rajarshi Chakraborty** - a **Computer Science** undergraduate at Techno Main Salt Lake (Class of 2027), passionate about building scalable **software and intelligent systems**. I’m a **Full-Stack TypeScript Developer** and **Backend Engineer** focused on creating production-grade applications with clean architecture, high performance, and strong system design.
+
+Beyond traditional development, I’m deeply interested in **Generative & Agentic AI** and **Machine Learning**. I enjoy building AI-powered systems that leverage automation and real-world data to create meaningful impact, and I’m driven by continuous learning and solving complex problems through technology.`,
+
   avatarUrl: "/me.png",
   skills: [
     { name: "React", icon: ReactLight },
