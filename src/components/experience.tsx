@@ -1,7 +1,8 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import { Building2, Calendar } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
+import { Building2, Calendar } from "lucide-react";
 import { Golang } from "@/components/ui/svgs/golang";
 import { React } from "@/components/ui/svgs/react";
 import { Docker } from "@/components/ui/svgs/docker";
@@ -28,6 +29,7 @@ interface ExperienceItemProps {
   period: string;
   description: string;
   technologies: string[];
+  Location: string;
 }
 
 const techComponents: Record<string, React.ReactNode> = {
@@ -211,7 +213,7 @@ const techComponents: Record<string, React.ReactNode> = {
       </Button>
     </Link>
   ),
-  "pytorch": (
+  pytorch: (
     <Link href="https://pytorch.org/" target="_blank">
       {" "}
       <Button
@@ -223,7 +225,7 @@ const techComponents: Record<string, React.ReactNode> = {
       </Button>
     </Link>
   ),
-  "nextjs": (
+  nextjs: (
     <Link href="https://nextjs.org/" target="_blank">
       {" "}
       <Button
@@ -236,47 +238,104 @@ const techComponents: Record<string, React.ReactNode> = {
     </Link>
   ),
 };
+
 const ExperienceItem = ({
   title,
   company,
   period,
   description,
   technologies,
+  Location,
 }: ExperienceItemProps) => {
   return (
     <>
       <div className="relative pl-8 not-last:pb-12">
         {/* Timeline line */}
-        <div className="absolute left-0 top-2.5 h-full w-[2px] bg-muted group-first:h-[calc(100%-24px)] group-first:top-1">
-          <div className="absolute h-3 w-3 -left-[5px] top-0 rounded-full border-2 border-black bg-black" />
+        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-300 dark:bg-zinc-100 group-first:h-[calc(75%-1px)] group-first:top-1">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-4 w-4 rounded-full border-2 border-black bg-black dark:bg-white" />
         </div>
 
         {/* Content */}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 size-9 bg-accent rounded-full flex items-center justify-center">
-              <Building2 className="size-5 text-muted-foreground" />
+            <div className="flex-shrink-0 size-9 bg-accent rounded-full flex items-center justify-center overflow-hidden">
+              {(() => {
+                let icon;
+
+                if (company === "Techno Main Salt Lake") {
+                  icon = (
+                    <Image
+                      src="/techno-main.jpg"
+                      alt="Techno Main Salt Lake"
+                      className="size-full object-contain p-1"
+                      width={20}
+                      height={20}
+                    />
+                  );
+                } else if (company === "Samarth TMSL") {
+                  icon = (
+                    <Image
+                      src="/Samarth.jpg"
+                      alt="Samarth TMSL"
+                      className="size-full object-contain p-1"
+                      width={20}
+                      height={20}
+                    />
+                  );
+                } else if (company === "Geekonix") {
+                  icon = (
+                    <Image
+                      src="/geekonix.png"
+                      alt="Geekonix"
+                      className="size-full object-contain p-1"
+                      width={20}
+                      height={20}
+                    />
+                  );
+                } else {
+                  icon = <Building2 className="size-5 text-muted-foreground" />;
+                }
+
+                return icon;
+              })()}
             </div>
-            <span className="text-lg font-semibold">{company}</span>
+
+            <span className="text-3xl font-bold">{company}</span>
           </div>
+
           <div>
-            <h3 className="text-xl font-medium">{title}</h3>
-            <div className="flex items-center gap-2 mt-1 text-sm">
-              <Calendar className="size-4" />
-              <span>{period}</span>
+            <h3 className="text-2xl font-medium">{title}</h3>
+
+            <div className="flex items-center justify-between mt-1 text-sm w-full">
+              <div className="flex items-center gap-2">
+                <Calendar className="size-4" />
+                <span>{period}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="size-4" />
+                <span>{Location}</span>
+              </div>
             </div>
           </div>
           <p className="text-muted-foreground">{description}</p>
           <div className="flex flex-wrap gap-2 items-center">
+            <p className="text-black font-bold dark:text-white">
+              Technologies & Tools :
+            </p>
+            <br />
             {technologies.map((tech) => {
-              // 2. Convert to lowercase to match your object keys safely
               const techKey = tech.toLowerCase();
 
               return (
                 <div key={tech} className="flex items-center ">
                   {/* 3. Render the SVG/Component or fall back to a Badge */}
                   {techComponents[techKey] || (
-                    <Badge variant="outline">{tech}</Badge>
+                    <Button
+                      size={"sm"}
+                      className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
+                    >
+                      {tech}
+                    </Button>
                   )}
                 </div>
               );
@@ -293,40 +352,57 @@ const ExperienceItem = ({
 const Experience = () => {
   const experiences = [
     {
-      title: "Researcher",
+      title: "UnderGrad Student Researcher",
       company: "Techno Main Salt Lake",
       period: "Jan 2026 - Present",
-      description: "Researching about LSTM and /deep Learning",
+      Location: "Kolkata , West Bengal , India",
+      description:
+        "Researching and optimizing weather forecasting models using LSTM, ARIMA, and RNN-based Deep Learning architectures for time-series prediction. Engineered scalable data preprocessing pipelines and significantly improved model performance on real-world datasets through rigorous evaluation, hyperparameter tuning, cross-validation, and feature engineering. Leveraged statistical modeling, data normalization, and anomaly detection techniques to enhance forecasting accuracy, while ensuring model robustness, scalability, and deployment readiness in production environments.",
       technologies: [
-        "golang",
-        "nodejs",
-        "typescript",
-        "react",
-        "mongo",
-        "java",
-        "python",
-        "kubernetes",
-        "numpy",
-        "pandas",
+        "Python",
+        "NumPy",
+        "Pandas",
         "sk-learn",
-        "pythorch","c++","nextjs"
+        "PyTorch",
+        "nodejs",
+        "Time Series Analysis",
       ],
     },
     {
-      title: "Co-Head",
-      company: "Co-Head of Ignite",
-      period: "2019 - 2021",
-      description:
-        "Developed and maintained multiple client projects, implemented responsive designs, and integrated third-party APIs for enhanced functionality.",
-      technologies: ["React", "Express", "postgres", "Docker", "Redis"],
+      title: "Co-Head , Content Writer of IGNITE",
+      company: "Samarth TMSL",
+      period: "July 2023 - Present",
+      Location: "Kolkata , West Bengal , India",
+      description: `Led the IGNITE division of Samarth TMSL official educational and civil services society of Techno Main Salt Lake. Organized and managed multiple large-scale events including Educathon (national-level hackathon) and Safalya (annual fest). Coordinated teams, handled event execution, and drove community engagement through seminars, workshops, and initiatives like Pragati.
+      
+      Created technical and educational content for initiatives under Samarth TMSL. Contributed to outreach, documentation, and communication strategies to improve engagement and awareness.`,
+      technologies: [
+        "Leadership",
+        "Event Management",
+        "Public Speaking",
+        "Team Coordination",
+        "Operations",
+        "Community Building",
+        "Content Writing",
+        "Technical Writing",
+        "Communication",
+        "Documentation",
+      ],
     },
     {
-      title: "Frontend Developer",
-      company: "WebTech Studios",
-      period: "2018 - 2019",
+      title: "Volunteer & Management Staff",
+      company: "Geekonix",
+      period: "Oct 2023 - Dec 2024",
+      Location: "Kolkata , West Bengal , India",
       description:
-        "Created responsive and interactive user interfaces, collaborated with designers, and optimized application performance.",
-      technologies: ["React", "typescript", "java", "Webpack", "Jest"],
+        "Worked at the ground level to organize and execute EDGE , the official technical fest of Techno Main Salt Lake. Managed logistics, coordinated teams, and ensured smooth execution of technical events and operations.",
+      technologies: [
+        "Event Operations",
+        "Team Management",
+        "Logistics",
+        "Coordination",
+        "Execution",
+      ],
     },
   ];
 
@@ -334,14 +410,14 @@ const Experience = () => {
     <section id="experience" className="relative py-1 px-6">
       <div className="max-w-screen-md mx-auto">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">
+          {/* <Button size={"sm"} className=" bg-white text-black border-black cursor-pointer gap-2 mb-8">
             Experience
-          </Badge>
+          </Button> */}
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
             Professional Journey
           </h2>
           <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">
-            A timeline of my professional growth and key achievements
+            Mapping my journey of growth, innovation, and real-world impact.
           </p>
         </div>
 
