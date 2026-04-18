@@ -11,6 +11,7 @@ import ProjectsSection from "@/components/section/projects-section";
 // import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import Experience from "@/components/experience";
+import Education from "@/components/education";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -75,7 +76,9 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
-          <div className="flex flex-col gap-8">
+
+                {/* Education */}
+          {/* <div className="flex flex-col gap-8">
             {DATA.education.map((education, index) => (
               <BlurFade
                 key={education.school}
@@ -118,7 +121,11 @@ export default function Page() {
                 </Link>
               </BlurFade>
             ))}
-          </div>
+          </div> */}
+
+          <Education/>
+
+
         </div>
       </section>
       <section id="skills">

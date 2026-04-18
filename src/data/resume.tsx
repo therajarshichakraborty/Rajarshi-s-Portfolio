@@ -1,24 +1,24 @@
 import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/react";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
 import { Golang } from "@/components/ui/svgs/golang";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 import RajarshiImage from "../../public/RajarshiImage.jpg";
+import { React } from "@/components/ui/svgs/react";
+import { Postgres } from "@/components/ui/svgs/postgresql";
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
   initials: "RC",
-  url: "https://dillion.io",
-  location: "San Francisco, CA",
+  url: "https://www.google.com/maps/place/sanfrancisco",
+  location: "Kolkata , West Bengal , India",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description: ` I am a 
   Full-Stack TypeScript Developer and Backend Engineer with a strong focus on building scalable, production-grade applications. `,
@@ -28,13 +28,13 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
 
   avatarUrl: "RajarshiImage.jpg",
   skills: [
-    { name: "React", icon: ReactLight },
+    { name: "React", icon: React },
     { name: "Next.js", icon: NextjsIconDark },
     { name: "Typescript", icon: Typescript },
     { name: "Node.js", icon: Nodejs },
     { name: "Python", icon: Python },
     { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgresql },
+    { name: "Postgres", icon: Postgres },
     { name: "Docker", icon: Docker },
     { name: "Kubernetes", icon: Kubernetes },
     { name: "Java", icon: Java },
@@ -167,35 +167,39 @@ I thrive on continuous learning, innovation, and practical application to solve 
   education: [
     {
       school: "Techno Main Salt Lake",
-      href: "https://buildspace.so",
+      title:"Undergrad Engineering Fellow",
+      href: "https://www.ticollege.ac.in/",
       degree: "B.Tech in Computer Science and Engineering",
       logoUrl: "/techno.jpg",
       start: " June 2023",
       end: "Present",
+      description:`rgghjidjhgkdfjgoiujergjdfjkghfryijhgogrtihy`
     },
+    // {
+    //   school: "University of Waterloo",
+    //   href: "https://uwaterloo.ca",
+    //   degree: "Bachelor's Degree of Computer Science (BCS)",
+    //   logoUrl: "/waterloo.png",
+    //   start: "2016",
+    //   end: "2021",
+    // },
+    // {
+    //   school: "Wilfrid Laurier University",
+    //   href: "https://wlu.ca",
+    //   degree: "Bachelor's Degree of Business Administration (BBA)",
+    //   logoUrl: "/laurier.png",
+    //   start: "2016",
+    //   end: "2021",
+    // },
     {
-      school: "University of Waterloo",
-      href: "https://uwaterloo.ca",
-      degree: "Bachelor's Degree of Computer Science (BCS)",
-      logoUrl: "/waterloo.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "Wilfrid Laurier University",
-      href: "https://wlu.ca",
-      degree: "Bachelor's Degree of Business Administration (BBA)",
-      logoUrl: "/laurier.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "International Baccalaureate",
-      href: "https://ibo.org",
-      degree: "IB Diploma",
-      logoUrl: "/ib.png",
-      start: "2012",
-      end: "2016",
+      school: "West Bengal Council of Higher Secondary Education",
+      href: "https://wbchse.wb.gov.in/",
+      title:"High School Education",
+      degree: "High Schooling",
+      logoUrl: "/West_Bengal_Council_of_Higher_Secondary_Education_Logo.png",
+      start: "April 2020",
+      end: "Mar 2023",
+      description:`rgghjidjhgkdfjgoiujergjdfjkghfryijhgogrtihy`
     },
   ],
   projects: [
