@@ -13,6 +13,8 @@ import { ArrowUpRight } from "lucide-react";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skills from "@/components/skills";
+import Leetcode from "@/components/ui/leetcode";
+import Gallery from "@/components/ui/gallery";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -65,6 +67,8 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Gallery of Images */}
+      <Gallery />
       <section id="work" className="mt-0">
         <div className="flex min-h-0 flex-col gap-y-3 ">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
@@ -89,11 +93,16 @@ export default function Page() {
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="hackathons">
+
+      {/* Leetcode */}
+      <Leetcode />
+
+      {/* <section id="hackathons">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
         </BlurFade>
-      </section>
+      </section> */}
+
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />

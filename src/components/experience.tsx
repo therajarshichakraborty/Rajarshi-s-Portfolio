@@ -267,7 +267,7 @@ const ExperienceItem = ({
                     <Image
                       src="/techno-main.jpg"
                       alt="Techno Main Salt Lake"
-                      className="size-full object-contain p-1"
+                      className="size-52 object-contain p-1"
                       width={20}
                       height={20}
                     />
