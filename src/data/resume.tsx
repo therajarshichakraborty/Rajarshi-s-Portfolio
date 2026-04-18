@@ -13,6 +13,17 @@ import { Csharp } from "@/components/ui/svgs/csharp";
 import RajarshiImage from "../../public/RajarshiImage.jpg";
 import { React } from "@/components/ui/svgs/react";
 import { Postgres } from "@/components/ui/svgs/postgresql";
+import { CPP } from "@/components/ui/svgs/c++";
+import { Express } from "@/components/ui/svgs/express";
+import { MongoDB } from "@/components/ui/svgs/mongodb";
+import { NumPy } from "@/components/ui/svgs/numpy";
+import { Pandas } from "@/components/ui/svgs/pandas";
+import { SkLearn } from "@/components/ui/svgs/sk-learn";
+import { Pytorch } from "@/components/ui/svgs/pytorch";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+import { Git } from "@/components/ui/svgs/git";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { JavaScript } from "@/components/ui/svgs/js";
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
@@ -29,16 +40,26 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
   avatarUrl: "RajarshiImage.jpg",
   skills: [
     { name: "React", icon: React },
+    { name: "Tailwind", icon: Tailwind },
     { name: "Next.js", icon: NextjsIconDark },
+    { name: "Javascript", icon: JavaScript },
     { name: "Typescript", icon: Typescript },
+    { name: "Express", icon: Express },
+    { name: "MongoDB", icon: MongoDB },
     { name: "Node.js", icon: Nodejs },
+    { name: "Git", icon: Git },
     { name: "Python", icon: Python },
     { name: "Go", icon: Golang },
     { name: "Postgres", icon: Postgres },
+    { name: "Prisma", icon: Prisma },
     { name: "Docker", icon: Docker },
     { name: "Kubernetes", icon: Kubernetes },
     { name: "Java", icon: Java },
-    { name: "C++", icon: Csharp },
+    { name: "NumPy", icon: NumPy },
+    { name: "Pandas", icon: Pandas },
+    { name: "Scikit Learn", icon: SkLearn },
+    { name: "PyTorch", icon: Pytorch },
+    { name: "C++", icon: CPP },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -167,13 +188,38 @@ I thrive on continuous learning, innovation, and practical application to solve 
   education: [
     {
       school: "Techno Main Salt Lake",
-      title:"Undergrad Engineering Fellow",
+      title: "Undergrad Engineering Fellow",
       href: "https://www.ticollege.ac.in/",
       degree: "B.Tech in Computer Science and Engineering",
       logoUrl: "/techno.jpg",
       start: " June 2023",
       end: "Present",
-      description:`rgghjidjhgkdfjgoiujergjdfjkghfryijhgogrtihy`
+      description: `Grade: GPA - 8.01/10 (Academic Progress till Semester 5th)
+
+Actively exploring and mastering new skills and emerging technologies in the dynamic field of Computer Science and Engineering. As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for AI and Machine Learning. I thrive on continuous learning, innovation, and practical application to solve real-world challenges.
+
+Undergrad Coursework :
+BEE101/BEE191: Basic Electrical Engineering
+BSM101: Engineering Mathematics IA
+BSM201: Engineering Mathematics IIA
+ESCS301: Analog & Digital Electronics
+PCCCS301: Data Structures & Algorithms
+PCCCS302: Computer Organization
+BSCICB301: Linear Algebra
+PCCCS401: Discrete Mathematics
+PCCICB401: Data Communication & Networks
+PCCCS403: Formal Language & Automata Theory 
+PCCCS404: Design & Analysis of Algorithms
+PCCCS502: Operating Systems
+PCCCS503: Object Oriented Programming 
+PCCICB501: IoT Application & Design 
+PCCICB502: Wireless Sensor Networks
+PECICB501-B: Internet Technology
+PCCICB601: Cryptography & Network Security 
+PCCCS601: Database Management System 
+PCCCS602: Ethical Hacking 
+PECICB601-D: Software Engineering 
+OECICB601-A: Human Resource Development & Organizational Behavior`,
     },
     // {
     //   school: "University of Waterloo",
@@ -194,12 +240,27 @@ I thrive on continuous learning, innovation, and practical application to solve 
     {
       school: "West Bengal Council of Higher Secondary Education",
       href: "https://wbchse.wb.gov.in/",
-      title:"High School Education",
+      title: "High School Education",
       degree: "High Schooling",
       logoUrl: "/West_Bengal_Council_of_Higher_Secondary_Education_Logo.png",
       start: "April 2020",
       end: "Mar 2023",
-      description:`rgghjidjhgkdfjgoiujergjdfjkghfryijhgogrtihy`
+      description: `Grade: A+ | Scored Overall 81.2 % Marks in +2 Examination
+
+Activities and societies: Cricket Team
+Completed XII from WBCHSE (West Bengal Council of Higher Secondary Education).
+
+Demonstrated excellence both in academics and extracurricular pursuits. Served as the Captain of the School Cricket Team, leading the team to several inter-school tournaments while nurturing team spirit, leadership, and strategic decision-making. Acknowledged as a dedicated and consistent school-level cricket player.
+
+These experiences collectively strengthened my leadership, organizational, and collaborative capabilities, enabling me to balance academic rigor with active participation in co-curricular forums.
+
+Coursework:
+Bengali
+English
+Physics
+Chemistry
+Mathematics
+Biology`,
     },
   ],
   projects: [
