@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
+import { ReactLight } from "@/components/ui/svgs/react";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
