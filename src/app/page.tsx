@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,9 +20,16 @@ import LeetCodeCard from "./components/leetcode/LeetCodeCard";
 import LeetCodeCardUI from "./components/leetcode/LeetCodeCardUI";
 import HireMeSection from "@/components/section/hire-me";
 
+import ContestRatingChart from "@/components/charts/ContestRatingChart";
+import { getContestData } from "@/lib/leetcode/getContestData";
+import { transformContestData } from "@/lib/leetcode/transformContestData";
+
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
+export default async function Page() {
+  const raw = await getContestData("rajarshi_2005");
+  const data = transformContestData(raw);
+
   return (
     <main className=" flex flex-col gap-15 relative">
       <section
@@ -150,9 +158,20 @@ ${DATA.name}`}
             </span>
             .
           </p>
-          <div className="w-full flex justify-end">
-            <LeetCodeCard />
+
+          <div className="w-full max-w-6xl mx-auto mt-10 flex flex-col lg:flex-row gap-6 items-stretch">
+            {/* LEFT: Chart */}
+            <div className="flex-1 min-w-0">
+              <div className="h-full flex items-center">
+                <ContestRatingChart data={data} />
+              </div>
+            </div>
+
+            <div className="w-full lg:w-[320px] flex justify-center -mt-20 items-center">
+              <LeetCodeCard />
+            </div>
           </div>
+
           <LeetCodeGraph />
         </BlurFade>
       </section>
@@ -183,6 +202,12 @@ ${DATA.name}`}
         <br />
         @2026. All rights reserved.
       </p>
+
+      {/* <div className="mt-8 border rounded-xl p-5">
+        <h2 className="text-lg font-semibold mb-4">Contest Rating Progress</h2>
+
+        <ContestRatingChart data={data} />
+      </div> */}
     </main>
   );
 }

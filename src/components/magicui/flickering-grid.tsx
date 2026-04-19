@@ -43,7 +43,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       return "rgb(0, 0, 0)";
     }
 
-    const colorToResolve = colorValue || "oklch(62.7% 0.265 303.9)";
+    const colorToResolve = colorValue || "oklch(62.7% 0 0)";
 
     if (colorToResolve.startsWith("var(")) {
       const tempEl = document.createElement("div");
