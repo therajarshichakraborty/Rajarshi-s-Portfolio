@@ -15,6 +15,11 @@ import Education from "@/components/education";
 import Skills from "@/components/skills";
 import Leetcode from "@/components/ui/leetcode";
 import Gallery from "@/components/ui/gallery";
+import LeetCodeGraph from "./components/leetcode/LeetCodeGraph";
+
+
+
+;
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -67,8 +72,13 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Gallery of Images */}
-      <Gallery />
+      <section id="gallery">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <Gallery />
+        </BlurFade>
+      </section>
+
+
       <section id="work" className="mt-0">
         <div className="flex min-h-0 flex-col gap-y-3 ">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
@@ -82,11 +92,17 @@ export default function Page() {
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
 
-          <Education />
+          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+            <Education />
+          </BlurFade>
         </div>
       </section>
 
-      <Skills />
+      <section id="skills">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <Skills />
+        </BlurFade>
+      </section>
 
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -94,8 +110,11 @@ export default function Page() {
         </BlurFade>
       </section>
 
-      {/* Leetcode */}
-      <Leetcode />
+      <section id="leetcode">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <LeetCodeGraph />
+        </BlurFade>
+      </section>
 
       {/* <section id="hackathons">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
