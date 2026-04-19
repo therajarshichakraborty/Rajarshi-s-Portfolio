@@ -13,13 +13,10 @@ import { ArrowUpRight } from "lucide-react";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skills from "@/components/skills";
-import Leetcode from "@/components/ui/leetcode";
 import Gallery from "@/components/ui/gallery";
 import LeetCodeGraph from "./components/leetcode/LeetCodeGraph";
-
-
-
-;
+import LeetCodeCard from "./components/leetcode/LeetCodeCard";
+import LeetCodeCardUI from "./components/leetcode/LeetCodeCardUI";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -78,7 +75,6 @@ export default function Page() {
         </BlurFade>
       </section>
 
-
       <section id="work" className="mt-0">
         <div className="flex min-h-0 flex-col gap-y-3 ">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
@@ -112,7 +108,38 @@ export default function Page() {
 
       <section id="leetcode">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text">
+            My DSA Journey
+          </h1>
+
+          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg text-center mb-4 max-w-2xl mx-auto leading-relaxed">
+            I am a student with a strong enthusiasm for Data Structures and
+            Algorithms. Since 2024, I have been actively solving problems on
+            LeetCode and consistently participating in coding contests. I have
+            solved{" "}
+            <span className="font-semibold text-foreground">
+              1100+ DSA problems
+            </span>{" "}
+            across multiple platforms, including
+            <span className="text-black font-bold dark:text-white">
+              {" "}
+              LeetCode
+            </span>
+            ,
+            <span className="text-black font-bold dark:text-white">
+              {" "}
+              GeeksForGeeks
+            </span>
+            , &
+            <span className="text-black font-bold dark:text-white">
+              {" "}
+              CodeForces
+            </span>
+            .
+          </p>
+                
           <LeetCodeGraph />
+
         </BlurFade>
       </section>
 

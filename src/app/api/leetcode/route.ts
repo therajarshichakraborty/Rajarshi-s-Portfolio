@@ -2,7 +2,7 @@ export async function GET() {
   const res = await fetch(
     "https://alfa-leetcode-api.onrender.com/rajarshi_2005/calendar",
     {
-      next: { revalidate: 3600 }, // cache 1 hour
+      next: { revalidate: 3600 }, 
     },
   );
 

@@ -16,6 +16,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import LeetCodeCard from "./LeetCodeCard";
 
 type Activity = {
   date: string;
@@ -68,34 +70,9 @@ export default function LeetCodeGraph() {
   return (
     <>
       <div className="w-full overflow-x-auto cursor-pointer   ">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text">
-          My DSA Journey
-        </h1>
-
-        <p className="text-muted-foreground mt-2 sm:mt-4 text-lg text-center mb-4 max-w-2xl mx-auto leading-relaxed">
-          I am a student with a strong enthusiasm for Data Structures and
-          Algorithms. Since 2024, I have been actively solving problems on
-          LeetCode and consistently participating in coding contests. I have
-          solved{" "}
-          <span className="font-semibold text-foreground">
-            1100+ DSA problems
-          </span>{" "}
-          across multiple platforms, including
-          <span className="text-black font-bold"> LeetCode</span>,
-          <span className="text-black font-bold"> GeeksForGeeks</span>,
-          &
-          <span className="text-black font-bold"> CodeForces</span>.
-        </p>
+        
+       
         <div className="mb-3 flex items-center justify-between">
-          <div className="text-sm text-muted-foreground flex items-center gap-1.5">
-            Current:
-            <span className="font-semibold text-foreground">
-              <Button size={"sm"} variant={"outline"}>
-                {total.toLocaleString()} Submissions
-              </Button>
-            </span>
-          </div>
-
           <div className="text-sm text-muted-foreground flex items-center gap-1.5">
             <span className="font-semibold text-foreground">
               <Button
@@ -132,7 +109,19 @@ export default function LeetCodeGraph() {
                 </ContributionGraphBlock>
               )}
             </ContributionGraphCalendar>
-            <ContributionGraphLegend />
+
+            <div className="flex flex-row-reverse items-center justify-between w-full">
+              <ContributionGraphLegend />
+
+              <div className="text-sm text-muted-foreground flex items-center gap-1.5">
+                Current:
+                <span className="font-semibold text-foreground">
+                  <Badge  variant="outline">
+                    {total.toLocaleString()} Submissions
+                  </Badge> 
+                </span>
+              </div>
+            </div>
           </ContributionGraph>
         </TooltipProvider>
       </div>
