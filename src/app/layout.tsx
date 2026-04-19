@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import LightModeCover from "@/components/LightModeCover";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -86,7 +87,7 @@ export default function RootLayout({
 
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
+            <div className="absolute inset-0 top-0 left-0 right-0 h-[80px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
                 squareSize={8}
@@ -98,9 +99,15 @@ export default function RootLayout({
                 }}
               />
             </div>
+
+            {/* 🌄 COVER — OUTSIDE spacing */}
+            <LightModeCover />
+
+            {/* 📦 CONTENT */}
             <div className="relative z-10 max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
             </div>
+
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>

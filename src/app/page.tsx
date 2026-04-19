@@ -24,31 +24,42 @@ const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
   return (
     <main className=" flex flex-col gap-15 relative">
-      <section id="hero" className="w-full flex justify-center">
-        <div className=" w-full max-w-2xl space-y-8">
+      <section
+        id="hero"
+        className="w-full flex justify-center -mt-10 md:-mt-14 dark:mt-0"
+      >
+        <div className="w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
-            <div className="gap-2 flex flex-col order-2 md:order-1 ">
+            {/* TEXT */}
+            <div className="gap-2 flex flex-col order-2 md:order-1 md:pt-6 dark:pt-0">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line   "
+                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line"
                 yOffset={8}
                 text={`Hello👋🏻, This is
-                ${DATA.name}                   
-                `}
+${DATA.name}`}
               />
+
               <BlurFadeText
-                className="text-muted-foreground "
+                className="text-muted-foreground"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+
+            {/* AVATAR */}
+            <BlurFade
+              delay={BLUR_FADE_DELAY}
+              className="order-1 md:order-2 -mt-20 md:-mt-38 dark:mt-0"
+            >
               <Avatar
-                style={{
-                  height: "250px",
-                  width: "250px",
-                }}
-                className="size-64 md:size-32 border rounded-full shadow-lg ring-4 ring-muted"
+                className="
+            size-40 sm:size-48 md:size-52
+            border rounded-full
+            shadow-xl
+            ring-4 ring-background
+            bg-background
+          "
               >
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -57,6 +68,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <section id="about" className="mb-4">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
