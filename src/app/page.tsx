@@ -17,19 +17,20 @@ import Gallery from "@/components/ui/gallery";
 import LeetCodeGraph from "./components/leetcode/LeetCodeGraph";
 import LeetCodeCard from "./components/leetcode/LeetCodeCard";
 import LeetCodeCardUI from "./components/leetcode/LeetCodeCardUI";
+import HireMeSection from "@/components/section/hire-me";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className=" flex flex-col gap-14 relative">
-      <section id="hero">
+    <main className=" flex flex-col gap-15 relative">
+      <section id="hero" className="w-full flex justify-center">
         <div className=" w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
-            <div className="gap-2 flex flex-col order-2 md:order-1">
+            <div className="gap-2 flex flex-col order-2 md:order-1 ">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line"
+                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line "
                 yOffset={8}
                 text={`Hello👋🏻, This is
                 ${DATA.name}                   
@@ -137,9 +138,10 @@ export default function Page() {
             </span>
             .
           </p>
-                
+          <div className="w-full flex justify-end">
+            <LeetCodeCard />
+          </div>
           <LeetCodeGraph />
-
         </BlurFade>
       </section>
 
@@ -151,9 +153,23 @@ export default function Page() {
 
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
+          <HireMeSection />
         </BlurFade>
       </section>
+
+      {/* <section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <ContactSection />
+        </BlurFade>
+      </section> */}
+
+      <p className="text-center text-sm text-muted-foreground tracking-wide">
+        Design & Developed by{" "}
+        <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+          Rajarshi Chakraborty
+        </span>
+        <br />@2026. All rights reserved.
+      </p>
     </main>
   );
 }

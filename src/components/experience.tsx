@@ -251,8 +251,8 @@ const ExperienceItem = ({
     <>
       <div className="relative pl-8 not-last:pb-12">
         {/* Timeline line */}
-        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-300 dark:bg-zinc-100 group-first:h-[calc(75%-1px)] group-first:top-1">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-4 w-4 rounded-full border-2 border-black bg-black dark:bg-white" />
+        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-400 dark:bg-zinc-100 dark:w-[1px] group-first:h-[calc(75%-1px)] group-first:top-1">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-black bg-black dark:bg-white dark:border-0" />
         </div>
 
         {/* Content */}
