@@ -3,7 +3,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
-import Link from "next/link";
+// import Link from "next/link";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
@@ -30,7 +30,7 @@ export default function Page() {
             <div className="gap-2 flex flex-col order-2 md:order-1 ">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line "
+                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line   "
                 yOffset={8}
                 text={`Hello👋🏻, This is
                 ${DATA.name}                   
@@ -109,7 +109,7 @@ export default function Page() {
 
       <section id="leetcode">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent">
             My DSA Journey
           </h1>
 
@@ -118,21 +118,21 @@ export default function Page() {
             Algorithms. Since 2024, I have been actively solving problems on
             LeetCode and consistently participating in coding contests. I have
             solved{" "}
-            <span className="font-semibold text-foreground">
-              1100+ DSA problems
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+              1100+ problems
             </span>{" "}
             across multiple platforms, including
-            <span className="text-black font-bold dark:text-white">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               LeetCode
             </span>
             ,
-            <span className="text-black font-bold dark:text-white">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               GeeksForGeeks
             </span>
             , &
-            <span className="text-black font-bold dark:text-white">
+            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               CodeForces
             </span>
@@ -168,7 +168,8 @@ export default function Page() {
         <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
           Rajarshi Chakraborty
         </span>
-        <br />@2026. All rights reserved.
+        <br />
+        @2026. All rights reserved.
       </p>
     </main>
   );
