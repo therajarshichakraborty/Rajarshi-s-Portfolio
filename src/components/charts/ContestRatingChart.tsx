@@ -26,10 +26,14 @@ export default function ContestRatingChart({ data }: ContestChartData) {
   }
 
   return (
+    <div className="rounded-xl p-4 bg-transparent">
+      <h2 className="text-lg font-semibold mb-4 ml-30">
+        Contest Rating Progress
+      </h2>
     <div className="w-[450px] h-[220px]">
       {" "}
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
+      <ResponsiveContainer width="100%" height="100%" className="dark:border-none">
+        <LineChart data={data} >
           <XAxis dataKey="date" tick={{ fontSize: 9 }} tickLine={false} />
 
           <YAxis tick={{ fontSize: 9 }} tickLine={false} width={30} />
@@ -76,6 +80,7 @@ export default function ContestRatingChart({ data }: ContestChartData) {
           />
         </LineChart>
       </ResponsiveContainer>
+    </div>
     </div>
   );
 }

@@ -18,15 +18,15 @@ function Stat({ color, label, value }) {
 
 export default function LeetCodeCardUI({ data }) {
   return (
-    <div className="mt-10 flex justify-center">
+    <div className="mt-15 flex justify-center">
       <div
         className="
-        w-[300px] sm:w-[260px]
-        p-5 rounded-2xl
-        bg-transparent 
-        backdrop-blur-md
-        
-      "
+  w-[300px] sm:w-[260px]
+  ml-2 sm:ml-6 md:ml-10
+  p-5 rounded-2xl
+  bg-transparent 
+  backdrop-blur-md
+"
       >
         <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4">
           LeetCode Progress

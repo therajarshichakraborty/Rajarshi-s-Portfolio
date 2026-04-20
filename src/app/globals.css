@@ -136,6 +136,9 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
+  svg rect {
+  transition: fill 300ms ease-in-out;
+}
   .prose pre {
     @apply leading-relaxed bg-transparent! font-mono!;
   }

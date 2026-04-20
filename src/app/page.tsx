@@ -81,9 +81,13 @@ export default async function Page() {
       <section id="about" className="mb-4">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold 
+            <h2
+              className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold 
 dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
-dark:bg-clip-text dark:text-transparent">About</h2>
+dark:bg-clip-text dark:text-transparent"
+            >
+              About
+            </h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert [&>*:last-child]:mb-0">
@@ -109,9 +113,13 @@ dark:bg-clip-text dark:text-transparent">About</h2>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="inline-block whitespace-nowrap text-xl font-bold 
+            <h2
+              className="inline-block whitespace-nowrap text-xl font-bold 
 dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
-dark:bg-clip-text dark:text-transparent">Education</h2>
+dark:bg-clip-text dark:text-transparent"
+            >
+              Education
+            </h2>
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -164,15 +172,15 @@ dark:bg-clip-text dark:text-transparent">Education</h2>
             .
           </p>
 
-          <div className="w-full max-w-6xl mx-auto mt-10 flex flex-col lg:flex-row gap-6 items-stretch">
+          <div className="w-full max-w-7xl mx-auto mt-10 flex flex-col lg:flex-row gap-6 items-stretch">
             {/* LEFT: Chart */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 ">
               <div className="h-full flex items-center">
                 <ContestRatingChart data={data as any} />
               </div>
             </div>
 
-            <div className="w-full lg:w-[320px] flex justify-center -mt-20 items-center">
+            <div className="w-full lg:w-[320px] flex justify-center -mt-25 items-center">
               <LeetCodeCard />
             </div>
           </div>

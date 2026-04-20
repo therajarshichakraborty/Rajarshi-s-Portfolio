@@ -328,12 +328,18 @@ export const ContributionGraphBlock = ({
   return (
     <rect
       className={cn(
-        'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
+        'dark:data-[level="0"]:fill-[oklch(92%_0.02_280)]',
         'dark:data-[level="0"]:fill-[#161b22]',
-        'data-[level="1"]:fill-[oklch(75%_0.14_290)]',
-        'data-[level="2"]:fill-[oklch(60%_0.18_295)]',
-        'data-[level="3"]:fill-[oklch(45%_0.21_300)]',
-        'data-[level="4"]:fill-[oklch(30%_0.24_305)]',
+        'dark:data-[level="1"]:fill-[oklch(75%_0.14_290)]',
+        'dark:data-[level="2"]:fill-[oklch(60%_0.18_295)]',
+        'dark:data-[level="3"]:fill-[oklch(45%_0.21_300)]',
+        'dark:data-[level="4"]:fill-[oklch(30%_0.24_305)]',
+
+        'data-[level="0"]:fill-[#eef1f4]',
+        'data-[level="1"]:fill-[#d2ee9a]',
+        'data-[level="2"]:fill-[#84d178]',
+        'data-[level="3"]:fill-[#2fb344]',
+        'data-[level="4"]:fill-[#1f7a34]',
       )}
       data-count={activity.count}
       data-date={activity.date}
@@ -493,12 +499,18 @@ export const ContributionGraphLegend = ({
             <title>{`${level} contributions`}</title>
             <rect
               className={cn(
-                'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
+                // 'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
                 'dark:data-[level="0"]:fill-[#161b22]',
-                'data-[level="1"]:fill-[oklch(75%_0.14_290)]',
-                'data-[level="2"]:fill-[oklch(60%_0.18_295)]',
-                'data-[level="3"]:fill-[oklch(45%_0.21_300)]',
-                'data-[level="4"]:fill-[oklch(30%_0.24_305)]',
+                'dark:data-[level="1"]:fill-[oklch(75%_0.14_290)]',
+                'dark:data-[level="2"]:fill-[oklch(60%_0.18_295)]',
+                'dark:data-[level="3"]:fill-[oklch(45%_0.21_300)]',
+                'dark:data-[level="4"]:fill-[oklch(30%_0.24_305)]',
+
+                'data-[level="0"]:fill-[#eef1f4]',
+                'data-[level="1"]:fill-[#d2ee9a]',
+                'data-[level="2"]:fill-[#84d178]',
+                'data-[level="3"]:fill-[#2fb344]',
+                'data-[level="4"]:fill-[#1f7a34]',
               )}
               data-level={level}
               height={blockSize}

@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import LeetCodeCard from "./LeetCodeCard";
+import { LeetCode } from "@/components/ui/svgs/leetcode";
 
 type Activity = {
   date: string;
@@ -70,31 +71,36 @@ export default function LeetCodeGraph() {
   return (
     <>
       <div className="w-full overflow-x-auto cursor-pointer   ">
-        
-       
         <div className="mb-3 flex items-center justify-between">
           <div className="text-sm text-muted-foreground flex items-center gap-1.5">
             <span className="font-semibold text-foreground">
-              <Button
-                size={"sm"}
-                variant={"outline"}
-                asChild
-                className="transition-all active:scale-95 bt-transparent hover:text-blue-600 dark:bg-transparent hover:border-blue-600 hover:bg-transparent"
+              <Link
+                href="https://leetcode.com/u/rajarshi_2005/"
+                target="_blank"
+                rel="noreferrer"
               >
-                <Link
-                  href="https://leetcode.com/u/rajarshi_2005/"
-                  target="_blank"
-                  rel="noreferrer"
+                {" "}
+                <Button
+                  size={"sm"}
+                  className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
                 >
+                  <LeetCode />
                   Visit Rajarshi's LeetCode
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </span>
           </div>
         </div>
 
         <TooltipProvider>
-          <ContributionGraph data={data}>
+          <ContributionGraph
+            data={data}
+            className="
+  transition-[background-color,color,border-color,fill,stroke]
+  duration-500
+  ease-[cubic-bezier(0.4,0,0.2,1)]
+"
+          >
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (
                 <ContributionGraphBlock
@@ -116,9 +122,9 @@ export default function LeetCodeGraph() {
               <div className="text-sm text-muted-foreground flex items-center gap-1.5">
                 Current:
                 <span className="font-semibold text-foreground">
-                  <Badge  variant="outline">
+                  <Badge variant="outline">
                     {total.toLocaleString()} Submissions
-                  </Badge> 
+                  </Badge>
                 </span>
               </div>
             </div>
