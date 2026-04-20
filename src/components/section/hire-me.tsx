@@ -7,14 +7,15 @@ export default function HireMeSection() {
     <div className="border rounded-xl p-10 relative">
       {/* Top Badge */}
       <div className="absolute -top-4 border bg-primary z-10 rounded-xl px-4 py-1 left-1/2 -translate-x-1/2">
-        <span className="text-background text-sm font-medium">Hire Me</span>
+        <span className="text-background text-sm font-medium dark:bg-gradient-to-r dark:from-blue-500 dark:via-indigo-500 dark:to-pink-500
+  dark:bg-clip-text dark:text-transparent">Hire Me</span>
       </div>
 
       {/* Background Effect */}
       <div className="absolute inset-0 top-0 left-0 right-0 h-1/2 rounded-xl overflow-hidden">
         <FlickeringGrid
           className="h-full w-full"
-          squareSize={2}
+          squareSize={10}
           gridGap={2}
           style={{
             maskImage: "linear-gradient(to bottom, black, transparent)",
@@ -25,7 +26,11 @@ export default function HireMeSection() {
 
       {/* Content */}
       <div className="relative flex flex-col items-center gap-5 text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+        <h2 className="
+  text-3xl font-bold tracking-tighter sm:text-5xl
+  dark:bg-gradient-to-r dark:from-blue-500 dark:via-indigo-500 dark:to-pink-500
+  dark:bg-clip-text dark:text-transparent
+">
           Let’s Build Something Impactful
         </h2>
 

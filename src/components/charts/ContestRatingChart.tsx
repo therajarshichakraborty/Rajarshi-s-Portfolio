@@ -11,7 +11,7 @@ import {
   Legend,
 } from "recharts";
 
-type Props = {
+type ContestChartData = {
   data: {
     date: string;
     rating: number;
@@ -20,7 +20,7 @@ type Props = {
   }[];
 };
 
-export default function ContestRatingChart({ data }: Props) {
+export default function ContestRatingChart({ data }: ContestChartData) {
   if (!data || data.length === 0) {
     return <div className="text-xs text-muted-foreground">No contest data</div>;
   }

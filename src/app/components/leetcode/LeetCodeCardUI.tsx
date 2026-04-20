@@ -23,14 +23,9 @@ export default function LeetCodeCardUI({ data }) {
         className="
         w-[300px] sm:w-[260px]
         p-5 rounded-2xl
-        border
-        shadow-lg
-        transition-all
-
-        bg-white/70 dark:bg-black
+        bg-transparent 
         backdrop-blur-md
-
-        border-zinc-200 dark:border-zinc-700
+        
       "
       >
         <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4">

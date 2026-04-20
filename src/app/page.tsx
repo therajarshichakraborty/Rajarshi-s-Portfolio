@@ -34,18 +34,17 @@ export default async function Page() {
     <main className=" flex flex-col gap-15 relative">
       <section
         id="hero"
-        className="w-full flex justify-center -mt-10 md:-mt-14 dark:mt-0"
+        className="w-full flex justify-center -mt-10 md:-mt-30"
       >
         <div className="w-full max-w-2xl space-y-8">
-          <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
+          <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
             {/* TEXT */}
-            <div className="gap-2 flex flex-col order-2 md:order-1 md:pt-6 dark:pt-0">
+            <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line"
                 yOffset={8}
-                text={`Hello👋🏻, This is
-${DATA.name}`}
+                text={`Hello👋🏻, This is\n${DATA.name}`}
               />
 
               <BlurFadeText
@@ -56,22 +55,24 @@ ${DATA.name}`}
             </div>
 
             {/* AVATAR */}
-            <BlurFade
-              delay={BLUR_FADE_DELAY}
-              className="order-1 md:order-2 -mt-20 md:-mt-38 dark:mt-0"
-            >
-              <Avatar
-                className="
-            size-40 sm:size-48 md:size-52
-            border rounded-full
-            shadow-xl
-            ring-4 ring-background
-            bg-background
-          "
-              >
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+              <div className="relative -mt-20 md:-mt-28">
+                <Avatar
+                  className="
+              size-40 sm:size-48 md:size-52
+              rounded-full
+              border
+              shadow-xl
+              ring-4
+              ring-background
+              dark:ring-BLACK
+              bg-background
+            "
+                >
+                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+              </div>
             </BlurFade>
           </div>
         </div>
@@ -80,7 +81,9 @@ ${DATA.name}`}
       <section id="about" className="mb-4">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold mb-2">About</h2>
+            <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold 
+dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
+dark:bg-clip-text dark:text-transparent">About</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert [&>*:last-child]:mb-0">
@@ -106,7 +109,9 @@ ${DATA.name}`}
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="inline-block whitespace-nowrap text-xl font-bold 
+dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
+dark:bg-clip-text dark:text-transparent">Education</h2>
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -129,7 +134,7 @@ ${DATA.name}`}
 
       <section id="leetcode">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text dark:bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 dark:bg-clip-text text-transparent">
             My DSA Journey
           </h1>
 
@@ -142,17 +147,17 @@ ${DATA.name}`}
               1100+ problems
             </span>{" "}
             across multiple platforms, including
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               LeetCode
             </span>
             ,
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               GeeksForGeeks
             </span>
             , &
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               {" "}
               CodeForces
             </span>
@@ -163,7 +168,7 @@ ${DATA.name}`}
             {/* LEFT: Chart */}
             <div className="flex-1 min-w-0">
               <div className="h-full flex items-center">
-                <ContestRatingChart data={data} />
+                <ContestRatingChart data={data as any} />
               </div>
             </div>
 

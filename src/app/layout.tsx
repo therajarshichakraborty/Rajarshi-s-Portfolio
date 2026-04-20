@@ -66,7 +66,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased relative",
+          "min-h-screen bg-background font-sans antialiased relative cursor-pointer",
           geist.variable,
           geistMono.variable,
         )}
@@ -80,17 +80,15 @@ export default function RootLayout({
               backgroundImage: "url('/background/bg-dark.jpg')",
             }}
           />
-
           {/* Overlay for readability */}
           <div className="absolute inset-0 bg-white/60 dark:bg-black/50 transition-colors duration-700" />
         </div>
-
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
             <div className="absolute inset-0 top-0 left-0 right-0 h-[80px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
-                squareSize={8}
+                squareSize={15}
                 gridGap={2}
                 style={{
                   maskImage: "linear-gradient(to bottom, black, transparent)",
@@ -102,7 +100,6 @@ export default function RootLayout({
 
             {/* 🌄 COVER — OUTSIDE spacing */}
             <LightModeCover />
-
             {/* 📦 CONTENT */}
             <div className="relative z-10 max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}

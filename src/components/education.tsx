@@ -18,7 +18,7 @@ function LogoImage({ src, alt }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+      <div className="size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none " />
     );
   }
 
@@ -28,7 +28,7 @@ function LogoImage({ src, alt }) {
       alt={alt}
       height={24}
       width={24}
-      className="size-10 p-1 border rounded-full shadow ring-2 ring-border object-contain flex-none"
+      className="size-10 p-1 border rounded-full shadow ring-2 ring-border object-contain flex-none "
       onError={() => setImageError(true)}
     />
   );
@@ -41,7 +41,7 @@ export function Education() {
         <AccordionItem
           key={education.school}
           value={education.school}
-          className="w-full border-b-0 grid gap-2"
+          className="w-full border-b-0 grid gap-2 "
         >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
             <div className="flex items-center gap-x-4 justify-between w-full text-left">

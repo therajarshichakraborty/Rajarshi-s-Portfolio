@@ -19,7 +19,7 @@ const images = [
 
 export default function Gallery() {
   return (
-    <section className="w-full bg-white dark:bg-black py-5 ">
+    <section className="w-full bg-transparent py-5 ">
       <div className="max-w-5xl mx-auto px-4">
         <div className="columns-2 md:columns-3 gap-6 [column-fill:_balance]">
           {images.map((src, i) => (

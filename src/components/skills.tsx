@@ -19,15 +19,13 @@ function Skills() {
             <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
               <div
                 className="
-              border bg-background 
+              border bg-transparent
               rounded-xl h-9 w-fit px-4 flex items-center gap-2
-              
               transition-all duration-300 ease-out
               hover:scale-[1.06] hover:-translate-y-1
               hover:shadow-lg hover:shadow-primary/20
               dark:hover:shadow-white/10
               hover:ring-primary/40 dark:hover:ring-white/20
-              
               cursor-pointer
               active:scale-[0.96]
             "

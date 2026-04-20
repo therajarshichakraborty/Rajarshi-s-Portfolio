@@ -79,7 +79,7 @@ export default function LeetCodeGraph() {
                 size={"sm"}
                 variant={"outline"}
                 asChild
-                className="transition-all active:scale-95 hover:bg-white hover:text-blue-600 hover:border-blue-600 dark:hover:bg-black"
+                className="transition-all active:scale-95 bt-transparent hover:text-blue-600 dark:bg-transparent hover:border-blue-600 hover:bg-transparent"
               >
                 <Link
                   href="https://leetcode.com/u/rajarshi_2005/"
