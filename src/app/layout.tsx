@@ -8,6 +8,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import Cover from "@/components/Cover";
+import CoverWrapper from "./CoverWrapper";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -71,16 +72,13 @@ export default function RootLayout({
           geistMono.variable,
         )}
       >
-        {/* 🌄 THEME BACKGROUND */}
         <div className="fixed inset-0 -z-20">
-          {/* Dark Mode BG */}
           <div
             className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out dark:opacity-100 opacity-0"
             style={{
               backgroundImage: "url('/background/bg-dark.jpg')",
             }}
           />
-          {/* Overlay for readability */}
           <div className="absolute inset-0 bg-white/60 dark:bg-black/50 transition-colors duration-700" />
         </div>
         <ThemeProvider attribute="class" defaultTheme="light">
@@ -98,13 +96,10 @@ export default function RootLayout({
               />
             </div>
 
-            {/* 🌄 COVER — OUTSIDE spacing */}
-            <Cover />
-            {/* 📦 CONTENT */}
+            <CoverWrapper />
             <div className="relative z-10 max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
             </div>
-
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>

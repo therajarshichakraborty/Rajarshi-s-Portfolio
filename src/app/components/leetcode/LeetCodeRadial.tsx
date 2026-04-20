@@ -17,55 +17,57 @@ export default function LeetCodeRadial({ easy, medium, hard }) {
     <div className="relative">
       <svg height={radius * 2} width={radius * 2}>
         
-        <circle
-          stroke="currentColor"
-          className="text-zinc-200 dark:text-zinc-700"
-          fill="transparent"
-          strokeWidth={stroke}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-        />
+        {/* TRACK */}
+<circle
+  stroke="currentColor"
+  className="text-zinc-200 dark:text-zinc-700"
+  fill="transparent"
+  strokeWidth={stroke}
+  r={normalizedRadius}
+  cx={radius}
+  cy={radius}
+/>
 
-        <circle
-          stroke="oklch(81.1% 0.111 293.571)"
-          fill="transparent"
-          strokeWidth={stroke}
-          strokeDasharray={`${easyLen} ${circumference}`}
-          strokeLinecap="round"
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-          transform={`rotate(-90 ${radius} ${radius})`}
-        />
+{/* EASY */}
+<circle
+  className="stroke-[#d2ee9a] dark:stroke-violet-400"
+  fill="transparent"
+  strokeWidth={stroke}
+  strokeDasharray={`${easyLen} ${circumference}`}
+  strokeLinecap="round"
+  r={normalizedRadius}
+  cx={radius}
+  cy={radius}
+  transform={`rotate(-90 ${radius} ${radius})`}
+/>
 
-        {/* MEDIUM */}
-        <circle
-          stroke="oklch(49.1% 0.27 292.581)"
-          fill="transparent"
-          strokeWidth={stroke}
-          strokeDasharray={`${mediumLen} ${circumference}`}
-          strokeDashoffset={-easyLen}
-          strokeLinecap="round"
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-          transform={`rotate(-90 ${radius} ${radius})`}
-        />
+{/* MEDIUM */}
+<circle
+  className="stroke-[#2fb344] dark:stroke-violet-500"
+  fill="transparent"
+  strokeWidth={stroke}
+  strokeDasharray={`${mediumLen} ${circumference}`}
+  strokeDashoffset={-easyLen}
+  strokeLinecap="round"
+  r={normalizedRadius}
+  cx={radius}
+  cy={radius}
+  transform={`rotate(-90 ${radius} ${radius})`}
+/>
 
-        {/* HARD */}
-        <circle
-          stroke="oklch(28.3% 0.141 291.089)"
-          fill="transparent"
-          strokeWidth={stroke}
-          strokeDasharray={`${hardLen} ${circumference}`}
-          strokeDashoffset={-(easyLen + mediumLen)}
-          strokeLinecap="round"
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-          transform={`rotate(-90 ${radius} ${radius})`}
-        />
+{/* HARD */}
+<circle
+  className="stroke-[#1f7a34] dark:stroke-violet-700"
+  fill="transparent"
+  strokeWidth={stroke}
+  strokeDasharray={`${hardLen} ${circumference}`}
+  strokeDashoffset={-(easyLen + mediumLen)}
+  strokeLinecap="round"
+  r={normalizedRadius}
+  cx={radius}
+  cy={radius}
+  transform={`rotate(-90 ${radius} ${radius})`}
+/>
       </svg>
 
       {/* center text */}

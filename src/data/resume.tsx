@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon,Code } from "lucide-react";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
@@ -63,7 +63,8 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "https://hashnode.com/@Rajarshi2005", icon: NotebookIcon, label: "Blog" },
+    { href: "/projects", icon: Code, label: "Projects" },
   ],
   contact: {
     email: "rajarshi29032005@gmail.com",
@@ -71,7 +72,7 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://github.com/chakrabortyrajarshi2005",
+        url: "https://github.com/therajarshichakraborty",
         icon: Icons.github,
         navbar: true,
       },
@@ -87,21 +88,19 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
         name: "X",
         url: "https://x.com/IamRajarshi_Dev",
         icon: Icons.x,
-
         navbar: true,
       },
-      Youtube: {
-        name: "Youtube",
-        url: "",
-        icon: Icons.youtube,
-        navbar: true,
-      },
+      // Youtube: {
+      //   name: "Youtube",
+      //   url: "",
+      //   icon: Icons.youtube,
+      //   navbar: true,
+      // },
       email: {
         name: "Send Email",
-        url: "#",
+        url:"https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com",
         icon: Icons.email,
-
-        navbar: false,
+        navbar: true,
       },
     },
   },

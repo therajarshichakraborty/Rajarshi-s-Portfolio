@@ -4,11 +4,10 @@ import { DATA } from "@/data/resume";
 
 export default function HireMeSection() {
   return (
-    <div className="border rounded-xl p-10 relative">
+    <div className="rounded-xl p-10 relative">
       {/* Top Badge */}
       <div className="absolute -top-4 border bg-primary z-10 rounded-xl px-4 py-1 left-1/2 -translate-x-1/2">
-        <span className="text-background text-sm font-medium dark:bg-gradient-to-r dark:from-blue-500 dark:via-indigo-500 dark:to-pink-500
-  dark:bg-clip-text dark:text-transparent">Hire Me</span>
+        <span className="text-background text-sm font-medium">Hire Me</span>
       </div>
 
       {/* Background Effect */}
@@ -27,10 +26,7 @@ export default function HireMeSection() {
       {/* Content */}
       <div className="relative flex flex-col items-center gap-5 text-center">
         <h2 className="
-  text-3xl font-bold tracking-tighter sm:text-5xl
-  dark:bg-gradient-to-r dark:from-blue-500 dark:via-indigo-500 dark:to-pink-500
-  dark:bg-clip-text dark:text-transparent
-">
+  text-3xl font-bold tracking-tighter sm:text-5xl">
           Let’s Build Something Impactful
         </h2>
 

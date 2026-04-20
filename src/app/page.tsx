@@ -4,7 +4,6 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
-// import Link from "next/link";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
@@ -81,11 +80,7 @@ export default async function Page() {
       <section id="about" className="mb-4">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2
-              className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold 
-dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
-dark:bg-clip-text dark:text-transparent"
-            >
+            <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold">
               About
             </h2>
           </BlurFade>
@@ -113,11 +108,7 @@ dark:bg-clip-text dark:text-transparent"
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2
-              className="inline-block whitespace-nowrap text-xl font-bold 
-dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-900 
-dark:bg-clip-text dark:text-transparent"
-            >
+            <h2 className="inline-block whitespace-nowrap text-xl font-bold ">
               Education
             </h2>
           </BlurFade>
@@ -142,7 +133,7 @@ dark:bg-clip-text dark:text-transparent"
 
       <section id="leetcode">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text dark:bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 dark:bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text">
             My DSA Journey
           </h1>
 

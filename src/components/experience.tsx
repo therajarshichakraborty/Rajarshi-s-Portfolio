@@ -413,8 +413,7 @@ const Experience = () => {
           {/* <Button size={"sm"} className=" bg-white text-black border-black cursor-pointer gap-2 mb-8">
             Experience
           </Button> */}
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight dark:bg-gradient-to-r dark:from-blue-500 dark:via-purple-500 dark:to-pink-500 
-dark:bg-clip-text dark:text-transparent">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight ">
             Professional Journey
           </h2>
           <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">

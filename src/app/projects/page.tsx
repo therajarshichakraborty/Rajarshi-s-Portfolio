@@ -1,7 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -13,22 +13,25 @@ export default function ProjectsSection() {
         <div className="flex flex-col gap-y-4 items-center justify-center">
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
-            <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-              <span className="text-white dark:text-black text-sm font-medium ">
-                My Projects
+            <div className="border bg-black dark:bg-white z-10 rounded-xl px-4 py-1">
+              <span className="text-sm font-medium text-white dark:text-black">
+                Projects
               </span>
             </div>
             <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
           </div>
           <div className="flex flex-col gap-y-3 items-center justify-center">
             <h2
-              className="text-3xl font-bold tracking-tighter sm:text-4xl nline-block whitespace-nowrap text-xl font-bold"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl nline-block whitespace-nowrap text-xl font-bold 
+"
             >
               Check out my latest work
             </h2>
             <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-              I&apos;ve worked on a variety of projects, from simple websites to
-              complex web applications. Here are a few of my favorites.
+              My work spans full-stack web applications, open-source
+              contributions, theming systems, and machine learning models.
+              Several projects have matured into monetized products. Below are
+              selected highlights.
             </p>
           </div>
         </div>
@@ -53,9 +56,6 @@ export default function ProjectsSection() {
             </BlurFade>
           ))}
         </div>
-      </div>
-      <div className="flex items-center justify-center mt-8">
-      <Link href={"/projects"} target={"_blank"}><Button className="bg-transparent "> View More Projects </Button></Link>
       </div>
     </section>
   );

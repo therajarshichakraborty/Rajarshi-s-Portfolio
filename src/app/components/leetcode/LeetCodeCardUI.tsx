@@ -21,12 +21,12 @@ export default function LeetCodeCardUI({ data }) {
     <div className="mt-15 flex justify-center">
       <div
         className="
-  w-[300px] sm:w-[260px]
-  ml-2 sm:ml-6 md:ml-10
-  p-5 rounded-2xl
-  bg-transparent 
-  backdrop-blur-md
-"
+            w-[300px] sm:w-[260px]
+            ml-2 sm:ml-6 md:ml-10
+            p-5 rounded-2xl
+            bg-transparent 
+            backdrop-blur-md
+            "
       >
         <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4">
           LeetCode Progress
@@ -36,9 +36,23 @@ export default function LeetCodeCardUI({ data }) {
           <LeetCodeRadial {...data} />
 
           <div className="space-y-2 text-xs">
-            <Stat color="bg-[#BFA2F3]" label="Easy" value={data.easy} />
-            <Stat color="bg-[#7A00FF]" label="Medium" value={data.medium} />
-            <Stat color="bg-[#2E0A59]" label="Hard" value={data.hard} />
+            <Stat
+              color="bg-[#d2ee9a] dark:bg-violet-400"
+              label="Easy"
+              value={data.easy}
+            />
+
+            <Stat
+              color="bg-[#2fb344] dark:bg-violet-500"
+              label="Medium"
+              value={data.medium}
+            />
+
+            <Stat
+              color="bg-[#1f7a34] dark:bg-violet-700"
+              label="Hard"
+              value={data.hard}
+            />
 
             <div className="pt-2 text-zinc-500 dark:text-zinc-400">
               Total:{" "}
