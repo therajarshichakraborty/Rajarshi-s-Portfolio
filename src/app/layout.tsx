@@ -76,7 +76,7 @@ export default function RootLayout({
           <div
             className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out dark:opacity-100 opacity-0"
             style={{
-              backgroundImage: "url('/background/bg-dark.jpg')",
+              backgroundImage: "url('/background/black-hole-dark.jpg')",
             }}
           />
           <div className="absolute inset-0 bg-white/60 dark:bg-black/50 transition-colors duration-700" />
