@@ -58,7 +58,7 @@ export default async function Page() {
               <div className="relative -mt-20 md:-mt-28">
                 <Avatar
                   className="
-              size-40 sm:size-48 md:size-52
+              size-40 sm:size-48 md:size-48
               rounded-full
               border
               shadow-xl
@@ -80,7 +80,7 @@ export default async function Page() {
       <section id="about" className="mb-4">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap text-xl font-bold">
+            <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap">
               About
             </h2>
           </BlurFade>
@@ -142,7 +142,7 @@ export default async function Page() {
             Algorithms. Since 2024, I have been actively solving problems on
             LeetCode and consistently participating in coding contests. I have
             solved{" "}
-            <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
               1100+ problems
             </span>{" "}
             across multiple platforms, including
@@ -180,11 +180,11 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      {/* <section id="hackathons">
+      <section id="hackathons">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
         </BlurFade>
-      </section> */}
+      </section>
 
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -192,26 +192,26 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      {/* <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
-        </BlurFade>
-      </section> */}
+      
 
       <p className="text-center text-sm text-muted-foreground tracking-wide">
         Design & Developed by{" "}
-        <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+        <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
           Rajarshi Chakraborty
         </span>
         <br />
         @2026. All rights reserved.
       </p>
 
-      {/* <div className="mt-8 border rounded-xl p-5">
+      <div className="mt-8 border rounded-xl p-5">
         <h2 className="text-lg font-semibold mb-4">Contest Rating Progress</h2>
-
         <ContestRatingChart data={data} />
-      </div> */}
+      </div>
     </main>
   );
 }
+<section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <ContactSection />
+        </BlurFade>
+      </section>

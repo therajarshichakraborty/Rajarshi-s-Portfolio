@@ -8,6 +8,7 @@ import {
   YAxis,
   ResponsiveContainer,
   Legend,
+  CartesianGrid,
 } from "recharts";
 
 import { useTheme } from "next-themes";
@@ -44,25 +45,41 @@ export default function ContestRatingChart({ data }: ContestChartData) {
       ? "#e2463d" 
       : "#d85413"; 
 
+// const xTicks = [0,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600];
+const yTicks = [1200, 1300, 1400, 1500];
+
+const dataX = [
+  { x: 0, y: 12 },
+  { x: 117, y: 45 },
+  { x: 234, y: 23 },
+  { x: 351, y: 78 },
+  { x: 468, y: 156 },
+];
+
   return (
-    <div className="rounded-xl p-4 bg-transparent">
+    <div className="rounded-xl p-4 bg-transparent border-none">
       <h2 className="text-lg font-semibold mb-4 text-center">
         Contest Rating Progress
       </h2>
 
       <div className="w-[450px] h-[220px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
+          <LineChart data={data} height={600} margin={{ left: 20, right: 20, top: 10, bottom: 10 }}>
+            {/* <CartesianGrid strokeDasharray="2 2"/> */}
             <XAxis
               dataKey="date"
-              tick={{ fontSize: 9 }}
+              tick={{ fontSize: 12 }}
               tickLine={false}
+              //ticks={xTicks}
             />
 
             <YAxis
-              tick={{ fontSize: 9 }}
-              tickLine={false}
-              width={30}
+              tick={{ fontSize: 12 }}
+              tickLine={true}
+              width={60}
+              ticks={yTicks}
+              domain={['dataMin - 100', 'dataMax + 10']}
+              interval={0}
             />
 
             <Tooltip
@@ -91,20 +108,21 @@ export default function ContestRatingChart({ data }: ContestChartData) {
               dataKey="rating"
               stroke={strokeColor}
               strokeWidth={2}
-              dot={false}
+              dot={true}
               name="Rating"
               className="dark:text-white"
             />
 
             {/* Ranking Line */}
-            <Line
+            {/* <Line
               type="monotone"
               dataKey="ranking"
               stroke="#000000"
               strokeWidth={2}
               dot={true}
               name="Ranking"
-            />
+            /> */}
+            
           </LineChart>
         </ResponsiveContainer>
       </div>
