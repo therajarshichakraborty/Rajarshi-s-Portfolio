@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -18,10 +17,10 @@ import LeetCodeGraph from "./components/leetcode/LeetCodeGraph";
 import LeetCodeCard from "./components/leetcode/LeetCodeCard";
 import LeetCodeCardUI from "./components/leetcode/LeetCodeCardUI";
 import HireMeSection from "@/components/section/hire-me";
-
 import ContestRatingChart from "@/components/charts/ContestRatingChart";
 import { getContestData } from "@/lib/leetcode/getContestData";
 import { transformContestData } from "@/lib/leetcode/transformContestData";
+import BrandCard from "@/components/gptCard/brandCard";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -192,8 +191,6 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      
-
       <p className="text-center text-sm text-muted-foreground tracking-wide">
         Design & Developed by{" "}
         <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
@@ -203,15 +200,19 @@ export default async function Page() {
         @2026. All rights reserved.
       </p>
 
-      <div className="mt-8 border rounded-xl p-5">
+      {/* <div className="mt-8 border rounded-xl p-5">
         <h2 className="text-lg font-semibold mb-4">Contest Rating Progress</h2>
         <ContestRatingChart data={data} />
-      </div>
+      </div> */}
+
+      <BrandCard />
     </main>
   );
 }
-<section id="contact">
+{
+  /* <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />
         </BlurFade>
-      </section>
+      </section> */
+}
