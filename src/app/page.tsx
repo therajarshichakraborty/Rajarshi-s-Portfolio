@@ -20,7 +20,7 @@ import HireMeSection from "@/components/section/hire-me";
 import ContestRatingChart from "@/components/charts/ContestRatingChart";
 import { getContestData } from "@/lib/leetcode/getContestData";
 import { transformContestData } from "@/lib/leetcode/transformContestData";
-import BrandCard from "@/components/gptCard/brandCard";
+// import BrandCard from "@/components/gptCard/brandCard";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -179,11 +179,7 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="hackathons">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
-          <HackathonsSection />
-        </BlurFade>
-      </section>
+      
 
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
@@ -199,20 +195,6 @@ export default async function Page() {
         <br />
         @2026. All rights reserved.
       </p>
-
-      {/* <div className="mt-8 border rounded-xl p-5">
-        <h2 className="text-lg font-semibold mb-4">Contest Rating Progress</h2>
-        <ContestRatingChart data={data} />
-      </div> */}
-
-      <BrandCard />
     </main>
   );
-}
-{
-  /* <section id="contact">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
-        </BlurFade>
-      </section> */
 }
