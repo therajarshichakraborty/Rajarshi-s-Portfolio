@@ -13,7 +13,12 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-function LogoImage({ src, alt }) {
+interface LogoImageProps {
+  src: string;
+  alt: string;
+}
+
+function LogoImage({ src, alt }: LogoImageProps) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {

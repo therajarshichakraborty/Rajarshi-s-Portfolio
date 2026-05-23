@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-export default function LeetCodeRadial({ easy, medium, hard }) {
+
+interface LeetCodeRadialProps {
+  easy: number;
+  medium: number;
+  hard: number;
+}
+
+export default function LeetCodeRadial({ easy, medium, hard }: LeetCodeRadialProps) {
   const total = easy + medium + hard
   if (!total) return null
 

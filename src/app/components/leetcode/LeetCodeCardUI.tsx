@@ -1,8 +1,15 @@
 "use client";
 
+import { LeetCodeStats } from "@/types/leetcode";
 import LeetCodeRadial from "./LeetCodeRadial";
 
-function Stat({ color, label, value }) {
+interface StatProps {
+  color: string;
+  label: string;
+  value: number;
+}
+
+function Stat({ color, label, value }: StatProps) {
   return (
     <div className="flex items-center gap-2">
       <span className={`w-2 h-2 rounded-full ${color}`} />
@@ -16,7 +23,7 @@ function Stat({ color, label, value }) {
   );
 }
 
-export default function LeetCodeCardUI({ data }) {
+export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
   return (
     <div className="mt-15 flex justify-center">
       <div
