@@ -22,7 +22,7 @@ export default function ProjectsSection() {
           </div>
           <div className="flex flex-col gap-y-3 items-center justify-center">
             <h2
-              className="text-3xl font-bold tracking-tighter sm:text-4xl nline-block whitespace-nowrap text-xl font-bold"
+              className="text-3xl font-bold tracking-tighter sm:text-4xl inline-block text-center"
             >
               Check out my latest work
             </h2>

@@ -300,13 +300,13 @@ const ExperienceItem = ({
               })()}
             </div>
 
-            <span className="text-3xl font-bold">{company}</span>
+            <span className="text-2xl sm:text-3xl font-bold">{company}</span>
           </div>
 
           <div>
-            <h3 className="text-2xl font-medium">{title}</h3>
+            <h3 className="text-xl sm:text-2xl font-medium">{title}</h3>
 
-            <div className="flex items-center justify-between mt-1 text-sm w-full">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mt-1 text-sm w-full">
               <div className="flex items-center gap-2">
                 <Calendar className="size-4" />
                 <span>{period}</span>
@@ -408,7 +408,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="relative py-1 px-6">
-      <div className="max-w-screen-md mx-auto">
+      <div className="w-full max-w-3xl md:max-w-none mx-auto">
         <div className="text-center mb-12">
           {/* <Button size={"sm"} className=" bg-white text-black border-black cursor-pointer gap-2 mb-8">
             Experience

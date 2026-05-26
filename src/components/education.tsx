@@ -49,7 +49,7 @@ export function Education() {
           className="w-full border-b-0 grid gap-2 "
         >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
-            <div className="flex items-center gap-x-4 justify-between w-full text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 justify-between w-full text-left">
               <div className="flex items-center gap-x-4 flex-1 min-w-0">
                 <Link href={education.href} target="_blank">
                   <LogoImage
@@ -59,7 +59,7 @@ export function Education() {
                 </Link>
 
                 <div className="flex-1 min-w-0 flex flex-col gap-1">
-                  <div className="font-semibold text-lg md:text-xl leading-none flex items-center gap-2">
+                  <div className="font-semibold text-lg md:text-xl leading-none flex items-center gap-2 flex-wrap">
                     {education.school}
 
                     <span className="relative inline-flex items-center w-4 h-4">
@@ -85,7 +85,7 @@ export function Education() {
                 </div>
               </div>
 
-              <div className="text-sm md:text-base text-muted-foreground text-right">
+              <div className="text-sm md:text-base text-muted-foreground text-left sm:text-right pl-14 sm:pl-0">
                 {education.start} - {education.end ?? "Present"}
               </div>
             </div>

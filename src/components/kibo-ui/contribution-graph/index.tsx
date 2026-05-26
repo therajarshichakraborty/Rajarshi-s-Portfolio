@@ -20,6 +20,8 @@ import {
   type ReactNode,
   useContext,
   useMemo,
+  useRef,
+  useEffect,
 } from "react";
 import { cn } from "@/lib/utils";
 
@@ -377,6 +379,14 @@ export const ContributionGraphCalendar = ({
   const { weeks, width, height, blockSize, blockMargin, labels } =
     useContributionGraph();
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft = containerRef.current.scrollWidth;
+    }
+  }, [weeks]);
+
   const monthLabels = useMemo(
     () => getMonthLabels(weeks, labels.months),
     [weeks, labels.months],
@@ -384,7 +394,8 @@ export const ContributionGraphCalendar = ({
 
   return (
     <div
-      className={cn("max-w-full overflow-x-auto overflow-y-hidden", className)}
+      ref={containerRef}
+      className={cn("max-w-full overflow-x-auto overflow-y-hidden [scrollbar-width:thin] scroll-smooth", className)}
       {...props}
     >
       <svg

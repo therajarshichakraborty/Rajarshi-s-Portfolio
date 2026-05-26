@@ -29,12 +29,12 @@ export default async function Page() {
   const data = transformContestData(raw);
 
   return (
-    <main className=" flex flex-col gap-15 relative">
+    <main className="flex flex-col gap-15 relative">
       <section
         id="hero"
         className="w-full flex justify-center -mt-10 md:-mt-30"
       >
-        <div className="w-full max-w-2xl space-y-8">
+        <div className="w-full max-w-2xl md:max-w-4xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
             {/* TEXT */}
             <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6">
@@ -165,7 +165,7 @@ export default async function Page() {
           <div className="w-full max-w-7xl mx-auto mt-10 flex flex-col lg:flex-row gap-6 items-stretch">
             {/* LEFT: Chart */}
             <div className="flex-1 ">
-              <div className="h-full flex items-center">
+              <div className="h-full w-full flex items-center">
                 <ContestRatingChart data={data as any} />
               </div>
             </div>

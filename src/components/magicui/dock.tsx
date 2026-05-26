@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, type MotionValue, useMotionValue, useSpring, useTransform } from "motion/react";
-import { createContext, useContext, useRef, type ReactNode } from "react";
+import { createContext, useContext, useRef, useState, useEffect, type ReactNode } from "react";
 
 interface DockProps {
   className?: string;
@@ -27,15 +27,26 @@ interface DockContextValue {
   mouseX: MotionValue<number>;
   magnification: number;
   distance: number;
+  isMobile?: boolean;
 }
 
 const DockContext = createContext<DockContextValue | null>(null);
 
 const Dock = ({ className, children, magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DISTANCE }: DockProps) => {
   const mouseX = useMotionValue(Infinity);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(max-width: 640px)");
+    setIsMobile(media.matches);
+    const listener = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   return (
-    <DockContext.Provider value={{ mouseX, magnification, distance }}>
+    <DockContext.Provider value={{ mouseX, magnification, distance, isMobile }}>
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
@@ -55,7 +66,10 @@ const DockIcon = ({ className, children }: DockIconProps) => {
     throw new Error("DockIcon must be used within a Dock component");
   }
 
-  const { mouseX, magnification, distance } = context;
+  const { mouseX, magnification, distance, isMobile } = context;
+  const baseSize = isMobile ? 32 : BASE_SIZE;
+  const baseIconSize = isMobile ? 16 : BASE_ICON_SIZE;
+  const maxMagnification = isMobile ? 44 : magnification;
 
   const distanceCalc = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -63,11 +77,11 @@ const DockIcon = ({ className, children }: DockIconProps) => {
   });
 
   const containerSize = useSpring(
-    useTransform(distanceCalc, [-distance, 0, distance], [BASE_SIZE, magnification, BASE_SIZE]),
+    useTransform(distanceCalc, [-distance, 0, distance], [baseSize, maxMagnification, baseSize]),
     SPRING
   );
   const iconSize = useSpring(
-    useTransform(distanceCalc, [-distance, 0, distance], [BASE_ICON_SIZE, magnification * ICON_SIZE_RATIO, BASE_ICON_SIZE]),
+    useTransform(distanceCalc, [-distance, 0, distance], [baseIconSize, maxMagnification * ICON_SIZE_RATIO, baseIconSize]),
     SPRING
   );
 

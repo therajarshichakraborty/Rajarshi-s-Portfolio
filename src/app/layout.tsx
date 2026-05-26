@@ -67,7 +67,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased relative cursor-pointer",
+          "min-h-screen bg-background font-sans antialiased relative cursor-pointer overflow-x-hidden w-full",
           geist.variable,
           geistMono.variable,
         )}
@@ -136,7 +136,7 @@ export default function RootLayout({
             </div>
 
             <CoverWrapper />
-            <div className="relative z-10 max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
+            <div className="relative z-10 w-full max-w-3xl md:max-w-4xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
             </div>
             <Navbar />

@@ -57,26 +57,26 @@ const dataX = [
 ];
 
   return (
-    <div className="rounded-xl p-4 bg-transparent border-none">
+    <div className="w-full rounded-xl p-1 sm:p-4 bg-transparent border-none -mx-6 sm:mx-0">
       <h2 className="text-lg font-semibold mb-4 text-center">
         Contest Rating Progress
       </h2>
 
-      <div className="w-[450px] h-[220px]">
+      <div className="w-full max-w-[450px] sm:max-w-none h-[220px] mx-auto">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} height={600} margin={{ left: 20, right: 20, top: 10, bottom: 10 }}>
+          <LineChart data={data} height={600} margin={{ left: 0, right: 15, top: 10, bottom: 10 }}>
             {/* <CartesianGrid strokeDasharray="2 2"/> */}
             <XAxis
               dataKey="date"
-              tick={{ fontSize: 12 }}
+              tick={{ fontSize: 10 }}
               tickLine={false}
               //ticks={xTicks}
             />
 
             <YAxis
-              tick={{ fontSize: 12 }}
+              tick={{ fontSize: 10 }}
               tickLine={true}
-              width={60}
+              width={35}
               ticks={yTicks}
               domain={['dataMin - 100', 'dataMax + 10']}
               interval={0}
