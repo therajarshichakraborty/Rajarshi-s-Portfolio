@@ -7,6 +7,53 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import BlurFade from "@/components/magicui/blur-fade";
+import { DATA } from "@/data/resume";
+import { Icons } from "@/components/icons";
+
+const getSkill = (tag: string) => {
+  const normalizedTag = tag.toLowerCase().replace(/[^a-z0-9+]/g, ""); // keep + for C++
+  
+  if (normalizedTag === "postgresql" || normalizedTag === "postgres") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "postgres");
+  }
+  if (normalizedTag === "tailwindcss" || normalizedTag === "tailwind") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "tailwind");
+  }
+  if (normalizedTag === "expressjs" || normalizedTag === "express") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "express");
+  }
+  if (normalizedTag === "reactjs" || normalizedTag === "react") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "react");
+  }
+  if (normalizedTag === "nodejs" || normalizedTag === "node") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "node.js");
+  }
+  if (normalizedTag === "javascript" || normalizedTag === "js") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "javascript");
+  }
+  if (normalizedTag === "typescript" || normalizedTag === "ts") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "typescript");
+  }
+  if (normalizedTag === "openai") {
+    return { name: "OpenAI", icon: Icons.openai };
+  }
+  if (normalizedTag === "golang" || normalizedTag === "go") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "go");
+  }
+  if (normalizedTag === "scikitlearn" || normalizedTag === "sklearn") {
+    return DATA.skills.find(s => s.name.toLowerCase() === "scikit learn");
+  }
+
+  // Fallback case-insensitive match
+  return (
+    DATA.skills.find(
+      (s) => s.name.toLowerCase().replace(/[^a-z0-9+]/g, "") === normalizedTag
+    ) || null
+  );
+};
+
+const BLUR_FADE_DELAY = 0.04;
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -137,7 +184,7 @@ export function ProjectCard({
         <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
           <Markdown>{description}</Markdown>
         </div>
-        {tags && tags.length > 0 && (
+        {/* {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">
             {tags.map((tag) => (
               <Badge
@@ -149,7 +196,42 @@ export function ProjectCard({
               </Badge>
             ))}
           </div>
-        )}
+        )} */}
+
+
+          <div className="flex flex-wrap gap-2">
+          {tags.map((tag, id) => {
+            const skill = getSkill(tag);
+            const Icon = skill?.icon;
+            return (
+              <BlurFade key={tag} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+                <div
+                  className="
+                group border bg-transparent
+                rounded-md h-6 w-fit px-2 flex items-center gap-1
+                transition-all duration-300 ease-out
+                hover:scale-[1.05] hover:-translate-y-0.5
+                hover:shadow-md hover:shadow-primary/10
+                dark:hover:shadow-white/5
+                hover:ring-primary/20 dark:hover:ring-white/10
+                cursor-pointer
+                active:scale-[0.96]
+              "
+                >
+                  {Icon && (
+                    <Icon className="size-3 transition-transform duration-300 group-hover:rotate-6" />
+                  )}
+                  <span className="text-foreground text-[10px] font-medium">
+                    {tag}
+                  </span>
+                </div>
+              </BlurFade>
+            );
+          })}
+        </div>
+
+
+
       </div>
     </div>
   );
