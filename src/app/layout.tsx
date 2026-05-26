@@ -136,7 +136,7 @@ export default function RootLayout({
             </div>
 
             <CoverWrapper />
-            <div className="relative z-10 w-full max-w-3xl md:max-w-4xl mx-auto py-12 pb-24 sm:py-24 px-6">
+            <div className="relative z-10 w-full max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
             </div>
             <Navbar />

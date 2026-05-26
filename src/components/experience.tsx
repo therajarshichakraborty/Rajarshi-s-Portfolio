@@ -408,7 +408,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="relative py-1 px-6">
-      <div className="w-full max-w-3xl md:max-w-none mx-auto">
+      <div className="max-w-screen-md mx-auto">
         <div className="text-center mb-12">
           {/* <Button size={"sm"} className=" bg-white text-black border-black cursor-pointer gap-2 mb-8">
             Experience

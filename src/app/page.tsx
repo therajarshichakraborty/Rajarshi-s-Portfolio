@@ -34,7 +34,7 @@ export default async function Page() {
         id="hero"
         className="w-full flex justify-center -mt-10 md:-mt-30"
       >
-        <div className="w-full max-w-2xl md:max-w-4xl space-y-8">
+        <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
             {/* TEXT */}
             <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6">
