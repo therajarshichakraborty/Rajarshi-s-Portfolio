@@ -268,6 +268,7 @@ Biology`,
       href: "",
       dates: "May 2026 - Present",
       active: true,
+      isBuilding: true,
       description:
         `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization.
 `,

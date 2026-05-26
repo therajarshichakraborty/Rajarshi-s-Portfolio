@@ -52,6 +52,7 @@ export default function ProjectsSection() {
                 image={project.image}
                 // video={project.video}
                 links={project.links}
+                isBuilding={"isBuilding" in project ? project.isBuilding : undefined}
               />
             </BlurFade>
           ))}

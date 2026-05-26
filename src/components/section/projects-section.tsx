@@ -33,7 +33,7 @@ export default function ProjectsSection() {
           </div>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
-          {DATA.projects.map((project, id) => (
+          {DATA.projects.slice(0, 4).map((project, id) => (
             <BlurFade
               key={project.title}
               delay={BLUR_FADE_DELAY * 12 + id * 0.05}
@@ -49,6 +49,7 @@ export default function ProjectsSection() {
                 image={project.image}
                 // video={project.video}
                 links={project.links}
+                isBuilding={"isBuilding" in project ? project.isBuilding : undefined}
               />
             </BlurFade>
           ))}

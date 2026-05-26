@@ -40,6 +40,7 @@ interface Props {
     href: string;
   }[];
   className?: string;
+  isBuilding?: boolean;
 }
 
 export function ProjectCard({
@@ -53,6 +54,7 @@ export function ProjectCard({
   video,
   links,
   className,
+  isBuilding,
 }: Props) {
   return (
     <div
@@ -106,9 +108,20 @@ export function ProjectCard({
         )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start justify-between gap-2">  
           <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
+            <div className="flex items-center gap-2">
+              <h3 className="font-semibold">{title}</h3>
+              {isBuilding && (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 shadow-[0_0_10px_rgba(16,185,129,0.1)] select-none">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                  </span>
+                  Building
+                </span>
+              )}
+            </div>
             <time className="text-xs text-muted-foreground">{dates}</time>
           </div>
           <Link
