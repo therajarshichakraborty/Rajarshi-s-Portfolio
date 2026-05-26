@@ -264,6 +264,41 @@ Biology`,
   ],
   projects: [
     {
+      title: "ZenithCLI",
+      href: "",
+      dates: "May 2026 - Present",
+      active: true,
+      description:
+        `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization. Built with a scalable terminal-first architecture, ZenithCLI streamlines software development by combining conversational AI, automation pipelines, and modern developer tooling into a fast, efficient, and extensible CLI experience.
+`,
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Commander.js",
+        "Shadcn UI",
+        "Better-auth",
+        "OpenAI",
+        "Express.js"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/therajarshichakraborty/Zenith-CLI",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "/background/zenith-cli.png",
+     // video: "https://cdn.magicui.design/bento-grid.mp4",
+    },
+    {
       title: "Synapse UI",
       href: "https://synapse-ui-dev.vercel.app/",
       dates: "Jan 2026 - May 2026",
