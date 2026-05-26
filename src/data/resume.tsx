@@ -269,7 +269,7 @@ Biology`,
       dates: "May 2026 - Present",
       active: true,
       description:
-        `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization. Built with a scalable terminal-first architecture, ZenithCLI streamlines software development by combining conversational AI, automation pipelines, and modern developer tooling into a fast, efficient, and extensible CLI experience.
+        `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization.
 `,
       technologies: [
         "Next.js",
@@ -400,7 +400,7 @@ Biology`,
       dates: "Feb 2026 - Feb 2026",
       active: true,
       description:
-        "Built a lightweight Tailwind-inspired CSS utility engine using vanilla JavaScript and DOM manipulation that dynamically converts custom utility classes into real-time browser styling without external frameworks or build pipelines.",
+        "Built a lightweight Tailwind-inspired CSS utility engine using vanilla JavaScript and DOM manipulation that dynamically converts custom utility classes into real-time browser styling without external frameworks or build pipelines, enabling rapid UI prototyping, runtime style generation, and optimized developer-centric frontend workflows.Implemented a modular utility parsing architecture with extensible class mapping and responsive styling support.",
       technologies: [
         "JavaScript",
         "Typescript",
