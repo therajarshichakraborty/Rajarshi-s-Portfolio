@@ -83,30 +83,9 @@ export default function RootLayout({
             // }}
           /> */}
 
-          <div className="absolute inset-0 overflow-hidden">
-            {/* 🌌 Base Animated Gradient */}
-            <div
-              className="
-      absolute inset-0 
-      bg-[linear-gradient(145deg,#020617_0%,#040816_20%,#0b1120_38%,#111827_55%,#1f1b3a_70%,#2a1f4f_82%,#0f172a_92%,#020617_100%)]
-      bg-[length:200%_200%]
-      animate-gradient
-      transition-opacity duration-[2000ms] ease-in-out
-      dark:opacity-100 opacity-0
-    "
-            />
-
-            {/* 🌊 Ambient Light Layer (slow moving glow) */}
-            <div
-              className="
-      absolute inset-0 pointer-events-none
-      bg-[radial-gradient(circle_at_20%_30%,rgba(56,189,248,0.08),transparent_45%),
-           radial-gradient(circle_at_80%_70%,rgba(168,85,247,0.08),transparent_50%),
-           radial-gradient(circle_at_50%_60%,rgba(20,184,166,0.06),transparent_60%)]
-      animate-[pulse_8s_ease-in-out_infinite]
-    "
-            />
-
+          <div className="absolute inset-0 overflow-hidden bg-background">
+            {/* ✨ Soothing Mode Radial Auras (ambient depth) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" />
             {/* ✨ Subtle Noise Texture (pro-level finish) */}
             <div
               className="
@@ -118,7 +97,7 @@ export default function RootLayout({
             />
           </div>
 
-          <div className="absolute inset-0 bg-white/60 dark:bg-black/50 transition-colors duration-2000" />
+          <div className="absolute inset-0 bg-transparent transition-colors duration-2000" />
         </div>
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
@@ -135,7 +114,6 @@ export default function RootLayout({
               />
             </div>
 
-            <CoverWrapper />
             <div className="relative z-10 w-full max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
             </div>

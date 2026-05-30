@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 // import WorkSection from "@/components/section/work-section";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileDown, Eye } from "lucide-react";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skills from "@/components/skills";
@@ -23,6 +22,9 @@ import { transformContestData } from "@/lib/leetcode/transformContestData";
 // import BrandCard from "@/components/gptCard/brandCard";
 import { MarqueeDemo } from "@/components/magicui/marquee-demo";
 import GithubCommits from "@/components/github-commits";
+import MultilingualGreeting from "@/components/multilingual-greeting";
+import { Button } from "@/components/ui/button";
+import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -32,26 +34,14 @@ export default async function Page() {
 
   return (
     <main className="flex flex-col gap-15 relative">
-      <section
-        id="hero"
-        className="w-full flex justify-center -mt-10 md:-mt-30"
-      >
+      <section id="hero" className="w-full flex justify-center mt-4 md:mt-8">
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
-            <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6">
+            <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[450px] shrink-0">
               <div className="flex flex-col">
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-tight"
-                  yOffset={8}
-                  text="Hello👋🏻, This is"
-                />
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY + 0.05}
-                  className="text-2xl font-bold tracking-tighter sm:text-4xl lg:text-5xl bg-linear-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent leading-tight mt-[-2px] sm:mt-[-4px] md:mt-[-6px]"
-                  yOffset={8}
-                  text={DATA.name}
-                />
+                <BlurFade delay={BLUR_FADE_DELAY}>
+                  <MultilingualGreeting />
+                </BlurFade>
               </div>
 
               <BlurFadeText
@@ -59,24 +49,49 @@ export default async function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
+
+              <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+                <div className="flex items-center gap-3 mt-2 sm:mt-2.5">
+                  <Button
+                    asChild
+                    variant="default"
+                    size="default"
+                    className="group bg-black hover:bg-neutral-900 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-black font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <a
+                      href="/raharshi_resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Eye className="size-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                      <span>View Resume</span>
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="default"
+                    className="group border border-neutral-200 dark:border-neutral-800 bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <a
+                      href="/raharshi_resume.pdf"
+                      download="Rajarshi_Chakraborty_Resume.pdf"
+                      className="flex items-center gap-2"
+                    >
+                      <FileDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+                      <span>Download Resume</span>
+                    </a>
+                  </Button>
+                </div>
+              </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <div className="relative -mt-20 md:-mt-28">
-                <Avatar
-                  className="
-              size-40 sm:size-48 md:size-48
-              rounded-full
-              border
-              shadow-xl
-              ring-4
-              ring-background
-              dark:ring-BLACK
-              bg-background
-            "
-                >
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
+            <BlurFade
+              delay={BLUR_FADE_DELAY}
+              className="order-1 md:order-2 shrink-0"
+            >
+              <div className="relative -mt-20 md:-mt-10 md:-ml-12">
+                <HeroAvatarOrbit />
               </div>
             </BlurFade>
           </div>
