@@ -55,6 +55,68 @@ const getSkill = (tag: string) => {
 
 const BLUR_FADE_DELAY = 0.04;
 
+import { Typescript } from "@/components/ui/svgs/typescript";
+import { Nodejs } from "@/components/ui/svgs/nodejs";
+import { Python } from "@/components/ui/svgs/python";
+import { Golang } from "@/components/ui/svgs/golang";
+import { Docker } from "@/components/ui/svgs/docker";
+import { Kubernetes } from "@/components/ui/svgs/kubernetes";
+import { Java } from "@/components/ui/svgs/java";
+import { React } from "@/components/ui/svgs/react";
+import { Postgres } from "@/components/ui/svgs/postgresql";
+import { CPP } from "@/components/ui/svgs/c++";
+import { Express } from "@/components/ui/svgs/express";
+import { MongoDB } from "@/components/ui/svgs/mongodb";
+import { NumPy } from "@/components/ui/svgs/numpy";
+import { Pandas } from "@/components/ui/svgs/pandas";
+import { SkLearn } from "@/components/ui/svgs/sk-learn";
+import { Pytorch } from "@/components/ui/svgs/pytorch";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+import { Git } from "@/components/ui/svgs/git";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { JavaScript } from "@/components/ui/svgs/js";
+import { NextJs } from "@/components/ui/svgs/nextjs";
+import { Csharp } from "@/components/ui/svgs/csharp";
+
+const tagIconMap: Record<string, React.ComponentType<any>> = {
+  typescript: Typescript,
+  "node.js": Nodejs,
+  nodejs: Nodejs,
+  python: Python,
+  go: Golang,
+  golang: Golang,
+  docker: Docker,
+  kubernetes: Kubernetes,
+  java: Java,
+  react: React,
+  "react.js": React,
+  reactjs: React,
+  postgres: Postgres,
+  postgresql: Postgres,
+  "c++": CPP,
+  cpp: CPP,
+  express: Express,
+  "express.js": Express,
+  expressjs: Express,
+  mongodb: MongoDB,
+  mongo: MongoDB,
+  numpy: NumPy,
+  pandas: Pandas,
+  "scikit learn": SkLearn,
+  "sk-learn": SkLearn,
+  pytorch: Pytorch,
+  tailwind: Tailwind,
+  tailwindcss: Tailwind,
+  git: Git,
+  prisma: Prisma,
+  javascript: JavaScript,
+  js: JavaScript,
+  "next.js": NextJs,
+  nextjs: NextJs,
+  "c#": Csharp,
+  csharp: Csharp
+};
+
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
@@ -101,7 +163,7 @@ export function ProjectCard({
   video,
   links,
   className,
-  isBuilding,
+  isBuilding
 }: Props) {
   return (
     <div
@@ -155,7 +217,7 @@ export function ProjectCard({
         )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">  
+        <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{title}</h3>
@@ -186,15 +248,23 @@ export function ProjectCard({
         </div>
         {/* {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">
-            {tags.map((tag) => (
-              <Badge
-                key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
-                variant="outline"
-              >
-                {tag}
-              </Badge>
-            ))}
+            {tags.map((tag) => {
+              const Icon = tagIconMap[tag.toLowerCase()];
+              return (
+                <Badge
+                  key={tag}
+                  className="text-[11px] font-medium h-6 w-fit px-2 flex items-center gap-1 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-0.5 cursor-pointer active:scale-[0.96]"
+                  variant="outline"
+                >
+                  {Icon && (
+                    <div className="flex items-center justify-center shrink-0 scale-75 origin-center w-4 h-4">
+                      <Icon />
+                    </div>
+                  )}
+                  <span>{tag}</span>
+                </Badge>
+              );
+            })}
           </div>
         )} */}
 

@@ -37,9 +37,9 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
       lang: lang as any,
       themes: {
         light: "github-light",
-        dark: "github-dark",
+        dark: "github-dark"
       },
-      defaultColor: false,
+      defaultColor: false
     })
       .then((html) => {
         const parser = new DOMParser();
@@ -47,12 +47,16 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
         setRenderState({
           html: doc.querySelector("code")?.innerHTML ?? "",
           className: nextClassName,
-          title: nextTitle,
+          title: nextTitle
         });
       })
       .catch((error) => {
         console.error("Failed to highlight code:", error);
-        setRenderState({ html: "", className: nextClassName, title: nextTitle });
+        setRenderState({
+          html: "",
+          className: nextClassName,
+          title: nextTitle
+        });
       });
   }, [children]);
 
@@ -84,7 +88,11 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
           onClick={handleCopy}
           variant="outline"
           size="icon"
-          className={cn("absolute size-8 text-primary cursor-pointer right-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity rounded-md border border-border shadow-none", title ? "top-13" : "top-3", props.className)}
+          className={cn(
+            "absolute size-8 text-primary cursor-pointer right-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity rounded-md border border-border shadow-none",
+            title ? "top-13" : "top-3",
+            props.className
+          )}
           aria-label="Copy code"
         >
           {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
@@ -98,13 +106,8 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
           </div>
         )}
 
-        {!html && (
-          <div className="p-4">
-            {children}
-          </div>
-        )}
-      </pre >
-    </div >
+        {!html && <div className="p-4">{children}</div>}
+      </pre>
+    </div>
   );
 }
-

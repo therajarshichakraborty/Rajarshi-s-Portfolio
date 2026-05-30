@@ -15,7 +15,7 @@ export default function ContactSection() {
           gridGap={2}
           style={{
             maskImage: "linear-gradient(to bottom, black, transparent)",
-            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)"
           }}
         />
       </div>
@@ -24,7 +24,7 @@ export default function ContactSection() {
           Get in Touch with Me
         </h2>
         <p className="mx-auto max-w-lg text-muted-foreground text-balance">
-           I’m just one message away - feel free to DM/CALL me anytime on {" "}
+          I’m just one message away - feel free to DM/CALL me anytime on{" "}
           <Link
             href={DATA.contact.social.X.url}
             target="_blank"
@@ -39,4 +39,3 @@ export default function ContactSection() {
     </div>
   );
 }
-

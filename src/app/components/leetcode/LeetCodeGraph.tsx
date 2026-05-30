@@ -7,13 +7,13 @@ import {
   ContributionGraphBlock,
   ContributionGraphCalendar,
   ContributionGraphFooter,
-  ContributionGraphLegend,
+  ContributionGraphLegend
 } from "@/components/kibo-ui/contribution-graph";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -56,9 +56,9 @@ export default function LeetCodeGraph() {
             date,
             count: c,
             value: c,
-            level,
+            level
           };
-        },
+        }
       );
 
       setData(transformed);

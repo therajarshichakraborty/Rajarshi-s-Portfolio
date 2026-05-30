@@ -36,7 +36,7 @@ export default function CoverImage() {
               isDark
                 ? "/background/bg-nature.jpeg"
                 : "/background/bg-nature.jpeg"
-            }')`,
+            }')`
           }}
         />
 

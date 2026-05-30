@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon,Code } from "lucide-react";
+import { HomeIcon, NotebookIcon, Code } from "lucide-react";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
@@ -59,12 +59,16 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
     { name: "Pandas", icon: Pandas },
     { name: "Scikit Learn", icon: SkLearn },
     { name: "PyTorch", icon: Pytorch },
-    { name: "C++", icon: CPP },
+    { name: "C++", icon: CPP }
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "https://hashnode.com/@Rajarshi2005", icon: NotebookIcon, label: "Blog" },
-    { href: "/projects", icon: Code, label: "Projects" },
+    {
+      href: "https://hashnode.com/@Rajarshi2005",
+      icon: NotebookIcon,
+      label: "Blog"
+    },
+    { href: "/projects", icon: Code, label: "Projects" }
   ],
   contact: {
     email: "rajarshi29032005@gmail.com",
@@ -74,7 +78,7 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
         name: "GitHub",
         url: "https://github.com/therajarshichakraborty",
         icon: Icons.github,
-        navbar: true,
+        navbar: true
       },
 
       LinkedIn: {
@@ -82,13 +86,13 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
         url: "https://www.linkedin.com/in/rajarshi-c-06a3402b7/",
         icon: Icons.linkedin,
 
-        navbar: true,
+        navbar: true
       },
       X: {
         name: "X",
         url: "https://x.com/IamRajarshi_Dev",
         icon: Icons.x,
-        navbar: true,
+        navbar: true
       },
       // Youtube: {
       //   name: "Youtube",
@@ -98,11 +102,11 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
       // },
       email: {
         name: "Send Email",
-        url:"https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com",
+        url: "https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com",
         icon: Icons.email,
-        navbar: true,
-      },
-    },
+        navbar: true
+      }
+    }
   },
 
   work: [
@@ -121,7 +125,7 @@ Actively exploring and mastering new skills and emerging technologies in the dyn
 As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for **Artificial Intelligence** and **Data Science**.
 
 I thrive on continuous learning, innovation, and practical application to solve real-world challenges.
-`,
+`
     },
     {
       company: "Shopify",
@@ -133,7 +137,7 @@ I thrive on continuous learning, innovation, and practical application to solve 
       start: "January 2021",
       end: "April 2021",
       description:
-        "Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.",
+        "Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes."
     },
     {
       company: "Nvidia",
@@ -145,7 +149,7 @@ I thrive on continuous learning, innovation, and practical application to solve 
       start: "January 2020",
       end: "April 2020",
       description:
-        "Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.",
+        "Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python."
     },
     {
       company: "Splunk",
@@ -157,7 +161,7 @@ I thrive on continuous learning, innovation, and practical application to solve 
       start: "January 2019",
       end: "April 2019",
       description:
-        "Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput.",
+        "Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput."
     },
     {
       company: "Lime",
@@ -169,7 +173,7 @@ I thrive on continuous learning, innovation, and practical application to solve 
       start: "January 2018",
       end: "April 2018",
       description:
-        "Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours.",
+        "Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours."
     },
     {
       company: "Mitre Media",
@@ -181,8 +185,8 @@ I thrive on continuous learning, innovation, and practical application to solve 
       start: "May 2017",
       end: "August 2017",
       description:
-        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
-    },
+        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener"
+    }
   ],
   education: [
     {
@@ -218,7 +222,7 @@ PCCICB601: Cryptography & Network Security
 PCCCS601: Database Management System 
 PCCCS602: Ethical Hacking 
 PECICB601-D: Software Engineering 
-OECICB601-A: Human Resource Development & Organizational Behavior`,
+OECICB601-A: Human Resource Development & Organizational Behavior`
     },
     // {
     //   school: "University of Waterloo",
@@ -259,8 +263,8 @@ English
 Physics
 Chemistry
 Mathematics
-Biology`,
-    },
+Biology`
+    }
   ],
   projects: [
     {
@@ -269,8 +273,7 @@ Biology`,
       dates: "May 2026 - Present",
       active: true,
       isBuilding: true,
-      description:
-        `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization.
+      description: `ZenithCLI is an AI-powered developer-focused command-line platform inspired by modern AI coding assistants like Claude Code. It enables developers to interact with intelligent coding workflows directly from the terminal, offering features such as AI-assisted code generation, project scaffolding, authentication management, workflow automation, debugging support, and developer productivity optimization.
 `,
       technologies: [
         "Next.js",
@@ -288,16 +291,16 @@ Biology`,
         {
           type: "Website",
           href: "",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-3" />
         },
         {
           type: "Source",
           href: "https://github.com/therajarshichakraborty/Zenith-CLI",
-          icon: <Icons.github className="size-3" />,
-        },
+          icon: <Icons.github className="size-3" />
+        }
       ],
-      image: "/background/zenith-cli.png",
-     // video: "https://cdn.magicui.design/bento-grid.mp4",
+      image: "/background/zenith-cli.png"
+      // video: "https://cdn.magicui.design/bento-grid.mp4",
     },
     {
       title: "Synapse UI",
@@ -314,31 +317,30 @@ Biology`,
         "TailwindCSS",
         "Node.js",
         "Shadcn UI",
-        "Magic UI",
+        "Magic UI"
       ],
       links: [
         {
           type: "Website",
           href: "https://synapse-ui-dev.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-3" />
         },
         {
           type: "Source",
           href: "https://github.com/therajarshichakraborty/Synapse-UI",
-          icon: <Icons.github className="size-3" />,
-        },
+          icon: <Icons.github className="size-3" />
+        }
       ],
       image: "/background/synapseui.png",
-      video:""
-        // "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+      video: ""
+      // "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
     {
       title: "SocketPoll",
       href: "https://socket-poll.vercel.app/",
       dates: "Mar 2026 - Mar 2026",
       active: true,
-      description:
-        `SocketPoll is a real-time audience engagement and decision intelligence platform engineered for instant interactive experiences at scale. Built with a modern full-stack architecture using React, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, the platform enables ultra-low latency communication, live state synchronization, and seamless multi-user participation in dynamic voting sessions.`,
+      description: `SocketPoll is a real-time audience engagement and decision intelligence platform engineered for instant interactive experiences at scale. Built with a modern full-stack architecture using React, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, the platform enables ultra-low latency communication, live state synchronization, and seamless multi-user participation in dynamic voting sessions.`,
       technologies: [
         "React.js",
         "Typescript",
@@ -354,16 +356,16 @@ Biology`,
         {
           type: "Website",
           href: "https://socket-poll.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-3" />
         },
         {
           type: "Source",
           href: "https://github.com/therajarshichakraborty/SocketPoll",
-          icon: <Icons.github className="size-3" />,
-        },
+          icon: <Icons.github className="size-3" />
+        }
       ],
-      image: "/background/socketpoll.png",
-     // video: "https://cdn.magicui.design/bento-grid.mp4",
+      image: "/background/socketpoll.png"
+      // video: "https://cdn.magicui.design/bento-grid.mp4",
     },
     {
       title: "LinkedUp",
@@ -378,21 +380,21 @@ Biology`,
         "Pydantyc",
         "Groq API",
         "Streamlit",
-        "AI Integration",
+        "AI Integration"
       ],
       links: [
         {
           type: "Website",
           href: "https://linkedup-xyz.streamlit.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-3" />
         },
         {
           type: "Source",
           href: "https://github.com/therajarshichakraborty/LinkedUp",
-          icon: <Icons.github className="size-3" />,
-        },
+          icon: <Icons.github className="size-3" />
+        }
       ],
-      image: "/background/linkedup.png",
+      image: "/background/linkedup.png"
       //video: "https://cdn.llm.report/openai-demo.mp4",
     },
     {
@@ -409,24 +411,24 @@ Biology`,
         "DOM Manipulation",
         "TailwindCSS",
         "React",
-        "NPM",
+        "NPM"
       ],
       links: [
         {
           type: "Website",
           href: "https://mini-tailwindcss.netlify.app/",
-          icon: <Icons.globe className="size-3" />,
+          icon: <Icons.globe className="size-3" />
         },
         {
           type: "Source",
           href: "https://github.com/therajarshichakraborty/Mini-TailwindCSS",
-          icon: <Icons.github className="size-3" />,
-        },
+          icon: <Icons.github className="size-3" />
+        }
       ],
-      image: "/background/mini-tailwind.png",
+      image: "/background/mini-tailwind.png"
       //video:
       //  "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
-    },
+    }
   ],
   hackathons: [
     {
@@ -438,7 +440,7 @@ Biology`,
       image:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
+      links: []
     },
     {
       title: "Hack The North",
@@ -449,7 +451,7 @@ Biology`,
       image:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-the-north.png",
       mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
+      links: []
     },
     {
       title: "FirstNet Public Safety Hackathon",
@@ -460,7 +462,7 @@ Biology`,
       icon: "public",
       image:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/firstnet.png",
-      links: [],
+      links: []
     },
     {
       title: "DeveloperWeek Hackathon",
@@ -474,9 +476,9 @@ Biology`,
         {
           title: "Github",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/cryptotrends/cryptotrends",
-        },
-      ],
+          href: "https://github.com/cryptotrends/cryptotrends"
+        }
+      ]
     },
     {
       title: "HackDavis",
@@ -492,24 +494,24 @@ Biology`,
         {
           title: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/my6footprint",
+          href: "https://devpost.com/software/my6footprint"
         },
         {
           title: "ML",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/my6footprint-machine-learning",
+          href: "https://github.com/Wallet6/my6footprint-machine-learning"
         },
         {
           title: "iOS",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/CarbonWallet",
+          href: "https://github.com/Wallet6/CarbonWallet"
         },
         {
           title: "Server",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/Wallet6/wallet6-server",
-        },
-      ],
+          href: "https://github.com/Wallet6/wallet6-server"
+        }
+      ]
     },
     {
       title: "ETH Waterloo",
@@ -523,9 +525,9 @@ Biology`,
         {
           title: "Organization",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/ethdocnet",
-        },
-      ],
+          href: "https://github.com/ethdocnet"
+        }
+      ]
     },
     {
       title: "Hack The North",
@@ -540,14 +542,14 @@ Biology`,
         {
           title: "Streamer Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/justinmichaud/htn2017",
+          href: "https://github.com/justinmichaud/htn2017"
         },
         {
           title: "Client Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/RTSPClient",
-        },
-      ],
+          href: "https://github.com/dillionverma/RTSPClient"
+        }
+      ]
     },
     {
       title: "Hack The 6ix",
@@ -562,14 +564,14 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/ShareShip/ShareShip",
+          href: "https://github.com/ShareShip/ShareShip"
         },
         {
           title: "Site",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://share-ship.herokuapp.com/",
-        },
-      ],
+          href: "https://share-ship.herokuapp.com/"
+        }
+      ]
     },
     {
       title: "Stupid Hack Toronto",
@@ -583,9 +585,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/nsagirlfriend/nsagirlfriend",
-        },
-      ],
+          href: "https://github.com/nsagirlfriend/nsagirlfriend"
+        }
+      ]
     },
     {
       title: "Global AI Hackathon - Toronto",
@@ -600,14 +602,14 @@ Biology`,
         {
           title: "Article",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://syncedreview.com/2017/06/26/global-ai-hackathon-in-toronto/",
+          href: "https://syncedreview.com/2017/06/26/global-ai-hackathon-in-toronto/"
         },
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/TinySamosas/",
-        },
-      ],
+          href: "https://github.com/TinySamosas/"
+        }
+      ]
     },
     {
       title: "McGill AI for Social Innovation Hackathon",
@@ -617,7 +619,7 @@ Biology`,
         "Developed realtime facial microexpression analyzer using AI",
       image:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/ai-for-social-good.jpg",
-      links: [],
+      links: []
     },
     {
       title: "Open Source Circular Economy Days Hackathon",
@@ -632,9 +634,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/genecis",
-        },
-      ],
+          href: "https://github.com/dillionverma/genecis"
+        }
+      ]
     },
     {
       title: "Make School's Student App Competition 2017",
@@ -648,24 +650,24 @@ Biology`,
         {
           title: "Medium Article",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://medium.com/make-school/the-winners-of-make-schools-student-app-competition-2017-a6b0e72f190a",
+          href: "https://medium.com/make-school/the-winners-of-make-schools-student-app-competition-2017-a6b0e72f190a"
         },
         {
           title: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/pocketdoc-react-native",
+          href: "https://devpost.com/software/pocketdoc-react-native"
         },
         {
           title: "YouTube",
           icon: <Icons.youtube className="h-4 w-4" />,
-          href: "https://www.youtube.com/watch?v=XwFdn5Rmx68",
+          href: "https://www.youtube.com/watch?v=XwFdn5Rmx68"
         },
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/pocketdoc-react-native",
-        },
-      ],
+          href: "https://github.com/dillionverma/pocketdoc-react-native"
+        }
+      ]
     },
     {
       title: "HackMining",
@@ -674,7 +676,7 @@ Biology`,
       description: "Developed neural network to optimize a mining process",
       image:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-mining.png",
-      links: [],
+      links: []
     },
     {
       title: "Waterloo Equithon",
@@ -688,19 +690,19 @@ Biology`,
         {
           title: "Devpost",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://devpost.com/software/pocketdoc-react-native",
+          href: "https://devpost.com/software/pocketdoc-react-native"
         },
         {
           title: "YouTube",
           icon: <Icons.youtube className="h-4 w-4" />,
-          href: "https://www.youtube.com/watch?v=XwFdn5Rmx68",
+          href: "https://www.youtube.com/watch?v=XwFdn5Rmx68"
         },
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/pocketdoc-react-native",
-        },
-      ],
+          href: "https://github.com/dillionverma/pocketdoc-react-native"
+        }
+      ]
     },
     {
       title: "SpaceApps Waterloo",
@@ -714,9 +716,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/earthwatch",
-        },
-      ],
+          href: "https://github.com/dillionverma/earthwatch"
+        }
+      ]
     },
     {
       title: "MHacks 9",
@@ -731,9 +733,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/threejs-planes",
-        },
-      ],
+          href: "https://github.com/dillionverma/threejs-planes"
+        }
+      ]
     },
     {
       title: "StartHacks I",
@@ -749,14 +751,14 @@ Biology`,
         {
           title: "Source (Mobile)",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/mattBlackDesign/recipic-ionic",
+          href: "https://github.com/mattBlackDesign/recipic-ionic"
         },
         {
           title: "Source (Server)",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/mattBlackDesign/recipic-rails",
-        },
-      ],
+          href: "https://github.com/mattBlackDesign/recipic-rails"
+        }
+      ]
     },
     {
       title: "QHacks II",
@@ -771,14 +773,14 @@ Biology`,
         {
           title: "Source (Mobile)",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/dillionverma/human-huntr-react-native",
+          href: "https://github.com/dillionverma/human-huntr-react-native"
         },
         {
           title: "Source (API)",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/mattBlackDesign/human-huntr-rails",
-        },
-      ],
+          href: "https://github.com/mattBlackDesign/human-huntr-rails"
+        }
+      ]
     },
     {
       title: "Terrible Hacks V",
@@ -792,9 +794,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/justinmichaud/TerribleHacks2016-Windows11",
-        },
-      ],
+          href: "https://github.com/justinmichaud/TerribleHacks2016-Windows11"
+        }
+      ]
     },
     {
       title: "Portal Hackathon",
@@ -808,9 +810,9 @@ Biology`,
         {
           title: "Source",
           icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/UWPortalSDK/crowmark",
-        },
-      ],
-    },
-  ],
+          href: "https://github.com/UWPortalSDK/crowmark"
+        }
+      ]
+    }
+  ]
 } as const;

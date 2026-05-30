@@ -8,7 +8,9 @@ export async function getContestData(username: string) {
     );
 
     if (!res.ok) {
-      console.warn(`Failed to fetch contest data for ${username}: status ${res.status}`);
+      console.warn(
+        `Failed to fetch contest data for ${username}: status ${res.status}`
+      );
       return [];
     }
 

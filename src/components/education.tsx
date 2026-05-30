@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from "@/components/ui/accordion";
 import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
@@ -52,10 +52,7 @@ export function Education() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 justify-between w-full text-left">
               <div className="flex items-center gap-x-4 flex-1 min-w-0">
                 <Link href={education.href} target="_blank">
-                  <LogoImage
-                    src={education.logoUrl}
-                    alt={education.school}
-                  />
+                  <LogoImage src={education.logoUrl} alt={education.school} />
                 </Link>
 
                 <div className="flex-1 min-w-0 flex flex-col gap-1">
