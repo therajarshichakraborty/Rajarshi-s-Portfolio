@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
@@ -25,6 +24,7 @@ import { MarqueeDemo } from "@/components/magicui/marquee-demo";
 import GithubCommits from "@/components/github-commits";
 import MultilingualGreeting from "@/components/multilingual-greeting";
 import { Button } from "@/components/ui/button";
+import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -91,21 +91,7 @@ export default async function Page() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 shrink-0">
               <div className="relative -mt-12 md:-mt-20">
-                <Avatar
-                  className="
-              size-40 sm:size-48 md:size-48
-              rounded-full
-              border
-              shadow-xl
-              ring-4
-              ring-background
-              dark:ring-BLACK
-              bg-background
-            "
-                >
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
+                <HeroAvatarOrbit />
               </div>
             </BlurFade>
           </div>

@@ -1,0 +1,164 @@
+"use client";
+
+import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DATA } from "@/data/resume";
+import { Typescript } from "@/components/ui/svgs/typescript";
+import { JavaScript } from "@/components/ui/svgs/js";
+import { React as ReactIcon } from "@/components/ui/svgs/react";
+import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
+import { Nodejs } from "@/components/ui/svgs/nodejs";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+
+import { Docker } from "@/components/ui/svgs/docker";
+import { Kubernetes } from "@/components/ui/svgs/kubernetes";
+import { Postgres } from "@/components/ui/svgs/postgresql";
+import { MongoDB } from "@/components/ui/svgs/mongodb";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { Golang } from "@/components/ui/svgs/golang";
+import { Python } from "@/components/ui/svgs/python";
+import { CPP } from "@/components/ui/svgs/c++";
+
+interface OrbitIcon {
+  name: string;
+  icon: React.ComponentType;
+  angle: number;
+}
+
+export default function HeroAvatarOrbit() {
+  const innerIcons: OrbitIcon[] = [
+    { name: "TypeScript", icon: Typescript, angle: 0 },
+    { name: "JavaScript", icon: JavaScript, angle: 60 },
+    { name: "React", icon: ReactIcon, angle: 120 },
+    { name: "Next.js", icon: NextjsIconDark, angle: 180 },
+    { name: "Node.js", icon: Nodejs, angle: 240 },
+    { name: "Tailwind CSS", icon: Tailwind, angle: 300 },
+  ];
+
+  const outerIcons: OrbitIcon[] = [
+    { name: "Docker", icon: Docker, angle: 0 },
+    { name: "Kubernetes", icon: Kubernetes, angle: 45 },
+    { name: "PostgreSQL", icon: Postgres, angle: 90 },
+    { name: "MongoDB", icon: MongoDB, angle: 135 },
+    { name: "Prisma", icon: Prisma, angle: 180 },
+    { name: "Go", icon: Golang, angle: 225 },
+    { name: "Python", icon: Python, angle: 270 },
+    { name: "C++", icon: CPP, angle: 315 },
+  ];
+
+  return (
+    <div className="relative flex items-center justify-center w-[272px] h-[272px] sm:w-[352px] sm:h-[352px] md:w-[400px] md:h-[400px] overflow-visible">
+      {/* Inline styles for orbiting animations */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes orbit-cw {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        @keyframes orbit-ccw {
+          0% { transform: rotate(360deg); }
+          100% { transform: rotate(0deg); }
+        }
+        .anim-orbit-cw {
+          animation: orbit-cw var(--speed, 35s) linear infinite;
+        }
+        .anim-orbit-ccw {
+          animation: orbit-ccw var(--speed, 35s) linear infinite;
+        }
+        .group\\/orbit-container:hover .anim-orbit-cw,
+        .group\\/orbit-container:hover .anim-orbit-ccw {
+          animation-play-state: paused;
+        }
+      `}} />
+
+      {/* Actual Orbit Widget (Positioned absolutely and scaled to fit the parent layout boundary) */}
+      <div className="absolute flex items-center justify-center select-none w-[400px] h-[400px] scale-[0.68] sm:scale-[0.88] md:scale-100 transition-all duration-500 group/orbit-container origin-center">
+        
+        {/* Ambient Pulsing Glow Background */}
+        <div className="absolute w-[240px] h-[240px] rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-pink-500/10 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-pink-500/15 blur-2xl animate-pulse -z-10" />
+
+        {/* Central Avatar (Restored to original size-40 sm:size-48 md:size-48) */}
+        <div className="relative z-10 p-2 rounded-full bg-background dark:bg-black shadow-[0_0_50px_rgba(0,0,0,0.05)] dark:shadow-[0_0_50px_rgba(255,255,255,0.02)]">
+          <Avatar className="size-40 sm:size-48 md:size-48 rounded-full border shadow-xl ring-4 ring-background dark:ring-BLACK bg-background">
+            <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
+            <AvatarFallback>{DATA.initials}</AvatarFallback>
+          </Avatar>
+        </div>
+
+        {/* INNER ORBIT RINGS & ICONS (Counter-Clockwise Orbit, Clockwise Counter-Rotation) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Ring Line */}
+          <div className="absolute w-[270px] h-[270px] rounded-full border border-dashed border-neutral-200/60 dark:border-neutral-800/40" />
+
+          {/* Rotating Container */}
+          <div 
+            className="absolute w-[270px] h-[270px] rounded-full anim-orbit-ccw pointer-events-auto"
+            style={{ "--speed": "30s" } as React.CSSProperties}
+          >
+            {innerIcons.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group"
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(135px) rotate(${-item.angle}deg)`,
+                  }}
+                >
+                  {/* Counter-rotation to keep the icon upright */}
+                  <div className="anim-orbit-cw" style={{ "--speed": "30s" } as React.CSSProperties}>
+                    <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-indigo-500/10 cursor-pointer">
+                      <Icon />
+                      
+                      {/* Tooltip */}
+                      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                        {item.name}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* OUTER ORBIT RINGS & ICONS (Clockwise Orbit, Counter-Clockwise Counter-Rotation) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Ring Line */}
+          <div className="absolute w-[370px] h-[370px] rounded-full border border-dashed border-neutral-200/30 dark:border-neutral-800/20" />
+
+          {/* Rotating Container */}
+          <div 
+            className="absolute w-[370px] h-[370px] rounded-full anim-orbit-cw pointer-events-auto"
+            style={{ "--speed": "40s" } as React.CSSProperties}
+          >
+            {outerIcons.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group"
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(185px) rotate(${-item.angle}deg)`,
+                  }}
+                >
+                  {/* Counter-rotation to keep the icon upright */}
+                  <div className="anim-orbit-ccw" style={{ "--speed": "40s" } as React.CSSProperties}>
+                    <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-pink-500/10 cursor-pointer">
+                      <Icon />
+
+                      {/* Tooltip */}
+                      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                        {item.name}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
