@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const headers: Record<string, string> = {
-      Accept: "application/vnd.github+json",
+      Accept: "application/vnd.github+json"
     };
 
     if (process.env.GITHUB_TOKEN) {
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
       `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=50`,
       {
         headers,
-        next: { revalidate: 300 }, // Cache response for 5 minutes on the server
+        next: { revalidate: 300 } // Cache response for 5 minutes on the server
       }
     );
 

@@ -34,10 +34,7 @@ export default async function Page() {
 
   return (
     <main className="flex flex-col gap-15 relative">
-      <section
-        id="hero"
-        className="w-full flex justify-center mt-4 md:mt-8"
-      >
+      <section id="hero" className="w-full flex justify-center mt-4 md:mt-8">
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
             <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[450px] shrink-0">
@@ -89,7 +86,10 @@ export default async function Page() {
                 </div>
               </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 shrink-0">
+            <BlurFade
+              delay={BLUR_FADE_DELAY}
+              className="order-1 md:order-2 shrink-0"
+            >
               <div className="relative -mt-20 md:-mt-10 md:-ml-12">
                 <HeroAvatarOrbit />
               </div>

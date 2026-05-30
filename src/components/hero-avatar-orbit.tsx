@@ -32,7 +32,7 @@ export default function HeroAvatarOrbit() {
     { name: "React", icon: ReactIcon, angle: 120 },
     { name: "Next.js", icon: NextjsIconDark, angle: 180 },
     { name: "Node.js", icon: Nodejs, angle: 240 },
-    { name: "Tailwind CSS", icon: Tailwind, angle: 300 },
+    { name: "Tailwind CSS", icon: Tailwind, angle: 300 }
   ];
 
   const outerIcons: OrbitIcon[] = [
@@ -43,13 +43,15 @@ export default function HeroAvatarOrbit() {
     { name: "Prisma", icon: Prisma, angle: 180 },
     { name: "Go", icon: Golang, angle: 225 },
     { name: "Python", icon: Python, angle: 270 },
-    { name: "C++", icon: CPP, angle: 315 },
+    { name: "C++", icon: CPP, angle: 315 }
   ];
 
   return (
-    <div className="relative flex items-center justify-center w-[272px] h-[272px] sm:w-[352px] sm:h-[352px] md:w-[400px] md:h-[400px] overflow-visible">
-      {/* Inline styles for orbiting animations */}
-      <style dangerouslySetInnerHTML={{ __html: `
+    <div className="relative flex items-center justify-center w-[272px] h-[272px] sm:w-[352px] sm:h-[352px] md:w-[400px] md:h-[400px] overflow-visible group/orbit-container">
+      {/* Inline styles for starry float, revolve & twinkle animations */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes orbit-cw {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
@@ -58,28 +60,48 @@ export default function HeroAvatarOrbit() {
           0% { transform: rotate(360deg); }
           100% { transform: rotate(0deg); }
         }
+        @keyframes twinkle-star {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 1;
+            filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.12));
+          }
+        }
         .anim-orbit-cw {
-          animation: orbit-cw var(--speed, 35s) linear infinite;
+          animation: orbit-cw var(--speed, 60s) linear infinite;
         }
         .anim-orbit-ccw {
-          animation: orbit-ccw var(--speed, 35s) linear infinite;
+          animation: orbit-ccw var(--speed, 60s) linear infinite;
+        }
+        .anim-twinkle {
+          animation: twinkle-star var(--twinkle-speed, 5s) ease-in-out infinite;
         }
         .group\\/orbit-container:hover .anim-orbit-cw,
-        .group\\/orbit-container:hover .anim-orbit-ccw {
+        .group\\/orbit-container:hover .anim-orbit-ccw,
+        .group\\/orbit-container:hover .anim-twinkle {
           animation-play-state: paused;
         }
-      `}} />
+      `
+        }}
+      />
 
-      {/* Actual Orbit Widget (Positioned absolutely and scaled to fit the parent layout boundary) */}
-      <div className="absolute flex items-center justify-center select-none w-[400px] h-[400px] scale-[0.68] sm:scale-[0.88] md:scale-100 transition-all duration-500 group/orbit-container origin-center">
-        
+      {/* Actual Orbit Widget (Scaled to fit parent boundaries) */}
+      <div className="absolute flex items-center justify-center select-none w-[400px] h-[400px] scale-[0.68] sm:scale-[0.88] md:scale-100 transition-all duration-500 origin-center">
         {/* Ambient Pulsing Glow Background */}
         <div className="absolute w-[240px] h-[240px] rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-pink-500/10 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-pink-500/15 blur-2xl animate-pulse -z-10" />
 
-        {/* Central Avatar (Restored to original size-40 sm:size-48 md:size-48) */}
-        <div className="relative z-10 p-2 rounded-full bg-background dark:bg-black shadow-[0_0_50px_rgba(0,0,0,0.05)] dark:shadow-[0_0_50px_rgba(255,255,255,0.02)]">
-          <Avatar className="size-40 sm:size-48 md:size-48 rounded-full border shadow-xl ring-4 ring-background dark:ring-BLACK bg-background">
-            <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="object-cover" />
+        {/* Central Avatar */}
+        <div className="relative z-10">
+          <Avatar className="size-40 sm:size-48 md:size-48 rounded-full border shadow-xl ring-4 ring-background bg-background">
+            <AvatarImage
+              alt={DATA.name}
+              src={DATA.avatarUrl}
+              className="object-cover"
+            />
             <AvatarFallback>{DATA.initials}</AvatarFallback>
           </Avatar>
         </div>
@@ -90,29 +112,43 @@ export default function HeroAvatarOrbit() {
           <div className="absolute w-[270px] h-[270px] rounded-full border border-dashed border-neutral-200/60 dark:border-neutral-800/40" />
 
           {/* Rotating Container */}
-          <div 
+          <div
             className="absolute w-[270px] h-[270px] rounded-full anim-orbit-ccw pointer-events-auto"
-            style={{ "--speed": "30s" } as React.CSSProperties}
+            style={{ "--speed": "50s" } as React.CSSProperties}
           >
             {innerIcons.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(135px) rotate(${-item.angle}deg)`,
+                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(135px) rotate(${-item.angle}deg)`
                   }}
                 >
                   {/* Counter-rotation to keep the icon upright */}
-                  <div className="anim-orbit-cw" style={{ "--speed": "30s" } as React.CSSProperties}>
-                    <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-indigo-500/10 cursor-pointer">
-                      <Icon />
-                      
-                      {/* Tooltip */}
-                      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
-                        {item.name}
-                      </span>
+                  <div
+                    className="anim-orbit-cw"
+                    style={{ "--speed": "50s" } as React.CSSProperties}
+                  >
+                    {/* Twinkling star animation with staggered delay */}
+                    <div
+                      className="anim-twinkle group"
+                      style={
+                        {
+                          animationDelay: `${idx * 0.6}s`,
+                          "--twinkle-speed": "4.5s"
+                        } as React.CSSProperties
+                      }
+                    >
+                      <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-indigo-500/50 dark:hover:border-indigo-400/50 hover:shadow-indigo-500/10 cursor-pointer">
+                        <Icon />
+
+                        {/* Tooltip */}
+                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                          {item.name}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -127,29 +163,43 @@ export default function HeroAvatarOrbit() {
           <div className="absolute w-[370px] h-[370px] rounded-full border border-dashed border-neutral-200/30 dark:border-neutral-800/20" />
 
           {/* Rotating Container */}
-          <div 
+          <div
             className="absolute w-[370px] h-[370px] rounded-full anim-orbit-cw pointer-events-auto"
-            style={{ "--speed": "40s" } as React.CSSProperties}
+            style={{ "--speed": "70s" } as React.CSSProperties}
           >
             {outerIcons.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   style={{
-                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(185px) rotate(${-item.angle}deg)`,
+                    transform: `translate(-50%, -50%) rotate(${item.angle}deg) translate(185px) rotate(${-item.angle}deg)`
                   }}
                 >
                   {/* Counter-rotation to keep the icon upright */}
-                  <div className="anim-orbit-ccw" style={{ "--speed": "40s" } as React.CSSProperties}>
-                    <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-pink-500/10 cursor-pointer">
-                      <Icon />
+                  <div
+                    className="anim-orbit-ccw"
+                    style={{ "--speed": "70s" } as React.CSSProperties}
+                  >
+                    {/* Twinkling star animation with staggered delay */}
+                    <div
+                      className="anim-twinkle group"
+                      style={
+                        {
+                          animationDelay: `${idx * 0.8}s`,
+                          "--twinkle-speed": "5.5s"
+                        } as React.CSSProperties
+                      }
+                    >
+                      <div className="relative flex items-center justify-center p-2 rounded-xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-xs transition-all duration-300 hover:scale-125 hover:border-pink-500/50 dark:hover:border-pink-400/50 hover:shadow-pink-500/10 cursor-pointer">
+                        <Icon />
 
-                      {/* Tooltip */}
-                      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
-                        {item.name}
-                      </span>
+                        {/* Tooltip */}
+                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[10px] font-medium bg-neutral-900 dark:bg-neutral-100 text-white dark:text-black opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none whitespace-nowrap z-50">
+                          {item.name}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,7 +207,6 @@ export default function HeroAvatarOrbit() {
             })}
           </div>
         </div>
-
       </div>
     </div>
   );

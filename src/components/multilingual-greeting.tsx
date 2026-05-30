@@ -45,7 +45,7 @@ export default function MultilingualGreeting() {
   return (
     <div className="flex flex-col gap-0">
       {/* LINE 1: Greeting + Waving Emoji + Comma */}
-      <motion.div 
+      <motion.div
         layout
         transition={{ type: "spring", stiffness: 200, damping: 25 }}
         className="flex items-center gap-x-1.5 text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none whitespace-nowrap"
@@ -67,7 +67,12 @@ export default function MultilingualGreeting() {
 
         <motion.span
           animate={{ rotate: [0, 14, -8, 14, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", repeatDelay: 1 }}
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+            ease: "easeInOut",
+            repeatDelay: 1
+          }}
           className="inline-block origin-bottom-right"
         >
           👋🏻
@@ -76,12 +81,16 @@ export default function MultilingualGreeting() {
       </motion.div>
 
       {/* LINE 2: "My name is" */}
-      <div className={`text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 transition-all duration-300 ${isExtraGap ? "mt-2.5 sm:mt-3" : "mt-1 sm:mt-1.5"}`}>
+      <div
+        className={`text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 transition-all duration-300 ${isExtraGap ? "mt-2.5 sm:mt-3" : "mt-1 sm:mt-1.5"}`}
+      >
         My name is
       </div>
 
       {/* LINE 3: Name */}
-      <div className={`py-0 transition-all duration-300 ${isExtraGap ? "mt-2 sm:mt-2.5" : "mt-1 sm:mt-1.5"}`}>
+      <div
+        className={`py-0 transition-all duration-300 ${isExtraGap ? "mt-2 sm:mt-2.5" : "mt-1 sm:mt-1.5"}`}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={`name-${currentIndex}`}

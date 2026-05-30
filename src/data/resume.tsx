@@ -331,7 +331,7 @@ Biology`
           icon: <Icons.github className="size-3" />
         }
       ],
-      image: "/background/synapseui.png",
+      image: "/synapseuipng.png",
       video: ""
       // "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
@@ -364,8 +364,9 @@ Biology`
           icon: <Icons.github className="size-3" />
         }
       ],
-      image: "/background/socketpoll.png"
-      // video: "https://cdn.magicui.design/bento-grid.mp4",
+      image: "/socketpollpng.png"
+      //video: ""
+      // "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
     },
     {
       title: "LinkedUp",
@@ -394,7 +395,7 @@ Biology`
           icon: <Icons.github className="size-3" />
         }
       ],
-      image: "/background/linkedup.png"
+      image: "/linkedapppng.png"
       //video: "https://cdn.llm.report/openai-demo.mp4",
     },
     {

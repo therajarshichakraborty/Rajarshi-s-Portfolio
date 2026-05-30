@@ -84,6 +84,8 @@ export default function RootLayout({
           /> */}
 
           <div className="absolute inset-0 overflow-hidden bg-background">
+            {/* ✨ Soothing Mode Radial Auras (ambient depth) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" />
             {/* ✨ Subtle Noise Texture (pro-level finish) */}
             <div
               className="
@@ -95,7 +97,7 @@ export default function RootLayout({
             />
           </div>
 
-          <div className="absolute inset-0 bg-white/60 dark:bg-black/50 transition-colors duration-2000" />
+          <div className="absolute inset-0 bg-transparent transition-colors duration-2000" />
         </div>
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
