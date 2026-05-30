@@ -22,6 +22,7 @@ import { getContestData } from "@/lib/leetcode/getContestData";
 import { transformContestData } from "@/lib/leetcode/transformContestData";
 // import BrandCard from "@/components/gptCard/brandCard";
 import { MarqueeDemo } from "@/components/magicui/marquee-demo";
+import GithubCommits from "@/components/github-commits";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -126,8 +127,13 @@ export default async function Page() {
 
       <section id="skills">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          {/* <Skills /> */}
-          <MarqueeDemo />
+          <div className="flex flex-col gap-y-4">
+            <h2 className="text-xl font-bold">Skills & Activity</h2>
+            <MarqueeDemo />
+            <div className="w-full">
+              <GithubCommits username="therajarshichakraborty" />
+            </div>
+          </div>
         </BlurFade>
       </section>
 
