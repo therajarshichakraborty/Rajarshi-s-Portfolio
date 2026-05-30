@@ -32,42 +32,42 @@ import { NextJs } from "@/components/ui/svgs/nextjs";
 import { Csharp } from "@/components/ui/svgs/csharp";
 
 const tagIconMap: Record<string, React.ComponentType<any>> = {
-  "typescript": Typescript,
+  typescript: Typescript,
   "node.js": Nodejs,
-  "nodejs": Nodejs,
-  "python": Python,
-  "go": Golang,
-  "golang": Golang,
-  "docker": Docker,
-  "kubernetes": Kubernetes,
-  "java": Java,
-  "react": React,
+  nodejs: Nodejs,
+  python: Python,
+  go: Golang,
+  golang: Golang,
+  docker: Docker,
+  kubernetes: Kubernetes,
+  java: Java,
+  react: React,
   "react.js": React,
-  "reactjs": React,
-  "postgres": Postgres,
-  "postgresql": Postgres,
+  reactjs: React,
+  postgres: Postgres,
+  postgresql: Postgres,
   "c++": CPP,
-  "cpp": CPP,
-  "express": Express,
+  cpp: CPP,
+  express: Express,
   "express.js": Express,
-  "expressjs": Express,
-  "mongodb": MongoDB,
-  "mongo": MongoDB,
-  "numpy": NumPy,
-  "pandas": Pandas,
+  expressjs: Express,
+  mongodb: MongoDB,
+  mongo: MongoDB,
+  numpy: NumPy,
+  pandas: Pandas,
   "scikit learn": SkLearn,
   "sk-learn": SkLearn,
-  "pytorch": Pytorch,
-  "tailwind": Tailwind,
-  "tailwindcss": Tailwind,
-  "git": Git,
-  "prisma": Prisma,
-  "javascript": JavaScript,
-  "js": JavaScript,
+  pytorch: Pytorch,
+  tailwind: Tailwind,
+  tailwindcss: Tailwind,
+  git: Git,
+  prisma: Prisma,
+  javascript: JavaScript,
+  js: JavaScript,
   "next.js": NextJs,
-  "nextjs": NextJs,
+  nextjs: NextJs,
   "c#": Csharp,
-  "csharp": Csharp,
+  csharp: Csharp
 };
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
@@ -116,7 +116,7 @@ export function ProjectCard({
   video,
   links,
   className,
-  isBuilding,
+  isBuilding
 }: Props) {
   return (
     <div
@@ -170,7 +170,7 @@ export function ProjectCard({
         )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <div className="flex items-start justify-between gap-2">  
+        <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{title}</h3>

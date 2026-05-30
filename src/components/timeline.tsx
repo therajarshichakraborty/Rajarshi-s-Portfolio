@@ -21,7 +21,7 @@ export interface TimelineConnectItemProps {
 
 export function TimelineConnectItem({
   children,
-  className,
+  className
 }: TimelineConnectItemProps) {
   return (
     <div
@@ -48,17 +48,13 @@ export function TimelineConnectItem({
 }
 
 export function TimelineItem({ children, className }: TimelineItemProps) {
-  return (
-    <div className={cn("relative", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("relative", className)}>{children}</div>;
 }
 
 export function Timeline({
   children,
   className,
-  orientation = "vertical",
+  orientation = "vertical"
 }: TimelineProps) {
   return (
     <div

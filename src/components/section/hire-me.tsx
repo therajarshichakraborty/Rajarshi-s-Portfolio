@@ -18,15 +18,17 @@ export default function HireMeSection() {
           gridGap={2}
           style={{
             maskImage: "linear-gradient(to bottom, black, transparent)",
-            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)"
           }}
         />
       </div>
 
       {/* Content */}
       <div className="relative flex flex-col items-center gap-5 text-center">
-        <h2 className="
-  text-3xl font-bold tracking-tighter sm:text-5xl">
+        <h2
+          className="
+  text-3xl font-bold tracking-tighter sm:text-5xl"
+        >
           Let’s Build Something Impactful
         </h2>
 

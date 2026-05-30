@@ -17,7 +17,7 @@ export const mdxComponents = {
           maskImage:
             "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
           WebkitMaskImage:
-            "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)",
+            "linear-gradient(90deg, transparent, black 8%, black 92%, transparent)"
         }}
       />
     </div>
@@ -44,6 +44,5 @@ export const mdxComponents = {
         {children}
       </code>
     );
-  },
+  }
 } as const;
-

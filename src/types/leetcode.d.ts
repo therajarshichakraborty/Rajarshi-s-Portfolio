@@ -1,8 +1,8 @@
 export interface LeetCodeStats {
-  easy: number
-  medium: number
-  hard: number
-  total: number
+  easy: number;
+  medium: number;
+  hard: number;
+  total: number;
 }
 
 export interface Contest {

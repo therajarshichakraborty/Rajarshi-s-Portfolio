@@ -28,29 +28,29 @@ Design tokens are the atomic values of your system:
 export const tokens = {
   colors: {
     primary: {
-      50: '#eff6ff',
-      500: '#3b82f6',
-      900: '#1e3a8a',
+      50: "#eff6ff",
+      500: "#3b82f6",
+      900: "#1e3a8a"
     },
     neutral: {
-      0: '#ffffff',
-      100: '#f5f5f5',
-      900: '#171717',
-    },
+      0: "#ffffff",
+      100: "#f5f5f5",
+      900: "#171717"
+    }
   },
   spacing: {
-    xs: '0.25rem',
-    sm: '0.5rem',
-    md: '1rem',
-    lg: '1.5rem',
-    xl: '2rem',
+    xs: "0.25rem",
+    sm: "0.5rem",
+    md: "1rem",
+    lg: "1.5rem",
+    xl: "2rem"
   },
   radii: {
-    sm: '0.25rem',
-    md: '0.5rem',
-    lg: '1rem',
-    full: '9999px',
-  },
+    sm: "0.25rem",
+    md: "0.5rem",
+    lg: "1rem",
+    full: "9999px"
+  }
 } as const;
 ```
 
@@ -67,29 +67,34 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-primary text-white hover:bg-primary/90",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground"
       },
       size: {
         sm: "h-8 px-3 text-sm",
         md: "h-10 px-4",
-        lg: "h-12 px-6 text-lg",
-      },
+        lg: "h-12 px-6 text-lg"
+      }
     },
     defaultVariants: {
       variant: "primary",
-      size: "md",
-    },
+      size: "md"
+    }
   }
 );
 
 interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
 export function Button({ variant, size, className, ...props }: ButtonProps) {
   return (
-    <button className={buttonVariants({ variant, size, className })} {...props} />
+    <button
+      className={buttonVariants({ variant, size, className })}
+      {...props}
+    />
   );
 }
 ```
@@ -98,12 +103,12 @@ export function Button({ variant, size, className, ...props }: ButtonProps) {
 
 Build complex components from primitives:
 
-| Level | Examples | Purpose |
-|-------|----------|---------|
-| Tokens | Colors, spacing, typography | Foundation |
-| Primitives | Button, Input, Badge | Building blocks |
-| Patterns | Card, Modal, Dropdown | Common UI patterns |
-| Templates | PageHeader, Sidebar | Layout structures |
+| Level      | Examples                    | Purpose            |
+| ---------- | --------------------------- | ------------------ |
+| Tokens     | Colors, spacing, typography | Foundation         |
+| Primitives | Button, Input, Badge        | Building blocks    |
+| Patterns   | Card, Modal, Dropdown       | Common UI patterns |
+| Templates  | PageHeader, Sidebar         | Layout structures  |
 
 ## Documentation is Key
 
@@ -130,6 +135,7 @@ Every component should include:
 ```
 
 Use semantic versioning:
+
 - **Major**: Breaking changes
 - **Minor**: New features (backward compatible)
 - **Patch**: Bug fixes

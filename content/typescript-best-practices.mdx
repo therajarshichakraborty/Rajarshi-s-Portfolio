@@ -26,13 +26,13 @@ TypeScript shines when it helps you model reality — not when it forces you to 
 ## One pattern worth memorizing
 
 ```ts
-type Result<T> =
-  | { ok: true; value: T }
-  | { ok: false; error: string };
+type Result<T> = { ok: true; value: T } | { ok: false; error: string };
 
 export function parseNumber(input: string): Result<number> {
   const n = Number(input);
-  return Number.isFinite(n) ? { ok: true, value: n } : { ok: false, error: "Not a number" };
+  return Number.isFinite(n)
+    ? { ok: true, value: n }
+    : { ok: false, error: "Not a number" };
 }
 ```
 

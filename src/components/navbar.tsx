@@ -5,7 +5,7 @@ import {
   Tooltip,
   TooltipArrow,
   TooltipContent,
-  TooltipTrigger,
+  TooltipTrigger
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 
@@ -13,12 +13,10 @@ export default function Navbar() {
   return (
     <div className="fixed inset-x-0 bottom-4 z-30">
       <Dock className="z-50 pointer-events-auto relative h-12 sm:h-14 p-1 sm:p-2 w-fit mx-auto flex gap-1 sm:gap-2 border bg-transparent dark:bg-transparent backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5">
-
         {/* 🔹 MAIN NAV ITEMS */}
         {DATA.navbar.map((item) => {
           const isExternal =
-            item.href.startsWith("http") ||
-            item.href.startsWith("mailto:");
+            item.href.startsWith("http") || item.href.startsWith("mailto:");
 
           return (
             <Tooltip key={item.href}>
@@ -60,8 +58,7 @@ export default function Navbar() {
           .filter(([_, social]) => social.navbar)
           .map(([name, social], index) => {
             const isExternal =
-              social.url.startsWith("http") ||
-              social.url.startsWith("mailto:");
+              social.url.startsWith("http") || social.url.startsWith("mailto:");
 
             const IconComponent = social.icon;
 

@@ -4,13 +4,13 @@ export function getStrokeLengths(
   hard: number,
   radius: number
 ) {
-  const total = easy + medium + hard
-  const circumference = 2 * Math.PI * radius
+  const total = easy + medium + hard;
+  const circumference = 2 * Math.PI * radius;
 
   return {
     easyLen: (easy / total) * circumference,
     mediumLen: (medium / total) * circumference,
     hardLen: (hard / total) * circumference,
-    circumference,
-  }
+    circumference
+  };
 }

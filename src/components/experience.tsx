@@ -236,7 +236,7 @@ const techComponents: Record<string, React.ReactNode> = {
         NextJs
       </Button>
     </Link>
-  ),
+  )
 };
 
 const ExperienceItem = ({
@@ -245,7 +245,7 @@ const ExperienceItem = ({
   period,
   description,
   technologies,
-  Location,
+  Location
 }: ExperienceItemProps) => {
   return (
     <>
@@ -365,8 +365,8 @@ const Experience = () => {
         "sk-learn",
         "PyTorch",
         "nodejs",
-        "Time Series Analysis",
-      ],
+        "Time Series Analysis"
+      ]
     },
     {
       title: "Co-Head , Content Writer of IGNITE",
@@ -386,8 +386,8 @@ const Experience = () => {
         "Content Writing",
         "Technical Writing",
         "Communication",
-        "Documentation",
-      ],
+        "Documentation"
+      ]
     },
     {
       title: "Volunteer & Management Staff",
@@ -401,9 +401,9 @@ const Experience = () => {
         "Team Management",
         "Logistics",
         "Coordination",
-        "Execution",
-      ],
-    },
+        "Execution"
+      ]
+    }
   ];
 
   return (

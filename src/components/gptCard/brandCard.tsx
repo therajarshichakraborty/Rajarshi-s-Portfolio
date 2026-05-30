@@ -26,7 +26,7 @@ const SoftProfileCard = () => {
             boxShadow: `
               inset 2px 2px 6px rgba(0,0,0,0.05),
               inset -2px -2px 6px rgba(255,255,255,0.7)
-            `,
+            `
           }}
         >
           <motion.img
@@ -59,8 +59,8 @@ const SoftProfileCard = () => {
           {/* Description */}
           <p className="text-sm text-gray-600 mt-3 leading-relaxed">
             I'm a Backend-focused developer working with Node.js, Express, and
-            TypeScript. Exploring distributed systems,DevOps, and
-            AI-driven architectures.
+            TypeScript. Exploring distributed systems,DevOps, and AI-driven
+            architectures.
           </p>
 
           {/* Highlight line */}
@@ -98,10 +98,10 @@ const SoftProfileCard = () => {
                 boxShadow: `
                   6px 6px 12px #cfcfcf,
                   -6px -6px 12px #ffffff
-                `,
+                `
               }}
             >
-              Visit X 
+              Visit X
             </motion.button>
           </div>
         </div>

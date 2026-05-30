@@ -56,30 +56,34 @@ export default function GithubCommits({ username }: { username: string }) {
         setLoading(true);
         setError(null);
         const response = await fetch(
-          `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=20`,
+          `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=50`,
           {
             headers: {
-              Accept: "application/vnd.github+json",
+              Accept: "application/vnd.github+json"
             },
-            next: { revalidate: 300 },
+            next: { revalidate: 300 }
           } as any
         );
 
         if (!response.ok) {
           if (response.status === 403) {
-            throw new Error("GitHub API rate limit reached. Please check back later.");
+            throw new Error(
+              "GitHub API rate limit reached. Please check back later."
+            );
           }
           throw new Error("Failed to load GitHub activity.");
         }
 
         const data: GitHubCommitSearchResponse = await response.json();
-        const extractedCommits: CommitItem[] = (data.items || []).map((item) => ({
-          sha: item.sha,
-          message: item.commit.message,
-          repoName: item.repository.name,
-          date: item.commit.author.date,
-          commitUrl: item.html_url,
-        }));
+        const extractedCommits: CommitItem[] = (data.items || []).map(
+          (item) => ({
+            sha: item.sha,
+            message: item.commit.message,
+            repoName: item.repository.name,
+            date: item.commit.author.date,
+            commitUrl: item.html_url
+          })
+        );
 
         setCommits(extractedCommits);
       } catch (err: any) {
@@ -95,19 +99,22 @@ export default function GithubCommits({ username }: { username: string }) {
   }, [username]);
 
   return (
-    <div className="relative flex flex-col w-full rounded-xl bg-card text-card-foreground shadow-xs p-4 transition-all duration-300 dark:bg-transparent">
+    <div className="relative flex flex-col w-full rounded-xl bg-transparent text-card-foreground px-0 py-2 transition-all duration-300 dark:bg-transparent">
       {/* Header */}
       <div className="flex items-center justify-between mb-4 select-none shrink-0">
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <h3 className="text-sm font-semibold tracking-tight text-foreground flex items-center gap-1.5">
-              <Icons.github className="size-4" />
-              Live Activity
+            <Icons.github className="size-4 text-foreground/80" />
+            <h3 className="text-sm font-semibold tracking-tight text-foreground">
+              GitHub Activity
             </h3>
+            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 dark:border-emerald-500/35 text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+              </span>
+              Live
+            </span>
           </div>
           <p className="text-xs text-muted-foreground">
             Checkout my latest commits
@@ -124,14 +131,22 @@ export default function GithubCommits({ username }: { username: string }) {
         </a>
       </div>
 
-      <div className="flex-1 min-w-0 h-[100px] relative overflow-hidden flex items-center">
+      <div
+        className="flex-1 min-w-0 h-[220px] relative overflow-hidden flex items-center"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)"
+        }}
+      >
         {loading ? (
           <div className="w-full space-y-3 py-2 animate-pulse">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 px-2">
               <div className="size-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-full shrink-0" />
               <div className="h-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-md w-1/3" />
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 px-2">
               <div className="size-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-full shrink-0" />
               <div className="h-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-md w-1/2" />
             </div>
@@ -145,11 +160,11 @@ export default function GithubCommits({ username }: { username: string }) {
             No commits found.
           </div>
         ) : (
-          <Marquee 
-            vertical 
-            pauseOnHover 
-            className="[--duration:20s] [--gap:0.75rem] h-[100px] w-full"
-            repeat={4}
+          <Marquee
+            vertical
+            pauseOnHover
+            className="[--duration:20s] [--gap:0.75rem] h-[220px] w-full"
+            repeat={6}
           >
             {commits.map((commit) => (
               <a
@@ -157,19 +172,21 @@ export default function GithubCommits({ username }: { username: string }) {
                 href={commit.commitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 py-1.5 transition-all duration-200 cursor-pointer w-full min-w-0 justify-start hover:bg-white dark:hover:bg-neutral-800/40 rounded-lg px-2.5"
+                className="group flex items-center gap-3 py-1.5 transition-all duration-300 ease-out cursor-pointer w-full min-w-0 justify-start hover:bg-neutral-100/60 dark:hover:bg-neutral-800/30 rounded-lg px-2.5"
               >
-                <GitCommit className="size-4 text-muted-foreground group-hover:text-fuchsia-500 dark:group-hover:text-fuchsia-400 transition-colors shrink-0" />
-                <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                  <span className="text-[13px] font-medium text-muted-foreground transition-all truncate group-hover:text-blue-500">
-                    {commit.message}
-                  </span>
-                  <span className="text-[10px] font-bold bg-white dark:bg-transparent px-1.5 py-0.5 rounded shrink-0 transition-colors">
-                    <span className="bg-gradient-to-r from-red-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
-                      {commit.repoName}
+                <GitCommit className="size-4 text-muted-foreground group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300 ease-out shrink-0" />
+                <div className="flex items-center justify-between min-w-0 flex-1 gap-4">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="text-[13px] font-medium text-muted-foreground transition-colors duration-300 ease-out truncate group-hover:text-black dark:group-hover:text-white">
+                      {commit.message}
                     </span>
-                  </span>
-                  <span className="text-[10px] text-muted-foreground group-hover:text-foreground/80 transition-colors shrink-0 hidden sm:inline">
+                    <span className="text-[10px] font-bold bg-neutral-50 dark:bg-neutral-900/60 px-1.5 py-0.5 rounded border border-neutral-200/60 dark:border-neutral-800/80 shrink-0 transition-all duration-300 ease-out group-hover:bg-white dark:group-hover:bg-neutral-900 group-hover:border-neutral-300 dark:group-hover:border-neutral-700">
+                      <span className="bg-gradient-to-r from-red-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+                        {commit.repoName}
+                      </span>
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 ease-out shrink-0 hidden sm:inline">
                     {formatRelativeTime(commit.date)}
                   </span>
                 </div>

@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils"
-import { Marquee } from "../ui/marquee"
-import type { ComponentType } from "react"
+import { cn } from "@/lib/utils";
+import { Marquee } from "../ui/marquee";
+import type { ComponentType } from "react";
 
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
@@ -45,18 +45,18 @@ const reviews = [
   { name: "Pandas", icon: Pandas },
   { name: "Scikit Learn", icon: SkLearn },
   { name: "PyTorch", icon: Pytorch },
-  { name: "C++", icon: CPP },
-]
+  { name: "C++", icon: CPP }
+];
 
-const firstRow = reviews.slice(0, reviews.length / 2)
-const secondRow = reviews.slice(reviews.length / 2)
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
 
 const ReviewCard = ({
   name,
-  icon: Icon,
+  icon: Icon
 }: {
-  name: string
-  icon: ComponentType
+  name: string;
+  icon: ComponentType;
 }) => {
   return (
     <figure
@@ -69,12 +69,10 @@ const ReviewCard = ({
       <div className="flex items-center justify-center shrink-0">
         <Icon />
       </div>
-      <figcaption className="text-sm font-medium">
-        {name}
-      </figcaption>
+      <figcaption className="text-sm font-medium">{name}</figcaption>
     </figure>
-  )
-}
+  );
+};
 
 export function MarqueeDemo() {
   return (
@@ -92,5 +90,5 @@ export function MarqueeDemo() {
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-transparent"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-transparent"></div>
     </div>
-  )
+  );
 }

@@ -130,7 +130,30 @@ export default async function Page() {
           <div className="flex flex-col gap-y-4">
             <h2 className="text-xl font-bold">Skills & Activity</h2>
             <MarqueeDemo />
+            <br />
             <div className="w-full">
+              <div className="flex flex-col gap-y-4 items-center justify-center">
+                <div className="flex items-center w-full">
+                  <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+                  <div className="border bg-primary z-10 rounded-xl px-4 py-1">
+                    <span className="text-white dark:text-black text-sm font-medium ">
+                      My Latest Commits
+                    </span>
+                  </div>
+                  <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
+                </div>
+                <div className="flex flex-col gap-y-3 items-center justify-center">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl inline-block text-center">
+                    Here are my latest commit history
+                  </h2>
+                  <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
+                    I've been actively contributing to open-source projects and
+                    working on various projects to enhance my skills. Here are
+                    some of my recent contributions.
+                  </p>
+                </div>
+              </div>
+              <br />
               <GithubCommits username="therajarshichakraborty" />
             </div>
           </div>
@@ -191,8 +214,6 @@ export default async function Page() {
           <LeetCodeGraph />
         </BlurFade>
       </section>
-
-      
 
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>

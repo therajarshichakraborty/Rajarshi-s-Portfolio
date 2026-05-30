@@ -13,20 +13,20 @@ import CoverWrapper from "./CoverWrapper";
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"]
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-mono",
+  variable: "--font-mono"
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
     default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    template: `%s | ${DATA.name}`
   },
   description: DATA.description,
   openGraph: {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: DATA.url,
     siteName: `${DATA.name}`,
     locale: "en_US",
-    type: "website",
+    type: "website"
   },
   robots: {
     index: true,
@@ -45,21 +45,21 @@ export const metadata: Metadata = {
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+      "max-snippet": -1
+    }
   },
   twitter: {
     title: `${DATA.name}`,
-    card: "summary_large_image",
+    card: "summary_large_image"
   },
   verification: {
     google: "",
-    yandex: "",
-  },
+    yandex: ""
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -69,7 +69,7 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative cursor-pointer overflow-x-hidden w-full",
           geist.variable,
-          geistMono.variable,
+          geistMono.variable
         )}
       >
         <div className="fixed inset-0 -z-20">
@@ -130,7 +130,7 @@ export default function RootLayout({
                 style={{
                   maskImage: "linear-gradient(to bottom, black, transparent)",
                   WebkitMaskImage:
-                    "linear-gradient(to bottom, black, transparent)",
+                    "linear-gradient(to bottom, black, transparent)"
                 }}
               />
             </div>

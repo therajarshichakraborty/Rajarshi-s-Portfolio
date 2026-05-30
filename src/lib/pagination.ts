@@ -42,8 +42,8 @@ export function paginate<T>(
       totalItems,
       totalPages,
       hasNextPage: page < totalPages,
-      hasPreviousPage: page > 1,
-    },
+      hasPreviousPage: page > 1
+    }
   };
 }
 
@@ -63,14 +63,17 @@ export function getPaginationMeta(
     totalItems,
     totalPages,
     hasNextPage: page < totalPages,
-    hasPreviousPage: page > 1,
+    hasPreviousPage: page > 1
   };
 }
 
 /**
  * Validate and normalize page number
  */
-export function normalizePage(page: number | string | undefined, maxPage: number): number {
+export function normalizePage(
+  page: number | string | undefined,
+  maxPage: number
+): number {
   if (typeof page === "string") {
     const parsed = parseInt(page, 10);
     if (isNaN(parsed) || parsed < 1) return 1;
@@ -82,4 +85,3 @@ export function normalizePage(page: number | string | undefined, maxPage: number
   }
   return 1;
 }
-
