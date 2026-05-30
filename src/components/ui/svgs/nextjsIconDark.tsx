@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 const NextjsIconDark = (props: SVGProps<SVGSVGElement>) => (
-  <svg {...props} viewBox="0 0 180 180">
+  <svg width="20" height="20" {...props} viewBox="0 0 180 180">
     <mask
       height="180"
       id=":r8:mask0_408_134"
@@ -14,7 +14,7 @@ const NextjsIconDark = (props: SVGProps<SVGSVGElement>) => (
       <circle cx="90" cy="90" fill="black" r="90" />
     </mask>
     <g mask="url(#:r8:mask0_408_134)">
-      <circle cx="90" cy="90" data-circle="true" fill="black" r="90" />
+      <circle cx="90" cy="90" data-circle="true" fill="black" r="88" strokeWidth="4" className="stroke-transparent dark:stroke-white/20" />
       <path
         d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
         fill="url(#:r8:paint0_linear_408_134)"

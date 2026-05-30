@@ -21,6 +21,7 @@ import ContestRatingChart from "@/components/charts/ContestRatingChart";
 import { getContestData } from "@/lib/leetcode/getContestData";
 import { transformContestData } from "@/lib/leetcode/transformContestData";
 // import BrandCard from "@/components/gptCard/brandCard";
+import { MarqueeDemo } from "@/components/magicui/marquee-demo";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -36,14 +37,21 @@ export default async function Page() {
       >
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
-            {/* TEXT */}
             <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6">
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl whitespace-pre-line"
-                yOffset={8}
-                text={`Hello👋🏻, This is\n${DATA.name}`}
-              />
+              <div className="flex flex-col">
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY}
+                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-tight"
+                  yOffset={8}
+                  text="Hello👋🏻, This is"
+                />
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY + 0.05}
+                  className="text-2xl font-bold tracking-tighter sm:text-4xl lg:text-5xl bg-linear-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent leading-tight mt-[-2px] sm:mt-[-4px] md:mt-[-6px]"
+                  yOffset={8}
+                  text={DATA.name}
+                />
+              </div>
 
               <BlurFadeText
                 className="text-muted-foreground"
@@ -51,8 +59,6 @@ export default async function Page() {
                 text={DATA.description}
               />
             </div>
-
-            {/* AVATAR */}
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <div className="relative -mt-20 md:-mt-28">
                 <Avatar
@@ -120,7 +126,8 @@ export default async function Page() {
 
       <section id="skills">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <Skills />
+          {/* <Skills /> */}
+          <MarqueeDemo />
         </BlurFade>
       </section>
 
