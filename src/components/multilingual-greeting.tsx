@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "motion/react";
 const GREETINGS = [
   { hello: "Hello", name: "Rajarshi Chakraborty" },
   { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী", extraGap: true },
-  { hello: "नमस्ते", name: "राजर्षि चक्रवर्ती", extraGap: true },
   { hello: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", name: "ਰਾਜਰਸ਼ੀ ਚੱਕਰਵਰਤੀ", extraGap: true },
   { hello: "Hola", name: "Rajarshi Chakraborty" },
   { hello: "Bonjour", name: "Rajarshi Chakraborty" },
@@ -15,6 +14,7 @@ const GREETINGS = [
   { hello: "નમસ્તે", name: "રાજર્ષિ ચક્રવર્તી" },
   { hello: "Ciao", name: "Rajarshi Chakraborty" },
   { hello: "Olá", name: "Rajarshi Chakraborty" },
+  { hello: "नमस्ते", name: "राजर्षि चक्रवर्ती", extraGap: true },
   { hello: "Hallo", name: "Rajarshi Chakraborty" },
   { hello: "Привет", name: "Раджарши Чакраборти" },
   { hello: "안녕", name: "ラ자르시 차크라보르티" },

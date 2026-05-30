@@ -8,7 +8,7 @@ import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 // import WorkSection from "@/components/section/work-section";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileDown, Eye } from "lucide-react";
 import Experience from "@/components/experience";
 import Education from "@/components/education";
 import Skills from "@/components/skills";
@@ -24,6 +24,7 @@ import { transformContestData } from "@/lib/leetcode/transformContestData";
 import { MarqueeDemo } from "@/components/magicui/marquee-demo";
 import GithubCommits from "@/components/github-commits";
 import MultilingualGreeting from "@/components/multilingual-greeting";
+import { Button } from "@/components/ui/button";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -51,6 +52,42 @@ export default async function Page() {
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
+
+              <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
+                <div className="flex items-center gap-3 mt-2 sm:mt-2.5">
+                  <Button
+                    asChild
+                    variant="default"
+                    size="default"
+                    className="group bg-black hover:bg-neutral-900 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-black font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <a
+                      href="/raharshi_resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Eye className="size-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                      <span>View Resume</span>
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="default"
+                    className="group border border-neutral-200 dark:border-neutral-800 bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <a
+                      href="/raharshi_resume.pdf"
+                      download="Rajarshi_Chakraborty_Resume.pdf"
+                      className="flex items-center gap-2"
+                    >
+                      <FileDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+                      <span>Download Resume</span>
+                    </a>
+                  </Button>
+                </div>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 shrink-0">
               <div className="relative -mt-12 md:-mt-20">
