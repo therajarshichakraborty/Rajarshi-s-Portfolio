@@ -36,11 +36,11 @@ export default async function Page() {
     <main className="flex flex-col gap-15 relative">
       <section
         id="hero"
-        className="w-full flex justify-center -mt-10 md:-mt-30"
+        className="w-full flex justify-center mt-4 md:mt-8"
       >
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
-            <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-6 w-full md:w-[450px] shrink-0">
+            <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[450px] shrink-0">
               <div className="flex flex-col">
                 <BlurFade delay={BLUR_FADE_DELAY}>
                   <MultilingualGreeting />
@@ -90,7 +90,7 @@ export default async function Page() {
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2 shrink-0">
-              <div className="relative -mt-12 md:-mt-20">
+              <div className="relative -mt-20 md:-mt-10 md:-ml-12">
                 <HeroAvatarOrbit />
               </div>
             </BlurFade>
