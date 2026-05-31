@@ -194,7 +194,7 @@ I thrive on continuous learning, innovation, and practical application to solve 
       title: "Undergrad Engineering Fellow",
       href: "https://www.ticollege.ac.in/",
       degree: "B.Tech in Computer Science and Engineering",
-      logoUrl: "/techno.jpg",
+      logoUrl: "/tmsl2.png",
       start: " June 2023",
       end: "Present",
       description: `Grade: GPA - 8.01/10 (Academic Progress till Semester 5th)

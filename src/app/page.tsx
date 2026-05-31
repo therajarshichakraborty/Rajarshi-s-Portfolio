@@ -37,7 +37,7 @@ export default async function Page() {
       <section id="hero" className="w-full flex justify-center mt-4 md:mt-8">
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
-            <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[450px] shrink-0">
+            <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[380px] lg:w-[450px] shrink-0">
               <div className="flex flex-col">
                 <BlurFade delay={BLUR_FADE_DELAY}>
                   <MultilingualGreeting />
@@ -56,7 +56,7 @@ export default async function Page() {
                     asChild
                     variant="default"
                     size="default"
-                    className="group bg-black hover:bg-neutral-900 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-black font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <a
                       href="/raharshi_resume.pdf"
@@ -72,7 +72,7 @@ export default async function Page() {
                     asChild
                     variant="outline"
                     size="default"
-                    className="group border border-neutral-200 dark:border-neutral-800 bg-transparent hover:bg-neutral-50 dark:hover:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <a
                       href="/raharshi_resume.pdf"
@@ -90,7 +90,7 @@ export default async function Page() {
               delay={BLUR_FADE_DELAY}
               className="order-1 md:order-2 shrink-0"
             >
-              <div className="relative -mt-20 md:-mt-10 md:-ml-12">
+              <div className="relative -mt-20 md:-mt-10 md:-ml-24 lg:-ml-12">
                 <HeroAvatarOrbit />
               </div>
             </BlurFade>
@@ -192,21 +192,21 @@ export default async function Page() {
             Algorithms. Since 2024, I have been actively solving problems on
             LeetCode and consistently participating in coding contests. I have
             solved{" "}
-            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
               1100+ problems
             </span>{" "}
             across multiple platforms, including
-            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
               {" "}
               LeetCode
             </span>
             ,
-            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
               {" "}
               GeeksForGeeks
             </span>
             , &
-            <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
               {" "}
               CodeForces
             </span>
@@ -238,7 +238,7 @@ export default async function Page() {
 
       <p className="text-center text-sm text-muted-foreground tracking-wide">
         Design & Developed by{" "}
-        <span className="bg-linear-to-r from-blue-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent font-medium">
+        <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
           Rajarshi Chakraborty
         </span>
         <br />

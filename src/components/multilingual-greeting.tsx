@@ -4,29 +4,41 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const GREETINGS = [
-  { hello: "Hello", name: "Rajarshi Chakraborty" },
-  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী", extraGap: true },
-  { hello: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", name: "ਰਾਜਰਸ਼ੀ ਚੱਕਰਵਰਤੀ", extraGap: true },
-  { hello: "Hola", name: "Rajarshi Chakraborty" },
-  { hello: "Bonjour", name: "Rajarshi Chakraborty" },
-  { hello: "こんにちは", name: "ラジャルシ・チャクラボルティ" },
-  { hello: "你好", name: "拉贾尔希·查克拉博蒂" },
-  { hello: "નમસ્તે", name: "રાજર્ષિ ચક્રવર્તી" },
-  { hello: "Ciao", name: "Rajarshi Chakraborty" },
-  { hello: "Olá", name: "Rajarshi Chakraborty" },
-  { hello: "नमस्ते", name: "राजर्षि चक्रवर्ती", extraGap: true },
-  { hello: "Hallo", name: "Rajarshi Chakraborty" },
-  { hello: "Привет", name: "Раджарши Чакраборти" },
-  { hello: "안녕", name: "ラ자르시 차크라보르티" },
-  { hello: "Merhaba", name: "Rajarshi Chakraborty" },
-  { hello: "Xin chào", name: "Rajarshi Chakraborty" },
-  { hello: "Hej", name: "Rajarshi Chakraborty" },
-  { hello: "Aloha", name: "Rajarshi Chakraborty" },
-  { hello: "வணக்கம்", name: "இராஜர்ஷி சக்ரவர்த்தி" },
-  { hello: "నమస్కారం", name: "రాజర్షి చక్రవర్తి" },
-  { hello: "നമസ്കാരം", name: "രാജർഷി ചക്രവർത്തി" },
-  { hello: "ನಮಸ್ಕಾರ", name: "ರಾಜರ್ಷಿ ಚಕ್ರವರ್ತಿ" },
-  { hello: "नमस्कार", name: "राजर्षी चक्रवर्ती" }
+  { hello: "Hello", name: "Rajarshi Chakraborty" }, // English
+  { hello: "こんにちは", name: "ラジャルシ・チャクラボルティ" }, // Japanese
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
+  { hello: "Hola", name: "Rajarshi Chakraborty" }, // Spanish
+  { hello: "안녕하세요", name: "라자르시 차크라보르티" }, // Korean
+  { hello: "नमस्ते", name: "राजर्षि चक्रवर्ती" }, // Hindi
+  { hello: "Bonjour", name: "Rajarshi Chakraborty" }, // French
+  { hello: "你好", name: "拉贾尔希·查克拉博蒂" }, // Chinese
+  { hello: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", name: "ਰਾਜਰਸ਼ੀ ਚੱਕਰਵਰਤੀ" }, // Punjabi
+  { hello: "Привет", name: "Раджарши Чакраборти" }, // Russian
+  { hello: "வணக்கம்", name: "ராஜர்ஷி சக்ரவர்த்தி" }, // Tamil
+  { hello: "Ciao", name: "Rajarshi Chakraborty" }, // Italian
+  { hello: "Γεια σας", name: "Ρατζάρσι Τσακραβόρτι" }, // Greek
+  { hello: "నమస్కారం", name: "రాజర్షి చక్రవర్తి" }, // Telugu
+  { hello: "Hallo", name: "Rajarshi Chakraborty" }, // German
+  { hello: "سلام", name: "راجارشی چاکرابورتی" }, // Persian
+  { hello: "નમસ્તે", name: "રાજર્ષિ ચક્રવર્તી" }, // Gujarati
+  { hello: "Merhaba", name: "Rajarşi Çakraborti" }, // Turkish
+  { hello: "നമസ്കാരം", name: "രാജർഷി ചക്രവർത്തി" }, // Malayalam
+  { hello: "مرحباً", name: "راجارشي تشاكرابورتي" }, // Arabic
+  { hello: "नमस्कार", name: "राजर्षी चक्रवर्ती" }, // Marathi
+  { hello: "Hej", name: "Rajarshi Chakraborty" }, // Swedish
+  { hello: "ଓଡ଼ିଆ ନମସ୍କାର", name: "ରାଜର୍ଷି ଚକ୍ରବର୍ତ୍ତୀ" }, // Odia
+  { hello: "שלום", name: "רג'רשי צ'קרבורטי" }, // Hebrew
+  { hello: "ನಮಸ್ಕಾರ", name: "ರಾಜರ್ಷಿ ಚಕ್ರವರ್ತಿ" }, // Kannada
+  { hello: "Xin chào", name: "Ra-gia-si Cha-kra-bô-ti" }, // Vietnamese
+  { hello: "ꯈꯨꯔꯨꯝꯖꯔꯤ", name: "ꯔꯥꯖꯔꯁꯤ ꯆꯛꯔꯕꯔ꯭ꯇꯤ" }, // Manipuri
+  { hello: "Привіт", name: "Раджарші Чакраборті" }, // Ukrainian
+  { hello: "नमस्कार", name: "राजर्षि चक्रवर्ती" }, // Nepali
+  { hello: "สวัสดี", name: "ราชาร์ชี จักรบอร์ตี" }, // Thai
+  { hello: "ꦱꦸꦒꦼꦁ", name: "ꦫꦗꦂꦯꦶ ꦕꦏꦿꦮꦂꦠꦶ" }, // Javanese
+  { hello: "Olá", name: "Rajarshi Chakraborty" }, // Portuguese
+  { hello: "မင်္ဂလာပါ", name: "ရာဇာရှီ ချက်ကရာဗိုတီ" }, // Burmese
+  { hello: "Aloha", name: "Rajarshi Chakraborty" }, // Hawaiian
+  { hello: "សួស្តី", name: "រ៉ាចារស៊ី ចាក្រាបរទី" } // Khmer
 ];
 
 export default function MultilingualGreeting() {
@@ -40,69 +52,63 @@ export default function MultilingualGreeting() {
   }, []);
 
   const current = GREETINGS[currentIndex] || GREETINGS[0];
-  const isExtraGap = current.extraGap;
 
   return (
-    <div className="flex flex-col gap-0">
+    <div className="flex flex-col gap-0 w-full">
       {/* LINE 1: Greeting + Waving Emoji + Comma */}
-      <motion.div
-        layout
-        transition={{ type: "spring", stiffness: 200, damping: 25 }}
-        className="flex items-center gap-x-1.5 text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none whitespace-nowrap"
-      >
-        <div className="inline-flex items-center py-0">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={`hello-${currentIndex}`}
-              initial={{ y: 8, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -8, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="inline-block bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-extrabold whitespace-nowrap leading-none pr-4"
-            >
+      <div className="relative w-full h-8 sm:h-[44px] lg:h-[56px]">
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={`hello-line-${currentIndex}`}
+            initial={{ y: 8, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -8, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="absolute left-0 top-[-6px] sm:top-[-10px] lg:top-[-14px] flex items-center gap-x-1.5 text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tighter leading-normal select-none whitespace-nowrap"
+          >
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-extrabold pr-4">
               {current.hello}
+            </span>
+            <motion.span
+              animate={{ rotate: [0, 14, -8, 14, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 2,
+                ease: "easeInOut",
+                repeatDelay: 1
+              }}
+              className="inline-block origin-bottom-right"
+            >
+              👋🏻
             </motion.span>
-          </AnimatePresence>
-        </div>
-
-        <motion.span
-          animate={{ rotate: [0, 14, -8, 14, 0] }}
-          transition={{
-            repeat: Infinity,
-            duration: 2,
-            ease: "easeInOut",
-            repeatDelay: 1
-          }}
-          className="inline-block origin-bottom-right"
-        >
-          👋🏻
-        </motion.span>
-        <span className="text-foreground leading-none">,</span>
-      </motion.div>
+            <span className="text-foreground">,</span>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {/* LINE 2: "My name is" */}
       <div
-        className={`text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 transition-all duration-300 ${isExtraGap ? "mt-2.5 sm:mt-3" : "mt-1 sm:mt-1.5"}`}
+        className="text-2xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 mt-2 sm:mt-3"
       >
         My name is
       </div>
 
       {/* LINE 3: Name */}
-      <div
-        className={`py-0 transition-all duration-300 ${isExtraGap ? "mt-2 sm:mt-2.5" : "mt-1 sm:mt-1.5"}`}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`name-${currentIndex}`}
-            initial={{ y: 8, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -8, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="text-xl sm:text-3xl lg:text-4xl font-bold tracking-tighter bg-linear-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent leading-none whitespace-nowrap pr-4"
-          >
-            {current.name}
-          </motion.div>
-        </AnimatePresence>
+      <div className="mt-2 sm:mt-3 py-0">
+        <div className="relative w-full h-[24px] sm:h-[36px] lg:h-[42px]">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={`name-${currentIndex}`}
+              initial={{ y: 8, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -8, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute left-0 top-[-6px] sm:top-[-10px] lg:top-[-14px] text-lg sm:text-3xl lg:text-4xl font-bold tracking-tighter bg-linear-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent leading-normal whitespace-nowrap pr-4"
+            >
+              {current.name}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

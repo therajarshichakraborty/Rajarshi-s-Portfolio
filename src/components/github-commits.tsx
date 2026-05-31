@@ -163,7 +163,7 @@ export default function GithubCommits({ username }: { username: string }) {
           <Marquee
             vertical
             pauseOnHover
-            className="[--duration:20s] [--gap:0.75rem] h-[220px] w-full"
+            className="[--duration:30s] [--gap:0.75rem] h-[220px] w-full"
             repeat={6}
           >
             {commits.map((commit) => (
@@ -181,7 +181,7 @@ export default function GithubCommits({ username }: { username: string }) {
                       {commit.message}
                     </span>
                     <span className="text-[10px] font-bold bg-neutral-50 dark:bg-neutral-900/60 px-1.5 py-0.5 rounded border border-neutral-200/60 dark:border-neutral-800/80 shrink-0 transition-all duration-300 ease-out group-hover:bg-white dark:group-hover:bg-neutral-900 group-hover:border-neutral-300 dark:group-hover:border-neutral-700">
-                      <span className="bg-gradient-to-r from-red-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+                      <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
                         {commit.repoName}
                       </span>
                     </span>
