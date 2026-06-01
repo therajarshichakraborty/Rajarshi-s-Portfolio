@@ -120,7 +120,7 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
 function ProjectImage({
   src,
   alt,
-  className,
+  className
 }: {
   src: string;
   alt: string;

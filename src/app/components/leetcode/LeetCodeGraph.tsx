@@ -70,7 +70,7 @@ export default function LeetCodeGraph() {
 
   return (
     <>
-      <div className="w-full overflow-x-auto cursor-pointer   ">
+      <div className="w-full overflow-x-auto cursor-pointer custom-scrollbar pb-3">
         <div className="mb-3 flex items-center justify-between">
           <div className="text-sm text-muted-foreground flex items-center gap-1.5">
             <span className="font-semibold text-foreground">

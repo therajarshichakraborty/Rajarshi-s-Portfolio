@@ -33,7 +33,7 @@ export default async function Page() {
   const data = transformContestData(raw);
 
   return (
-    <main className="flex flex-col gap-15 relative">
+    <main className="flex flex-col gap-20 md:gap-28 relative">
       <section id="hero" className="w-full flex justify-center mt-4 md:mt-8">
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
@@ -43,7 +43,6 @@ export default async function Page() {
                   <MultilingualGreeting />
                 </BlurFade>
               </div>
-
               <BlurFadeText
                 className="text-muted-foreground"
                 delay={BLUR_FADE_DELAY}
@@ -146,6 +145,8 @@ export default async function Page() {
             <h2 className="text-xl font-bold">Skills & Activity</h2>
             <MarqueeDemo />
             <br />
+            <br />
+            <br />
             <div className="w-full">
               <div className="flex flex-col gap-y-4 items-center justify-center">
                 <div className="flex items-center w-full">
@@ -181,7 +182,7 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="leetcode">
+      <section id="leetcode" className="-mt-8 md:-mt-12">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center text-foreground">
             My DSA Journey

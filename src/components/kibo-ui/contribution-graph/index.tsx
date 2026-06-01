@@ -396,7 +396,7 @@ export const ContributionGraphCalendar = ({
     <div
       ref={containerRef}
       className={cn(
-        "max-w-full overflow-x-auto overflow-y-hidden [scrollbar-width:thin] scroll-smooth",
+        "max-w-full overflow-x-auto overflow-y-hidden [scrollbar-width:thin] scroll-smooth custom-scrollbar pb-3",
         className
       )}
       {...props}
