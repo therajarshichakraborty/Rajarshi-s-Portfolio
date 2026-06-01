@@ -13,36 +13,36 @@ import { Icons } from "@/components/icons";
 
 const getSkill = (tag: string) => {
   const normalizedTag = tag.toLowerCase().replace(/[^a-z0-9+]/g, ""); // keep + for C++
-  
+
   if (normalizedTag === "postgresql" || normalizedTag === "postgres") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "postgres");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "postgres");
   }
   if (normalizedTag === "tailwindcss" || normalizedTag === "tailwind") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "tailwind");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "tailwind");
   }
   if (normalizedTag === "expressjs" || normalizedTag === "express") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "express");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "express");
   }
   if (normalizedTag === "reactjs" || normalizedTag === "react") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "react");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "react");
   }
   if (normalizedTag === "nodejs" || normalizedTag === "node") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "node.js");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "node.js");
   }
   if (normalizedTag === "javascript" || normalizedTag === "js") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "javascript");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "javascript");
   }
   if (normalizedTag === "typescript" || normalizedTag === "ts") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "typescript");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "typescript");
   }
   if (normalizedTag === "openai") {
     return { name: "OpenAI", icon: Icons.openai };
   }
   if (normalizedTag === "golang" || normalizedTag === "go") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "go");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "go");
   }
   if (normalizedTag === "scikitlearn" || normalizedTag === "sklearn") {
-    return DATA.skills.find(s => s.name.toLowerCase() === "scikit learn");
+    return DATA.skills.find((s) => s.name.toLowerCase() === "scikit learn");
   }
 
   // Fallback case-insensitive match
@@ -268,8 +268,7 @@ export function ProjectCard({
           </div>
         )} */}
 
-
-          <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag, id) => {
             const skill = getSkill(tag);
             const Icon = skill?.icon;
@@ -299,9 +298,6 @@ export function ProjectCard({
             );
           })}
         </div>
-
-
-
       </div>
     </div>
   );

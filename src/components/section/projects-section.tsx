@@ -57,7 +57,7 @@ export default function ProjectsSection() {
       </div>
       <div className="flex items-center justify-center mt-8">
         <Link href={"/projects"} target={"_blank"}>
-          <Button className="bg-transparent "> View More Projects </Button>
+          <Button className="bg-transparent text-black "> View More Projects </Button>
         </Link>
       </div>
     </section>

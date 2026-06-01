@@ -87,9 +87,7 @@ export default function MultilingualGreeting() {
       </div>
 
       {/* LINE 2: "My name is" */}
-      <div
-        className="text-2xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 mt-2 sm:mt-3"
-      >
+      <div className="text-2xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl leading-none select-none text-foreground py-0 mt-2 sm:mt-3">
         My name is
       </div>
 
