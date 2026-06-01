@@ -117,18 +117,30 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
   csharp: Csharp
 };
 
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
+function ProjectImage({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
+    return (
+      <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+        No image
+      </div>
+    );
   }
 
   return (
     <img
       src={src}
       alt={alt}
-      className="w-full h-48 object-cover"
+      className={cn("w-full h-full object-cover", className)}
       onError={() => setImageError(true)}
     />
   );
@@ -168,16 +180,16 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden cursor-pointer bg-background hover:shadow-lg hover:shadow-primary/5 dark:hover:shadow-white/5 hover:-translate-y-1 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300",
+        "group flex flex-col h-full border border-neutral-200/80 dark:border-neutral-800/60 rounded-xl overflow-hidden cursor-pointer bg-white/40 dark:bg-neutral-900/20 backdrop-blur-md hover:shadow-2xl hover:shadow-primary/[0.04] dark:hover:shadow-white/[0.02] hover:-translate-y-1.5 hover:scale-[1.01] hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-500",
         className
       )}
     >
-      <div className="relative shrink-0">
+      <div className="relative shrink-0 aspect-video w-full overflow-hidden bg-muted/20 border-b border-border/40">
         <Link
           href={href || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="block"
+          className="block w-full h-full"
         >
           {video ? (
             <video
@@ -186,43 +198,30 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             />
           ) : image ? (
-            <ProjectImage src={image} alt={title} />
+            <ProjectImage
+              src={image}
+              alt={title}
+              className="transition-transform duration-500 ease-out group-hover:scale-105"
+            />
           ) : (
-            <div className="w-full h-48 bg-muted" />
+            <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-xs">
+              No Preview
+            </div>
           )}
         </Link>
-        {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Badge
-                  className="flex items-center gap-1.5 text-xs bg-primary text-primary-foreground hover:bg-primary/90 border border-border shadow-md transition-all duration-300"
-                  variant="default"
-                >
-                  {link.icon}
-                  {link.type}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
       </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
+      <div className="p-6 flex flex-col gap-4 flex-1">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <h3 className="font-semibold">{title}</h3>
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300">
+                {title}
+              </h3>
               {isBuilding && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-background text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 select-none">
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 select-none">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
@@ -237,67 +236,66 @@ export function ProjectCard({
             href={href || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-label={`Open ${title}`}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        <div className="text-xs sm:text-[13px] flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
           <Markdown>{description}</Markdown>
         </div>
-        {/* {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-auto">
-            {tags.map((tag) => {
-              const Icon = tagIconMap[tag.toLowerCase()];
+
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {tags.map((tag, id) => {
+              const skill = getSkill(tag);
+              const Icon = skill?.icon;
               return (
-                <Badge
-                  key={tag}
-                  className="text-[11px] font-medium h-6 w-fit px-2 flex items-center gap-1 transition-all duration-300 ease-out hover:scale-[1.05] hover:-translate-y-0.5 cursor-pointer active:scale-[0.96]"
-                  variant="outline"
-                >
-                  {Icon && (
-                    <div className="flex items-center justify-center shrink-0 scale-75 origin-center w-4 h-4">
-                      <Icon />
-                    </div>
-                  )}
-                  <span>{tag}</span>
-                </Badge>
+                <BlurFade key={tag} delay={BLUR_FADE_DELAY * 10 + id * 0.03}>
+                  <div
+                    className="
+                      group/tag border border-neutral-200/60 dark:border-neutral-800/60
+                      bg-neutral-50/50 dark:bg-neutral-900/40
+                      hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80
+                      rounded-full h-6 w-fit px-2.5 flex items-center gap-1.5
+                      transition-all duration-300 ease-out
+                      hover:scale-[1.03] hover:-translate-y-0.5
+                      hover:shadow-xs hover:shadow-primary/5
+                      cursor-pointer
+                      active:scale-[0.98]
+                    "
+                  >
+                    {Icon && (
+                      <Icon className="size-3 transition-transform duration-300 group-hover/tag:rotate-6" />
+                    )}
+                    <span className="text-muted-foreground group-hover/tag:text-foreground text-[10px] font-medium transition-colors duration-200">
+                      {tag}
+                    </span>
+                  </div>
+                </BlurFade>
               );
             })}
           </div>
-        )} */}
+        )}
 
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag, id) => {
-            const skill = getSkill(tag);
-            const Icon = skill?.icon;
-            return (
-              <BlurFade key={tag} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div
-                  className="
-                group border bg-transparent
-                rounded-md h-6 w-fit px-2 flex items-center gap-1
-                transition-all duration-300 ease-out
-                hover:scale-[1.05] hover:-translate-y-0.5
-                hover:shadow-md hover:shadow-primary/10
-                dark:hover:shadow-white/5
-                hover:ring-primary/20 dark:hover:ring-white/10
-                cursor-pointer
-                active:scale-[0.96]
-              "
-                >
-                  {Icon && (
-                    <Icon className="size-3 transition-transform duration-300 group-hover:rotate-6" />
-                  )}
-                  <span className="text-foreground text-[10px] font-medium">
-                    {tag}
-                  </span>
-                </div>
-              </BlurFade>
-            );
-          })}
-        </div>
+        {links && links.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-900/60">
+            {links.map((link, idx) => (
+              <Link
+                href={link.href}
+                key={idx}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-border bg-background text-foreground shadow-xs hover:bg-muted transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.97]"
+              >
+                {link.icon}
+                <span>{link.type}</span>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
