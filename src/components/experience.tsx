@@ -32,211 +32,46 @@ interface ExperienceItemProps {
   Location: string;
 }
 
-const techComponents: Record<string, React.ReactNode> = {
-  golang: (
-    <Link href="https://go.dev/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Golang />
-        Golang
-      </Button>
-    </Link>
-  ),
-  react: (
-    <Link href="https://react.dev/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <React />
-        React
-      </Button>
-    </Link>
-  ),
-  docker: (
-    <Link href="https://www.docker.com/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Docker />
-        Docker
-      </Button>
-    </Link>
-  ),
-  nodejs: (
-    <Link href="https://nodejs.org/en" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Nodejs />
-        NodeJs
-      </Button>
-    </Link>
-  ),
-  typescript: (
-    <Link href="https://www.typescriptlang.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Typescript />
-        TypeScript
-      </Button>
-    </Link>
-  ),
-  java: (
-    <Link href="https://www.java.com/en/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Java />
-        Java
-      </Button>
-    </Link>
-  ),
-  express: (
-    <Link href="https://expressjs.com/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Express />
-        Express
-      </Button>
-    </Link>
-  ),
-  postgres: (
-    <Link href="https://expressjs.com/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Postgres />
-        PostgreSQL
-      </Button>
-    </Link>
-  ),
-  python: (
-    <Link href="https://www.python.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Python />
-        Python
-      </Button>
-    </Link>
-  ),
-  kubernetes: (
-    <Link href="https://www.python.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Kubernetes />
-        Kubernetes
-      </Button>
-    </Link>
-  ),
-  numpy: (
-    <Link href="https://numpy.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <NumPy />
-        Numpy
-      </Button>
-    </Link>
-  ),
-  pandas: (
-    <Link href="https://pandas.pydata.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Pandas />
-        Pandas
-      </Button>
-    </Link>
-  ),
-  mongo: (
-    <Link href="https://www.mongodb.com/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <MongoDB />
-        MongoDB
-      </Button>
-    </Link>
-  ),
-  "sk-learn": (
-    <Link href="https://scikit-learn.org/stable/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <SkLearn />
-        Scikit Learn
-      </Button>
-    </Link>
-  ),
-  "c++": (
-    <Link href="https://isocpp.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <CPP />
-        C++
-      </Button>
-    </Link>
-  ),
-  pytorch: (
-    <Link href="https://pytorch.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <Pytorch />
-        PyTorch
-      </Button>
-    </Link>
-  ),
-  nextjs: (
-    <Link href="https://nextjs.org/" target="_blank">
-      {" "}
-      <Button
-        size={"sm"}
-        className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-      >
-        <NextJs />
-        NextJs
-      </Button>
-    </Link>
-  )
+interface TechConfigItem {
+  name: string;
+  url: string;
+  icon: React.ComponentType<any>;
+}
+
+const techConfig: Record<string, TechConfigItem> = {
+  golang: { name: "Golang", url: "https://go.dev/", icon: Golang },
+  react: { name: "React", url: "https://react.dev/", icon: React },
+  docker: { name: "Docker", url: "https://www.docker.com/", icon: Docker },
+  nodejs: { name: "NodeJs", url: "https://nodejs.org/en", icon: Nodejs },
+  typescript: {
+    name: "TypeScript",
+    url: "https://www.typescriptlang.org/",
+    icon: Typescript
+  },
+  java: { name: "Java", url: "https://www.java.com/en/", icon: Java },
+  express: { name: "Express", url: "https://expressjs.com/", icon: Express },
+  postgres: {
+    name: "PostgreSQL",
+    url: "https://www.postgresql.org/",
+    icon: Postgres
+  },
+  python: { name: "Python", url: "https://www.python.org/", icon: Python },
+  kubernetes: {
+    name: "Kubernetes",
+    url: "https://kubernetes.io/",
+    icon: Kubernetes
+  },
+  numpy: { name: "Numpy", url: "https://numpy.org/", icon: NumPy },
+  pandas: { name: "Pandas", url: "https://pandas.pydata.org/", icon: Pandas },
+  mongo: { name: "MongoDB", url: "https://www.mongodb.com/", icon: MongoDB },
+  "sk-learn": {
+    name: "Scikit Learn",
+    url: "https://scikit-learn.org/stable/",
+    icon: SkLearn
+  },
+  "c++": { name: "C++", url: "https://isocpp.org/", icon: CPP },
+  pytorch: { name: "PyTorch", url: "https://pytorch.org/", icon: Pytorch },
+  nextjs: { name: "NextJs", url: "https://nextjs.org/", icon: NextJs }
 };
 
 const ExperienceItem = ({
@@ -249,10 +84,10 @@ const ExperienceItem = ({
 }: ExperienceItemProps) => {
   return (
     <>
-      <div className="relative pl-8 not-last:pb-12">
+      <div className="relative pl-8 pb-12 group last:pb-0">
         {/* Timeline line */}
-        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-400 dark:bg-zinc-100 dark:w-[1px] group-first:h-[calc(75%-1px)] group-first:top-1">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-black bg-black dark:bg-white dark:border-0" />
+        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-300 dark:bg-zinc-800 group-last:h-2">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-primary bg-black dark:bg-white" />
         </div>
 
         {/* Content */}
@@ -325,18 +160,38 @@ const ExperienceItem = ({
             <br />
             {technologies.map((tech) => {
               const techKey = tech.toLowerCase();
+              const techData = techConfig[techKey];
+
+              if (techData) {
+                const Icon = techData.icon;
+                return (
+                  <Link
+                    href={techData.url}
+                    target="_blank"
+                    key={tech}
+                    className="flex items-center"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="cursor-pointer flex items-center gap-2 bg-transparent text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
+                    >
+                      <Icon className="size-4" />
+                      <span>{techData.name}</span>
+                    </Button>
+                  </Link>
+                );
+              }
 
               return (
-                <div key={tech} className="flex items-center ">
-                  {/* 3. Render the SVG/Component or fall back to a Badge */}
-                  {techComponents[techKey] || (
-                    <Button
-                      size={"sm"}
-                      className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
-                    >
-                      {tech}
-                    </Button>
-                  )}
+                <div key={tech} className="flex items-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="bg-transparent text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98] cursor-default flex items-center gap-2"
+                  >
+                    {tech}
+                  </Button>
                 </div>
               );
             })}

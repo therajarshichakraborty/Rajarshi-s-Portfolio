@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GitCommit, ExternalLink } from "lucide-react";
 import { Marquee } from "@/components/ui/marquee";
 import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 
 interface GitHubCommitSearchResponse {
   items: {
@@ -120,15 +121,22 @@ export default function GithubCommits({ username }: { username: string }) {
             Checkout my latest commits
           </p>
         </div>
-        <a
-          href={`https://github.com/${username}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs inline-flex items-center justify-center gap-1.5 border border-input bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/80 hover:text-foreground rounded-md px-3 py-1.5 h-8 font-medium shadow-xs transition-colors shrink-0"
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="bg-background text-foreground border border-input transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98] shrink-0"
         >
-          <span>View Profile</span>
-          <ExternalLink className="size-3" />
-        </a>
+          <a
+            href={`https://github.com/${username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5"
+          >
+            <span>View Profile</span>
+            <ExternalLink className="size-3" />
+          </a>
+        </Button>
       </div>
 
       <div

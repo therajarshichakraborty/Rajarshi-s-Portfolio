@@ -56,7 +56,7 @@ export default async function Page() {
                     asChild
                     variant="default"
                     size="default"
-                    className="group font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group font-semibold"
                   >
                     <a
                       href="/raharshi_resume.pdf"
@@ -72,7 +72,7 @@ export default async function Page() {
                     asChild
                     variant="outline"
                     size="default"
-                    className="group font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group font-semibold bg-background text-foreground border border-input transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
                   >
                     <a
                       href="/raharshi_resume.pdf"
@@ -183,7 +183,7 @@ export default async function Page() {
 
       <section id="leetcode">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center bg-black bg-clip-text">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center text-foreground">
             My DSA Journey
           </h1>
 

@@ -81,8 +81,9 @@ export default function LeetCodeGraph() {
               >
                 {" "}
                 <Button
-                  size={"sm"}
-                  className="bg-white text-black border-black cursor-pointer flex items-center gap-2"
+                  variant="outline"
+                  size="sm"
+                  className="cursor-pointer flex items-center gap-2 bg-background text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
                 >
                   <LeetCode />
                   Visit Rajarshi's LeetCode

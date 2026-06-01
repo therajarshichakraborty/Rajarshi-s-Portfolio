@@ -168,7 +168,7 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden cursor-pointer hover:ring-muted transition-all duration-200",
+        "flex flex-col h-full border border-border rounded-xl overflow-hidden cursor-pointer bg-background hover:shadow-lg hover:shadow-primary/5 dark:hover:shadow-white/5 hover:-translate-y-1 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300",
         className
       )}
     >
@@ -205,7 +205,7 @@ export function ProjectCard({
                 onClick={(e) => e.stopPropagation()}
               >
                 <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
+                  className="flex items-center gap-1.5 text-xs bg-primary text-primary-foreground hover:bg-primary/90 border border-border shadow-md transition-all duration-300"
                   variant="default"
                 >
                   {link.icon}
@@ -222,7 +222,7 @@ export function ProjectCard({
             <div className="flex items-center gap-2">
               <h3 className="font-semibold">{title}</h3>
               {isBuilding && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 shadow-[0_0_10px_rgba(16,185,129,0.1)] select-none">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-background text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 select-none">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>

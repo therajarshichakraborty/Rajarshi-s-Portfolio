@@ -57,7 +57,12 @@ export default function ProjectsSection() {
       </div>
       <div className="flex items-center justify-center mt-8">
         <Link href={"/projects"} target={"_blank"}>
-          <Button className="bg-transparent text-black "> View More Projects </Button>
+          <Button
+            variant="outline"
+            className="font-semibold bg-transparent text-foreground border border-input transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
+          >
+            View More Projects
+          </Button>
         </Link>
       </div>
     </section>

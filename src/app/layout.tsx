@@ -67,7 +67,7 @@ export default function RootLayout({
     <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased relative cursor-pointer overflow-x-hidden w-full",
+          "min-h-screen bg-background text-foreground font-sans antialiased relative cursor-pointer overflow-x-hidden w-full",
           geist.variable,
           geistMono.variable
         )}
