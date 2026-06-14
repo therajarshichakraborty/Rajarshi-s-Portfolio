@@ -19,8 +19,6 @@ import {
   Github
 } from "lucide-react";
 
-// ── Shared types ─────────────────────────────────────────────────────────────
-
 export interface FolderTag {
   name: string;
   icon?: React.ComponentType<any>;
@@ -246,7 +244,6 @@ export function AnimatedFolder({
           </div>
         </div>
 
-        {/* Folder label */}
         <h3
           className="text-base font-semibold text-foreground mt-4 transition-all duration-300"
           style={{ transform: isHovered ? "translateY(3px)" : "translateY(0)" }}

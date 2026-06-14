@@ -268,6 +268,40 @@ Biology`
   ],
   projects: [
     {
+      title: "ApexZero",
+      href: "",
+      dates: "June 2026 - Present",
+      active: true,
+      isBuilding: true,
+      description: `ApexZero is a cross-platform AI-powered Gmail client built with Next.js, TypeScript, and Corsair AI SDK, designed to simplify email management and enhance productivity. It leverages advanced AI capabilities to help users prioritize, organize, and respond to emails more efficiently. With an intuitive interface and powerful features, ApexZero transforms the way users interact with their inbox, making email management effortless and intelligent.`,
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "Corsair AI SDK",
+        "PostgreSQL",
+        "Drizzle",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Better-auth",
+        "OpenAI",
+        "Node.js"
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <Icons.globe className="size-3" />
+        },
+        {
+          type: "Source",
+          href: "https://github.com/therajarshichakraborty/ApexZero",
+          icon: <Icons.github className="size-3" />
+        }
+      ],
+      image: "/background/apex-zero.png"
+      // video: "https://cdn.magicui.design/bento-grid.mp4",
+    },
+    {
       title: "ZenithCLI",
       href: "",
       dates: "May 2026 - Present",
