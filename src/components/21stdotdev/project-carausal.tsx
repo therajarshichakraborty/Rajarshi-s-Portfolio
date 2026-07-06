@@ -110,7 +110,7 @@ function StatusBadge() {
 // ─────────────────────────────────────────────────────────────────────────────
 // Tech badge
 // ─────────────────────────────────────────────────────────────────────────────
-function TechBadge({ name,  delay }: { name: string; delay: number }) {
+function TechBadge({ name, delay }: { name: string; delay: number }) {
   return (
     <motion.span
       initial={{ opacity: 0, scale: 0.88 }}
@@ -118,7 +118,7 @@ function TechBadge({ name,  delay }: { name: string; delay: number }) {
       transition={{ duration: 0.2, delay }}
       className={cn(
         "inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium border",
-         TECH_COLORS["slate"]
+        TECH_COLORS["slate"]
       )}
     >
       {name}
@@ -305,7 +305,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
                     {project.tagline}
                   </p>
                 </div>
-                
+
               </div>
             </div>
           </div>
@@ -398,20 +398,29 @@ export function ProjectCarousel() {
     <section id="projects-carousel" className="w-full" aria-label="Current Projects">
       {/* ── Section header ─────────────────────────────────────────────── */}
       <div className="flex flex-col gap-y-4 items-center justify-center mb-10">
-        <div className="flex items-center w-full">
-          <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
-          <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-            <span className="text-white dark:text-black text-sm font-medium">My Projects</span>
+
+
+        <div className="flex flex-col gap-y-4 items-center justify-center">
+          <div className="flex items-center w-full">
+            <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="border bg-primary z-10 rounded-xl px-4 py-1">
+              <span className="text-white dark:text-black text-sm font-medium">
+                My Projects
+              </span>
+            </div>
+            <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
           </div>
-          <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
-        </div>
-        <div className="flex flex-col gap-y-2 items-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-center">
-            Check out my latest work
-          </h2>
-          <p className="text-muted-foreground text-base text-balance text-center max-w-lg">
-            Production-grade applications spanning AI, full-stack, real-time systems, and developer tooling.
-          </p>
+          <div className="flex flex-col gap-y-3 items-center justify-center">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl inline-block text-center">
+              Check out my latest work
+            </h2>
+            <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
+              My work spans full-stack web applications, open-source
+              contributions, theming systems, and machine learning models. Hover
+              the folder — click any card to explore with full details and
+              left/right navigation.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -425,7 +434,8 @@ export function ProjectCarousel() {
             <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest">
               {String(activeIndex + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
             </span>
-            <div className="flex items-center gap-1">
+
+            {/* <div className="flex items-center gap-1">
               <button
                 onClick={() => setIsPlaying((p) => !p)}
                 aria-label={isPlaying ? "Pause" : "Play"}
@@ -447,19 +457,20 @@ export function ProjectCarousel() {
               >
                 <ChevronRight className="h-3 w-3" />
               </button>
-            </div>
+            </div> */}
+
           </div>
 
           {/* Auto-play progress bar */}
           {isPlaying && (
             <div className="h-0.5 w-full rounded-full bg-border/30 overflow-hidden">
-              <motion.div
+              {/* <motion.div
                 key={activeIndex}
                 className="h-full bg-primary rounded-full"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ duration: AUTO_INTERVAL / 1000, ease: "linear" }}
-              />
+              /> */}
             </div>
           )}
 
