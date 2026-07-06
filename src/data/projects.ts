@@ -1,0 +1,415 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// src/data/projects.ts
+// Single, richly-typed source of truth for all portfolio projects.
+// Consumed by the ProjectCarousel component.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type ProjectStatus = "In Progress" | "Completed" | "Production";
+export type ProjectCategory =
+  | "AI / Full-Stack"
+  | "Developer Tooling"
+  | "UI Library"
+  | "Real-Time"
+  | "AI / Python"
+  | "Frontend";
+
+export interface TechBadge {
+  name: string;
+}
+
+export interface ProjectStat {
+  label: string;
+  value: string;
+  icon: string; // Lucide icon name string
+}
+
+export interface ProjectFeature {
+  text: string;
+  icon: string; // Lucide icon name string
+}
+
+export interface ProjectLink {
+  type: "GitHub" | "Live Demo" | "Docs" | "NPM";
+  href: string;
+}
+
+export interface ProjectData {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  longDescription: string;
+  category: ProjectCategory;
+  duration: string;
+  image: string;
+  technologies: TechBadge[];
+  features: ProjectFeature[];
+  stats: ProjectStat[];
+  links: ProjectLink[];
+  challenges: string[];
+  architecture: string;
+}
+
+// ─── Color tokens ─────────────────────────────────────────────────────────────
+export const TECH_COLORS: Record<string, string> = {
+  blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  cyan: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
+  indigo:
+    "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
+  violet:
+    "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+  emerald:
+    "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+  amber:
+    "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+  orange:
+    "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20",
+  rose: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
+  slate:
+    "bg-slate-500/10 text-slate-600 dark:text-slate-400 border-slate-500/20",
+  green:
+    "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20",
+  yellow:
+    "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
+  pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
+  teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
+};
+
+// ─── Project Data ─────────────────────────────────────────────────────────────
+export const PROJECTS: ProjectData[] = [
+  // ── 1. ApexZero ─────────────────────────────────────────────────────────────
+  {
+    id: "apex-zero",
+    title: "ApexZero",
+    tagline: "AI-Powered Gmail Client for the Modern Developer",
+    description:
+      "ApexZero is a cross-platform AI-powered Gmail client built with Next.js, TypeScript, and Corsair AI SDK, designed to simplify email management and enhance productivity.",
+    longDescription:
+      "ApexZero transforms your inbox into an intelligent workspace. It leverages advanced AI to prioritize, organize, thread, and draft replies — automatically. Built on a modern full-stack architecture with Next.js App Router, Drizzle ORM, and Better Auth, it delivers a blazing-fast, secure, and extensible email experience. OpenAI models power the AI layer for smart summarization, intent detection, and auto-drafting, while a PostgreSQL backend ensures reliability at scale.",
+    category: "AI / Full-Stack",
+    duration: "June 2026 – Present",
+    image: "/background/apex-zero.png",
+    technologies: [
+      { name: "Next.js"},
+      { name: "TypeScript"},
+      { name: "PostgreSQL"},
+      { name: "Drizzle ORM"},
+      { name: "TailwindCSS"},
+      { name: "shadcn/ui"},
+      { name: "Better Auth"},
+      { name: "OpenAI"},
+      { name: "Corsair AI SDK"},
+      { name: "Node.js"},
+    ],
+    features: [
+      { text: "AI-powered email prioritization & summarization", icon: "Sparkles" },
+      { text: "Smart auto-draft with context awareness", icon: "PenLine" },
+      { text: "OAuth 2.0 authentication via Better Auth", icon: "ShieldCheck" },
+      { text: "PostgreSQL-backed email state management", icon: "Database" },
+      { text: "Drizzle ORM for type-safe database queries", icon: "Layers" },
+      { text: "Real-time inbox sync with Gmail API", icon: "RefreshCw" },
+      { text: "Dark mode & responsive UI", icon: "Moon" },
+      { text: "Thread grouping & label management", icon: "Tag" },
+    ],
+    stats: [
+      { label: "Stack", value: "Full-Stack", icon: "Layers" },
+      { label: "AI Model", value: "GPT-4o", icon: "Brain" },
+      { label: "Status", value: "Building", icon: "Hammer" },
+      { label: "Platform", value: "Vercel", icon: "Globe" },
+    ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/ApexZero",
+      },
+    ],
+    challenges: [
+      "Handling Gmail OAuth token refresh cycles securely",
+      "Designing efficient AI context windows for long threads",
+      "Real-time state sync without WebSocket complexity",
+    ],
+    architecture:
+      "Next.js App Router → Drizzle ORM → PostgreSQL | OpenAI GPT-4o via Corsair AI SDK | Better Auth for session management | Gmail REST API integration",
+  },
+
+  // ── 2. ZenithCLI ────────────────────────────────────────────────────────────
+  {
+    id: "zenith-cli",
+    title: "ZenithCLI",
+    tagline: "AI-First Developer Command-Line Platform",
+    description:
+      "ZenithCLI is an AI-powered developer-focused CLI platform inspired by Claude Code — enabling intelligent coding workflows directly from the terminal.",
+    longDescription:
+      "ZenithCLI brings AI-assisted development directly into the terminal. Inspired by modern AI coding assistants, it enables code generation, project scaffolding, authentication management, workflow automation, and debugging — all from the command line. It uses Commander.js for CLI ergonomics, a Next.js dashboard for project management, and OpenAI for AI inference. A Prisma-backed PostgreSQL database stores user sessions, generated artifacts, and workflow state.",
+    category: "Developer Tooling",
+    duration: "May 2026 – Present",
+    image: "/background/zenith-cli.png",
+    technologies: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "PostgreSQL" },
+      { name: "Prisma" },
+      { name: "TailwindCSS" },
+      { name: "Commander.js" },
+      { name: "shadcn/ui" },
+      { name: "Better Auth" },
+      { name: "OpenAI" },
+      { name: "Express.js" },
+    ],
+    features: [
+      { text: "AI-assisted code generation from terminal", icon: "Terminal" },
+      { text: "Project scaffolding with best-practice templates", icon: "FolderPlus" },
+      { text: "Authentication management (OAuth + JWT)", icon: "KeyRound" },
+      { text: "Workflow automation & background jobs", icon: "Zap" },
+      { text: "Intelligent debugging assistance", icon: "Bug" },
+      { text: "Web dashboard via Next.js for project overview", icon: "LayoutDashboard" },
+      { text: "Prisma ORM for type-safe DB operations", icon: "Database" },
+      { text: "Developer productivity optimization tools", icon: "Gauge" },
+    ],
+    stats: [
+      { label: "Type", value: "CLI + Web", icon: "Terminal" },
+      { label: "AI Model", value: "GPT-4o", icon: "Brain" },
+      { label: "Status", value: "Building", icon: "Hammer" },
+      { label: "Runtime", value: "Node.js", icon: "Layers" },
+    ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/Zenith-CLI",
+      },
+    ],
+    challenges: [
+      "Designing an intuitive CLI UX that works cross-platform",
+      "Streaming AI responses in real-time within the terminal",
+      "Managing secure API key storage in the CLI context",
+    ],
+    architecture:
+      "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management",
+  },
+
+  // ── 3. Synapse UI ────────────────────────────────────────────────────────────
+  {
+    id: "synapse-ui",
+    title: "Synapse UI",
+    tagline: "Production-Ready React Component Library",
+    description:
+      "Synapse UI is a modern React UI library built with Next.js, TypeScript, and FumaDocs — helping developers build beautiful, production-ready applications faster.",
+    longDescription:
+      "Synapse UI offers a curated collection of reusable React components with both copy-paste support and seamless CLI installation via the Shadcn CLI. Every component is built with accessibility, scalability, and elegance in mind. The documentation site is powered by FumaDocs with MDX support, enabling rich interactive examples. Components integrate naturally with TailwindCSS and shadcn/ui, making them composable and easy to theme.",
+    category: "UI Library",
+    duration: "Jan 2026 – May 2026",
+    image: "/background/synapseui.png",
+    technologies: [
+      { name: "Next.js"},
+      { name: "TypeScript"},
+      { name: "React"},
+      { name: "TailwindCSS"},
+      { name: "FumaDocs"},
+      { name: "shadcn/ui"},
+      { name: "Magic UI"},
+      { name: "Node.js" },
+    ],
+    features: [
+      { text: "Copy-paste ready React components", icon: "Copy" },
+      { text: "Shadcn CLI compatible installation", icon: "Terminal" },
+      { text: "FumaDocs-powered interactive documentation", icon: "BookOpen" },
+      { text: "MDX examples with live previews", icon: "FileCode" },
+      { text: "Full TypeScript support & type exports", icon: "Code2" },
+      { text: "Accessible & ARIA-compliant components", icon: "Accessibility" },
+      { text: "Dark mode support out of the box", icon: "Moon" },
+      { text: "Composable TailwindCSS design system", icon: "Palette" },
+    ],
+    stats: [
+      { label: "Components", value: "30+", icon: "Layers" },
+      { label: "Deployed", value: "Vercel", icon: "Globe" },
+      { label: "Docs", value: "FumaDocs", icon: "BookOpen" },
+      { label: "Status", value: "Live", icon: "CheckCircle" },
+    ],
+    links: [
+      {
+        type: "Live Demo",
+        href: "https://synapse-ui-dev.vercel.app/",
+      },
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/Synapse-UI",
+      },
+    ],
+    challenges: [
+      "Building a zero-dependency component registry compatible with Shadcn CLI",
+      "Rendering live MDX examples with accurate type inference",
+      "Maintaining consistency across 30+ components with a single design system",
+    ],
+    architecture:
+      "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment",
+  },
+
+  // ── 4. SocketPoll ────────────────────────────────────────────────────────────
+  {
+    id: "socket-poll",
+    title: "SocketPoll",
+    tagline: "Real-Time Audience Engagement Platform at Scale",
+    description:
+      "SocketPoll is a real-time audience engagement platform engineered for instant interactive experiences — built with WebSockets, React, and PostgreSQL.",
+    longDescription:
+      "SocketPoll enables ultra-low latency live polls, votes, and audience interactions at scale. Built with a modern full-stack architecture using React, Vite, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, it delivers real-time state synchronization across thousands of concurrent participants. The platform features live result streaming, session management, presenter controls, and responsive UI built with shadcn/ui and TailwindCSS.",
+    category: "Real-Time",
+    duration: "Mar 2026 – Mar 2026",
+    image: "/background/socketpoll.png",
+    technologies: [
+      { name: "React"},
+      { name: "TypeScript"},
+      { name: "PostgreSQL"},
+      { name: "Drizzle ORM"},
+      { name: "TailwindCSS"},
+      { name: "WebSocket"},
+      { name: "Vite"},
+      { name: "shadcn/ui"},
+      { name: "Express.js"},
+    ],
+    features: [
+      { text: "Real-time WebSocket bi-directional communication", icon: "Wifi" },
+      { text: "Live poll state synchronization", icon: "RefreshCw" },
+      { text: "Multi-user concurrent session support", icon: "Users" },
+      { text: "Presenter controls & audience view separation", icon: "LayoutDashboard" },
+      { text: "PostgreSQL persistent vote storage", icon: "Database" },
+      { text: "Ultra-low latency response updates", icon: "Zap" },
+      { text: "Responsive UI for mobile & desktop", icon: "Monitor" },
+      { text: "Session-based access control", icon: "ShieldCheck" },
+    ],
+    stats: [
+      { label: "Protocol", value: "WebSocket", icon: "Wifi" },
+      { label: "DB", value: "PostgreSQL", icon: "Database" },
+      { label: "Deployed", value: "Vercel", icon: "Globe" },
+      { label: "Status", value: "Live", icon: "CheckCircle" },
+    ],
+    links: [
+      {
+        type: "Live Demo",
+        href: "https://socket-poll.vercel.app/",
+      },
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/SocketPoll",
+      },
+    ],
+    challenges: [
+      "Maintaining consistent state across all connected clients at scale",
+      "Handling WebSocket disconnects and graceful re-connection",
+      "Designing the database schema for high-throughput vote writes",
+    ],
+    architecture:
+      "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment",
+  },
+
+  // ── 5. LinkedUp ──────────────────────────────────────────────────────────────
+  {
+    id: "linked-up",
+    title: "LinkedUp",
+    tagline: "AI-Powered LinkedIn Content Generation Platform",
+    description:
+      "LinkedUp is an AI-powered LinkedIn content generation platform using LangChain, Groq LLMs, and Streamlit — enabling intelligent post creation at scale.",
+    longDescription:
+      "LinkedUp leverages LangChain's prompt pipeline architecture with Groq's ultra-fast LLM inference to generate high-quality, context-aware LinkedIn posts in seconds. Users can input their topic, tone, and target audience, and the system produces polished, engagement-optimized content. The Pydantic data models ensure structured output, while Streamlit provides an interactive, zero-friction frontend.",
+    category: "AI / Python",
+    duration: "April 2023 – September 2023",
+    image: "/background/linkedup.png",
+    technologies: [
+      { name: "Python" },
+      { name: "LangChain" },
+      { name: "Groq API" },
+      { name: "Streamlit" },
+      { name: "Pydantic" },
+      { name: "AI Integration" },
+    ],
+    features: [
+      { text: "LangChain scalable prompt pipeline", icon: "Link" },
+      { text: "Real-time Groq LLM inference", icon: "Zap" },
+      { text: "Context-aware content personalization", icon: "Sparkles" },
+      { text: "Structured output via Pydantic models", icon: "Code2" },
+      { text: "Interactive Streamlit UI", icon: "LayoutDashboard" },
+      { text: "Tone & audience targeting controls", icon: "Sliders" },
+      { text: "One-click copy for LinkedIn posts", icon: "Copy" },
+      { text: "Multi-topic post generation", icon: "Layers" },
+    ],
+    stats: [
+      { label: "LLM", value: "Groq", icon: "Brain" },
+      { label: "Framework", value: "LangChain", icon: "Link" },
+      { label: "Deployed", value: "Streamlit", icon: "Globe" },
+      { label: "Language", value: "Python", icon: "Code2" },
+    ],
+    links: [
+      {
+        type: "Live Demo",
+        href: "https://linkedup-xyz.streamlit.app/",
+      },
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/LinkedUp",
+      },
+    ],
+    challenges: [
+      "Designing prompt templates that reliably produce LinkedIn-optimized content",
+      "Managing LLM token costs while keeping response quality high",
+      "Building a low-friction UX with zero infrastructure in Streamlit",
+    ],
+    architecture:
+      "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment",
+  },
+
+  // ── 6. Mini-TailwindCSS ──────────────────────────────────────────────────────
+  {
+    id: "mini-tailwindcss",
+    title: "Mini-TailwindCSS",
+    tagline: "Lightweight Tailwind-Inspired CSS Utility Engine",
+    description:
+      "A lightweight Tailwind-inspired CSS utility engine using vanilla JavaScript and DOM manipulation — real-time utility class styling without build pipelines.",
+    longDescription:
+      "Mini-TailwindCSS is a runtime CSS utility engine that parses custom utility class names and dynamically injects styles into the browser — no build step, no preprocessor, no external framework required. Built with vanilla JavaScript and a modular utility parsing architecture, it supports responsive classes, extensible class mapping, and rapid UI prototyping. The engine is published as an NPM package and ships with a React integration layer.",
+    category: "Frontend",
+    duration: "Feb 2026 – Feb 2026",
+    image: "/background/mini-tailwind.png",
+    technologies: [
+      { name: "JavaScript"},
+      { name: "TypeScript"},
+      { name: "Express.js" },
+      { name: "DOM Manipulation"},
+      { name: "TailwindCSS"},
+      { name: "React"},
+      { name: "NPM" },
+    ],
+    features: [
+      { text: "Runtime utility class parsing (no build step)", icon: "Zap" },
+      { text: "Dynamic style injection via DOM API", icon: "Code2" },
+      { text: "Extensible class mapping architecture", icon: "Puzzle" },
+      { text: "Responsive utility class support", icon: "Monitor" },
+      { text: "React integration layer included", icon: "Layers" },
+      { text: "Zero-dependency core engine", icon: "Package" },
+      { text: "NPM package distribution", icon: "Package" },
+      { text: "Rapid UI prototyping without toolchain setup", icon: "Gauge" },
+    ],
+    stats: [
+      { label: "Type", value: "NPM Pkg", icon: "Package" },
+      { label: "Core", value: "Vanilla JS", icon: "Code2" },
+      { label: "Deployed", value: "Netlify", icon: "Globe" },
+      { label: "Status", value: "Done", icon: "CheckCircle" },
+    ],
+    links: [
+      {
+        type: "Live Demo",
+        href: "https://mini-tailwindcss.netlify.app/",
+      },
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/Mini-TailwindCSS",
+      },
+    ],
+    challenges: [
+      "Designing a performant runtime parser that doesn't block the main thread",
+      "Handling class specificity conflicts with existing stylesheets",
+      "Making the extensible class map intuitive for third-party consumers",
+    ],
+    architecture:
+      "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution",
+  },
+];

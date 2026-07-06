@@ -5,7 +5,7 @@ import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
-import ProjectsSection from "@/components/section/projects-section";
+// import ProjectsSection from "@/components/section/projects-section"; // preserved — not rendered
 // import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight, FileDown, Eye } from "lucide-react";
 import Experience from "@/components/experience";
@@ -25,6 +25,7 @@ import GithubCommits from "@/components/github-commits";
 import MultilingualGreeting from "@/components/multilingual-greeting";
 import { Button } from "@/components/ui/button";
 import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
+import { ProjectCarousel } from "@/components/21stdotdev/project-carausal";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -178,7 +179,7 @@ export default async function Page() {
 
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
-          <ProjectsSection />
+          <ProjectCarousel />
         </BlurFade>
       </section>
 
@@ -245,6 +246,7 @@ export default async function Page() {
         <br />
         @2026. All rights reserved.
       </p>
+
     </main>
   );
 }
