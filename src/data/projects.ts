@@ -72,7 +72,7 @@ export const TECH_COLORS: Record<string, string> = {
   yellow:
     "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
   pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
-  teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
+  teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20"
 };
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
@@ -90,46 +90,49 @@ export const PROJECTS: ProjectData[] = [
     duration: "June 2026 – Present",
     image: "/background/apex-zero.png",
     technologies: [
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "PostgreSQL"},
-      { name: "Drizzle ORM"},
-      { name: "TailwindCSS"},
-      { name: "shadcn/ui"},
-      { name: "Better Auth"},
-      { name: "OpenAI"},
-      { name: "Corsair AI SDK"},
-      { name: "Node.js"},
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "PostgreSQL" },
+      { name: "Drizzle ORM" },
+      { name: "TailwindCSS" },
+      { name: "shadcn/ui" },
+      { name: "Better Auth" },
+      { name: "OpenAI" },
+      { name: "Corsair AI SDK" },
+      { name: "Node.js" }
     ],
     features: [
-      { text: "AI-powered email prioritization & summarization", icon: "Sparkles" },
+      {
+        text: "AI-powered email prioritization & summarization",
+        icon: "Sparkles"
+      },
       { text: "Smart auto-draft with context awareness", icon: "PenLine" },
       { text: "OAuth 2.0 authentication via Better Auth", icon: "ShieldCheck" },
       { text: "PostgreSQL-backed email state management", icon: "Database" },
       { text: "Drizzle ORM for type-safe database queries", icon: "Layers" },
       { text: "Real-time inbox sync with Gmail API", icon: "RefreshCw" },
       { text: "Dark mode & responsive UI", icon: "Moon" },
-      { text: "Thread grouping & label management", icon: "Tag" },
+      { text: "Thread grouping & label management", icon: "Tag" }
     ],
     stats: [
       { label: "Stack", value: "Full-Stack", icon: "Layers" },
       { label: "AI Model", value: "GPT-4o", icon: "Brain" },
       { label: "Status", value: "Building", icon: "Hammer" },
-      { label: "Platform", value: "Vercel", icon: "Globe" },
+      { label: "Platform", value: "Vercel", icon: "Globe" }
     ],
     links: [
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/ApexZero",
-      },
+        href: "https://github.com/therajarshichakraborty/ApexZero"
+      }
     ],
     challenges: [
       "Handling Gmail OAuth token refresh cycles securely",
       "Designing efficient AI context windows for long threads",
-      "Real-time state sync without WebSocket complexity",
+      "Real-time state sync without WebSocket complexity"
     ],
     architecture:
-      "Next.js App Router → Drizzle ORM → PostgreSQL | OpenAI GPT-4o via Corsair AI SDK | Better Auth for session management | Gmail REST API integration",
+      "Next.js App Router → Drizzle ORM → PostgreSQL | OpenAI GPT-4o via Corsair AI SDK | Better Auth for session management | Gmail REST API integration"
   },
 
   // ── 2. ZenithCLI ────────────────────────────────────────────────────────────
@@ -154,37 +157,43 @@ export const PROJECTS: ProjectData[] = [
       { name: "shadcn/ui" },
       { name: "Better Auth" },
       { name: "OpenAI" },
-      { name: "Express.js" },
+      { name: "Express.js" }
     ],
     features: [
       { text: "AI-assisted code generation from terminal", icon: "Terminal" },
-      { text: "Project scaffolding with best-practice templates", icon: "FolderPlus" },
+      {
+        text: "Project scaffolding with best-practice templates",
+        icon: "FolderPlus"
+      },
       { text: "Authentication management (OAuth + JWT)", icon: "KeyRound" },
       { text: "Workflow automation & background jobs", icon: "Zap" },
       { text: "Intelligent debugging assistance", icon: "Bug" },
-      { text: "Web dashboard via Next.js for project overview", icon: "LayoutDashboard" },
+      {
+        text: "Web dashboard via Next.js for project overview",
+        icon: "LayoutDashboard"
+      },
       { text: "Prisma ORM for type-safe DB operations", icon: "Database" },
-      { text: "Developer productivity optimization tools", icon: "Gauge" },
+      { text: "Developer productivity optimization tools", icon: "Gauge" }
     ],
     stats: [
       { label: "Type", value: "CLI + Web", icon: "Terminal" },
       { label: "AI Model", value: "GPT-4o", icon: "Brain" },
       { label: "Status", value: "Building", icon: "Hammer" },
-      { label: "Runtime", value: "Node.js", icon: "Layers" },
+      { label: "Runtime", value: "Node.js", icon: "Layers" }
     ],
     links: [
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/Zenith-CLI",
-      },
+        href: "https://github.com/therajarshichakraborty/Zenith-CLI"
+      }
     ],
     challenges: [
       "Designing an intuitive CLI UX that works cross-platform",
       "Streaming AI responses in real-time within the terminal",
-      "Managing secure API key storage in the CLI context",
+      "Managing secure API key storage in the CLI context"
     ],
     architecture:
-      "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management",
+      "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management"
   },
 
   // ── 3. Synapse UI ────────────────────────────────────────────────────────────
@@ -200,14 +209,14 @@ export const PROJECTS: ProjectData[] = [
     duration: "Jan 2026 – May 2026",
     image: "/background/synapseui.png",
     technologies: [
-      { name: "Next.js"},
-      { name: "TypeScript"},
-      { name: "React"},
-      { name: "TailwindCSS"},
-      { name: "FumaDocs"},
-      { name: "shadcn/ui"},
-      { name: "Magic UI"},
-      { name: "Node.js" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "TailwindCSS" },
+      { name: "FumaDocs" },
+      { name: "shadcn/ui" },
+      { name: "Magic UI" },
+      { name: "Node.js" }
     ],
     features: [
       { text: "Copy-paste ready React components", icon: "Copy" },
@@ -217,31 +226,31 @@ export const PROJECTS: ProjectData[] = [
       { text: "Full TypeScript support & type exports", icon: "Code2" },
       { text: "Accessible & ARIA-compliant components", icon: "Accessibility" },
       { text: "Dark mode support out of the box", icon: "Moon" },
-      { text: "Composable TailwindCSS design system", icon: "Palette" },
+      { text: "Composable TailwindCSS design system", icon: "Palette" }
     ],
     stats: [
       { label: "Components", value: "30+", icon: "Layers" },
       { label: "Deployed", value: "Vercel", icon: "Globe" },
       { label: "Docs", value: "FumaDocs", icon: "BookOpen" },
-      { label: "Status", value: "Live", icon: "CheckCircle" },
+      { label: "Status", value: "Live", icon: "CheckCircle" }
     ],
     links: [
       {
         type: "Live Demo",
-        href: "https://synapse-ui-dev.vercel.app/",
+        href: "https://synapse-ui-dev.vercel.app/"
       },
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/Synapse-UI",
-      },
+        href: "https://github.com/therajarshichakraborty/Synapse-UI"
+      }
     ],
     challenges: [
       "Building a zero-dependency component registry compatible with Shadcn CLI",
       "Rendering live MDX examples with accurate type inference",
-      "Maintaining consistency across 30+ components with a single design system",
+      "Maintaining consistency across 30+ components with a single design system"
     ],
     architecture:
-      "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment",
+      "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment"
   },
 
   // ── 4. SocketPoll ────────────────────────────────────────────────────────────
@@ -257,49 +266,55 @@ export const PROJECTS: ProjectData[] = [
     duration: "Mar 2026 – Mar 2026",
     image: "/background/socketpoll.png",
     technologies: [
-      { name: "React"},
-      { name: "TypeScript"},
-      { name: "PostgreSQL"},
-      { name: "Drizzle ORM"},
-      { name: "TailwindCSS"},
-      { name: "WebSocket"},
-      { name: "Vite"},
-      { name: "shadcn/ui"},
-      { name: "Express.js"},
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "PostgreSQL" },
+      { name: "Drizzle ORM" },
+      { name: "TailwindCSS" },
+      { name: "WebSocket" },
+      { name: "Vite" },
+      { name: "shadcn/ui" },
+      { name: "Express.js" }
     ],
     features: [
-      { text: "Real-time WebSocket bi-directional communication", icon: "Wifi" },
+      {
+        text: "Real-time WebSocket bi-directional communication",
+        icon: "Wifi"
+      },
       { text: "Live poll state synchronization", icon: "RefreshCw" },
       { text: "Multi-user concurrent session support", icon: "Users" },
-      { text: "Presenter controls & audience view separation", icon: "LayoutDashboard" },
+      {
+        text: "Presenter controls & audience view separation",
+        icon: "LayoutDashboard"
+      },
       { text: "PostgreSQL persistent vote storage", icon: "Database" },
       { text: "Ultra-low latency response updates", icon: "Zap" },
       { text: "Responsive UI for mobile & desktop", icon: "Monitor" },
-      { text: "Session-based access control", icon: "ShieldCheck" },
+      { text: "Session-based access control", icon: "ShieldCheck" }
     ],
     stats: [
       { label: "Protocol", value: "WebSocket", icon: "Wifi" },
       { label: "DB", value: "PostgreSQL", icon: "Database" },
       { label: "Deployed", value: "Vercel", icon: "Globe" },
-      { label: "Status", value: "Live", icon: "CheckCircle" },
+      { label: "Status", value: "Live", icon: "CheckCircle" }
     ],
     links: [
       {
         type: "Live Demo",
-        href: "https://socket-poll.vercel.app/",
+        href: "https://socket-poll.vercel.app/"
       },
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/SocketPoll",
-      },
+        href: "https://github.com/therajarshichakraborty/SocketPoll"
+      }
     ],
     challenges: [
       "Maintaining consistent state across all connected clients at scale",
       "Handling WebSocket disconnects and graceful re-connection",
-      "Designing the database schema for high-throughput vote writes",
+      "Designing the database schema for high-throughput vote writes"
     ],
     architecture:
-      "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment",
+      "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment"
   },
 
   // ── 5. LinkedUp ──────────────────────────────────────────────────────────────
@@ -320,7 +335,7 @@ export const PROJECTS: ProjectData[] = [
       { name: "Groq API" },
       { name: "Streamlit" },
       { name: "Pydantic" },
-      { name: "AI Integration" },
+      { name: "AI Integration" }
     ],
     features: [
       { text: "LangChain scalable prompt pipeline", icon: "Link" },
@@ -330,31 +345,31 @@ export const PROJECTS: ProjectData[] = [
       { text: "Interactive Streamlit UI", icon: "LayoutDashboard" },
       { text: "Tone & audience targeting controls", icon: "Sliders" },
       { text: "One-click copy for LinkedIn posts", icon: "Copy" },
-      { text: "Multi-topic post generation", icon: "Layers" },
+      { text: "Multi-topic post generation", icon: "Layers" }
     ],
     stats: [
       { label: "LLM", value: "Groq", icon: "Brain" },
       { label: "Framework", value: "LangChain", icon: "Link" },
       { label: "Deployed", value: "Streamlit", icon: "Globe" },
-      { label: "Language", value: "Python", icon: "Code2" },
+      { label: "Language", value: "Python", icon: "Code2" }
     ],
     links: [
       {
         type: "Live Demo",
-        href: "https://linkedup-xyz.streamlit.app/",
+        href: "https://linkedup-xyz.streamlit.app/"
       },
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/LinkedUp",
-      },
+        href: "https://github.com/therajarshichakraborty/LinkedUp"
+      }
     ],
     challenges: [
       "Designing prompt templates that reliably produce LinkedIn-optimized content",
       "Managing LLM token costs while keeping response quality high",
-      "Building a low-friction UX with zero infrastructure in Streamlit",
+      "Building a low-friction UX with zero infrastructure in Streamlit"
     ],
     architecture:
-      "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment",
+      "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment"
   },
 
   // ── 6. Mini-TailwindCSS ──────────────────────────────────────────────────────
@@ -370,13 +385,13 @@ export const PROJECTS: ProjectData[] = [
     duration: "Feb 2026 – Feb 2026",
     image: "/background/mini-tailwind.png",
     technologies: [
-      { name: "JavaScript"},
-      { name: "TypeScript"},
+      { name: "JavaScript" },
+      { name: "TypeScript" },
       { name: "Express.js" },
-      { name: "DOM Manipulation"},
-      { name: "TailwindCSS"},
-      { name: "React"},
-      { name: "NPM" },
+      { name: "DOM Manipulation" },
+      { name: "TailwindCSS" },
+      { name: "React" },
+      { name: "NPM" }
     ],
     features: [
       { text: "Runtime utility class parsing (no build step)", icon: "Zap" },
@@ -386,30 +401,30 @@ export const PROJECTS: ProjectData[] = [
       { text: "React integration layer included", icon: "Layers" },
       { text: "Zero-dependency core engine", icon: "Package" },
       { text: "NPM package distribution", icon: "Package" },
-      { text: "Rapid UI prototyping without toolchain setup", icon: "Gauge" },
+      { text: "Rapid UI prototyping without toolchain setup", icon: "Gauge" }
     ],
     stats: [
       { label: "Type", value: "NPM Pkg", icon: "Package" },
       { label: "Core", value: "Vanilla JS", icon: "Code2" },
       { label: "Deployed", value: "Netlify", icon: "Globe" },
-      { label: "Status", value: "Done", icon: "CheckCircle" },
+      { label: "Status", value: "Done", icon: "CheckCircle" }
     ],
     links: [
       {
         type: "Live Demo",
-        href: "https://mini-tailwindcss.netlify.app/",
+        href: "https://mini-tailwindcss.netlify.app/"
       },
       {
         type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/Mini-TailwindCSS",
-      },
+        href: "https://github.com/therajarshichakraborty/Mini-TailwindCSS"
+      }
     ],
     challenges: [
       "Designing a performant runtime parser that doesn't block the main thread",
       "Handling class specificity conflicts with existing stylesheets",
-      "Making the extensible class map intuitive for third-party consumers",
+      "Making the extensible class map intuitive for third-party consumers"
     ],
     architecture:
-      "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution",
-  },
+      "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution"
+  }
 ];

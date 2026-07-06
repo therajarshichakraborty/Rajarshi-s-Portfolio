@@ -127,7 +127,7 @@ export default async function Page() {
         </div>
       </section>
       <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-6">
+        <div className="flex min-h-0 flex-col gap-y-6 -mt-16">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="inline-block whitespace-nowrap text-xl font-bold ">
               Education
@@ -145,6 +145,14 @@ export default async function Page() {
           <div className="flex flex-col gap-y-4">
             <h2 className="text-xl font-bold">Skills & Activity</h2>
             <MarqueeDemo />
+            <br />
+            <br />
+            <section id="projects">
+              <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                <ProjectCarousel />
+              </BlurFade>
+            </section>
+            <br />
             <br />
             <br />
             <br />
@@ -170,19 +178,11 @@ export default async function Page() {
                   </p>
                 </div>
               </div>
-              <br />
               <GithubCommits username="therajarshichakraborty" />
             </div>
           </div>
         </BlurFade>
       </section>
-
-      <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 11}>
-          <ProjectCarousel />
-        </BlurFade>
-      </section>
-
       <section id="leetcode" className="-mt-8 md:-mt-12">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center text-foreground">
@@ -246,7 +246,6 @@ export default async function Page() {
         <br />
         @2026. All rights reserved.
       </p>
-
     </main>
   );
 }
