@@ -96,11 +96,11 @@ export default function ProjectsPage() {
   return (
     <section id="projects">
       <div className="flex min-h-0 flex-col gap-y-8">
-         <section id="projects">
-        <BlurFade delay={BLUR_FADE_DELAY * 11}>
-          <ProjectCarousel />
-        </BlurFade>
-      </section>
+        <section id="projects">
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <ProjectCarousel />
+          </BlurFade>
+        </section>
       </div>
     </section>
   );
