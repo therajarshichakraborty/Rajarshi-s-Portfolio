@@ -1,9 +1,29 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// src/data/projects.ts
-// Single, richly-typed source of truth for all portfolio projects.
-// Consumed by the ProjectCarousel component.
-// ─────────────────────────────────────────────────────────────────────────────
-
+import ReactMarkdown from "react-markdown";
+import { Icons } from "@/components/icons";
+import { HomeIcon, NotebookIcon, Code } from "lucide-react";
+import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
+import { Typescript } from "@/components/ui/svgs/typescript";
+import { Nodejs } from "@/components/ui/svgs/nodejs";
+import { Python } from "@/components/ui/svgs/python";
+import { Golang } from "@/components/ui/svgs/golang";
+import { Docker } from "@/components/ui/svgs/docker";
+import { Kubernetes } from "@/components/ui/svgs/kubernetes";
+import { Java } from "@/components/ui/svgs/java";
+import { Csharp } from "@/components/ui/svgs/csharp";
+import RajarshiImage from "../../public/RajarshiImage.jpg";
+import { React } from "@/components/ui/svgs/react";
+import { Postgres } from "@/components/ui/svgs/postgresql";
+import { CPP } from "@/components/ui/svgs/c++";
+import { Express } from "@/components/ui/svgs/express";
+import { MongoDB } from "@/components/ui/svgs/mongodb";
+import { NumPy } from "@/components/ui/svgs/numpy";
+import { Pandas } from "@/components/ui/svgs/pandas";
+import { SkLearn } from "@/components/ui/svgs/sk-learn";
+import { Pytorch } from "@/components/ui/svgs/pytorch";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+import { Git } from "@/components/ui/svgs/git";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { JavaScript } from "@/components/ui/svgs/js";
 export type ProjectStatus = "In Progress" | "Completed" | "Production";
 export type ProjectCategory =
   | "AI / Full-Stack"
@@ -50,6 +70,7 @@ export interface ProjectData {
   architecture: string;
 }
 
+
 // ─── Color tokens ─────────────────────────────────────────────────────────────
 export const TECH_COLORS: Record<string, string> = {
   blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
@@ -74,6 +95,29 @@ export const TECH_COLORS: Record<string, string> = {
   pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
   teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20"
 };
+export const  skills = [
+    { name: "React", icon: React },
+    { name: "Tailwind", icon: Tailwind },
+    { name: "Next.js", icon: NextjsIconDark },
+    { name: "Javascript", icon: JavaScript },
+    { name: "Typescript", icon: Typescript },
+    { name: "Express", icon: Express },
+    { name: "MongoDB", icon: MongoDB },
+    { name: "Node.js", icon: Nodejs },
+    { name: "Git", icon: Git },
+    { name: "Python", icon: Python },
+    { name: "Go", icon: Golang },
+    { name: "Postgres", icon: Postgres },
+    { name: "Prisma", icon: Prisma },
+    { name: "Docker", icon: Docker },
+    { name: "Kubernetes", icon: Kubernetes },
+    { name: "Java", icon: Java },
+    { name: "NumPy", icon: NumPy },
+    { name: "Pandas", icon: Pandas },
+    { name: "Scikit Learn", icon: SkLearn },
+    { name: "PyTorch", icon: Pytorch },
+    { name: "C++", icon: CPP }
+  ]
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
 export const PROJECTS: ProjectData[] = [
@@ -148,7 +192,7 @@ export const PROJECTS: ProjectData[] = [
     duration: "May 2026 – Present",
     image: "/background/zenith-cli.png",
     technologies: [
-      { name: "Next.js" },
+      { name: skills[0].name },
       { name: "TypeScript" },
       { name: "PostgreSQL" },
       { name: "Prisma" },
