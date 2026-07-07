@@ -237,7 +237,7 @@ const ProjectThumb = memo(function ProjectThumb({
       aria-label={`View ${project.title}`}
       aria-current={isActive ? "true" : undefined}
       className={cn(
-        "group relative w-[175px] rounded-2xl border p-3.5 text-left",
+        "group relative w-full min-w-[155px] lg:w-[175px] shrink-0 rounded-2xl border p-3.5 text-left",
         "outline-none transition-all duration-200 ease-out",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         isActive
@@ -292,10 +292,10 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col gap-5 w-[500px] -ml-30"
+        className="flex flex-col gap-5 w-full"
       >
-        <div className="relative w-[550px] overflow-hidden rounded-2xl">
-          <div style={{ paddingBottom: "60.00%" }} className="relative w-full">
+        <div className="relative w-[500px] overflow-hidden rounded-2xl -ml-30">
+          <div style={{ paddingBottom: "65.00%" }} className="relative w-full">
             <Image
               src={project.image}
               alt={project.title}
@@ -329,7 +329,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── META + DESCRIPTION ─────────────────────────────────────────── */}
-        <div className="flex flex-col gap-2 w-[500px]">
+        <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
             <span className="font-medium">{project.duration}</span>
           </div>
@@ -339,13 +339,13 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── FEATURES + TECH / CTAS — side by side on md+ ───────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-4 w-[500px]">
+        <div className="grid grid-cols-1 gap-4 w-full">
           {/* Features */}
 
           {/* Tech stack + CTAs */}
-          <div className="flex flex-col gap-4 w-[500px]">
+          <div className="flex flex-col gap-4 w-full">
             <div className="flex flex-col gap-4">
-              <div className="flex-1 min-w-[380px] rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm">
+              <div className="w-full rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm">
                 <h4 className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                   Tech Stack
                 </h4>
@@ -459,22 +459,22 @@ export function ProjectCarousel() {
         </div>
       </div>
 
-      {/* ── Main 2-col layout ──────────────────────────────────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-5 lg:gap-8 items-start">
-        {/* ── LEFT: project list ────────────────────────────────────────── */}
-        <div className="flex flex-col gap-3 -mt-3">
-          <div
-            className="flex flex-col gap-2 overflow-y-auto"
-            style={{
-              maxHeight: "480px",
-              scrollbarWidth: "none" /* Firefox */,
-              msOverflowStyle: "none" /* IE/Edge */
-            }}
-          >
-            <style>{`
-              .project-list-scroll::-webkit-scrollbar { display: none; }
-            `}</style>
-            <div className="project-list-scroll flex flex-col gap-2">
+      {/* ── Main layout ───────────────────────────────────────────────────── */}
+      {/* Mobile/tablet: single column (details above, project strip below) */}
+      {/* Desktop lg+: 2 columns (project sidebar left, details right) */}
+      <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-5 lg:gap-8 items-start">
+
+        {/* ── Details panel: shows FIRST on mobile, SECOND column on lg ── */}
+        <div className="min-w-0 w-full order-1 lg:order-2">
+          <DetailsPanel project={active} />
+        </div>
+
+        {/* ── Project selector: shows BELOW on mobile, LEFT sidebar on lg ── */}
+        <div className="order-2 lg:order-1 w-full lg:w-auto">
+          {/* Horizontal scroll strip on sm/md; vertical list on lg+ */}
+          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]" style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}>
+            <style>{`.project-list-scroll::-webkit-scrollbar { display: none; }`}</style>
+            <div className="project-list-scroll flex flex-row lg:flex-col gap-2">
               {PROJECTS.map((project, i) => (
                 <ProjectThumb
                   key={project.id}
@@ -491,9 +491,6 @@ export function ProjectCarousel() {
           </div>
         </div>
 
-        <div className="min-w-0">
-          <DetailsPanel project={active} />
-        </div>
       </div>
     </section>
   );
