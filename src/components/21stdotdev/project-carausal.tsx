@@ -45,7 +45,15 @@ import {
   Pause
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PROJECTS, TECH_COLORS, type ProjectData } from "@/data/projects";
+import { PROJECTS, TECH_COLORS, skills, type ProjectData } from "@/data/projects";
+
+// Build a normalized name → icon lookup from the shared skills array
+const SKILL_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {};
+for (const s of skills) {
+  const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
+  SKILL_ICON_MAP[normalize(s.name)] = s.icon as React.ComponentType<{ className?: string }>;
+  SKILL_ICON_MAP[s.name.toLowerCase()] = s.icon as React.ComponentType<{ className?: string }>;
+}
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Sparkles,
@@ -113,16 +121,32 @@ function StatusBadge() {
 }
 
 function TechBadge({ name, delay }: { name: string; delay: number }) {
+  // Try to find a matching SVG icon (normalize away dots, spaces, +)
+  const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
+  const Icon =
+    SKILL_ICON_MAP[normalize(name)] ??
+    SKILL_ICON_MAP[name.toLowerCase()] ??
+    null;
+
   return (
     <motion.span
       initial={{ opacity: 0, scale: 0.88 }}
       animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.08, y: -1 }}
+      whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2, delay }}
       className={cn(
-        "inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-medium border",
-        TECH_COLORS["slate"]
+        "group inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-[11px] font-medium border cursor-default select-none",
+        "bg-transparent border-black/20 text-black",
+        "dark:border-white/20 dark:text-white",
+        "hover:border-black/50 hover:shadow-[0_0_8px_0px_rgba(0,0,0,0.12)]",
+        "dark:hover:border-white/50 dark:hover:shadow-[0_0_8px_0px_rgba(255,255,255,0.10)]",
+        "transition-[border-color,box-shadow] duration-200"
       )}
     >
+      {Icon && (
+        <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:rotate-12" />
+      )}
       {name}
     </motion.span>
   );
@@ -294,7 +318,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         className="flex flex-col gap-5 w-full"
       >
-        <div className="relative w-[500px] overflow-hidden rounded-2xl -ml-30">
+        <div className="relative w-[550px] lg:w-[550px] overflow-hidden rounded-2xl lg:-ml-25">
           <div style={{ paddingBottom: "65.00%" }} className="relative w-full">
             <Image
               src={project.image}
@@ -329,7 +353,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── META + DESCRIPTION ─────────────────────────────────────────── */}
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex flex-col gap-2 lg:w-[550px] rounded-2xl lg:-ml-25">
           <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
             <span className="font-medium">{project.duration}</span>
           </div>
@@ -339,11 +363,11 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── FEATURES + TECH / CTAS — side by side on md+ ───────────────── */}
-        <div className="grid grid-cols-1 gap-4 w-full">
+        <div className="grid grid-cols-1 gap-4 lg:w-[550px] rounded-2xl lg:-ml-25">
           {/* Features */}
 
           {/* Tech stack + CTAs */}
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
               <div className="w-full rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm">
                 <h4 className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
