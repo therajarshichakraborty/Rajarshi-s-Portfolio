@@ -26,6 +26,7 @@ import MultilingualGreeting from "@/components/multilingual-greeting";
 import { Button } from "@/components/ui/button";
 import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
 import { ProjectCarousel } from "@/components/21stdotdev/project-carausal";
+import Publications from "@/components/publications";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -183,6 +184,13 @@ export default async function Page() {
           </div>
         </BlurFade>
       </section>
+
+      <section id="publications" className="-mt-8 md:-mt-12">
+        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <Publications />
+        </BlurFade>
+      </section>
+
       <section id="leetcode" className="-mt-8 md:-mt-12">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center text-foreground">
