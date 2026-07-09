@@ -59,7 +59,7 @@ export default async function Page() {
                     className="group font-semibold"
                   >
                     <a
-                      href="/raharshi_resume.pdf"
+                      href="/Rajarshi's-Resume-01.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
@@ -75,7 +75,7 @@ export default async function Page() {
                     className="group font-semibold bg-background text-foreground border border-input transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
                   >
                     <a
-                      href="/raharshi_resume.pdf"
+                      href="/Rajarshi's-Resume-01.pdf"
                       download="Rajarshi_Chakraborty_Resume.pdf"
                       className="flex items-center gap-2"
                     >
