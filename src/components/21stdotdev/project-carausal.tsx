@@ -121,7 +121,6 @@ function StatusBadge() {
 }
 
 function TechBadge({ name, delay }: { name: string; delay: number }) {
-  // Try to find a matching SVG icon (normalize away dots, spaces, +)
   const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
   const Icon =
     SKILL_ICON_MAP[normalize(name)] ??
@@ -234,7 +233,7 @@ function CtaButton({
         "hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         isGithub
           ? "border-border bg-background text-foreground hover:bg-muted hover:shadow-md hover:shadow-black/5"
-          : "border-primary/25 bg-primary/8 text-primary hover:bg-primary/15 hover:shadow-md hover:shadow-primary/10"
+          : "border-primary/25 bg-transparent text-primary hover:bg-primary/15 hover:shadow-md hover:shadow-primary/10"
       )}
       aria-label={type}
     >

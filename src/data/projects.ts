@@ -95,102 +95,52 @@ export const TECH_COLORS: Record<string, string> = {
   pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
   teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20"
 };
-export const  skills = [
-    { name: "React", icon: React },
-    { name: "Tailwind", icon: Tailwind },
-    { name: "Next.js", icon: NextjsIconDark },
-    { name: "Javascript", icon: JavaScript },
-    { name: "Typescript", icon: Typescript },
-    { name: "Express", icon: Express },
-    { name: "MongoDB", icon: MongoDB },
-    { name: "Node.js", icon: Nodejs },
-    { name: "Git", icon: Git },
-    { name: "Python", icon: Python },
-    { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgres },
-    { name: "Prisma", icon: Prisma },
-    { name: "Docker", icon: Docker },
-    { name: "Kubernetes", icon: Kubernetes },
-    { name: "Java", icon: Java },
-    { name: "NumPy", icon: NumPy },
-    { name: "Pandas", icon: Pandas },
-    { name: "Scikit Learn", icon: SkLearn },
-    { name: "PyTorch", icon: Pytorch },
-    { name: "C++", icon: CPP }
-  ]
+export const skills = [
+  { name: "React", icon: React },
+  { name: "Tailwind", icon: Tailwind },
+  { name: "Next.js", icon: NextjsIconDark },
+  { name: "Javascript", icon: JavaScript },
+  { name: "Typescript", icon: Typescript },
+  { name: "Express", icon: Express },
+  { name: "MongoDB", icon: MongoDB },
+  { name: "Node.js", icon: Nodejs },
+  { name: "Git", icon: Git },
+  { name: "Python", icon: Python },
+  { name: "Go", icon: Golang },
+  { name: "Postgres", icon: Postgres },
+  { name: "Prisma", icon: Prisma },
+  { name: "Docker", icon: Docker },
+  { name: "Kubernetes", icon: Kubernetes },
+  { name: "Java", icon: Java },
+  { name: "NumPy", icon: NumPy },
+  { name: "Pandas", icon: Pandas },
+  { name: "Scikit Learn", icon: SkLearn },
+  { name: "PyTorch", icon: Pytorch },
+  { name: "C++", icon: CPP }
+]
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
 export const PROJECTS: ProjectData[] = [
-  // ── 1. ApexZero ─────────────────────────────────────────────────────────────
-  {
-    id: "apex-zero",
-    title: "ApexZero",
-    tagline: "AI-Powered Gmail Client for the Modern Developer",
-    description:
-      "ApexZero is a cross-platform AI-powered Gmail client built with Next.js, TypeScript, and Corsair AI SDK, designed to simplify email management and enhance productivity.",
-    longDescription:
-      "ApexZero transforms your inbox into an intelligent workspace. It leverages advanced AI to prioritize, organize, thread, and draft replies — automatically. Built on a modern full-stack architecture with Next.js App Router, Drizzle ORM, and Better Auth, it delivers a blazing-fast, secure, and extensible email experience. OpenAI models power the AI layer for smart summarization, intent detection, and auto-drafting, while a PostgreSQL backend ensures reliability at scale.",
-    category: "AI / Full-Stack",
-    duration: "June 2026 – Present",
-    image: "/background/apex-zero.png",
-    technologies: [
-      { name: "Next.js" },
-      { name: "TypeScript" },
-      { name: "PostgreSQL" },
-      { name: "Drizzle ORM" },
-      { name: "TailwindCSS" },
-      { name: "shadcn/ui" },
-      { name: "Better Auth" },
-      { name: "OpenAI" },
-      { name: "Corsair AI SDK" },
-      { name: "Node.js" }
-    ],
-    features: [
-      {
-        text: "AI-powered email prioritization & summarization",
-        icon: "Sparkles"
-      },
-      { text: "Smart auto-draft with context awareness", icon: "PenLine" },
-      { text: "OAuth 2.0 authentication via Better Auth", icon: "ShieldCheck" },
-      { text: "PostgreSQL-backed email state management", icon: "Database" },
-      { text: "Drizzle ORM for type-safe database queries", icon: "Layers" },
-      { text: "Real-time inbox sync with Gmail API", icon: "RefreshCw" },
-      { text: "Dark mode & responsive UI", icon: "Moon" },
-      { text: "Thread grouping & label management", icon: "Tag" }
-    ],
-    stats: [
-      { label: "Stack", value: "Full-Stack", icon: "Layers" },
-      { label: "AI Model", value: "GPT-4o", icon: "Brain" },
-      { label: "Status", value: "Building", icon: "Hammer" },
-      { label: "Platform", value: "Vercel", icon: "Globe" }
-    ],
-    links: [
-      {
-        type: "GitHub",
-        href: "https://github.com/therajarshichakraborty/ApexZero"
-      }
-    ],
-    challenges: [
-      "Handling Gmail OAuth token refresh cycles securely",
-      "Designing efficient AI context windows for long threads",
-      "Real-time state sync without WebSocket complexity"
-    ],
-    architecture:
-      "Next.js App Router → Drizzle ORM → PostgreSQL | OpenAI GPT-4o via Corsair AI SDK | Better Auth for session management | Gmail REST API integration"
-  },
-
   // ── 2. ZenithCLI ────────────────────────────────────────────────────────────
   {
     id: "zenith-cli",
     title: "ZenithCLI",
-    tagline: "AI-First Developer Command-Line Platform",
+    tagline: "Next-Gen AI Developer Workspace & CL",
     description:
-      "ZenithCLI is an AI-powered developer-focused CLI platform inspired by Claude Code — enabling intelligent coding workflows directly from the terminal.",
+      "ZenithCLI is an AI-powered developer-focused CLI platform inspired by Claude Code - enabling intelligent coding workflows directly from the terminal.",
     longDescription:
-      "ZenithCLI brings AI-assisted development directly into the terminal. Inspired by modern AI coding assistants, it enables code generation, project scaffolding, authentication management, workflow automation, and debugging — all from the command line. It uses Commander.js for CLI ergonomics, a Next.js dashboard for project management, and OpenAI for AI inference. A Prisma-backed PostgreSQL database stores user sessions, generated artifacts, and workflow state.",
+      `Technologies: Bun, TypeScript, Next.js, Express.js, PostgreSQL, Prisma ORM, Better Auth, Vercel AI SDK, Gemini API, Tailwind CSS, esbuild.
+Engineered a decoupled, multi-tier developer workspace featuring a terminal-first CLI powered by Bun and a glassmorphic web dashboard built with Next.js, React, and Shadcn UI.
+Implemented secure CLI-to-Web authentication by standardizing on the OAuth 2.0 Device Authorization Flow (RFC 8628) and Better Auth, allowing developers to authenticate locally via GitHub OAuth in the browser.
+Built an autonomous agentic workspace generator utilizing the Vercel AI SDK and Gemini API to dynamically scaffold file-system structures, configure boilerplate (e.g., package.json), and generate production-ready code blocks.
+Integrated smart Function Calling (Tool Calling) pipelines, enabling the AI to execute sandboxed Python math engines, fetch live URLs for context injection (RAG), and invoke Google Search tools dynamically.
+Optimized CLI performance and startup latency by bundling TS modules into a single flat ESM target using tsup/esbuild and utilizing lazy-loaded class services.
+💡 Resume Tips for this section:
+Bold key terms: Notice how terms like OAuth 2.0 Device Authorization Flow (RFC 8628), Vercel AI SDK, and tsup/esbuild are bolded or highlighted. ATS scanners look for these exact terms, and it helps recruiters scan the page quickly.
+If you have a link: If you have the GitHub repository public, place it right next to the title:`,
     category: "Developer Tooling",
     duration: "May 2026 – Present",
-    image: "/background/zenith-cli.png",
+    image: "/background/zenith-cli-2.png",
     technologies: [
       { name: skills[0].name },
       { name: "TypeScript" },
@@ -221,11 +171,15 @@ export const PROJECTS: ProjectData[] = [
     ],
     stats: [
       { label: "Type", value: "CLI + Web", icon: "Terminal" },
-      { label: "AI Model", value: "GPT-4o", icon: "Brain" },
-      { label: "Status", value: "Building", icon: "Hammer" },
-      { label: "Runtime", value: "Node.js", icon: "Layers" }
+      { label: "AI Model", value: "Gemini", icon: "Brain" },
+      { label: "Status", value: "Published", icon: "Hammer" },
+      { label: "Runtime", value: "Bun", icon: "Layers" }
     ],
     links: [
+      {
+        type: "NPM",
+        href: "https://www.npmjs.com/package/@zenith-labs/cli"
+      },
       {
         type: "GitHub",
         href: "https://github.com/therajarshichakraborty/Zenith-CLI"
@@ -251,7 +205,7 @@ export const PROJECTS: ProjectData[] = [
       "Synapse UI offers a curated collection of reusable React components with both copy-paste support and seamless CLI installation via the Shadcn CLI. Every component is built with accessibility, scalability, and elegance in mind. The documentation site is powered by FumaDocs with MDX support, enabling rich interactive examples. Components integrate naturally with TailwindCSS and shadcn/ui, making them composable and easy to theme.",
     category: "UI Library",
     duration: "Jan 2026 – May 2026",
-    image: "/background/synapseui.png",
+    image: "/background/synapseui-2.png",
     technologies: [
       { name: "Next.js" },
       { name: "TypeScript" },
@@ -308,7 +262,7 @@ export const PROJECTS: ProjectData[] = [
       "SocketPoll enables ultra-low latency live polls, votes, and audience interactions at scale. Built with a modern full-stack architecture using React, Vite, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, it delivers real-time state synchronization across thousands of concurrent participants. The platform features live result streaming, session management, presenter controls, and responsive UI built with shadcn/ui and TailwindCSS.",
     category: "Real-Time",
     duration: "Mar 2026 – Mar 2026",
-    image: "/background/socketpoll.png",
+    image: "/background/socketpoll-2.png",
     technologies: [
       { name: "React" },
       { name: "TypeScript" },
@@ -372,7 +326,7 @@ export const PROJECTS: ProjectData[] = [
       "LinkedUp leverages LangChain's prompt pipeline architecture with Groq's ultra-fast LLM inference to generate high-quality, context-aware LinkedIn posts in seconds. Users can input their topic, tone, and target audience, and the system produces polished, engagement-optimized content. The Pydantic data models ensure structured output, while Streamlit provides an interactive, zero-friction frontend.",
     category: "AI / Python",
     duration: "April 2023 – September 2023",
-    image: "/background/linkedup.png",
+    image: "/background/linkedup-2.png",
     technologies: [
       { name: "Python" },
       { name: "LangChain" },
@@ -427,7 +381,7 @@ export const PROJECTS: ProjectData[] = [
       "Mini-TailwindCSS is a runtime CSS utility engine that parses custom utility class names and dynamically injects styles into the browser — no build step, no preprocessor, no external framework required. Built with vanilla JavaScript and a modular utility parsing architecture, it supports responsive classes, extensible class mapping, and rapid UI prototyping. The engine is published as an NPM package and ships with a React integration layer.",
     category: "Frontend",
     duration: "Feb 2026 – Feb 2026",
-    image: "/background/mini-tailwind.png",
+    image: "/background/mini-tailwind-2.png",
     technologies: [
       { name: "JavaScript" },
       { name: "TypeScript" },
