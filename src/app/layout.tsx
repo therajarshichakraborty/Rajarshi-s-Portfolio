@@ -73,26 +73,13 @@ export default function RootLayout({
         )}
       >
         <div className="fixed inset-0 -z-20">
-          {/* <div
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-2000 ease-in-out dark:opacity-100 opacity-0 
-            
-            bg-[linear-gradient(135deg,#020617_0%,#020617_25%,#0b1120_45%,#111827_65%,#1e1b4b_85%,#020617_100%)]
-            "
-            // style={{
-            //   backgroundImage: "url('/background/black-hole-dark.jpg')",
-            // }}
-          /> */}
-
           <div className="absolute inset-0 overflow-hidden bg-background ">
-            {/* ✨ Soothing Mode Radial Auras (ambient depth) */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" />
-            {/* ✨ Subtle Noise Texture (pro-level finish) */}
+            {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" /> */}
             <div
               className="
       absolute inset-0 pointer-events-none
       opacity-[0.035]
       mix-blend-soft-light
-      bg-[url('/noise.png')]
     "
             />
           </div>

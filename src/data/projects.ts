@@ -127,7 +127,8 @@ export const PROJECTS: ProjectData[] = [
     title: "ZenithCLI",
     tagline: "Next-Gen AI Developer Workspace & CL",
     description:
-      "ZenithCLI is an AI-powered developer-focused CLI platform inspired by Claude Code - enabling intelligent coding workflows directly from the terminal.",
+      `Zenith CLI is a modern, AI-powered developer workspace that lives entirely inside your terminal.
+Powered by Google Gemini, Zenith combines conversational AI, intelligent tool execution, and autonomous project generation into a single CLI experience. Whether you're asking questions, searching the web, executing code, or scaffolding an entire application, Zenith keeps your workflow fast, interactive, and terminal-first.`,
     longDescription:
       `Technologies: Bun, TypeScript, Next.js, Express.js, PostgreSQL, Prisma ORM, Better Auth, Vercel AI SDK, Gemini API, Tailwind CSS, esbuild.
 Engineered a decoupled, multi-tier developer workspace featuring a terminal-first CLI powered by Bun and a glassmorphic web dashboard built with Next.js, React, and Shadcn UI.
@@ -199,8 +200,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "synapse-ui",
     title: "Synapse UI",
     tagline: "Production-Ready React Component Library",
-    description:
-      "Synapse UI is a modern React UI library built with Next.js, TypeScript, and FumaDocs — helping developers build beautiful, production-ready applications faster.",
+    description: `Synapse UI is a modern React UI library built with Next.js, TypeScript, and FumaDocs - helping developers build beautiful, production-ready applications faster. Designed with accessibility, performance, and scalability in mind, it enables teams to ship consistent, maintainable interfaces with confidence.`,
     longDescription:
       "Synapse UI offers a curated collection of reusable React components with both copy-paste support and seamless CLI installation via the Shadcn CLI. Every component is built with accessibility, scalability, and elegance in mind. The documentation site is powered by FumaDocs with MDX support, enabling rich interactive examples. Components integrate naturally with TailwindCSS and shadcn/ui, making them composable and easy to theme.",
     category: "UI Library",
@@ -256,8 +256,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "socket-poll",
     title: "SocketPoll",
     tagline: "Real-Time Audience Engagement Platform at Scale",
-    description:
-      "SocketPoll is a real-time audience engagement platform engineered for instant interactive experiences — built with WebSockets, React, and PostgreSQL.",
+    description:`SocketPoll is a real-time audience engagement platform engineered for instant interactive experiences, featuring low-latency WebSocket communication, scalable backend architecture, and a modern React-based interface powered by PostgreSQL for reliable data persistence.`,
     longDescription:
       "SocketPoll enables ultra-low latency live polls, votes, and audience interactions at scale. Built with a modern full-stack architecture using React, Vite, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, it delivers real-time state synchronization across thousands of concurrent participants. The platform features live result streaming, session management, presenter controls, and responsive UI built with shadcn/ui and TailwindCSS.",
     category: "Real-Time",
@@ -320,8 +319,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "linked-up",
     title: "LinkedUp",
     tagline: "AI-Powered LinkedIn Content Generation Platform",
-    description:
-      "LinkedUp is an AI-powered LinkedIn content generation platform using LangChain, Groq LLMs, and Streamlit — enabling intelligent post creation at scale.",
+    description: `LinkedUp is an AI-powered LinkedIn content generation platform built with LangChain, Groq LLMs, and Streamlit, delivering context-aware, high-quality content generation through scalable LLM pipelines and an intuitive user interface.`,
     longDescription:
       "LinkedUp leverages LangChain's prompt pipeline architecture with Groq's ultra-fast LLM inference to generate high-quality, context-aware LinkedIn posts in seconds. Users can input their topic, tone, and target audience, and the system produces polished, engagement-optimized content. The Pydantic data models ensure structured output, while Streamlit provides an interactive, zero-friction frontend.",
     category: "AI / Python",
@@ -375,8 +373,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "mini-tailwindcss",
     title: "Mini-TailwindCSS",
     tagline: "Lightweight Tailwind-Inspired CSS Utility Engine",
-    description:
-      "A lightweight Tailwind-inspired CSS utility engine using vanilla JavaScript and DOM manipulation — real-time utility class styling without build pipelines.",
+    description:`A lightweight, runtime CSS utility engine inspired by Tailwind CSS, leveraging vanilla JavaScript and DOM manipulation to deliver dynamic utility class generation, real-time styling, and a fast, build-free development workflow.`,
     longDescription:
       "Mini-TailwindCSS is a runtime CSS utility engine that parses custom utility class names and dynamically injects styles into the browser — no build step, no preprocessor, no external framework required. Built with vanilla JavaScript and a modular utility parsing architecture, it supports responsive classes, extensible class mapping, and rapid UI prototyping. The engine is published as an NPM package and ships with a React integration layer.",
     category: "Frontend",
