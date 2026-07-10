@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const username = searchParams.get("username");
@@ -13,7 +15,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const headers: Record<string, string> = {
-      Accept: "application/vnd.github+json"
+      Accept: "application/vnd.github+json",
+      "User-Agent": "Rajarshis-Portfolio"
     };
 
     if (process.env.GITHUB_TOKEN) {
@@ -24,7 +27,7 @@ export async function GET(request: NextRequest) {
       `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=50`,
       {
         headers,
-        next: { revalidate: 300 } // Cache response for 5 minutes on the server
+        next: { revalidate: 60 } // Cache response for 1 minute on the server
       }
     );
 
@@ -45,7 +48,11 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await response.json();
-    return NextResponse.json(data);
+    return NextResponse.json(data, {
+      headers: {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate"
+      }
+    });
   } catch (error: any) {
     console.error("Error fetching GitHub commits:", error);
     return NextResponse.json(

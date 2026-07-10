@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { Icons } from "@/components/icons";
 import {
   ExternalLink,
@@ -20,6 +20,15 @@ import {
   ContributionGraphTotalCount,
   type Activity as GraphActivity
 } from "@/components/kibo-ui/contribution-graph";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip as ChartTooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from "recharts";
 
 interface Contribution {
   date: string;
@@ -365,6 +374,7 @@ export default function GithubContributionBadge({
 }) {
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const [totalThisYear, setTotalThisYear] = useState(0);
+  const [totalCommits, setTotalCommits] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -373,9 +383,9 @@ export default function GithubContributionBadge({
   const [reviewCount, setReviewCount] = useState<number | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
 
-  const [activityLoaded, setActivityLoaded] = useState(false);
-  const [activityError, setActivityError] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [cacheBust, setCacheBust] = useState("");
+  const [chartMounted, setChartMounted] = useState(false);
 
   const [tooltip, setTooltip] = useState<{
     text: string;
@@ -383,15 +393,14 @@ export default function GithubContributionBadge({
     y: number;
   } | null>(null);
   const graphWrapRef = useRef<HTMLDivElement>(null);
-  const activityImgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    setChartMounted(true);
+    setCacheBust(Date.now().toString());
     const check = () => document.documentElement.classList.contains("dark");
     setIsDark(check());
     const obs = new MutationObserver(() => {
       setIsDark(check());
-      setActivityLoaded(false);
-      setActivityError(false);
     });
     obs.observe(document.documentElement, {
       attributes: true,
@@ -403,67 +412,35 @@ export default function GithubContributionBadge({
   const fetchData = useCallback(async () => {
     try {
       setLoading(true);
+      setStatsLoading(true);
       setError(null);
-      const res = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-        { next: { revalidate: 3600 } } as any
-      );
-      if (!res.ok) throw new Error("Failed to load contributions.");
-      const data: ApiResponse = await res.json();
-      setContributions(data.contributions);
-      const year = new Date().getFullYear().toString();
-      setTotalThisYear(data.total[year] ?? 0);
+      const res = await fetch(`/api/github-stats?username=${username}&t=${Date.now()}`);
+      if (!res.ok) throw new Error("Failed to load GitHub statistics.");
+      const data = await res.json();
+      
+      if (data.calendar) {
+        setContributions(data.calendar.contributions || []);
+        const year = new Date().getFullYear().toString();
+        setTotalThisYear(data.calendar.total[year] ?? 0);
+      }
+      
+      if (data.stats) {
+        setTotalCommits(data.stats.totalCommits);
+        setPrCount(data.stats.prCount);
+        setIssuesCount(data.stats.issuesCount);
+        setReviewCount(data.stats.reviewCount);
+      }
     } catch (e: any) {
       setError(e.message ?? "Something went wrong.");
     } finally {
       setLoading(false);
+      setStatsLoading(false);
     }
   }, [username]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  const fetchGithubStats = useCallback(async () => {
-    try {
-      setStatsLoading(true);
-      const headers = { Accept: "application/vnd.github+json" };
-      const [prRes, issueRes, reviewRes] = await Promise.all([
-        fetch(
-          `https://api.github.com/search/issues?q=author:${username}+type:pr&per_page=1`,
-          { headers }
-        ),
-        fetch(
-          `https://api.github.com/search/issues?q=author:${username}+type:issue&per_page=1`,
-          { headers }
-        ),
-        fetch(
-          `https://api.github.com/search/issues?q=reviewed-by:${username}+type:pr&per_page=1`,
-          { headers }
-        )
-      ]);
-      if (prRes.ok) {
-        const d = await prRes.json();
-        setPrCount(d.total_count ?? 0);
-      }
-      if (issueRes.ok) {
-        const d = await issueRes.json();
-        setIssuesCount(d.total_count ?? 0);
-      }
-      if (reviewRes.ok) {
-        const d = await reviewRes.json();
-        setReviewCount(d.total_count ?? 0);
-      }
-    } catch {
-      // silently degrade — values stay null
-    } finally {
-      setStatsLoading(false);
-    }
-  }, [username]);
-
-  useEffect(() => {
-    fetchGithubStats();
-  }, [fetchGithubStats]);
 
   const {
     longest,
@@ -479,18 +456,21 @@ export default function GithubContributionBadge({
 
   const graphData: GraphActivity[] = contributions as GraphActivity[];
 
-  const activityUrl = isDark
-    ? `https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=react-dark&hide_border=true&bg_color=090b11&color=e2e8f0&line=3b82f6&point=6366f1&area=true&area_color=3b82f6`
-    : `https://github-readme-activity-graph.vercel.app/graph?username=${username}&theme=minimal&hide_border=true&bg_color=fefefe&color=18181b&line=3b82f6&point=6366f1&area=true&area_color=3b82f6`;
+  const last31DaysContributions = useMemo(() => {
+    if (!contributions || contributions.length === 0) return [];
+    const sorted = [...contributions].sort((a, b) => a.date.localeCompare(b.date));
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const filtered = sorted.filter(c => c.date <= todayStr);
+    return filtered.slice(-31);
+  }, [contributions]);
 
-  useEffect(() => {
-    if (
-      activityImgRef.current?.complete &&
-      activityImgRef.current.naturalWidth > 0
-    ) {
-      setActivityLoaded(true);
-    }
-  }, [activityUrl]);
+  const chartData = useMemo(() => {
+    return last31DaysContributions.map(item => ({
+      date: item.date,
+      day: new Date(item.date + "T00:00:00").getDate().toString(),
+      contributions: item.count
+    }));
+  }, [last31DaysContributions]);
 
   const summaryStats = [
     {
@@ -715,49 +695,74 @@ export default function GithubContributionBadge({
           </a>
         </div>
 
-        {activityError ? (
-          <div className="w-full h-[180px] flex items-center justify-center">
-            <div className="flex flex-col items-center gap-2 text-center px-4">
-              <Icons.github className="size-8 text-muted-foreground/40" />
-              <p className="text-sm text-muted-foreground">
-                Unable to load activity graph.
-              </p>
-              <a
-                href={`https://github.com/${username}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-blue-500 hover:text-blue-400 underline underline-offset-2 transition-colors"
-              >
-                View on GitHub →
-              </a>
-            </div>
-          </div>
-        ) : (
-          <div className="relative">
-            {!activityLoaded && (
-              <div className="absolute inset-0 z-10 flex items-center justify-center animate-pulse">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="size-8 rounded-full bg-muted/50 flex items-center justify-center">
-                    <Activity className="size-4 text-muted-foreground/40" />
-                  </div>
-                  <div className="h-2 w-32 rounded-full bg-muted/50" />
+        <div className="w-full h-[220px] px-5 pb-4 mt-2">
+          {!chartMounted || loading ? (
+            <div className="w-full h-full flex items-center justify-center animate-pulse">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-8 rounded-full bg-muted/50 flex items-center justify-center">
+                  <Activity className="size-4 text-muted-foreground/40" />
                 </div>
+                <div className="h-2 w-32 rounded-full bg-muted/50" />
               </div>
-            )}
-            <img
-              ref={activityImgRef}
-              key={activityUrl}
-              src={activityUrl}
-              alt={`${username}'s GitHub activity graph`}
-              className="w-full object-cover"
-              onLoad={() => setActivityLoaded(true)}
-              onError={() => {
-                setActivityError(true);
-                setActivityLoaded(false);
-              }}
-            />
-          </div>
-        )}
+            </div>
+          ) : chartData.length === 0 ? (
+            <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">
+              No activity data available.
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart
+                data={chartData}
+                margin={{ left: -10, right: 10, top: 10, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="contribGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" opacity={0.3} />
+                <XAxis
+                  dataKey="day"
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                  width={30}
+                  allowDecimals={false}
+                />
+                <ChartTooltip
+                  content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      const data = payload[0].payload;
+                      return (
+                        <div className="rounded-lg border border-border bg-popover/90 backdrop-blur-md px-3 py-2 text-xs text-popover-foreground shadow-md transition-all">
+                          <p className="font-semibold text-[11px] text-muted-foreground mb-0.5">{formatDate(data.date, true)}</p>
+                          <p className="text-blue-500 font-bold text-sm">
+                            {data.contributions} {data.contributions === 1 ? "contribution" : "contributions"}
+                          </p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="contributions"
+                  stroke="rgb(59, 130, 246)"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#contribGradient)"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          )}
+        </div>
       </div>
       <div className="relative w-full overflow-hidden justify-center items-center flex">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-orange-500/40 to-transparent" />

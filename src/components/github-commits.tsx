@@ -57,13 +57,7 @@ export default function GithubCommits({ username }: { username: string }) {
         setLoading(true);
         setError(null);
         const response = await fetch(
-          `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=50`,
-          {
-            headers: {
-              Accept: "application/vnd.github+json"
-            },
-            next: { revalidate: 300 }
-          } as any
+          `/api/github-commits?username=${username}&t=${Date.now()}`
         );
 
         if (!response.ok) {
