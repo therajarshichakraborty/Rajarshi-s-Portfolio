@@ -467,7 +467,6 @@ export default function GithubContributionBadge({
   const chartData = useMemo(() => {
     return last31DaysContributions.map(item => ({
       date: item.date,
-      day: new Date(item.date + "T00:00:00").getDate().toString(),
       contributions: item.count
     }));
   }, [last31DaysContributions]);
@@ -695,73 +694,102 @@ export default function GithubContributionBadge({
           </a>
         </div>
 
-        <div className="w-full h-[220px] px-5 pb-4 mt-2">
-          {!chartMounted || loading ? (
-            <div className="w-full h-full flex items-center justify-center animate-pulse">
-              <div className="flex flex-col items-center gap-3">
-                <div className="size-8 rounded-full bg-muted/50 flex items-center justify-center">
-                  <Activity className="size-4 text-muted-foreground/40" />
+        <div className="relative w-full px-10 pb-4 pt-2">
+          {/* Rotated Y-Axis Label */}
+          <div 
+            className="absolute left-1 top-1/2 -translate-y-1/2 text-[9px] font-semibold text-muted-foreground select-none"
+            style={{
+              writingMode: 'vertical-lr',
+              transform: 'rotate(180deg)'
+            }}
+          >
+            Contributions
+          </div>
+
+          <div className="text-xs font-semibold text-foreground text-center mb-3 select-none">
+            Rajarshi Chakraborty's Contribution Graph
+          </div>
+
+          <div className="w-full h-[180px]">
+            {!chartMounted || loading ? (
+              <div className="w-full h-full flex items-center justify-center animate-pulse">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="size-8 rounded-full bg-muted/50 flex items-center justify-center">
+                    <Activity className="size-4 text-muted-foreground/40" />
+                  </div>
+                  <div className="h-2 w-32 rounded-full bg-muted/50" />
                 </div>
-                <div className="h-2 w-32 rounded-full bg-muted/50" />
               </div>
-            </div>
-          ) : chartData.length === 0 ? (
-            <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">
-              No activity data available.
-            </div>
-          ) : (
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart
-                data={chartData}
-                margin={{ left: -10, right: 10, top: 10, bottom: 0 }}
-              >
-                <defs>
-                  <linearGradient id="contribGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" opacity={0.3} />
-                <XAxis
-                  dataKey="day"
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
-                />
-                <YAxis
-                  tickLine={false}
-                  axisLine={false}
-                  tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
-                  width={30}
-                  allowDecimals={false}
-                />
-                <ChartTooltip
-                  content={({ active, payload }) => {
-                    if (active && payload && payload.length) {
-                      const data = payload[0].payload;
-                      return (
-                        <div className="rounded-lg border border-border bg-popover/90 backdrop-blur-md px-3 py-2 text-xs text-popover-foreground shadow-md transition-all">
-                          <p className="font-semibold text-[11px] text-muted-foreground mb-0.5">{formatDate(data.date, true)}</p>
-                          <p className="text-blue-500 font-bold text-sm">
-                            {data.contributions} {data.contributions === 1 ? "contribution" : "contributions"}
-                          </p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="contributions"
-                  stroke="rgb(59, 130, 246)"
-                  strokeWidth={2}
-                  fillOpacity={1}
-                  fill="url(#contribGradient)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          )}
+            ) : chartData.length === 0 ? (
+              <div className="w-full h-full flex items-center justify-center text-sm text-muted-foreground">
+                No activity data available.
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart
+                  data={chartData}
+                  margin={{ left: -10, right: 10, top: 5, bottom: 5 }}
+                >
+                  <defs>
+                    <linearGradient id="contribGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.35}/>
+                      <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="2 2" stroke={isDark ? "rgba(148, 163, 184, 0.18)" : "rgba(148, 163, 184, 0.35)"} />
+                  <XAxis
+                    dataKey="date"
+                    tickFormatter={(tick) => new Date(tick + "T00:00:00").getDate().toString()}
+                    tickLine={true}
+                    axisLine={true}
+                    tick={{ fontSize: 9, fill: "hsl(var(--muted-foreground))" }}
+                    stroke={isDark ? "rgba(148, 163, 184, 0.25)" : "rgba(148, 163, 184, 0.5)"}
+                  />
+                  <YAxis
+                    tickLine={true}
+                    axisLine={true}
+                    tick={{ fontSize: 9, fill: "hsl(var(--muted-foreground))" }}
+                    width={25}
+                    allowDecimals={false}
+                    ticks={[0, 5, 10, 15, 20, 25]}
+                    domain={[0, 25]}
+                    stroke={isDark ? "rgba(148, 163, 184, 0.25)" : "rgba(148, 163, 184, 0.5)"}
+                  />
+                  <ChartTooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        const data = payload[0].payload;
+                        return (
+                          <div className="rounded-lg border border-border bg-popover/90 backdrop-blur-md px-3 py-2 text-[10px] text-popover-foreground shadow-md transition-all">
+                            <p className="font-semibold text-muted-foreground mb-0.5">{formatDate(data.date, true)}</p>
+                            <p className="text-blue-500 font-bold text-xs">
+                              {data.contributions} {data.contributions === 1 ? "contribution" : "contributions"}
+                            </p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="contributions"
+                    stroke="rgb(59, 130, 246)"
+                    strokeWidth={2}
+                    dot={{ r: 2.5, fill: "rgb(59, 130, 246)", stroke: "rgb(59, 130, 246)", strokeWidth: 0 }}
+                    activeDot={{ r: 4.5, fill: "rgb(59, 130, 246)", stroke: "white", strokeWidth: 1.5 }}
+                    fillOpacity={1}
+                    fill="url(#contribGradient)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
+          </div>
+
+          {/* Centered X-Axis Label */}
+          <div className="text-[9px] text-muted-foreground font-semibold text-center mt-1 select-none">
+            Days
+          </div>
         </div>
       </div>
       <div className="relative w-full overflow-hidden justify-center items-center flex">
@@ -793,7 +821,7 @@ export default function GithubContributionBadge({
                     {loading ? (
                       <span className="inline-block w-12 h-5 bg-muted/40 animate-pulse rounded" />
                     ) : (
-                      totalContributions.toLocaleString()
+                      (totalThisYear || totalContributions).toLocaleString()
                     )}
                   </div>
                   <div className="text-xs font-semibold text-muted-foreground mt-1.5">

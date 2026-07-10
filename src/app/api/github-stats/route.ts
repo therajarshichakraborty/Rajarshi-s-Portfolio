@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
         const query = `
           query($username: String!, $from: DateTime!, $to: DateTime!) {
             user(login: $username) {
-              contributionsCollection(from: $from, to: $to) {
+              rollingCalendar: contributionsCollection {
                 contributionCalendar {
                   totalContributions
                   weeks {
@@ -57,6 +57,11 @@ export async function GET(request: NextRequest) {
                       contributionLevel
                     }
                   }
+                }
+              }
+              currentYearCalendar: contributionsCollection(from: $from, to: $to) {
+                contributionCalendar {
+                  totalContributions
                 }
               }
             }
@@ -78,12 +83,12 @@ export async function GET(request: NextRequest) {
 
         if (graphqlRes.ok) {
           const resBody = await graphqlRes.json();
-          const calendarRaw =
-            resBody?.data?.user?.contributionsCollection?.contributionCalendar;
+          const rollingRaw = resBody?.data?.user?.rollingCalendar?.contributionCalendar;
+          const currentYearRaw = resBody?.data?.user?.currentYearCalendar?.contributionCalendar;
 
-          if (calendarRaw) {
+          if (rollingRaw) {
             const contributions: Contribution[] = [];
-            const weeks = calendarRaw.weeks || [];
+            const weeks = rollingRaw.weeks || [];
 
             weeks.forEach((week: any) => {
               (week.contributionDays || []).forEach((day: any) => {
@@ -112,10 +117,10 @@ export async function GET(request: NextRequest) {
               });
             });
 
-            const currentYear = new Date().getFullYear().toString();
+            const currentYearStr = currentYear.toString();
             calendar = {
               total: {
-                [currentYear]: calendarRaw.totalContributions
+                [currentYearStr]: currentYearRaw?.totalContributions ?? rollingRaw.totalContributions
               },
               contributions
             };
@@ -129,12 +134,22 @@ export async function GET(request: NextRequest) {
     // Fallback if token is missing, or if GraphQL fetch failed
     if (!calendar) {
       try {
-        const fallbackRes = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${username}`,
-          { next: { revalidate: 60 } }
-        );
-        if (fallbackRes.ok) {
-          calendar = await fallbackRes.json();
+        const [rollingRes, fullRes] = await Promise.all([
+          fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { next: { revalidate: 60 } }),
+          fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, { next: { revalidate: 60 } })
+        ]);
+
+        if (rollingRes.ok && fullRes.ok) {
+          const rollingData = await rollingRes.json();
+          const fullData = await fullRes.json();
+          const currentYearStr = new Date().getFullYear().toString();
+
+          calendar = {
+            total: {
+              [currentYearStr]: fullData.total[currentYearStr] ?? rollingData.total.lastYear
+            },
+            contributions: rollingData.contributions
+          };
         }
       } catch (fallbackErr) {
         console.error("Error fetching fallback jogruber calendar:", fallbackErr);

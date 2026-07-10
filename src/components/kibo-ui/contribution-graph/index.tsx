@@ -383,7 +383,14 @@ export const ContributionGraphCalendar = ({
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft = containerRef.current.scrollWidth;
+      const scrollToEnd = () => {
+        if (containerRef.current) {
+          containerRef.current.scrollLeft = containerRef.current.scrollWidth;
+        }
+      };
+      scrollToEnd();
+      const timeoutId = setTimeout(scrollToEnd, 100);
+      return () => clearTimeout(timeoutId);
     }
   }, [weeks]);
 
