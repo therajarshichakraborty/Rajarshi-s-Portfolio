@@ -852,7 +852,8 @@ Biology`
   ],
   publications: [
     {
-      title: "Deep Learning enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
+      title:
+        "Deep Learning enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
       authors: [
         "Rajarshi Chakraborty*",
         "Dr. Subhankar Chatterjee [Professor of Techno Main Salt Lake]",
@@ -860,11 +861,13 @@ Biology`
         "Aditi Nandi Tokder [Assistant Professor of Techno Main Salt Lake]"
       ],
       conference: "CIACON 2026",
-      conferenceFullName: "International Conference on Control, Instrumentation, Energy & Communication",
+      conferenceFullName:
+        "International Conference on Control, Instrumentation, Energy & Communication",
       status: "Under Review",
       paperId: "2074",
       date: "June 2026",
-      description: "Proposes a novel deep learning framework that integrates hyper-spectral features using a fusion network to assess fruit quality with high precision, combining external appearance defects with internal chemical composition data.",
+      description:
+        "Proposes a novel deep learning framework that integrates hyper-spectral features using a fusion network to assess fruit quality with high precision, combining external appearance defects with internal chemical composition data.",
       links: [
         {
           name: "Conference Website",

@@ -45,14 +45,26 @@ import {
   Pause
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PROJECTS, TECH_COLORS, skills, type ProjectData } from "@/data/projects";
+import {
+  PROJECTS,
+  TECH_COLORS,
+  skills,
+  type ProjectData
+} from "@/data/projects";
 
 // Build a normalized name → icon lookup from the shared skills array
-const SKILL_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {};
+const SKILL_ICON_MAP: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {};
 for (const s of skills) {
   const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
-  SKILL_ICON_MAP[normalize(s.name)] = s.icon as React.ComponentType<{ className?: string }>;
-  SKILL_ICON_MAP[s.name.toLowerCase()] = s.icon as React.ComponentType<{ className?: string }>;
+  SKILL_ICON_MAP[normalize(s.name)] = s.icon as React.ComponentType<{
+    className?: string;
+  }>;
+  SKILL_ICON_MAP[s.name.toLowerCase()] = s.icon as React.ComponentType<{
+    className?: string;
+  }>;
 }
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -486,7 +498,6 @@ export function ProjectCarousel() {
       {/* Mobile/tablet: single column (details above, project strip below) */}
       {/* Desktop lg+: 2 columns (project sidebar left, details right) */}
       <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-5 lg:gap-8 items-start">
-
         {/* ── Details panel: shows FIRST on mobile, SECOND column on lg ── */}
         <div className="min-w-0 w-full order-1 lg:order-2">
           <DetailsPanel project={active} />
@@ -495,7 +506,15 @@ export function ProjectCarousel() {
         {/* ── Project selector: shows BELOW on mobile, LEFT sidebar on lg ── */}
         <div className="order-2 lg:order-1 w-full lg:w-auto">
           {/* Horizontal scroll strip on sm/md; vertical list on lg+ */}
-          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]" style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}>
+          <div
+            className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]"
+            style={
+              {
+                scrollbarWidth: "none",
+                msOverflowStyle: "none"
+              } as React.CSSProperties
+            }
+          >
             <style>{`.project-list-scroll::-webkit-scrollbar { display: none; }`}</style>
             <div className="project-list-scroll flex flex-row lg:flex-col gap-2">
               {PROJECTS.map((project, i) => (
@@ -513,7 +532,6 @@ export function ProjectCarousel() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -12,7 +12,6 @@ export function Publications() {
   return (
     <section id="publications-section" className="relative py-2 px-6">
       <div className="max-w-3xl mx-auto">
-
         <div className="flex items-center w-full">
           <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
           <div className="border bg-primary z-10 rounded-xl px-4 py-1">
@@ -28,7 +27,9 @@ export function Publications() {
             Checkout My Latest Publicartions
           </h2>
           <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-            Committed to advancing technology through research, technical publications, and innovative engineering contributions across multiple domains.
+            Committed to advancing technology through research, technical
+            publications, and innovative engineering contributions across
+            multiple domains.
           </p>
         </div>
 
@@ -36,7 +37,8 @@ export function Publications() {
           {publications.map((pub: any, index: number) => (
             <div
               key={index}
-              className="py-6 flex flex-col gap-y-2 group transition-all duration-300">
+              className="py-6 flex flex-col gap-y-2 group transition-all duration-300"
+            >
               <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                 <span className="font-semibold text-red-600 dark:text-primary">
                   {pub.status}
@@ -95,7 +97,11 @@ export function Publications() {
                   <span className="font-semibold text-foreground">
                     {pub.conference}
                   </span>{" "}
-                  — <span className="text-muted-foreground/90">{pub.conferenceFullName}</span> (IEEE Xplore, Forthcoming)
+                  —{" "}
+                  <span className="text-muted-foreground/90">
+                    {pub.conferenceFullName}
+                  </span>{" "}
+                  (IEEE Xplore, Forthcoming)
                 </span>
               </div>
 

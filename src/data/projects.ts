@@ -70,7 +70,6 @@ export interface ProjectData {
   architecture: string;
 }
 
-
 // ─── Color tokens ─────────────────────────────────────────────────────────────
 export const TECH_COLORS: Record<string, string> = {
   blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
@@ -117,7 +116,7 @@ export const skills = [
   { name: "Scikit Learn", icon: SkLearn },
   { name: "PyTorch", icon: Pytorch },
   { name: "C++", icon: CPP }
-]
+];
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
 export const PROJECTS: ProjectData[] = [
@@ -126,11 +125,9 @@ export const PROJECTS: ProjectData[] = [
     id: "zenith-cli",
     title: "ZenithCLI",
     tagline: "Next-Gen AI Developer Workspace & CL",
-    description:
-      `Zenith CLI is a modern, AI-powered developer workspace that lives entirely inside your terminal.
+    description: `Zenith CLI is a modern, AI-powered developer workspace that lives entirely inside your terminal.
 Powered by Google Gemini, Zenith combines conversational AI, intelligent tool execution, and autonomous project generation into a single CLI experience. Whether you're asking questions, searching the web, executing code, or scaffolding an entire application, Zenith keeps your workflow fast, interactive, and terminal-first.`,
-    longDescription:
-      `Technologies: Bun, TypeScript, Next.js, Express.js, PostgreSQL, Prisma ORM, Better Auth, Vercel AI SDK, Gemini API, Tailwind CSS, esbuild.
+    longDescription: `Technologies: Bun, TypeScript, Next.js, Express.js, PostgreSQL, Prisma ORM, Better Auth, Vercel AI SDK, Gemini API, Tailwind CSS, esbuild.
 Engineered a decoupled, multi-tier developer workspace featuring a terminal-first CLI powered by Bun and a glassmorphic web dashboard built with Next.js, React, and Shadcn UI.
 Implemented secure CLI-to-Web authentication by standardizing on the OAuth 2.0 Device Authorization Flow (RFC 8628) and Better Auth, allowing developers to authenticate locally via GitHub OAuth in the browser.
 Built an autonomous agentic workspace generator utilizing the Vercel AI SDK and Gemini API to dynamically scaffold file-system structures, configure boilerplate (e.g., package.json), and generate production-ready code blocks.
@@ -256,7 +253,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "socket-poll",
     title: "SocketPoll",
     tagline: "Real-Time Audience Engagement Platform at Scale",
-    description:`SocketPoll is a real-time audience engagement platform engineered for instant interactive experiences, featuring low-latency WebSocket communication, scalable backend architecture, and a modern React-based interface powered by PostgreSQL for reliable data persistence.`,
+    description: `SocketPoll is a real-time audience engagement platform engineered for instant interactive experiences, featuring low-latency WebSocket communication, scalable backend architecture, and a modern React-based interface powered by PostgreSQL for reliable data persistence.`,
     longDescription:
       "SocketPoll enables ultra-low latency live polls, votes, and audience interactions at scale. Built with a modern full-stack architecture using React, Vite, Express.js, WebSockets, PostgreSQL, and Drizzle ORM, it delivers real-time state synchronization across thousands of concurrent participants. The platform features live result streaming, session management, presenter controls, and responsive UI built with shadcn/ui and TailwindCSS.",
     category: "Real-Time",
@@ -373,7 +370,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     id: "mini-tailwindcss",
     title: "Mini-TailwindCSS",
     tagline: "Lightweight Tailwind-Inspired CSS Utility Engine",
-    description:`A lightweight, runtime CSS utility engine inspired by Tailwind CSS, leveraging vanilla JavaScript and DOM manipulation to deliver dynamic utility class generation, real-time styling, and a fast, build-free development workflow.`,
+    description: `A lightweight, runtime CSS utility engine inspired by Tailwind CSS, leveraging vanilla JavaScript and DOM manipulation to deliver dynamic utility class generation, real-time styling, and a fast, build-free development workflow.`,
     longDescription:
       "Mini-TailwindCSS is a runtime CSS utility engine that parses custom utility class names and dynamically injects styles into the browser — no build step, no preprocessor, no external framework required. Built with vanilla JavaScript and a modular utility parsing architecture, it supports responsive classes, extensible class mapping, and rapid UI prototyping. The engine is published as an NPM package and ships with a React integration layer.",
     category: "Frontend",
