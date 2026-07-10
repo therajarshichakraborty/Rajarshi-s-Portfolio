@@ -22,6 +22,7 @@ import { transformContestData } from "@/lib/leetcode/transformContestData";
 // import BrandCard from "@/components/gptCard/brandCard";
 import { MarqueeDemo } from "@/components/magicui/marquee-demo";
 import GithubCommits from "@/components/github-commits";
+import GithubContributionBadge from "@/components/github-contribution-badge";
 import MultilingualGreeting from "@/components/multilingual-greeting";
 import { Button } from "@/components/ui/button";
 import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
@@ -180,6 +181,7 @@ export default async function Page() {
                 </div>
               </div>
               <GithubCommits username="therajarshichakraborty" />
+              <GithubContributionBadge username="therajarshichakraborty" />
             </div>
           </div>
         </BlurFade>
