@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
       `https://api.github.com/search/commits?q=author:${username}&sort=author-date&order=desc&per_page=50`,
       {
         headers,
-        next: { revalidate: 60 } // Cache response for 1 minute on the server
+        next: { revalidate: 30 } // Cache response for 1 minute on the server
       }
     );
 

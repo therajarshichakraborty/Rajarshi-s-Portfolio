@@ -89,7 +89,7 @@ export default function GithubCommits({ username }: { username: string }) {
     }
 
     getCommits();
-    const interval = setInterval(getCommits, 300000);
+    const interval = setInterval(getCommits, 30000);
     return () => clearInterval(interval);
   }, [username]);
 
@@ -103,10 +103,10 @@ export default function GithubCommits({ username }: { username: string }) {
             <h3 className="text-sm font-semibold tracking-tight text-foreground">
               GitHub Activity
             </h3>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 dark:border-emerald-500/35 text-[10px] font-bold px-2 py-0.5 rounded-full">
+            <span className="inline-flex items-center gap-1.5 bg-transparent  text-lime-600 dark:text-lime-400 border border-lime-500/25 dark:border-lime-500/35 text-[10px] font-bold px-2 py-0.5 rounded-full">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-lime-500"></span>
               </span>
               Live
             </span>

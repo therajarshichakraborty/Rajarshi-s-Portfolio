@@ -387,6 +387,11 @@ export default function GithubContributionBadge({
   const [cacheBust, setCacheBust] = useState("");
   const [chartMounted, setChartMounted] = useState(false);
 
+  const [streakLoaded, setStreakLoaded] = useState(false);
+  const streakUrl = isDark
+    ? `https://github-readme-streak-stats.herokuapp.com/?user=${username}&hide_border=true&background=090b11&stroke=1a1f2e&ring=3b82f6&fire=f97316&currStreakNum=f8fafc&sideNums=f8fafc&currStreakLabel=94a3b8&sideLabels=94a3b8&dates=64748b`
+    : `https://github-readme-streak-stats.herokuapp.com/?user=${username}&hide_border=true&background=fefefe&stroke=e4e4e7&ring=3b82f6&fire=f97316&currStreakNum=18181b&sideNums=18181b&currStreakLabel=6b7280&sideLabels=6b7280&dates=9ca3af`;
+
   const [tooltip, setTooltip] = useState<{
     text: string;
     x: number;
@@ -417,13 +422,13 @@ export default function GithubContributionBadge({
       const res = await fetch(`/api/github-stats?username=${username}&t=${Date.now()}`);
       if (!res.ok) throw new Error("Failed to load GitHub statistics.");
       const data = await res.json();
-      
+
       if (data.calendar) {
         setContributions(data.calendar.contributions || []);
         const year = new Date().getFullYear().toString();
         setTotalThisYear(data.calendar.total[year] ?? 0);
       }
-      
+
       if (data.stats) {
         setTotalCommits(data.stats.totalCommits);
         setPrCount(data.stats.prCount);
@@ -696,7 +701,7 @@ export default function GithubContributionBadge({
 
         <div className="relative w-full px-10 pb-4 pt-2">
           {/* Rotated Y-Axis Label */}
-          <div 
+          <div
             className="absolute left-1 top-1/2 -translate-y-1/2 text-[9px] font-semibold text-muted-foreground select-none"
             style={{
               writingMode: 'vertical-lr',
@@ -732,8 +737,8 @@ export default function GithubContributionBadge({
                 >
                   <defs>
                     <linearGradient id="contribGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.35}/>
-                      <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.35} />
+                      <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="2 2" stroke={isDark ? "rgba(148, 163, 184, 0.18)" : "rgba(148, 163, 184, 0.35)"} />
@@ -795,114 +800,95 @@ export default function GithubContributionBadge({
       <div className="relative w-full overflow-hidden justify-center items-center flex">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-orange-500/40 to-transparent" />
 
-        <div className="flex flex-col sm:flex-row gap-0 items-stretch">
-          <div className="flex-1 min-w-0 flex flex-col justify-center">
-            <div className="flex items-center gap-2 px-5 pt-4 pb-4">
-              <Flame className="size-4 text-violet-500" />
-              <span className="text-sm font-semibold tracking-tight text-foreground">
-                Streak Stats
-              </span>
-              {current > 0 && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/20 bg-rose-500/10 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:bg-rose-500/15 dark:text-rose-300 animate-pulse">
-                  <Flame className="size-2.5" />
-                  {current} days active
-                </span>
-              )}
-            </div>
 
-            <div className="flex flex-col gap-6 px-6 pb-6 items-center sm:items-start">
-              <br />
-              <div className="flex items-center gap-4 w-full">
-                <div className="flex items-center justify-center size-10 text-emerald-500 shrink-0">
-                  <GitCommit className="size-6" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold tracking-tight text-foreground leading-none">
-                    {loading ? (
-                      <span className="inline-block w-12 h-5 bg-muted/40 animate-pulse rounded" />
-                    ) : (
-                      (totalThisYear || totalContributions).toLocaleString()
-                    )}
-                  </div>
-                  <div className="text-xs font-semibold text-muted-foreground mt-1.5">
-                    Total Contributions
-                  </div>
-                  <div className="text-[10px] text-muted-foreground/60">
-                    {loading
-                      ? "..."
-                      : `${formatDate(firstDate, true)} - Present`}
-                  </div>
-                </div>
+
+        <div className="px-6 py-5">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
+            {/* Total Contributions */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-orange-500">
+                <GitPullRequest className="size-7" />
               </div>
 
-              <div className="flex flex-col items-center justify-center py-2 w-full max-w-[200px] sm:self-center">
-                <div className="relative size-24 rounded-full border-[3px] border-blue-500 dark:border-blue-500 flex items-center justify-center">
-                  <div className="absolute -top-3.5 bg-background px-1.5 text-orange-500 flex items-center justify-center">
-                    <Flame className="size-6 fill-orange-500" />
-                  </div>
-                  <span className="text-3xl font-black text-foreground tabular-nums">
-                    {loading ? "—" : current}
-                  </span>
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground">
+                  {loading ? (
+                    <span className="inline-block w-16 h-6 rounded bg-muted animate-pulse" />
+                  ) : (
+                    (totalThisYear || totalContributions).toLocaleString()
+                  )}
                 </div>
-                <div className="text-center mt-2">
-                  <div className="text-xs font-bold text-muted-foreground">
-                    Current Streak
-                  </div>
-                  <div className="text-[10px] text-muted-foreground/60 mt-0.5">
-                    {loading
-                      ? "..."
-                      : current > 0
-                        ? `${formatDate(currentStart)} - ${formatDate(currentEnd)}`
-                        : "No active streak"}
-                  </div>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-4 w-full">
-                <div className="flex items-center justify-center size-10 text-blue-700 shrink-0">
-                  <TrendingUp className="size-6" />
-                </div>
-                <div>
-                  <div className="text-xl font-bold tracking-tight text-foreground leading-none">
-                    {loading ? (
-                      <span className="inline-block w-12 h-5 bg-muted/40 animate-pulse rounded" />
-                    ) : (
-                      longest
-                    )}
-                  </div>
-                  <div className="text-xs font-semibold text-muted-foreground mt-1.5">
-                    Longest Streak
-                  </div>
-                  <div className="text-[10px] text-muted-foreground/60">
-                    {loading
-                      ? "..."
-                      : longest > 0
-                        ? `${formatDate(longestStart)} - ${formatDate(longestEnd)}`
-                        : "No streak recorded"}
-                  </div>
-                </div>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Total Contributions
+                </p>
+
+                <p className="text-xs text-muted-foreground/70">
+                  {loading ? "..." : `${formatDate(firstDate, true)} – Present`}
+                </p>
               </div>
             </div>
-          </div>
 
-          <div className="w-full sm:w-[400px] shrink-0 flex flex-col">
-            <div className="flex items-center gap-2 px-30 pt-4 pb-2">
-              <Activity className="size-4 text-emerald-500" />
-              <h3 className="text-sm font-semibold tracking-tight text-foreground ">
-                Activity Overview
-              </h3>
+            {/* Divider */}
+            <div className="hidden md:block h-14 w-px bg-border" />
+
+            {/* Current Streak */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-lime-500">
+                <Flame className="size-8 fill-lime-500" />
+              </div>
+
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground">
+                  {loading ? "—" : current}
+                </div>
+
+                <p className="text-sm font-medium text-muted-foreground">
+                  Current Streak
+                </p>
+
+                <p className="text-xs text-muted-foreground/70">
+                  {loading
+                    ? "..."
+                    : current > 0
+                      ? `${formatDate(currentStart)} – ${formatDate(currentEnd)}`
+                      : "No active streak"}
+                </p>
+              </div>
             </div>
-            <div className="flex-1 flex items-center justify-center px-4 pb-4">
-              <ActivityOverviewChart
-                commits={contributions.reduce((s, c) => s + c.count, 0)}
-                prs={prCount ?? 0}
-                issues={issuesCount ?? 0}
-                reviews={reviewCount ?? 0}
-                loading={statsLoading || loading}
-              />
+
+            {/* Divider */}
+            <div className="hidden md:block h-14 w-px bg-border" />
+
+            {/* Longest Streak */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-blue-500">
+                <TrendingUp className="size-6" />
+              </div>
+
+              <div>
+                <div className="text-2xl font-bold tracking-tight text-foreground">
+                  {loading ? "—" : longest}
+                </div>
+
+                <p className="text-sm font-medium text-muted-foreground">
+                  Longest Streak
+                </p>
+
+                <p className="text-xs text-muted-foreground/70">
+                  {loading
+                    ? "..."
+                    : longest > 0
+                      ? `${formatDate(longestStart)} – ${formatDate(longestEnd)}`
+                      : "No streak recorded"}
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -135,8 +135,8 @@ export async function GET(request: NextRequest) {
     if (!calendar) {
       try {
         const [rollingRes, fullRes] = await Promise.all([
-          fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { next: { revalidate: 60 } }),
-          fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, { next: { revalidate: 60 } })
+          fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { next: { revalidate: 30 } }),
+          fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, { next: { revalidate: 30 } })
         ]);
 
         if (rollingRes.ok && fullRes.ok) {
