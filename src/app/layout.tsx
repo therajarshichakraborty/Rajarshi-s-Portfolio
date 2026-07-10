@@ -74,13 +74,12 @@ export default function RootLayout({
       >
         <div className="fixed inset-0 -z-20">
           <div className="absolute inset-0 overflow-hidden bg-background ">
-            {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" /> */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.025)_0%,transparent_75%)] dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.04)_0%,transparent_70%)]" />
             <div
               className="
-      absolute inset-0 pointer-events-none
-      opacity-[0.035]
-      mix-blend-soft-light
-    "
+                absolute inset-0 pointer-events-none
+                opacity-[0.035]
+                mix-blend-soft-light"
             />
           </div>
 

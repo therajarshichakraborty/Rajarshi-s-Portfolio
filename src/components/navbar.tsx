@@ -92,13 +92,13 @@ export default function Navbar() {
             );
           })}
 
-        <Separator
+        {/* <Separator
           orientation="vertical"
           className="h-2/3 m-auto w-px bg-border"
-        />
+        /> */}
 
         {/* 🔹 THEME TOGGLE */}
-        <Tooltip>
+        {/* <Tooltip>
           <TooltipTrigger asChild>
             <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
               <ModeToggle className="size-full cursor-pointer" />
@@ -113,7 +113,7 @@ export default function Navbar() {
             <p>Theme</p>
             <TooltipArrow className="fill-primary" />
           </TooltipContent>
-        </Tooltip>
+        </Tooltip> */}
       </Dock>
     </div>
   );
