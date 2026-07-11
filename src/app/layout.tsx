@@ -9,6 +9,7 @@ import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import Cover from "@/components/Cover";
 import CoverWrapper from "./CoverWrapper";
+import MyJourney from "@/components/my-journey";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -101,6 +102,11 @@ export default function RootLayout({
             </div>
 
             <div className="relative z-10 w-full max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
+              <div className="hidden xl:block absolute right-full mr-8 top-64 w-[230px]">
+                <div className="sticky top-64 max-h-[65vh] overflow-hidden pr-1">
+                  <MyJourney />
+                </div>
+              </div>
               {children}
             </div>
             <Navbar />
