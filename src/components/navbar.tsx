@@ -1,3 +1,5 @@
+"use client";
+
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Separator } from "@/components/ui/separator";
@@ -8,6 +10,9 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import { Command } from "lucide-react";
+import { Terminal } from "lucide-react";
+
 
 export default function Navbar() {
   return (
@@ -47,6 +52,29 @@ export default function Navbar() {
             </Tooltip>
           );
         })}
+
+        {/* 🔹 SEARCH / COMMAND PALETTE TRIGGER */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+              className="flex items-center justify-center size-8 sm:size-10 rounded-full focus:outline-none"
+            >
+              <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
+                <Terminal className="size-full rounded-sm overflow-hidden object-contain" />
+              </DockIcon>
+            </button>
+          </TooltipTrigger>
+
+          <TooltipContent
+            side="top"
+            sideOffset={8}
+            className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
+          >
+            <p>Command Palette (Ctrl + K)</p>
+            <TooltipArrow className="fill-primary" />
+          </TooltipContent>
+        </Tooltip>
 
         <Separator
           orientation="vertical"

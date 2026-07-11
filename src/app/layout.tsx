@@ -10,6 +10,7 @@ import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import Cover from "@/components/Cover";
 import CoverWrapper from "./CoverWrapper";
 import MyJourney from "@/components/my-journey";
+import CommandPalette from "@/components/command-palette";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
               {children}
             </div>
             <Navbar />
+            <CommandPalette />
           </TooltipProvider>
         </ThemeProvider>
       </body>
