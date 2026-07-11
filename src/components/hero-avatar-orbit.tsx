@@ -47,7 +47,7 @@ export default function HeroAvatarOrbit() {
   ];
 
   return (
-    <div className="relative flex items-center justify-center w-[272px] h-[272px] sm:w-[352px] sm:h-[352px] md:w-[400px] md:h-[400px] overflow-visible group/orbit-container">
+    <div className="relative flex items-center justify-center w-[160px] h-[160px] sm:w-[192px] sm:h-[192px] md:w-[400px] md:h-[400px] overflow-visible group/orbit-container">
       {/* Inline styles for starry float, revolve & twinkle animations */}
       <style
         dangerouslySetInnerHTML={{
@@ -90,7 +90,7 @@ export default function HeroAvatarOrbit() {
       />
 
       {/* Actual Orbit Widget (Scaled to fit parent boundaries) */}
-      <div className="absolute flex items-center justify-center select-none w-[400px] h-[400px] scale-[0.68] sm:scale-[0.88] md:scale-100 transition-all duration-500 origin-center">
+      <div className="absolute flex items-center justify-center select-none w-[160px] h-[160px] sm:w-[192px] sm:h-[192px] md:w-[400px] md:h-[400px] md:scale-100 transition-all duration-500 origin-center">
         {/* Ambient Pulsing Glow Background */}
         <div className="absolute w-[240px] h-[240px] rounded-full bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-pink-500/10 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-pink-500/15 blur-2xl animate-pulse -z-10" />
 
@@ -107,7 +107,7 @@ export default function HeroAvatarOrbit() {
         </div>
 
         {/* INNER ORBIT RINGS & ICONS (Counter-Clockwise Orbit, Clockwise Counter-Rotation) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="hidden md:flex md:absolute md:inset-0 md:items-center md:justify-center pointer-events-none">
           {/* Ring Line */}
           <div className="absolute w-[270px] h-[270px] rounded-full border border-dashed border-neutral-200/60 dark:border-neutral-800/40" />
 
@@ -158,7 +158,7 @@ export default function HeroAvatarOrbit() {
         </div>
 
         {/* OUTER ORBIT RINGS & ICONS (Clockwise Orbit, Counter-Clockwise Counter-Rotation) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="hidden md:flex md:absolute md:inset-0 md:items-center md:justify-center pointer-events-none">
           {/* Ring Line */}
           <div className="absolute w-[370px] h-[370px] rounded-full border border-dashed border-neutral-200/30 dark:border-neutral-800/20" />
 

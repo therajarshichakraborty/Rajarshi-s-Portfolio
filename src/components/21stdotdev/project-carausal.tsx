@@ -272,12 +272,12 @@ const ProjectThumb = memo(function ProjectThumb({
       aria-label={`View ${project.title}`}
       aria-current={isActive ? "true" : undefined}
       className={cn(
-        "group relative w-full min-w-[155px] lg:w-[175px] shrink-0 rounded-2xl border p-3.5 text-left",
+        "group relative w-full lg:w-[175px] shrink-0 rounded-2xl border p-3.5 text-left",
         "outline-none transition-all duration-200 ease-out",
         "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         isActive
           ? "border-border bg-accent/60 shadow-sm"
-          : "border-transparent hover:border-border hover:bg-accent/30"
+          : "border-border/40 bg-muted/10 hover:border-border hover:bg-accent/30"
       )}
     >
       <div className="flex items-start justify-between gap-2">
@@ -329,7 +329,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         className="flex flex-col gap-5 w-full"
       >
-        <div className="relative w-[550px] lg:w-[550px] overflow-hidden rounded-2xl lg:-ml-25">
+        <div className="relative w-full lg:w-[550px] overflow-hidden rounded-2xl lg:-ml-25">
           <div style={{ paddingBottom: "65.00%" }} className="relative w-full">
             <Image
               src={project.image}
@@ -364,7 +364,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── META + DESCRIPTION ─────────────────────────────────────────── */}
-        <div className="flex flex-col gap-2 lg:w-[550px] rounded-2xl lg:-ml-25">
+        <div className="flex flex-col gap-2 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
           <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
             <span className="font-medium">{project.duration}</span>
           </div>
@@ -374,7 +374,7 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         </div>
 
         {/* ── FEATURES + TECH / CTAS — side by side on md+ ───────────────── */}
-        <div className="grid grid-cols-1 gap-4 lg:w-[550px] rounded-2xl lg:-ml-25">
+        <div className="grid grid-cols-1 gap-4 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
           {/* Features */}
 
           {/* Tech stack + CTAs */}
@@ -505,9 +505,9 @@ export function ProjectCarousel() {
 
         {/* ── Project selector: shows BELOW on mobile, LEFT sidebar on lg ── */}
         <div className="order-2 lg:order-1 w-full lg:w-auto">
-          {/* Horizontal scroll strip on sm/md; vertical list on lg+ */}
+          {/* Grid layout on sm/md; vertical list on lg+ */}
           <div
-            className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]"
             style={
               {
                 scrollbarWidth: "none",
@@ -516,20 +516,18 @@ export function ProjectCarousel() {
             }
           >
             <style>{`.project-list-scroll::-webkit-scrollbar { display: none; }`}</style>
-            <div className="project-list-scroll flex flex-row lg:flex-col gap-2">
-              {PROJECTS.map((project, i) => (
-                <ProjectThumb
-                  key={project.id}
-                  project={project}
-                  isActive={i === activeIndex}
-                  index={i}
-                  onClick={() => {
-                    goTo(i);
-                    setIsPlaying(false);
-                  }}
-                />
-              ))}
-            </div>
+            {PROJECTS.map((project, i) => (
+              <ProjectThumb
+                key={project.id}
+                project={project}
+                isActive={i === activeIndex}
+                index={i}
+                onClick={() => {
+                  goTo(i);
+                  setIsPlaying(false);
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>

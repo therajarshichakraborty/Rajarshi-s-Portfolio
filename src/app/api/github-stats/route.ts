@@ -171,23 +171,32 @@ export async function GET(request: NextRequest) {
       }
     };
 
-    // 2. Fetch stats: Commits, PRs, Issues, and Reviews (with search APIs)
+    // 2. Fetch stats: Commits, PRs, Issues, Reviews, Profile and Repos
     const statsPromises = [
       fetchHelper(`https://api.github.com/search/commits?q=author:${username}`, "Commits Count"),
       fetchHelper(`https://api.github.com/search/issues?q=author:${username}+type:pr`, "PRs Count"),
       fetchHelper(`https://api.github.com/search/issues?q=author:${username}+type:issue`, "Issues Count"),
-      fetchHelper(`https://api.github.com/search/issues?q=reviewed-by:${username}+type:pr`, "Reviews Count")
+      fetchHelper(`https://api.github.com/search/issues?q=reviewed-by:${username}+type:pr`, "Reviews Count"),
+      fetchHelper(`https://api.github.com/users/${username}`, "User Profile"),
+      fetchHelper(`https://api.github.com/users/${username}/repos?per_page=100`, "User Repos")
     ];
 
-    const [commitsData, prsData, issuesData, reviewsData] = await Promise.all(
+    const [commitsData, prsData, issuesData, reviewsData, profileData, reposData] = await Promise.all(
       statsPromises
     );
+
+    let totalStars = 0;
+    if (Array.isArray(reposData)) {
+      totalStars = reposData.reduce((acc: number, repo: any) => acc + (repo.stargazers_count || 0), 0);
+    }
 
     const stats = {
       totalCommits: commitsData?.total_count ?? null,
       prCount: prsData?.total_count ?? null,
       issuesCount: issuesData?.total_count ?? null,
-      reviewCount: reviewsData?.total_count ?? null
+      reviewCount: reviewsData?.total_count ?? null,
+      reposCount: profileData?.public_repos ?? (Array.isArray(reposData) ? reposData.length : null),
+      starsCount: totalStars
     };
 
     return NextResponse.json(

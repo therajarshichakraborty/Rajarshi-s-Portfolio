@@ -9,7 +9,9 @@ import {
   Flame,
   GitPullRequest,
   GitBranch,
-  TrendingUp
+  TrendingUp,
+  Star,
+  FolderGit
 } from "lucide-react";
 import {
   ContributionGraph,
@@ -381,6 +383,8 @@ export default function GithubContributionBadge({
   const [prCount, setPrCount] = useState<number | null>(null);
   const [issuesCount, setIssuesCount] = useState<number | null>(null);
   const [reviewCount, setReviewCount] = useState<number | null>(null);
+  const [starsCount, setStarsCount] = useState<number | null>(null);
+  const [reposCount, setReposCount] = useState<number | null>(null);
   const [statsLoading, setStatsLoading] = useState(true);
 
   const [isDark, setIsDark] = useState(false);
@@ -434,6 +438,8 @@ export default function GithubContributionBadge({
         setPrCount(data.stats.prCount);
         setIssuesCount(data.stats.issuesCount);
         setReviewCount(data.stats.reviewCount);
+        setStarsCount(data.stats.starsCount);
+        setReposCount(data.stats.reposCount);
       }
     } catch (e: any) {
       setError(e.message ?? "Something went wrong.");
@@ -802,17 +808,17 @@ export default function GithubContributionBadge({
 
 
 
-        <div className="px-6 py-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="px-2 sm:px-6 py-5">
+          <div className="flex flex-row items-start justify-between gap-2 sm:gap-6">
 
             {/* Total Contributions */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-orange-500">
-                <GitPullRequest className="size-7" />
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
+              <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-orange-500 shrink-0">
+                <GitPullRequest className="size-6 sm:size-7" />
               </div>
 
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground">
+              <div className="min-w-0">
+                <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground truncate">
                   {loading ? (
                     <span className="inline-block w-16 h-6 rounded bg-muted animate-pulse" />
                   ) : (
@@ -820,11 +826,11 @@ export default function GithubContributionBadge({
                   )}
                 </div>
 
-                <p className="text-sm font-medium text-muted-foreground">
+                <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
                   Total Contributions
                 </p>
 
-                <p className="text-xs text-muted-foreground/70">
+                <p className="text-[10px] sm:text-xs text-muted-foreground/70 truncate">
                   {loading ? "..." : `${formatDate(firstDate, true)} – Present`}
                 </p>
               </div>
@@ -833,27 +839,24 @@ export default function GithubContributionBadge({
             {/* Divider */}
             <div className="hidden md:block h-14 w-px bg-border" />
 
-            {/* Current Streak */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-lime-500">
-                <Flame className="size-8 fill-lime-500" />
+            {/* Total Stars */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
+              <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-orange-500 shrink-0">
+                <Star className="size-6 sm:size-7 text-yellow-500" fill="currentColor" strokeWidth={0} />
+
               </div>
 
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground">
-                  {loading ? "—" : current}
+              <div className="min-w-0">
+                <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground truncate">
+                  {statsLoading ? "—" : (starsCount !== null ? starsCount.toLocaleString() : "—")}
                 </div>
 
-                <p className="text-sm font-medium text-muted-foreground">
-                  Current Streak
+                <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
+                  Total Stars
                 </p>
 
-                <p className="text-xs text-muted-foreground/70">
-                  {loading
-                    ? "..."
-                    : current > 0
-                      ? `${formatDate(currentStart)} – ${formatDate(currentEnd)}`
-                      : "No active streak"}
+                <p className="text-[10px] sm:text-xs text-muted-foreground/70 truncate">
+                  github stars
                 </p>
               </div>
             </div>
@@ -861,27 +864,23 @@ export default function GithubContributionBadge({
             {/* Divider */}
             <div className="hidden md:block h-14 w-px bg-border" />
 
-            {/* Longest Streak */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-center size-12 rounded-xl bg-transparent text-blue-500">
-                <TrendingUp className="size-6" />
+            {/* Total Repos */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
+              <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-blue-500 shrink-0">
+                <FolderGit className="size-5 sm:size-6" />
               </div>
 
-              <div>
-                <div className="text-2xl font-bold tracking-tight text-foreground">
-                  {loading ? "—" : longest}
+              <div className="min-w-0">
+                <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground truncate">
+                  {statsLoading ? "—" : (reposCount !== null ? reposCount.toLocaleString() : "—")}
                 </div>
 
-                <p className="text-sm font-medium text-muted-foreground">
-                  Longest Streak
+                <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
+                  Total Repos
                 </p>
 
-                <p className="text-xs text-muted-foreground/70">
-                  {loading
-                    ? "..."
-                    : longest > 0
-                      ? `${formatDate(longestStart)} – ${formatDate(longestEnd)}`
-                      : "No streak recorded"}
+                <p className="text-[10px] sm:text-xs text-muted-foreground/70 truncate">
+                  repositories
                 </p>
               </div>
             </div>

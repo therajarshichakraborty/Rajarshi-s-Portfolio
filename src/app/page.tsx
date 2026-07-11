@@ -61,7 +61,7 @@ export default async function Page() {
                     className="group font-semibold"
                   >
                     <a
-                      href="/Rajarshi's-Resume-01.pdf"
+                      href="/Rajarshi's-Resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
@@ -78,7 +78,7 @@ export default async function Page() {
                   >
                     <a
                       href="/Rajarshi's-Resume-01.pdf"
-                      download="Rajarshi_Chakraborty_Resume.pdf"
+                      download="Rajarshi's-Resume.pdf"
                       className="flex items-center gap-2"
                     >
                       <FileDown className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
@@ -92,7 +92,7 @@ export default async function Page() {
               delay={BLUR_FADE_DELAY}
               className="order-1 md:order-2 shrink-0"
             >
-              <div className="relative -mt-20 md:-mt-10 md:-ml-24 lg:-ml-12">
+              <div className="relative -mt-4 md:-mt-10 md:-ml-24 lg:-ml-12">
                 <HeroAvatarOrbit />
               </div>
             </BlurFade>

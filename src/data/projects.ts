@@ -120,7 +120,127 @@ export const skills = [
 
 // ─── Project Data ─────────────────────────────────────────────────────────────
 export const PROJECTS: ProjectData[] = [
-  // ── 2. ZenithCLI ────────────────────────────────────────────────────────────
+  {
+    id: "exeos-ai",
+    title: "ExeOS-AI",
+    tagline: "AI-Powered Executive Operating System",
+    description: `ExeOS-AI is an AI-native executive workspace that unifies email, calendars, tasks, notes, and intelligent automation into a single productivity platform. Built for professionals and modern teams, it leverages state-of-the-art language models to automate routine work, organize information, and provide actionable insights from your daily workflow.`,
+    longDescription: `Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Shadcn UI, Clerk Authentication, PostgreSQL, Drizzle ORM, Inngest, Vercel AI SDK, OpenRouter, OpenAI, Anthropic Claude, Google Gemini, Tencent Hunyuan, Zod, React Query.
+Engineered a production-grade AI executive workspace using the Next.js App Router, Server Components, and modern full-stack architecture.
+
+Implemented secure authentication and organization management with Clerk, enabling seamless user onboarding and protected multi-user workspaces.
+
+Built an AI-powered productivity engine capable of analyzing emails, summarizing conversations, generating intelligent responses, scheduling workflows, and providing contextual recommendations using multiple frontier LLMs through OpenRouter and the Vercel AI SDK.
+
+Developed an event-driven backend powered by Inngest for asynchronous AI jobs, scheduled automations, notification pipelines, and long-running background workflows.
+
+Designed a premium dashboard inspired by modern SaaS platforms using shadcn/ui, Tailwind CSS, and Framer Motion with fully responsive layouts, loading states, accessibility, and polished micro-interactions.
+
+Optimized performance through Server Components, Suspense streaming, lazy loading, database indexing, and efficient query execution using Drizzle ORM with PostgreSQL.
+
+Focused on scalability, maintainability, and developer experience through modular architecture, reusable components, strict TypeScript, Zod validation, and clean separation of concerns.`,
+
+    //@ts-ignore
+    category: "AI Productivity Platform",
+
+    duration: "June 2026 – July 2026",
+
+    image: "/background/exeosai.png",
+
+    technologies: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "Tailwind CSS" },
+      { name: "shadcn/ui" },
+      { name: "Clerk" },
+      { name: "PostgreSQL" },
+      { name: "Drizzle ORM" },
+      { name: "OpenRouter" },
+      { name: "Vercel AI SDK" }
+    ],
+
+    features: [
+      {
+        text: "AI-powered email analysis and intelligent summarization",
+        icon: "Mail"
+      },
+      {
+        text: "Smart calendar scheduling and event management",
+        icon: "Calendar"
+      },
+      {
+        text: "AI executive assistant with contextual conversations",
+        icon: "Bot"
+      },
+      {
+        text: "Task management with intelligent prioritization",
+        icon: "CheckSquare"
+      },
+      {
+        text: "Background workflow automation using Inngest",
+        icon: "Workflow"
+      },
+      {
+        text: "Multi-model AI support via OpenRouter",
+        icon: "Brain"
+      },
+      {
+        text: "Real-time notifications and productivity insights",
+        icon: "Bell"
+      },
+      {
+        text: "Premium responsive dashboard with dark mode",
+        icon: "LayoutDashboard"
+      }
+    ],
+
+    stats: [
+      {
+        label: "Type",
+        value: "AI SaaS",
+        icon: "Sparkles"
+      },
+      {
+        label: "AI Models",
+        value: "Multi-LLM",
+        icon: "Brain"
+      },
+      {
+        label: "Architecture",
+        value: "Full Stack",
+        icon: "Layers"
+      },
+      {
+        label: "Status",
+        value: "Active",
+        icon: "Rocket"
+      }
+    ],
+
+    links: [
+      {
+        //@ts-ignore
+        type: "Live",
+        href: "https://exe-os-ai.vercel.app"
+      },
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/ExeOS-AI"
+      }
+    ],
+
+    challenges: [
+      "Designing a scalable AI orchestration layer capable of routing requests across multiple language models.",
+      "Building asynchronous AI workflows with retries, scheduling, and event-driven processing using Inngest.",
+      "Creating a premium, highly responsive SaaS interface while maintaining accessibility and performance.",
+      "Optimizing PostgreSQL queries and Drizzle ORM interactions for low-latency data retrieval.",
+      "Managing secure authentication, protected routes, and user-specific AI context using Clerk."
+    ],
+
+    architecture:
+      "Next.js App Router → Server Actions & Route Handlers → Drizzle ORM → PostgreSQL │ Clerk Authentication │ Inngest Background Jobs │ OpenRouter & Vercel AI SDK → OpenAI · Claude · Gemini · Tencent Models"
+  },
   {
     id: "zenith-cli",
     title: "ZenithCLI",
