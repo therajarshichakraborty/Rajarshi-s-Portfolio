@@ -39,7 +39,7 @@ export default function HireMeSection() {
         </p>
 
         <p className="mx-auto max-w-lg text-muted-foreground">
-          I’m just one message away — feel free to reach out on social media or
+          I’m just one message away - feel free to reach out on social media or
           email me directly, and I&apos;ll respond as soon as I can.
         </p>
 

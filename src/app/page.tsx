@@ -101,7 +101,7 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="about" className="mb-4">
+      <section id="about" className="mb-4 -mt-15">
         <div className="flex min-h-0 flex-col gap-y-2">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap">
@@ -116,20 +116,32 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="gallery">
+      <section id="gallery" className="-mt-20">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <Gallery />
         </BlurFade>
       </section>
 
-      <section id="work" className="mt-0">
+      <section id="work" className="-mt-20">
         <div className="flex min-h-0 flex-col gap-y-3 ">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
+            <div className="flex items-center w-full">
+            <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="border bg-primary z-10 rounded-xl px-4 py-1">
+              
+              <span className="text-white dark:text-black text-sm font-medium ">
+                Experience
+              </span>
+            </div>
+            <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
+          </div>
+
+          <br />
             <Experience />
           </BlurFade>
         </div>
       </section>
-      <section id="education">
+      <section id="education" className="-mt-15">
         <div className="flex min-h-0 flex-col gap-y-6 -mt-16">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="inline-block whitespace-nowrap text-xl font-bold ">
@@ -143,11 +155,13 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="skills">
+      <section id="skills" className="-mt-15">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <div className="flex flex-col gap-y-4">
+          <div className="flex flex-col gap-y-4 ">
             <h2 className="text-xl font-bold">Skills & Activity</h2>
+            <div >
             <MarqueeDemo />
+            </div>
             <br />
             <br />
             <section id="projects">
@@ -159,7 +173,7 @@ export default async function Page() {
             <br />
             <br />
             <br />
-            <div className="w-full">
+            <div className="w-full -mt-20">
               <div className="flex flex-col gap-y-4 items-center justify-center">
                 <div className="flex items-center w-full">
                   <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
@@ -194,7 +208,7 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="leetcode" className="-mt-8 md:-mt-12">
+      <section id="leetcode" className="-mt-20 md:-mt-12">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
@@ -254,13 +268,13 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="contact">
+      <section id="contact" className="-mt-20">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <HireMeSection />
         </BlurFade>
       </section>
 
-      <p className="text-center text-sm text-muted-foreground tracking-wide">
+      <p className="text-center text-sm text-muted-foreground tracking-wide -mt-30">
         Design & Developed by{" "}
         <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
           Rajarshi Chakraborty
