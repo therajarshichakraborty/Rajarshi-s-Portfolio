@@ -15,6 +15,7 @@ import Gallery from "@/components/ui/gallery";
 import LeetCodeGraph from "./components/leetcode/LeetCodeGraph";
 import LeetCodeCard from "./components/leetcode/LeetCodeCard";
 import LeetCodeCardUI from "./components/leetcode/LeetCodeCardUI";
+import DSASheetsCard from "./components/leetcode/DSASheetsCard";
 import HireMeSection from "@/components/section/hire-me";
 import ContestRatingChart from "@/components/charts/ContestRatingChart";
 import { getContestData } from "@/lib/leetcode/getContestData";
@@ -195,6 +196,16 @@ export default async function Page() {
 
       <section id="leetcode" className="-mt-8 md:-mt-12">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <div className="flex items-center w-full">
+            <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="border bg-primary z-10 rounded-xl px-4 py-1">
+              <span className="text-white dark:text-black text-sm font-medium ">
+                Problem Solving
+              </span>
+            </div>
+            <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
+          </div>
+          <br />
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center text-foreground">
             My DSA Journey
           </h1>
@@ -239,6 +250,7 @@ export default async function Page() {
           </div>
 
           <LeetCodeGraph />
+          <DSASheetsCard />
         </BlurFade>
       </section>
 

@@ -11,6 +11,8 @@ import Cover from "@/components/Cover";
 import CoverWrapper from "./CoverWrapper";
 import MyJourney from "@/components/my-journey";
 import CommandPalette from "@/components/command-palette";
+import DSAPanel from "@/components/dsa/DSAPanel";
+import ContactSidebar from "@/components/contact-sidebar";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -103,15 +105,21 @@ export default function RootLayout({
             </div>
 
             <div className="relative z-10 w-full max-w-3xl mx-auto py-12 pb-24 sm:py-24 px-6">
-              <div className="hidden xl:block absolute right-full mr-8 top-64 w-[230px]">
+              <div className="hidden xl:block absolute right-full mr-8 top-64 bottom-12 w-[230px]">
                 <div className="sticky top-64 max-h-[65vh] overflow-hidden pr-1">
                   <MyJourney />
+                </div>
+              </div>
+              <div className="hidden xl:block absolute left-full ml-8 top-64 bottom-12 w-[230px]">
+                <div className="sticky top-28 pl-1">
+                  <ContactSidebar />
                 </div>
               </div>
               {children}
             </div>
             <Navbar />
             <CommandPalette />
+            {/* <DSAPanel /> */}
           </TooltipProvider>
         </ThemeProvider>
       </body>
