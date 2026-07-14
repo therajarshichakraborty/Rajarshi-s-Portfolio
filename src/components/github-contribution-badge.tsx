@@ -492,7 +492,7 @@ export default function GithubContributionBadge({
       isLoading: statsLoading
     },
     {
-      icon: <Flame className="size-4 text-orange-500" />,
+      icon: <Flame className="size-4 text-orange-500 fill-orange-500" />,
       label: "Current Streak",
       value: `${current}`,
       sub: "days",
@@ -842,7 +842,7 @@ export default function GithubContributionBadge({
             {/* Total Stars */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
               <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-orange-500 shrink-0">
-                <Star className="size-6 sm:size-7 text-yellow-500" fill="currentColor" strokeWidth={0} />
+                <Star className="size-6 sm:size-7 text-gray-500" fill="currentColor" strokeWidth={0} />
 
               </div>
 
