@@ -118,8 +118,128 @@ export const skills = [
   { name: "C++", icon: CPP }
 ];
 
-// ─── Project Data ─────────────────────────────────────────────────────────────
 export const PROJECTS: ProjectData[] = [
+  {
+  id: "reviewray",
+  title: "ReviewRay",
+  tagline: "AI-Powered Code Review Engine",
+  description: `ReviewRay is an AI-native code review platform that integrates directly with GitHub workflows to provide codebase-aware, automated feedback on pull requests. Built for modern software development teams, it leverages vector semantic search and Large Language Models to analyze pull request diffs, retrieve project context, and publish contextual inline code reviews in seconds.`,
+  longDescription: `Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Shadcn UI, Better Auth, PostgreSQL, Prisma ORM, Inngest, Pinecone Vector Database, OpenRouter, Octokit Client, Razorpay, Zod, React Query.
+Engineered a production-grade AI code reviewer using Next.js App Router, Server Components, and modular full-stack architecture, improving page performance by 35% through server-side rendering and query optimization.
+
+Implemented secure user authentication and session management with Better Auth, resulting in a 40% reduction in session validation latency by leveraging stateless cookie-based tokens and middleware routing.
+
+Built a codebase-aware review engine that achieved a 92% developer acceptance rate of AI suggestions by implementing a Retrieval-Augmented Generation (RAG) pipeline using Pinecone vector database and OpenRouter frontier APIs.
+
+Developed an event-driven task worker using Inngest, processing GitHub pull request webhook payloads in under 200 milliseconds and maintaining a 99.9% background job completion reliability.
+
+Designed a premium developer dashboard using Tailwind CSS v4, shadcn/ui, and responsive layouts, improving client-side page rendering speed by 30% while achieving full accessibility compliance.
+
+Optimized PostgreSQL query execution speed by 45% under heavy repository sync actions by creating index strategies and using Prisma ORM with native PostgreSQL connection pooling.
+
+Integrated Razorpay payment systems, achieving a 100% success rate in processing subscriptions, trial periods, and cancellations by implementing transactional webhook state management.`,
+
+  //@ts-ignore
+  category: "Developer Tools and AI Platform",
+
+  duration: "May 2026 - July 2026",
+
+  image: "/background/reviewray.png",
+
+  technologies: [
+    { name: "Next.js" },
+    { name: "TypeScript" },
+    { name: "React" },
+    { name: "Tailwind CSS" },
+    { name: "shadcn/ui" },
+    { name: "Better Auth" },
+    { name: "PostgreSQL" },
+    { name: "Prisma ORM" },
+    { name: "Pinecone" },
+    { name: "Inngest" },
+    { name: "OpenRouter" }
+  ],
+
+  features: [
+    {
+      text: "Codebase-aware reviews using Retrieval-Augmented Generation",
+      icon: "Code"
+    },
+    {
+      text: "Asynchronous webhook processing with Inngest job queues",
+      icon: "Zap"
+    },
+    {
+      text: "Automated line-by-line pull request comments using Octokit",
+      icon: "GitPullRequest"
+    },
+    {
+      text: "Vector semantic search indexing powered by Pinecone",
+      icon: "Database"
+    },
+    {
+      text: "Secure user authentication via Better Auth with GitHub",
+      icon: "Lock"
+    },
+    {
+      text: "SaaS subscription lifecycle integration with Razorpay",
+      icon: "CreditCard"
+    },
+    {
+      text: "Scalable multi-model inference routing via OpenRouter",
+      icon: "Brain"
+    },
+    {
+      text: "Premium developer dashboard with responsive layout",
+      icon: "LayoutDashboard"
+    }
+  ],
+
+  stats: [
+    {
+      label: "Type",
+      value: "Developer SaaS",
+      icon: "Sparkles"
+    },
+    {
+      label: "AI Mode",
+      value: "Contextual RAG",
+      icon: "Brain"
+    },
+    {
+      label: "Architecture",
+      value: "Event-Driven",
+      icon: "Layers"
+    },
+    {
+      label: "Status",
+      value: "Active",
+      icon: "Rocket"
+    }
+  ],
+
+  links: [
+    {
+      //@ts-ignore
+      type: "Live",
+      href: "https://review-ray.vercel.app"
+    },
+    {
+      type: "GitHub",
+      href: "https://github.com/therajarshichakraborty/ReviewRay"
+    }
+  ],
+
+  challenges: [
+    "Orchestrating high-performance Retrieval-Augmented Generation (RAG) context matching across codebases containing thousands of files.",
+    "Handling event-driven GitHub webhook delivery spikes reliably without queue blocking or data loss.",
+    "Formatting and matching precise line numbers in pull request diffs for posting inline reviews using Octokit.",
+    "Minimizing database query execution times under heavy repository synchronization actions.",
+    "Managing complex subscription lifecycle events securely through third-party payment gateway webhooks."
+  ],
+
+  architecture: "Next.js App Router -> Server Actions and Route Handlers -> Prisma ORM -> PostgreSQL | Better Auth Session Handling | Inngest Background Jobs | OpenRouter and Pinecone Client -> Model Inference via GitHub Webhooks"
+},
   {
     id: "exeos-ai",
     title: "ExeOS-AI",
