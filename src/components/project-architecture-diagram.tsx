@@ -316,9 +316,9 @@ export function ProjectArchitectureDiagram({
   if (!steps) return null;
 
   return (
-    <div className="w-full flex flex-col gap-y-4 rounded-2xl border border-border/40 bg-card/20 p-5 sm:p-6 backdrop-blur-xs relative overflow-hidden">
+    <div className="w-full flex flex-col gap-y-4 rounded-2xl bg-transparent p-5 sm:p-6 backdrop-blur-xs relative overflow-hidden">
       {/* Background visual indicators */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 size-80 rounded-full bg-primary/2 opacity-[0.03] blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 size-80 rounded-full bg-transparent opacity-[0.03] blur-3xl pointer-events-none -z-10" />
 
       <div className="flex flex-col gap-y-1">
         <h5 className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
@@ -333,7 +333,7 @@ export function ProjectArchitectureDiagram({
       {/* Vertical Timeline container */}
       <div className="relative pl-3 sm:pl-4">
         {/* Continuous dashed line background */}
-        <div className="absolute left-[31px] sm:left-[35px] top-6 bottom-6 w-[2px] border-l border-dashed border-border/60 dark:border-border/40 pointer-events-none" />
+        <div className="absolute left-[31px] sm:left-[35px] top-6 bottom-6 w-[2px]  pointer-events-none" />
 
         <div className="flex flex-col gap-y-6">
           {steps.map((step, idx) => {
@@ -347,10 +347,10 @@ export function ProjectArchitectureDiagram({
               >
                 {/* Number bullet and vertical line indicator */}
                 <div
-                  className={`flex size-10 items-center justify-center rounded-full border bg-card relative z-10 shrink-0 shadow-xs transition-all duration-300 ${
-                    isHovered
-                      ? "border-primary scale-110 shadow-md shadow-primary/10"
-                      : "border-border/60 group-hover:border-border"
+                  className={`flex size-10 items-center justify-center rounded-full bg-transparent relative z-10 shrink-0 shadow-xs transition-all duration-300 ${
+                   isHovered
+                      ? "bg-transparent"
+                      : "bg-transparent"
                   }`}
                 >
                   <span className="text-[10px] font-bold font-mono text-muted-foreground/80">
@@ -360,16 +360,16 @@ export function ProjectArchitectureDiagram({
 
                 {/* Node details card */}
                 <div
-                  className={`flex-1 flex flex-col gap-y-1.5 rounded-xl border p-4 transition-all duration-300 ${
+                  className={`flex-1 flex flex-col gap-y-1.5 rounded-xl p-4 transition-all duration-300 ${
                     isHovered
-                      ? "border-primary/50 bg-primary/2 dark:bg-primary/5 shadow-xs"
-                      : "border-border/40 bg-muted/5 hover:border-border/80"
+                      ? "bg-transparent"
+                      : "bg-transparent"
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div className="flex items-center gap-2">
                       <span
-                        className={`p-1.5 rounded-md border bg-gradient-to-br ${step.colorClass}`}
+                        className={`p-1.5 rounded-md bg-transparent ${step.colorClass}`}
                       >
                         {step.icon}
                       </span>
