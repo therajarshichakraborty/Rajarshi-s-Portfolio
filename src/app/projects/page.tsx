@@ -1,11 +1,58 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
-import { AnimatedFolder } from "@/components/3d-folder";
-import type { FolderProject } from "@/components/3d-folder";
-import { DATA } from "@/data/resume";
+import { PROJECTS } from "@/data/projects";
+import { ProjectArchitectureDiagram } from "@/components/project-architecture-diagram";
+import { ProjectPerformanceChart } from "@/components/project-performance-chart";
 
-import { ProjectCarousel } from "@/components/21stdotdev/project-carausal";
+// ── Icons mapping ───────────────────────────────────────────────────────────
+import {
+  Github,
+  ExternalLink,
+  BookOpen,
+  ArrowUpRight,
+  Sparkles,
+  Layers,
+  Database,
+  Terminal,
+  Code,
+  Zap,
+  Globe,
+  CheckCircle,
+  Hammer,
+  Bug,
+  LayoutDashboard,
+  Brain,
+  Link,
+  Lock,
+  CreditCard,
+  Mail,
+  Calendar,
+  Bot,
+  CheckSquare,
+  GitPullRequest,
+  Workflow,
+  Bell,
+  FolderPlus,
+  KeyRound,
+  Gauge,
+  Copy,
+  FileCode,
+  Code2,
+  Accessibility,
+  Palette,
+  Wifi,
+  Users,
+  Monitor,
+  Sliders,
+  Package,
+  Puzzle,
+  Rocket
+} from "lucide-react";
 
-// ── Skill icon lookup ─────────────────────────────────────────────────────────
+// SVG Tech icons
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
@@ -28,7 +75,6 @@ import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
 import { NextJs } from "@/components/ui/svgs/nextjs";
 import { Csharp } from "@/components/ui/svgs/csharp";
-import type React from "react";
 
 const tagIconMap: Record<string, React.ComponentType<any>> = {
   typescript: Typescript,
@@ -69,38 +115,290 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
   csharp: Csharp
 };
 
+const LUCIDE_ICON_MAP: Record<string, React.ComponentType<any>> = {
+  Code,
+  Zap,
+  GitPullRequest,
+  Database,
+  Lock,
+  CreditCard,
+  Brain,
+  LayoutDashboard,
+  Sparkles,
+  Layers,
+  Rocket,
+  Mail,
+  Calendar,
+  Bot,
+  CheckSquare,
+  Workflow,
+  Bell,
+  Terminal,
+  FolderPlus,
+  KeyRound,
+  Bug,
+  Gauge,
+  Copy,
+  BookOpen,
+  FileCode,
+  Code2,
+  Accessibility,
+  Palette,
+  Wifi,
+  Users,
+  Monitor,
+  Link,
+  Sliders,
+  Package,
+  Puzzle,
+  Globe,
+  Hammer,
+  CheckCircle
+};
+
 function getTagIcon(tag: string) {
   const key = tag.toLowerCase();
   return tagIconMap[key] ?? tagIconMap[key.replace(/[.\s]/g, "")] ?? undefined;
 }
 
-function buildFolderProjects(): FolderProject[] {
-  return DATA.projects.map((project, i) => ({
-    id: String(i + 1),
-    image: project.image || "/placeholder.svg",
-    title: project.title,
-    href: project.href || undefined,
-    dates: project.dates,
-    description: project.description,
-    tags: project.technologies.map((t) => ({ name: t, icon: getTagIcon(t) })),
-    links: project.links as any,
-    isBuilding: "isBuilding" in project ? project.isBuilding : undefined
-  }));
+function DynIcon({ name, className }: { name: string; className?: string }) {
+  const Comp = LUCIDE_ICON_MAP[name];
+  if (!Comp) return <Code className={className} />;
+  return <Comp className={className} />;
 }
 
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.05;
 
 export default function ProjectsPage() {
-  const folderProjects = buildFolderProjects();
-
   return (
-    <section id="projects">
-      <div className="flex min-h-0 flex-col gap-y-8">
-        <section id="projects">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <ProjectCarousel />
+    <section id="projects-page" className="w-full py-10 md:py-16 relative overflow-hidden">
+      {/* Landing-page styled radial blur glows in background */}
+      <div className="absolute top-[10%] left-[-10%] size-[500px] rounded-full bg-cyan-400/5 dark:bg-cyan-500/3 blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-[40%] right-[-10%] size-[600px] rounded-full bg-blue-500/5 dark:bg-blue-600/3 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-[75%] left-[5%] size-[500px] rounded-full bg-indigo-500/5 dark:bg-indigo-600/3 blur-[120px] pointer-events-none -z-10" />
+
+      <div className="flex flex-col gap-y-12 max-w-5xl mx-auto px-4">
+        {/* Header */}
+        <div className="flex flex-col gap-y-4 items-center text-center">
+          <BlurFade delay={BLUR_FADE_DELAY}>
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-xs font-semibold tracking-wider uppercase text-cyan-600 dark:text-cyan-400">
+              <Layers className="size-3.5" />
+              System Architecture & Performance Metrics
+            </span>
           </BlurFade>
-        </section>
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+              My Engineering Portfolio
+            </h1>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+            <p className="text-muted-foreground md:text-lg max-w-2xl leading-relaxed text-balance">
+              Explore the system designs, backend pipelines, and performance benchmarks behind my latest software engineering projects.
+            </p>
+          </BlurFade>
+        </div>
+
+        {/* Projects Feed */}
+        <div className="flex flex-col gap-y-20 mt-8">
+          {PROJECTS.map((project, index) => {
+            return (
+              <BlurFade key={project.id} delay={BLUR_FADE_DELAY * (4 + index)}>
+                <div className="group relative flex flex-col gap-y-8 rounded-3xl border border-border/40 bg-card/45 hover:bg-card/75 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-border">
+                  {/* Landing-page signature gradient border hover lighting */}
+                  <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-cyan-400 via-50% via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  {/* 1. Header Info: Title, Duration, Category */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-widest bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                        {project.category}
+                      </span>
+                      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-1 group-hover:bg-linear-to-r group-hover:from-cyan-400 group-hover:via-blue-500 group-hover:to-indigo-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                        {project.title}
+                      </h2>
+                      <p className="text-sm font-medium text-muted-foreground mt-1.5">
+                        {project.tagline}
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
+                      <span className="text-xs font-mono text-muted-foreground bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
+                        {project.duration}
+                      </span>
+                      
+                      {/* CTA Links */}
+                      <div className="flex items-center gap-2 mt-2">
+                        {project.links.map((link) => {
+                          const isGithub = link.type === "GitHub";
+                          return (
+                            <a
+                              key={link.type}
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-semibold tracking-wide transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
+                                isGithub
+                                  ? "bg-foreground text-background border-transparent hover:bg-foreground/90 hover:shadow-xs"
+                                  : "bg-background text-foreground border-border hover:bg-muted"
+                              }`}
+                            >
+                              {isGithub ? <Github className="size-3.5" /> : <ExternalLink className="size-3.5" />}
+                              {link.type}
+                              <ArrowUpRight className="size-3 opacity-50" />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr className="border-border/30" />
+
+                  {/* Project Image Banner */}
+                  <div className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-2xl border border-border/40 bg-muted/10">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+                      sizes="(max-width: 1024px) 100vw, 1024px"
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  <hr className="border-border/30" />
+
+                  {/* 2. Main Grid: Overview & Features (Left) | Tech & Stats (Right) */}
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8">
+                    {/* Left side: Overview & Key Features */}
+                    <div className="flex flex-col gap-y-5">
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
+                          Project Overview
+                        </h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
+                          Key Capabilities
+                        </h4>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {project.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-500/5 text-cyan-500 border border-cyan-500/10">
+                                <DynIcon name={feature.icon} className="size-3" />
+                              </span>
+                              <span className="leading-normal mt-0.5">{feature.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Right side: Quick stats & Technologies */}
+                    <div className="flex flex-col gap-y-6">
+                      {/* Stats grid */}
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
+                          Quick Metrics
+                        </h4>
+                        <div className="grid grid-cols-2 gap-3">
+                          {project.stats.map((stat, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center gap-2.5 rounded-xl border border-border/30 bg-muted/10 p-3 hover:border-cyan-500/20 transition-colors duration-200"
+                            >
+                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cyan-500/5 text-cyan-500 border border-cyan-500/15">
+                                <DynIcon name={stat.icon} className="size-3.5" />
+                              </span>
+                              <div className="min-w-0">
+                                <p className="text-[9px] uppercase tracking-wider text-muted-foreground/80 font-bold">
+                                  {stat.label}
+                                </p>
+                                <p className="text-xs font-bold text-foreground truncate mt-0.5">
+                                  {stat.value}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Tech badges */}
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
+                          Technologies Deployed
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies.map((tech) => {
+                            const Icon = getTagIcon(tech.name);
+                            return (
+                              <span
+                                key={tech.name}
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-default select-none transition-all duration-200 hover:border-cyan-500/40 hover:bg-cyan-500/5"
+                              >
+                                {Icon && <Icon className="size-3.5 shrink-0" />}
+                                {tech.name}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr className="border-border/30" />
+
+                  {/* 3. System Architecture & Performance Grid */}
+                  <div className="flex flex-col gap-y-4">
+                    <div>
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">
+                        System Architecture & Technical Specifications
+                      </h4>
+                      <p className="text-xs font-mono text-muted-foreground/80 leading-relaxed bg-muted/30 border border-border/30 rounded-lg p-2.5">
+                        {project.architecture}
+                      </p>
+                    </div>
+
+                    {/* Responsive Grid layout for system flow diagram and performance chart */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-2">
+                      <ProjectArchitectureDiagram projectId={project.id} />
+                      <ProjectPerformanceChart projectId={project.id} />
+                    </div>
+                  </div>
+
+                  {/* 4. Engineering Challenges section */}
+                  {project.challenges && project.challenges.length > 0 && (
+                    <>
+                      <hr className="border-border/30" />
+                      <div className="flex flex-col gap-y-3">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                          Key Technical Challenges & Solutions
+                        </h4>
+                        <div className="flex flex-col gap-y-3">
+                          {project.challenges.map((challenge, idx) => (
+                            <div
+                              key={idx}
+                              className="flex gap-3 text-xs leading-relaxed text-muted-foreground bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:border-cyan-500/20 transition-colors duration-200"
+                            >
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-mono font-bold text-[10px]">
+                                {idx + 1}
+                              </span>
+                              <p className="mt-0.5">{challenge}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </BlurFade>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
