@@ -346,10 +346,14 @@ export default function ProjectsPage() {
                             return (
                               <span
                                 key={tech.name}
-                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-default select-none transition-all duration-200 hover:border-border hover:bg-muted/40"
+                                className="group/tech inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-xs hover:shadow-primary/5 active:scale-[0.98]"
                               >
-                                {Icon && <Icon className="size-3.5 shrink-0" />}
-                                {tech.name}
+                                {Icon && (
+                                  <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-6" />
+                                )}
+                                <span className="transition-colors duration-300 group-hover/tech:text-primary">
+                                  {tech.name}
+                                </span>
                               </span>
                             );
                           })}
