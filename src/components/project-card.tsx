@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ import { DATA } from "@/data/resume";
 import { Icons } from "@/components/icons";
 
 const getSkill = (tag: string) => {
-  const normalizedTag = tag.toLowerCase().replace(/[^a-z0-9+]/g, ""); // keep + for C++
+  const normalizedTag = tag.toLowerCase().replace(/[^a-z0-9+]/g, "");
 
   if (normalizedTag === "postgresql" || normalizedTag === "postgres") {
     return DATA.skills.find((s) => s.name.toLowerCase() === "postgres");

@@ -262,7 +262,6 @@ export default function ProjectsPage() {
                       sizes="(max-width: 1024px) 100vw, 1024px"
                       priority={index === 0}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/30 via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   <hr className="border-border/30" />
@@ -305,10 +304,9 @@ export default function ProjectsPage() {
                       </div>
                     </div>
 
-                    {/* Right side: Quick stats & Technologies */}
                     <div className="flex flex-col gap-y-6">
-                      {/* Stats grid */}
-                      <div>
+                    
+                      {/* <div>
                         <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
                           Quick Metrics
                         </h4>
@@ -335,7 +333,7 @@ export default function ProjectsPage() {
                             </div>
                           ))}
                         </div>
-                      </div>
+                      </div> */}
 
                       {/* Tech badges */}
                       <div>
