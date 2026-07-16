@@ -171,22 +171,19 @@ const BLUR_FADE_DELAY = 0.05;
 export default function ProjectsPage() {
   return (
     <section id="projects-page" className="w-full py-10 md:py-16 relative overflow-hidden">
-      {/* Landing-page styled radial blur glows in background */}
-      <div className="absolute top-[10%] left-[-10%] size-[500px] rounded-full bg-cyan-400/5 dark:bg-cyan-500/3 blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute top-[40%] right-[-10%] size-[600px] rounded-full bg-blue-500/5 dark:bg-blue-600/3 blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute top-[75%] left-[5%] size-[500px] rounded-full bg-indigo-500/5 dark:bg-indigo-600/3 blur-[120px] pointer-events-none -z-10" />
+
 
       <div className="flex flex-col gap-y-12 max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col gap-y-4 items-center text-center">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-xs font-semibold tracking-wider uppercase text-cyan-600 dark:text-cyan-400">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-border/60 bg-muted/40 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
               <Layers className="size-3.5" />
               System Architecture & Performance Metrics
             </span>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-foreground">
               My Engineering Portfolio
             </h1>
           </BlurFade>
@@ -207,10 +204,10 @@ export default function ProjectsPage() {
                   {/* 1. Header Info: Title, Duration, Category */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-widest bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                         {project.category}
                       </span>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-1 group-hover:bg-linear-to-r group-hover:from-cyan-400 group-hover:via-blue-500 group-hover:to-indigo-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-1 group-hover:text-primary transition-colors duration-300">
                         {project.title}
                       </h2>
                       <p className="text-sm font-medium text-muted-foreground mt-1.5">
@@ -285,7 +282,7 @@ export default function ProjectsPage() {
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {project.features.map((feature, idx) => (
                             <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-foreground">
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-500/5 text-cyan-500 border border-cyan-500/10">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary border border-primary/10">
                                 <DynIcon name={feature.icon} className="size-3" />
                               </span>
                               <span className="leading-normal mt-0.5">{feature.text}</span>
@@ -306,13 +303,13 @@ export default function ProjectsPage() {
                           {project.stats.map((stat, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-2.5 rounded-xl border border-border/30 bg-muted/10 p-3 hover:border-cyan-500/20 transition-colors duration-200"
+                              className="flex items-center gap-2.5 rounded-xl border border-border bg-muted/10 p-3 hover:border-border transition-colors duration-200"
                             >
-                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cyan-500/5 text-cyan-500 border border-cyan-500/15">
+                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground border border-border">
                                 <DynIcon name={stat.icon} className="size-3.5" />
                               </span>
                               <div className="min-w-0">
-                                <p className="text-[9px] uppercase tracking-wider text-muted-foreground/80 font-bold">
+                                <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">
                                   {stat.label}
                                 </p>
                                 <p className="text-xs font-bold text-foreground truncate mt-0.5">
@@ -335,7 +332,7 @@ export default function ProjectsPage() {
                             return (
                               <span
                                 key={tech.name}
-                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-default select-none transition-all duration-200 hover:border-cyan-500/40 hover:bg-cyan-500/5"
+                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-default select-none transition-all duration-200 hover:border-border hover:bg-muted/40"
                               >
                                 {Icon && <Icon className="size-3.5 shrink-0" />}
                                 {tech.name}
@@ -378,9 +375,9 @@ export default function ProjectsPage() {
                           {project.challenges.map((challenge, idx) => (
                             <div
                               key={idx}
-                              className="flex gap-3 text-xs leading-relaxed text-muted-foreground bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:border-cyan-500/20 transition-colors duration-200"
+                              className="flex gap-3 text-xs leading-relaxed text-muted-foreground bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:border-border transition-colors duration-200"
                             >
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-mono font-bold text-[10px]">
+                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-mono font-bold text-[10px]">
                                 {idx + 1}
                               </span>
                               <p className="mt-0.5">{challenge}</p>
