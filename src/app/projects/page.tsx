@@ -202,9 +202,7 @@ export default function ProjectsPage() {
           {PROJECTS.map((project, index) => {
             return (
               <BlurFade key={project.id} delay={BLUR_FADE_DELAY * (4 + index)}>
-                <div className="group relative flex flex-col gap-y-8 rounded-3xl border border-border/40 bg-card/45 hover:bg-card/75 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-border">
-                  {/* Landing-page signature gradient border hover lighting */}
-                  <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-cyan-400 via-50% via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="group relative flex flex-col gap-y-8 py-2 transition-all duration-300">
                   
                   {/* 1. Header Info: Title, Duration, Category */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
