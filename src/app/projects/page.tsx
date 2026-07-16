@@ -5,7 +5,6 @@ import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import { PROJECTS } from "@/data/projects";
 import { ProjectArchitectureDiagram } from "@/components/project-architecture-diagram";
-import { ProjectPerformanceChart } from "@/components/project-performance-chart";
 
 // ── Icons mapping ───────────────────────────────────────────────────────────
 import {
@@ -363,10 +362,9 @@ export default function ProjectsPage() {
                       </p>
                     </div>
 
-                    {/* Responsive Grid layout for system flow diagram and performance chart */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-2">
+                    {/* Custom system flow diagram */}
+                    <div className="w-full mt-2">
                       <ProjectArchitectureDiagram projectId={project.id} />
-                      <ProjectPerformanceChart projectId={project.id} />
                     </div>
                   </div>
 
