@@ -178,7 +178,7 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="flex flex-col gap-y-4 items-center text-center">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full border border-border/60 bg-muted/40 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
               <Layers className="size-3.5" />
               System Architecture & Performance Metrics
             </span>
