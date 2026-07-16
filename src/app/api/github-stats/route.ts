@@ -83,8 +83,10 @@ export async function GET(request: NextRequest) {
 
         if (graphqlRes.ok) {
           const resBody = await graphqlRes.json();
-          const rollingRaw = resBody?.data?.user?.rollingCalendar?.contributionCalendar;
-          const currentYearRaw = resBody?.data?.user?.currentYearCalendar?.contributionCalendar;
+          const rollingRaw =
+            resBody?.data?.user?.rollingCalendar?.contributionCalendar;
+          const currentYearRaw =
+            resBody?.data?.user?.currentYearCalendar?.contributionCalendar;
 
           if (rollingRaw) {
             const contributions: Contribution[] = [];
@@ -120,14 +122,19 @@ export async function GET(request: NextRequest) {
             const currentYearStr = currentYear.toString();
             calendar = {
               total: {
-                [currentYearStr]: currentYearRaw?.totalContributions ?? rollingRaw.totalContributions
+                [currentYearStr]:
+                  currentYearRaw?.totalContributions ??
+                  rollingRaw.totalContributions
               },
               contributions
             };
           }
         }
       } catch (graphqlErr) {
-        console.error("Error fetching GitHub GraphQL contributions:", graphqlErr);
+        console.error(
+          "Error fetching GitHub GraphQL contributions:",
+          graphqlErr
+        );
       }
     }
 
@@ -135,8 +142,13 @@ export async function GET(request: NextRequest) {
     if (!calendar) {
       try {
         const [rollingRes, fullRes] = await Promise.all([
-          fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { next: { revalidate: 30 } }),
-          fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, { next: { revalidate: 30 } })
+          fetch(
+            `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+            { next: { revalidate: 30 } }
+          ),
+          fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, {
+            next: { revalidate: 30 }
+          })
         ]);
 
         if (rollingRes.ok && fullRes.ok) {
@@ -146,13 +158,17 @@ export async function GET(request: NextRequest) {
 
           calendar = {
             total: {
-              [currentYearStr]: fullData.total[currentYearStr] ?? rollingData.total.lastYear
+              [currentYearStr]:
+                fullData.total[currentYearStr] ?? rollingData.total.lastYear
             },
             contributions: rollingData.contributions
           };
         }
       } catch (fallbackErr) {
-        console.error("Error fetching fallback jogruber calendar:", fallbackErr);
+        console.error(
+          "Error fetching fallback jogruber calendar:",
+          fallbackErr
+        );
       }
     }
 
@@ -161,7 +177,9 @@ export async function GET(request: NextRequest) {
         const res = await fetch(url, { headers, next: { revalidate: 60 } });
         if (!res.ok) {
           const bodyText = await res.text();
-          console.error(`[GitHub API error] ${label}: status ${res.status}, body: ${bodyText.slice(0, 200)}`);
+          console.error(
+            `[GitHub API error] ${label}: status ${res.status}, body: ${bodyText.slice(0, 200)}`
+          );
           return null;
         }
         return await res.json();
@@ -173,21 +191,44 @@ export async function GET(request: NextRequest) {
 
     // 2. Fetch stats: Commits, PRs, Issues, Reviews, Profile and Repos
     const statsPromises = [
-      fetchHelper(`https://api.github.com/search/commits?q=author:${username}`, "Commits Count"),
-      fetchHelper(`https://api.github.com/search/issues?q=author:${username}+type:pr`, "PRs Count"),
-      fetchHelper(`https://api.github.com/search/issues?q=author:${username}+type:issue`, "Issues Count"),
-      fetchHelper(`https://api.github.com/search/issues?q=reviewed-by:${username}+type:pr`, "Reviews Count"),
+      fetchHelper(
+        `https://api.github.com/search/commits?q=author:${username}`,
+        "Commits Count"
+      ),
+      fetchHelper(
+        `https://api.github.com/search/issues?q=author:${username}+type:pr`,
+        "PRs Count"
+      ),
+      fetchHelper(
+        `https://api.github.com/search/issues?q=author:${username}+type:issue`,
+        "Issues Count"
+      ),
+      fetchHelper(
+        `https://api.github.com/search/issues?q=reviewed-by:${username}+type:pr`,
+        "Reviews Count"
+      ),
       fetchHelper(`https://api.github.com/users/${username}`, "User Profile"),
-      fetchHelper(`https://api.github.com/users/${username}/repos?per_page=100`, "User Repos")
+      fetchHelper(
+        `https://api.github.com/users/${username}/repos?per_page=100`,
+        "User Repos"
+      )
     ];
 
-    const [commitsData, prsData, issuesData, reviewsData, profileData, reposData] = await Promise.all(
-      statsPromises
-    );
+    const [
+      commitsData,
+      prsData,
+      issuesData,
+      reviewsData,
+      profileData,
+      reposData
+    ] = await Promise.all(statsPromises);
 
     let totalStars = 0;
     if (Array.isArray(reposData)) {
-      totalStars = reposData.reduce((acc: number, repo: any) => acc + (repo.stargazers_count || 0), 0);
+      totalStars = reposData.reduce(
+        (acc: number, repo: any) => acc + (repo.stargazers_count || 0),
+        0
+      );
     }
 
     const stats = {
@@ -195,7 +236,9 @@ export async function GET(request: NextRequest) {
       prCount: prsData?.total_count ?? null,
       issuesCount: issuesData?.total_count ?? null,
       reviewCount: reviewsData?.total_count ?? null,
-      reposCount: profileData?.public_repos ?? (Array.isArray(reposData) ? reposData.length : null),
+      reposCount:
+        profileData?.public_repos ??
+        (Array.isArray(reposData) ? reposData.length : null),
       starsCount: totalStars
     };
 
@@ -206,7 +249,8 @@ export async function GET(request: NextRequest) {
       },
       {
         headers: {
-          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate"
+          "Cache-Control":
+            "no-store, no-cache, must-revalidate, proxy-revalidate"
         }
       }
     );

@@ -75,12 +75,18 @@ export default function MyJourney() {
                       animate={{
                         height: "auto",
                         opacity: 1,
-                        transition: { height: { duration: 0.2 }, opacity: { duration: 0.15 } }
+                        transition: {
+                          height: { duration: 0.2 },
+                          opacity: { duration: 0.15 }
+                        }
                       }}
                       exit={{
                         height: 0,
                         opacity: 0,
-                        transition: { height: { duration: 0.15 }, opacity: { duration: 0.1 } }
+                        transition: {
+                          height: { duration: 0.15 },
+                          opacity: { duration: 0.1 }
+                        }
                       }}
                       className="overflow-hidden"
                     >

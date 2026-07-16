@@ -2,7 +2,11 @@
 
 import React from "react";
 import { Lock } from "lucide-react";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent
+} from "@/components/ui/tooltip";
 import { dsaAchievements, Achievement } from "@/data/dsa";
 
 export default function Achievements() {

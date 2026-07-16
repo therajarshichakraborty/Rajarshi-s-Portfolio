@@ -7,7 +7,11 @@ import { dailyGoal } from "@/data/dsa";
 
 export default function DailyGoal() {
   // Initialize with the first two pre-checked to get 2/3 progress
-  const [completedList, setCompletedList] = useState<boolean[]>([true, true, false]);
+  const [completedList, setCompletedList] = useState<boolean[]>([
+    true,
+    true,
+    false
+  ]);
 
   const solvedCount = completedList.filter(Boolean).length;
   const total = dailyGoal.total;
@@ -34,7 +38,9 @@ export default function DailyGoal() {
             Daily Goal
           </span>
           <span className="text-xs font-semibold text-foreground mt-0.5">
-            {isFullyCompleted ? "Today's goal completed!" : `Solve ${total} Problems`}
+            {isFullyCompleted
+              ? "Today's goal completed!"
+              : `Solve ${total} Problems`}
           </span>
         </div>
         <div className="flex items-baseline gap-0.5 text-right">
@@ -87,7 +93,9 @@ export default function DailyGoal() {
                   <Circle className="h-5 w-5 text-muted-foreground/60 group-hover:text-foreground transition-colors stroke-[1.5]" />
                 )}
               </div>
-              <span className={`font-medium line-clamp-1 flex-1 ${isDone ? "line-through text-muted-foreground/70" : ""}`}>
+              <span
+                className={`font-medium line-clamp-1 flex-1 ${isDone ? "line-through text-muted-foreground/70" : ""}`}
+              >
                 {problem}
               </span>
             </button>

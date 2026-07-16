@@ -170,9 +170,10 @@ const BLUR_FADE_DELAY = 0.05;
 
 export default function ProjectsPage() {
   return (
-    <section id="projects-page" className="w-full py-10 md:py-16 relative overflow-hidden">
-
-
+    <section
+      id="projects-page"
+      className="w-full py-10 md:py-16 relative overflow-hidden"
+    >
       <div className="flex flex-col gap-y-12 max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col gap-y-4 items-center text-center">
@@ -189,7 +190,8 @@ export default function ProjectsPage() {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <p className="text-muted-foreground md:text-lg max-w-2xl leading-relaxed text-balance">
-              Explore the system designs, backend pipelines, and performance benchmarks behind my latest software engineering projects.
+              Explore the system designs, backend pipelines, and performance
+              benchmarks behind my latest software engineering projects.
             </p>
           </BlurFade>
         </div>
@@ -200,7 +202,6 @@ export default function ProjectsPage() {
             return (
               <BlurFade key={project.id} delay={BLUR_FADE_DELAY * (4 + index)}>
                 <div className="group relative flex flex-col gap-y-8 py-2 transition-all duration-300">
-                  
                   {/* 1. Header Info: Title, Duration, Category */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
@@ -218,7 +219,7 @@ export default function ProjectsPage() {
                       <span className="text-xs font-mono text-muted-foreground bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
                         {project.duration}
                       </span>
-                      
+
                       {/* CTA Links */}
                       <div className="flex items-center gap-2 mt-2">
                         {project.links.map((link) => {
@@ -235,7 +236,11 @@ export default function ProjectsPage() {
                                   : "bg-background text-foreground border-border hover:bg-muted"
                               }`}
                             >
-                              {isGithub ? <Github className="size-3.5" /> : <ExternalLink className="size-3.5" />}
+                              {isGithub ? (
+                                <Github className="size-3.5" />
+                              ) : (
+                                <ExternalLink className="size-3.5" />
+                              )}
                               {link.type}
                               <ArrowUpRight className="size-3 opacity-50" />
                             </a>
@@ -281,11 +286,19 @@ export default function ProjectsPage() {
                         </h4>
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {project.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-foreground">
+                            <li
+                              key={idx}
+                              className="flex items-start gap-2.5 text-xs text-muted-foreground"
+                            >
                               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary border border-primary/10">
-                                <DynIcon name={feature.icon} className="size-3" />
+                                <DynIcon
+                                  name={feature.icon}
+                                  className="size-3"
+                                />
                               </span>
-                              <span className="leading-normal mt-0.5">{feature.text}</span>
+                              <span className="leading-normal mt-0.5">
+                                {feature.text}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -306,7 +319,10 @@ export default function ProjectsPage() {
                               className="flex items-center gap-2.5 rounded-xl border border-border bg-muted/10 p-3 hover:border-border transition-colors duration-200"
                             >
                               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground border border-border">
-                                <DynIcon name={stat.icon} className="size-3.5" />
+                                <DynIcon
+                                  name={stat.icon}
+                                  className="size-3.5"
+                                />
                               </span>
                               <div className="min-w-0">
                                 <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">

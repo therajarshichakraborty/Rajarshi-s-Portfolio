@@ -13,7 +13,6 @@ import { DATA } from "@/data/resume";
 import { Command } from "lucide-react";
 import { Terminal } from "lucide-react";
 
-
 export default function Navbar() {
   return (
     <div className="fixed inset-x-0 bottom-4 z-30">
@@ -57,7 +56,9 @@ export default function Navbar() {
         <Tooltip>
           <TooltipTrigger asChild>
             <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+              onClick={() =>
+                window.dispatchEvent(new CustomEvent("open-command-palette"))
+              }
               className="flex items-center justify-center size-8 sm:size-10 rounded-full focus:outline-none"
             >
               <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">

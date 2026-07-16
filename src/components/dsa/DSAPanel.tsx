@@ -5,11 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Brain, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
-import {
-  dsaMetrics,
-  dsaTopics,
-  Topic
-} from "@/data/dsa";
+import { dsaMetrics, dsaTopics, Topic } from "@/data/dsa";
 
 import DSAHeader from "./DSAHeader";
 import SearchBar from "./SearchBar";
@@ -56,7 +52,7 @@ export default function DSAPanel() {
       acc.easy += topic.difficultyCounts.easy.solved;
       acc.medium += topic.difficultyCounts.medium.solved;
       acc.hard += topic.difficultyCounts.hard.solved;
-      
+
       acc.easyTotal += topic.difficultyCounts.easy.total;
       acc.mediumTotal += topic.difficultyCounts.medium.total;
       acc.hardTotal += topic.difficultyCounts.hard.total;
@@ -79,7 +75,7 @@ export default function DSAPanel() {
             ? filteredStats.hardTotal
             : filteredStats.easyTotal +
               filteredStats.mediumTotal +
-              filteredStats.hardTotal,
+              filteredStats.hardTotal
   };
 
   const handleToggleExpand = (id: string) => {
@@ -106,7 +102,7 @@ export default function DSAPanel() {
               ? "completed"
               : topic.status === "current"
                 ? "current"
-                : "not-started",
+                : "not-started"
     };
   };
 
@@ -154,7 +150,10 @@ export default function DSAPanel() {
 
             {/* HEADER (Sticky) */}
             <div className="p-4 flex flex-col gap-3.5 bg-background/5 border-b border-border/20">
-              <DSAHeader totalSolved={displaySolved} totalProblems={displayTotal} />
+              <DSAHeader
+                totalSolved={displaySolved}
+                totalProblems={displayTotal}
+              />
 
               <SearchBar value={searchQuery} onChange={setSearchQuery} />
 
@@ -176,7 +175,11 @@ export default function DSAPanel() {
                         <motion.div
                           layoutId="activeFilterBg"
                           className="absolute inset-0 bg-primary dark:bg-muted rounded-md -z-10 shadow-xs"
-                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 350,
+                            damping: 30
+                          }}
                         />
                       )}
                       {opt}

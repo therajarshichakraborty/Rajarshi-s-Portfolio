@@ -26,7 +26,8 @@ export default function DSASheetsCard() {
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
               <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                Personalized study roadmap covering key coding patterns and Blind 169 variations on a 28-week schedule.
+                Personalized study roadmap covering key coding patterns and
+                Blind 169 variations on a 28-week schedule.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1.5">
@@ -53,7 +54,8 @@ export default function DSASheetsCard() {
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
               <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                Structured problems, learning paths, and progress sheets provided by Hitesh Choudhary's dsa.chaicode.in.
+                Structured problems, learning paths, and progress sheets
+                provided by Hitesh Choudhary's dsa.chaicode.in.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1.5">

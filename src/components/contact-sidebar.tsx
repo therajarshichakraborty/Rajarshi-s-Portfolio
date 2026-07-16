@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, Linkedin, Github, Twitter, User, Copy, Check } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Github,
+  Twitter,
+  User,
+  Copy,
+  Check
+} from "lucide-react";
 
 export default function ContactSidebar() {
   const [copiedText, setCopiedText] = useState<string | null>(null);
@@ -61,11 +70,17 @@ export default function ContactSidebar() {
           </div>
           {/* Copy Button */}
           <button
-            onClick={() => copyToClipboard("rajarshichakraborty2005@gmail.com", "primary")}
+            onClick={() =>
+              copyToClipboard("rajarshichakraborty2005@gmail.com", "primary")
+            }
             className="absolute right-2.5 top-2.5 opacity-0 group-hover/email:opacity-100 p-1 rounded-md hover:bg-muted text-muted-foreground hover:scale-110 transition-all duration-250 cursor-pointer"
             title="Copy Email"
           >
-            {copiedText === "primary" ? <Check className="h-3 w-3 text-emerald-500" /> : <Copy className="h-3 w-3" />}
+            {copiedText === "primary" ? (
+              <Check className="h-3 w-3 text-emerald-500" />
+            ) : (
+              <Copy className="h-3 w-3" />
+            )}
           </button>
         </div>
 
@@ -89,11 +104,17 @@ export default function ContactSidebar() {
           </div>
           {/* Copy Button */}
           <button
-            onClick={() => copyToClipboard("rajarshi29032005@gmail.com", "secondary")}
+            onClick={() =>
+              copyToClipboard("rajarshi29032005@gmail.com", "secondary")
+            }
             className="absolute right-2.5 top-2.5 opacity-0 group-hover/email2:opacity-100 p-1 rounded-md hover:bg-muted text-muted-foreground hover:scale-110 transition-all duration-250 cursor-pointer"
             title="Copy Email"
           >
-            {copiedText === "secondary" ? <Check className="h-3 w-3 text-emerald-500" /> : <Copy className="h-3 w-3" />}
+            {copiedText === "secondary" ? (
+              <Check className="h-3 w-3 text-emerald-500" />
+            ) : (
+              <Copy className="h-3 w-3" />
+            )}
           </button>
         </div>
 
@@ -130,7 +151,6 @@ export default function ContactSidebar() {
               <div className="h-7 w-7 rounded-full bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center transition-colors group-hover:bg-primary/5 dark:group-hover:bg-white/5">
                 <Github className="h-4 w-4 stroke-[1.8] fill-black text-muted-foreground/75 group-hover:text-primary dark:group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300" />
               </div>
-            
             </a>
 
             <a
@@ -142,7 +162,6 @@ export default function ContactSidebar() {
               <div className="h-7 w-7 rounded-full bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center transition-colors group-hover:bg-primary/5 dark:group-hover:bg-white/5">
                 <Linkedin className="h-4 w-4 stroke-[1.8] fill-black text-muted-foreground/75 group-hover:text-primary dark:group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300" />
               </div>
-             
             </a>
 
             <a

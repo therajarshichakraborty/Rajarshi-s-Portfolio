@@ -18,19 +18,34 @@ interface ProgressOverviewProps {
 export default function ProgressOverview({
   metrics,
   filteredTopicsSolved,
-  isFiltered = false,
+  isFiltered = false
 }: ProgressOverviewProps) {
   // Use either the global metrics or the filtered metrics if a filter is active
-  const easySolved = isFiltered && filteredTopicsSolved ? filteredTopicsSolved.easy : metrics.difficultySplit.easy.solved;
-  const mediumSolved = isFiltered && filteredTopicsSolved ? filteredTopicsSolved.medium : metrics.difficultySplit.medium.solved;
-  const hardSolved = isFiltered && filteredTopicsSolved ? filteredTopicsSolved.hard : metrics.difficultySplit.hard.solved;
+  const easySolved =
+    isFiltered && filteredTopicsSolved
+      ? filteredTopicsSolved.easy
+      : metrics.difficultySplit.easy.solved;
+  const mediumSolved =
+    isFiltered && filteredTopicsSolved
+      ? filteredTopicsSolved.medium
+      : metrics.difficultySplit.medium.solved;
+  const hardSolved =
+    isFiltered && filteredTopicsSolved
+      ? filteredTopicsSolved.hard
+      : metrics.difficultySplit.hard.solved;
   const totalSolved = easySolved + mediumSolved + hardSolved;
-  const totalProblems = isFiltered && filteredTopicsSolved ? filteredTopicsSolved.total : metrics.totalProblems;
+  const totalProblems =
+    isFiltered && filteredTopicsSolved
+      ? filteredTopicsSolved.total
+      : metrics.totalProblems;
 
   const totalPossible = easySolved + mediumSolved + hardSolved;
-  const easyPercent = totalPossible > 0 ? (easySolved / totalPossible) * 100 : 0;
-  const mediumPercent = totalPossible > 0 ? (mediumSolved / totalPossible) * 100 : 0;
-  const hardPercent = totalPossible > 0 ? (hardSolved / totalPossible) * 100 : 0;
+  const easyPercent =
+    totalPossible > 0 ? (easySolved / totalPossible) * 100 : 0;
+  const mediumPercent =
+    totalPossible > 0 ? (mediumSolved / totalPossible) * 100 : 0;
+  const hardPercent =
+    totalPossible > 0 ? (hardSolved / totalPossible) * 100 : 0;
 
   return (
     <div className="flex flex-col gap-3">
@@ -128,25 +143,37 @@ export default function ProgressOverview({
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
                 <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                <span className="text-[10px] text-muted-foreground font-medium">Easy</span>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  Easy
+                </span>
               </div>
-              <span className="text-xs font-bold text-foreground mt-0.5">{easySolved}</span>
+              <span className="text-xs font-bold text-foreground mt-0.5">
+                {easySolved}
+              </span>
             </div>
 
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
                 <div className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                <span className="text-[10px] text-muted-foreground font-medium">Medium</span>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  Medium
+                </span>
               </div>
-              <span className="text-xs font-bold text-foreground mt-0.5">{mediumSolved}</span>
+              <span className="text-xs font-bold text-foreground mt-0.5">
+                {mediumSolved}
+              </span>
             </div>
 
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
                 <div className="h-1.5 w-1.5 rounded-full bg-rose-500" />
-                <span className="text-[10px] text-muted-foreground font-medium">Hard</span>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  Hard
+                </span>
               </div>
-              <span className="text-xs font-bold text-foreground mt-0.5">{hardSolved}</span>
+              <span className="text-xs font-bold text-foreground mt-0.5">
+                {hardSolved}
+              </span>
             </div>
           </div>
         </div>

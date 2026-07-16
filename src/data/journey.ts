@@ -22,17 +22,9 @@ export const JOURNEY_DATA: JourneyItem[] = [
     organization: "Techno Main Salt Lake",
     location: "Kolkata, India",
     type: "education",
-    description: "Began my undergraduate journey in Computer Science & Engineering with a specialization in IoT. Started exploring programming, data structures, web development, and software engineering fundamentals while building a strong technical foundation.",
-    skills: [
-      "C",
-      "C++",
-      "Java",
-      "Python",
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Git"
-    ],
+    description:
+      "Began my undergraduate journey in Computer Science & Engineering with a specialization in IoT. Started exploring programming, data structures, web development, and software engineering fundamentals while building a strong technical foundation.",
+    skills: ["C", "C++", "Java", "Python", "HTML", "CSS", "JavaScript", "Git"],
     icon: "GraduationCap",
     color: "blue"
   },
@@ -41,7 +33,8 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Built My First Full-Stack Projects",
     organization: "Personal Projects",
     type: "project",
-    description: "Started building real-world applications using the MERN stack, learning frontend architecture, backend APIs, authentication, and database design while transitioning from academic programming to practical software development.",
+    description:
+      "Started building real-world applications using the MERN stack, learning frontend architecture, backend APIs, authentication, and database design while transitioning from academic programming to practical software development.",
     skills: [
       "React",
       "Node.js",
@@ -58,12 +51,9 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Academic Excellence",
     organization: "Techno Main Salt Lake",
     type: "achievement",
-    description: "Achieved an 8.8 GPA in my first semester, one of the highest GPAs in the department, demonstrating strong academic performance alongside continuous self-learning.",
-    skills: [
-      "Problem Solving",
-      "Algorithms",
-      "Computer Science"
-    ],
+    description:
+      "Achieved an 8.8 GPA in my first semester, one of the highest GPAs in the department, demonstrating strong academic performance alongside continuous self-learning.",
+    skills: ["Problem Solving", "Algorithms", "Computer Science"],
     icon: "Award",
     color: "yellow"
   },
@@ -72,17 +62,13 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Competitive Programming Journey",
     organization: "LeetCode • GeeksforGeeks • CodeChef",
     type: "achievement",
-    description: "Dedicated significant time to mastering Data Structures and Algorithms, solving over 650+ coding problems across multiple competitive programming platforms while regularly participating in coding contests.",
+    description:
+      "Dedicated significant time to mastering Data Structures and Algorithms, solving over 650+ coding problems across multiple competitive programming platforms while regularly participating in coding contests.",
     stats: {
       leetcode: "300+",
       gfg: "350+"
     },
-    skills: [
-      "DSA",
-      "Algorithms",
-      "Competitive Programming",
-      "Problem Solving"
-    ],
+    skills: ["DSA", "Algorithms", "Competitive Programming", "Problem Solving"],
     icon: "Brain",
     color: "purple"
   },
@@ -91,7 +77,8 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Joined Technical Communities",
     organization: "Geekonix • SAMARTH TMSL",
     type: "leadership",
-    description: "Became an active member of the college technical ecosystem by contributing to Geekonix as Management Staff and working with Gyan Darpan as a Content Writer and Marketing Assistant.",
+    description:
+      "Became an active member of the college technical ecosystem by contributing to Geekonix as Management Staff and working with Gyan Darpan as a Content Writer and Marketing Assistant.",
     skills: [
       "Leadership",
       "Content Writing",
@@ -106,14 +93,9 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Open Source Contributor",
     organization: "SSoC • SWoC • Hacktoberfest",
     type: "open-source",
-    description: "Expanded into open source by contributing to multiple programs, collaborating with developers worldwide, improving real-world projects, and strengthening software engineering best practices.",
-    skills: [
-      "Git",
-      "GitHub",
-      "Open Source",
-      "Code Review",
-      "Collaboration"
-    ],
+    description:
+      "Expanded into open source by contributing to multiple programs, collaborating with developers worldwide, improving real-world projects, and strengthening software engineering best practices.",
+    skills: ["Git", "GitHub", "Open Source", "Code Review", "Collaboration"],
     icon: "Github",
     color: "gray"
   },
@@ -122,7 +104,8 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Shifted Towards AI Engineering",
     organization: "Personal Learning",
     type: "learning",
-    description: "Started integrating Large Language Models, AI workflows, and machine learning into modern applications, exploring LangChain, prompt engineering, and AI-powered developer tools.",
+    description:
+      "Started integrating Large Language Models, AI workflows, and machine learning into modern applications, exploring LangChain, prompt engineering, and AI-powered developer tools.",
     skills: [
       "Generative AI",
       "LangChain",
@@ -138,7 +121,8 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Building Developer Products",
     organization: "Independent",
     type: "startup",
-    description: "Focused on creating production-ready developer tools, AI products, and scalable applications with modern architectures, emphasizing clean code, performance, and exceptional user experience.",
+    description:
+      "Focused on creating production-ready developer tools, AI products, and scalable applications with modern architectures, emphasizing clean code, performance, and exceptional user experience.",
     projects: [
       "Zenith CLI",
       "Synapse UI",
@@ -164,7 +148,8 @@ export const JOURNEY_DATA: JourneyItem[] = [
     title: "Growing as a Software Engineer",
     organization: "Today",
     type: "current",
-    description: "Currently focused on building scalable full-stack applications, AI-powered developer experiences, reusable UI libraries, and open-source software while continuously learning distributed systems, backend engineering, and machine learning.",
+    description:
+      "Currently focused on building scalable full-stack applications, AI-powered developer experiences, reusable UI libraries, and open-source software while continuously learning distributed systems, backend engineering, and machine learning.",
     skills: [
       "Next.js",
       "React",

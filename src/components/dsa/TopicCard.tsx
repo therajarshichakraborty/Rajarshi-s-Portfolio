@@ -11,11 +11,16 @@ interface TopicCardProps {
   onToggleExpand: () => void;
 }
 
-export default function TopicCard({ topic, isActive, onToggleExpand }: TopicCardProps) {
+export default function TopicCard({
+  topic,
+  isActive,
+  onToggleExpand
+}: TopicCardProps) {
   // Resolve Lucide Icon dynamically
   const IconComponent = (Icons as any)[topic.iconName] || Icons.BookOpen;
 
-  const percent = Math.round((topic.solvedProblems / topic.totalProblems) * 100) || 0;
+  const percent =
+    Math.round((topic.solvedProblems / topic.totalProblems) * 100) || 0;
 
   // Status-based styles
   const isCompleted = topic.status === "completed";
@@ -86,7 +91,10 @@ export default function TopicCard({ topic, isActive, onToggleExpand }: TopicCard
             ) : (
               <div className="flex flex-col gap-0.5 items-end">
                 <span className="text-[11px] font-bold text-foreground">
-                  {topic.solvedProblems} <span className="text-muted-foreground">/ {topic.totalProblems}</span>
+                  {topic.solvedProblems}{" "}
+                  <span className="text-muted-foreground">
+                    / {topic.totalProblems}
+                  </span>
                 </span>
                 {percent > 0 && (
                   <span className="text-[9px] text-muted-foreground font-semibold">

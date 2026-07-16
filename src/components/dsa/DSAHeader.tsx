@@ -9,7 +9,10 @@ interface DSAHeaderProps {
   totalProblems: number;
 }
 
-export default function DSAHeader({ totalSolved, totalProblems }: DSAHeaderProps) {
+export default function DSAHeader({
+  totalSolved,
+  totalProblems
+}: DSAHeaderProps) {
   const percentage = Math.round((totalSolved / totalProblems) * 100) || 0;
   const [animatedPercent, setAnimatedPercent] = useState(0);
 
@@ -21,7 +24,7 @@ export default function DSAHeader({ totalSolved, totalProblems }: DSAHeaderProps
     const animate = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       // Easing out quad
       const ease = progress * (2 - progress);
       setAnimatedPercent(Math.round(ease * percentage));
@@ -75,7 +78,10 @@ export default function DSAHeader({ totalSolved, totalProblems }: DSAHeaderProps
             className="stroke-primary fill-none"
             strokeWidth={strokeWidth}
             strokeLinecap="round"
-            initial={{ strokeDasharray: circumference, strokeDashoffset: circumference }}
+            initial={{
+              strokeDasharray: circumference,
+              strokeDashoffset: circumference
+            }}
             animate={{ strokeDashoffset }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           />

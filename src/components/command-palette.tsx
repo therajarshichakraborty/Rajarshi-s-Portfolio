@@ -15,7 +15,7 @@ import {
   Laptop,
   Command,
   ChevronRight,
-  ArrowRight,
+  ArrowRight
 } from "lucide-react";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ export default function CommandPalette() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  
+
   const router = useRouter();
   const { theme, setTheme, resolvedTheme } = useTheme();
 
@@ -52,7 +52,7 @@ export default function CommandPalette() {
       onTrigger: () => {
         // Already open, focus input
         inputRef.current?.focus();
-      },
+      }
     },
     {
       id: "github",
@@ -62,8 +62,12 @@ export default function CommandPalette() {
       category: "Navigation",
       icon: Github,
       onTrigger: () => {
-        window.open(DATA.contact.social.GitHub.url, "_blank", "noopener,noreferrer");
-      },
+        window.open(
+          DATA.contact.social.GitHub.url,
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }
     },
     {
       id: "resume",
@@ -79,7 +83,7 @@ export default function CommandPalette() {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-      },
+      }
     },
     {
       id: "theme",
@@ -90,7 +94,7 @@ export default function CommandPalette() {
       icon: resolvedTheme === "dark" ? Sun : Moon,
       onTrigger: () => {
         setTheme(resolvedTheme === "dark" ? "light" : "dark");
-      },
+      }
     },
     {
       id: "contact",
@@ -100,8 +104,12 @@ export default function CommandPalette() {
       category: "Navigation",
       icon: Mail,
       onTrigger: () => {
-        window.open("https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com", "_blank", "noopener,noreferrer");
-      },
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com",
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }
     },
     {
       id: "blog",
@@ -112,8 +120,8 @@ export default function CommandPalette() {
       icon: BookOpen,
       onTrigger: () => {
         router.push("/blog");
-      },
-    },
+      }
+    }
   ];
 
   // Filtering actions and projects
@@ -129,7 +137,9 @@ export default function CommandPalette() {
     ? DATA.projects.filter(
         (project) =>
           project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          project.description
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
           project.technologies.some((tech) =>
             tech.toLowerCase().includes(searchQuery.toLowerCase())
           )
@@ -137,8 +147,14 @@ export default function CommandPalette() {
     : [];
 
   const combinedItems = [
-    ...filteredActions.map((action) => ({ type: "action" as const, item: action })),
-    ...filteredProjects.map((project) => ({ type: "project" as const, item: project })),
+    ...filteredActions.map((action) => ({
+      type: "action" as const,
+      item: action
+    })),
+    ...filteredProjects.map((project) => ({
+      type: "project" as const,
+      item: project
+    }))
   ];
 
   const totalItemsCount = combinedItems.length;
@@ -184,7 +200,7 @@ export default function CommandPalette() {
         ctrlKey: e.ctrlKey,
         metaKey: e.metaKey,
         isInput,
-        isOpen,
+        isOpen
       });
 
       // Ctrl + K or Cmd + K toggles the palette
@@ -202,10 +218,16 @@ export default function CommandPalette() {
           setSearchQuery("");
         } else if (e.key === "ArrowDown") {
           e.preventDefault();
-          setSelectedIndex((prev) => (totalItemsCount > 0 ? (prev + 1) % totalItemsCount : 0));
+          setSelectedIndex((prev) =>
+            totalItemsCount > 0 ? (prev + 1) % totalItemsCount : 0
+          );
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
-          setSelectedIndex((prev) => (totalItemsCount > 0 ? (prev - 1 + totalItemsCount) % totalItemsCount : 0));
+          setSelectedIndex((prev) =>
+            totalItemsCount > 0
+              ? (prev - 1 + totalItemsCount) % totalItemsCount
+              : 0
+          );
         } else if (e.key === "Enter") {
           e.preventDefault();
           triggerItem(selectedIndex);
@@ -216,10 +238,17 @@ export default function CommandPalette() {
       // Global single-key shortcuts when closed and NOT typing in input
       if (!isInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
         const key = e.key.toLowerCase();
-        console.log("CommandPalette: Processing global single-key shortcut:", key);
+        console.log(
+          "CommandPalette: Processing global single-key shortcut:",
+          key
+        );
         if (key === "g") {
           e.preventDefault();
-          window.open(DATA.contact.social.GitHub.url, "_blank", "noopener,noreferrer");
+          window.open(
+            DATA.contact.social.GitHub.url,
+            "_blank",
+            "noopener,noreferrer"
+          );
         } else if (key === "r") {
           e.preventDefault();
           const a = document.createElement("a");
@@ -239,7 +268,11 @@ export default function CommandPalette() {
           setTheme(resolvedTheme === "dark" ? "light" : "dark");
         } else if (key === "m") {
           e.preventDefault();
-          window.open("https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com", "_blank", "noopener,noreferrer");
+          window.open(
+            "https://mail.google.com/mail/?view=cm&fs=1&to=rajarshi29032005@gmail.com",
+            "_blank",
+            "noopener,noreferrer"
+          );
         } else if (key === "/") {
           console.log("CommandPalette: Match Slash, opening palette.");
           e.preventDefault();
@@ -397,7 +430,8 @@ export default function CommandPalette() {
                     .map((item, index) => ({ item, index }))
                     .filter(({ item }) => item.type === "project")
                     .map(({ item, index }) => {
-                      const project = item.item as typeof DATA.projects[number];
+                      const project =
+                        item.item as (typeof DATA.projects)[number];
                       const isActive = index === selectedIndex;
                       return (
                         <button
@@ -452,10 +486,16 @@ export default function CommandPalette() {
         <div className="flex items-center justify-between border-t border-border/40 bg-muted/20 px-4 py-2.5 text-[10px] text-muted-foreground select-none">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <kbd className="font-mono bg-muted border border-border/60 rounded px-1">↑↓</kbd> to navigate
+              <kbd className="font-mono bg-muted border border-border/60 rounded px-1">
+                ↑↓
+              </kbd>{" "}
+              to navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="font-mono bg-muted border border-border/60 rounded px-1">↵</kbd> to select
+              <kbd className="font-mono bg-muted border border-border/60 rounded px-1">
+                ↵
+              </kbd>{" "}
+              to select
             </span>
           </div>
           <div className="flex items-center gap-1">

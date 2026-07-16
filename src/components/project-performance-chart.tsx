@@ -22,16 +22,19 @@ type BenchmarkDataItem = {
   valueSecondary?: number;
 };
 
-const BENCHMARK_DATA: Record<string, {
-  title: string;
-  metric: string;
-  chartType: "bar" | "line" | "area";
-  data: BenchmarkDataItem[];
-  xLabel: string;
-  yLabel: string;
-  legendText: string;
-  legendTextSecondary?: string;
-}> = {
+const BENCHMARK_DATA: Record<
+  string,
+  {
+    title: string;
+    metric: string;
+    chartType: "bar" | "line" | "area";
+    data: BenchmarkDataItem[];
+    xLabel: string;
+    yLabel: string;
+    legendText: string;
+    legendTextSecondary?: string;
+  }
+> = {
   reviewray: {
     title: "Code Review Cycle Time",
     metric: "Duration in Seconds (lower is better)",
@@ -139,18 +142,27 @@ export function ProjectPerformanceChart({ projectId }: { projectId: string }) {
   }, []);
 
   if (!chartInfo || !mounted) {
-    return <div className="h-[200px] w-full bg-muted/5 animate-pulse rounded-xl border border-border/20" />;
+    return (
+      <div className="h-[200px] w-full bg-muted/5 animate-pulse rounded-xl border border-border/20" />
+    );
   }
 
   const isDark = resolvedTheme === "dark";
-  const gridColor = isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.05)";
-  const labelColor = isDark ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))";
+  const gridColor = isDark
+    ? "rgba(255, 255, 255, 0.08)"
+    : "rgba(0, 0, 0, 0.05)";
+  const labelColor = isDark
+    ? "hsl(var(--muted-foreground))"
+    : "hsl(var(--muted-foreground))";
 
   const renderChart = () => {
     switch (chartInfo.chartType) {
       case "bar":
         return (
-          <BarChart data={chartInfo.data} margin={{ top: 10, right: 10, left: -20, bottom: 5 }}>
+          <BarChart
+            data={chartInfo.data}
+            margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+          >
             <defs>
               <linearGradient id="cyanBlueIndigo" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#22d3ee" stopOpacity={0.85} />
@@ -158,8 +170,17 @@ export function ProjectPerformanceChart({ projectId }: { projectId: string }) {
                 <stop offset="100%" stopColor="#6366f1" stopOpacity={0.7} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
-            <XAxis dataKey="name" stroke={labelColor} fontSize={10} tickLine={false} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={gridColor}
+              vertical={false}
+            />
+            <XAxis
+              dataKey="name"
+              stroke={labelColor}
+              fontSize={10}
+              tickLine={false}
+            />
             <YAxis stroke={labelColor} fontSize={10} tickLine={false} />
             <Tooltip
               contentStyle={{
@@ -181,9 +202,21 @@ export function ProjectPerformanceChart({ projectId }: { projectId: string }) {
 
       case "line":
         return (
-          <LineChart data={chartInfo.data} margin={{ top: 10, right: 10, left: -20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
-            <XAxis dataKey="name" stroke={labelColor} fontSize={10} tickLine={false} />
+          <LineChart
+            data={chartInfo.data}
+            margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+          >
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={gridColor}
+              vertical={false}
+            />
+            <XAxis
+              dataKey="name"
+              stroke={labelColor}
+              fontSize={10}
+              tickLine={false}
+            />
             <YAxis stroke={labelColor} fontSize={10} tickLine={false} />
             <Tooltip
               contentStyle={{
@@ -207,15 +240,27 @@ export function ProjectPerformanceChart({ projectId }: { projectId: string }) {
 
       case "area":
         return (
-          <AreaChart data={chartInfo.data} margin={{ top: 10, right: 10, left: -20, bottom: 5 }}>
+          <AreaChart
+            data={chartInfo.data}
+            margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+          >
             <defs>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
                 <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
-            <XAxis dataKey="name" stroke={labelColor} fontSize={10} tickLine={false} />
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke={gridColor}
+              vertical={false}
+            />
+            <XAxis
+              dataKey="name"
+              stroke={labelColor}
+              fontSize={10}
+              tickLine={false}
+            />
             <YAxis stroke={labelColor} fontSize={10} tickLine={false} />
             <Tooltip
               contentStyle={{

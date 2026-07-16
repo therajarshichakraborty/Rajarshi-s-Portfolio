@@ -55,14 +55,18 @@ export const dsaMetrics: DSAMetrics = {
   difficultySplit: {
     easy: { solved: 95, color: "#22c55e" }, // Green
     medium: { solved: 112, color: "#eab308" }, // Yellow
-    hard: { solved: 41, color: "#ef4444" }, // Red
-  },
+    hard: { solved: 41, color: "#ef4444" } // Red
+  }
 };
 
 export const dailyGoal: DailyGoal = {
   total: 3,
   solved: 2,
-  problems: ["Two Sum", "Sliding Window Maximum", "Longest Substring Without Repeating Characters"],
+  problems: [
+    "Two Sum",
+    "Sliding Window Maximum",
+    "Longest Substring Without Repeating Characters"
+  ]
 };
 
 export const dsaAchievements: Achievement[] = [
@@ -72,7 +76,7 @@ export const dsaAchievements: Achievement[] = [
     description: "Keep the momentum going for 30 consecutive days",
     icon: "🔥",
     isUnlocked: true,
-    unlockCriteria: "Maintain a 30-day active problem solving streak",
+    unlockCriteria: "Maintain a 30-day active problem solving streak"
   },
   {
     id: "solved_100",
@@ -80,7 +84,7 @@ export const dsaAchievements: Achievement[] = [
     description: "Solve 100 problems on any platform",
     icon: "🏆",
     isUnlocked: true,
-    unlockCriteria: "Reach 100 total solved problems",
+    unlockCriteria: "Reach 100 total solved problems"
   },
   {
     id: "binary_search_master",
@@ -88,7 +92,7 @@ export const dsaAchievements: Achievement[] = [
     description: "Complete all Binary Search topics",
     icon: "⚡",
     isUnlocked: true,
-    unlockCriteria: "Complete 100% of Binary Search topics",
+    unlockCriteria: "Complete 100% of Binary Search topics"
   },
   {
     id: "tree_explorer",
@@ -96,7 +100,7 @@ export const dsaAchievements: Achievement[] = [
     description: "Start exploring complex Tree and Graph structures",
     icon: "🌳",
     isUnlocked: false,
-    unlockCriteria: "Solve 20 Tree problems",
+    unlockCriteria: "Solve 20 Tree problems"
   },
   {
     id: "dp_beginner",
@@ -104,8 +108,8 @@ export const dsaAchievements: Achievement[] = [
     description: "Solve your first 5 Dynamic Programming problems",
     icon: "🧩",
     isUnlocked: false,
-    unlockCriteria: "Unlock and complete 5 DP problems",
-  },
+    unlockCriteria: "Unlock and complete 5 DP problems"
+  }
 ];
 
 export const recentActivities: Activity[] = [
@@ -114,22 +118,22 @@ export const recentActivities: Activity[] = [
     timeAgo: "Today",
     type: "solved",
     detail: "Two Sum",
-    topicId: "arrays",
+    topicId: "arrays"
   },
   {
     id: "act_2",
     timeAgo: "Yesterday",
     type: "completed",
     detail: "Sliding Window",
-    topicId: "sliding_window",
+    topicId: "sliding_window"
   },
   {
     id: "act_3",
     timeAgo: "2 days ago",
     type: "started",
     detail: "Graphs",
-    topicId: "graphs",
-  },
+    topicId: "graphs"
+  }
 ];
 
 export const dsaTopics: Topic[] = [
@@ -141,10 +145,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 20, total: 20 },
       medium: { solved: 15, total: 15 },
-      hard: { solved: 3, total: 3 },
+      hard: { solved: 3, total: 3 }
     },
     status: "completed",
-    iconName: "Brackets",
+    iconName: "Brackets"
   },
   {
     id: "strings",
@@ -154,10 +158,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 15, total: 15 },
       medium: { solved: 8, total: 8 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "Type",
+    iconName: "Type"
   },
   {
     id: "hashing",
@@ -167,10 +171,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 10, total: 10 },
       medium: { solved: 11, total: 11 },
-      hard: { solved: 3, total: 3 },
+      hard: { solved: 3, total: 3 }
     },
     status: "completed",
-    iconName: "Hash",
+    iconName: "Hash"
   },
   {
     id: "two_pointers",
@@ -180,10 +184,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 5, total: 5 },
       medium: { solved: 8, total: 8 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "ArrowUpDown",
+    iconName: "ArrowUpDown"
   },
   {
     id: "sliding_window",
@@ -193,10 +197,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 4 },
       medium: { solved: 2, total: 11 },
-      hard: { solved: 1, total: 5 },
+      hard: { solved: 1, total: 5 }
     },
     status: "current",
-    iconName: "Box",
+    iconName: "Box"
   },
   {
     id: "stack",
@@ -206,10 +210,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 5, total: 5 },
       medium: { solved: 8, total: 8 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "Layers",
+    iconName: "Layers"
   },
   {
     id: "queue",
@@ -219,10 +223,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 4, total: 4 },
       medium: { solved: 5, total: 5 },
-      hard: { solved: 1, total: 1 },
+      hard: { solved: 1, total: 1 }
     },
     status: "completed",
-    iconName: "ArrowRightLeft",
+    iconName: "ArrowRightLeft"
   },
   {
     id: "binary_search",
@@ -232,10 +236,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 8, total: 8 },
       medium: { solved: 10, total: 10 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "Binary",
+    iconName: "Binary"
   },
   {
     id: "linked_list",
@@ -245,10 +249,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 5, total: 5 },
       medium: { solved: 8, total: 8 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "Link",
+    iconName: "Link"
   },
   {
     id: "trees",
@@ -258,10 +262,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 10, total: 10 },
       medium: { solved: 15, total: 15 },
-      hard: { solved: 5, total: 5 },
+      hard: { solved: 5, total: 5 }
     },
     status: "completed",
-    iconName: "GitFork",
+    iconName: "GitFork"
   },
   {
     id: "bst",
@@ -271,10 +275,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 5, total: 5 },
       medium: { solved: 7, total: 7 },
-      hard: { solved: 3, total: 3 },
+      hard: { solved: 3, total: 3 }
     },
     status: "completed",
-    iconName: "GitMerge",
+    iconName: "GitMerge"
   },
   {
     id: "heap",
@@ -284,10 +288,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 4, total: 4 },
       medium: { solved: 5, total: 5 },
-      hard: { solved: 3, total: 3 },
+      hard: { solved: 3, total: 3 }
     },
     status: "completed",
-    iconName: "ChevronsUp",
+    iconName: "ChevronsUp"
   },
   {
     id: "trie",
@@ -297,10 +301,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 2, total: 2 },
       medium: { solved: 4, total: 4 },
-      hard: { solved: 2, total: 2 },
+      hard: { solved: 2, total: 2 }
     },
     status: "completed",
-    iconName: "SearchCode",
+    iconName: "SearchCode"
   },
   {
     id: "backtracking",
@@ -310,10 +314,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 2, total: 2 },
       medium: { solved: 6, total: 6 },
-      hard: { solved: 10, total: 10 },
+      hard: { solved: 10, total: 10 }
     },
     status: "completed",
-    iconName: "Undo",
+    iconName: "Undo"
   },
   {
     id: "graphs",
@@ -323,10 +327,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 3 },
       medium: { solved: 0, total: 8 },
-      hard: { solved: 0, total: 4 },
+      hard: { solved: 0, total: 4 }
     },
     status: "not-started",
-    iconName: "Share2",
+    iconName: "Share2"
   },
   {
     id: "union_find",
@@ -336,10 +340,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 2 },
       medium: { solved: 0, total: 6 },
-      hard: { solved: 0, total: 2 },
+      hard: { solved: 0, total: 2 }
     },
     status: "locked",
-    iconName: "Link2",
+    iconName: "Link2"
   },
   {
     id: "greedy",
@@ -349,10 +353,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 3 },
       medium: { solved: 0, total: 9 },
-      hard: { solved: 0, total: 3 },
+      hard: { solved: 0, total: 3 }
     },
     status: "locked",
-    iconName: "Coins",
+    iconName: "Coins"
   },
   {
     id: "dynamic_programming",
@@ -362,10 +366,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 3 },
       medium: { solved: 0, total: 12 },
-      hard: { solved: 0, total: 5 },
+      hard: { solved: 0, total: 5 }
     },
     status: "locked",
-    iconName: "Puzzle",
+    iconName: "Puzzle"
   },
   {
     id: "bit_manipulation",
@@ -375,10 +379,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 2 },
       medium: { solved: 0, total: 6 },
-      hard: { solved: 0, total: 2 },
+      hard: { solved: 0, total: 2 }
     },
     status: "locked",
-    iconName: "Cpu",
+    iconName: "Cpu"
   },
   {
     id: "math",
@@ -388,10 +392,10 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 1 },
       medium: { solved: 0, total: 3 },
-      hard: { solved: 0, total: 1 },
+      hard: { solved: 0, total: 1 }
     },
     status: "locked",
-    iconName: "Calculator",
+    iconName: "Calculator"
   },
   {
     id: "intervals",
@@ -401,9 +405,9 @@ export const dsaTopics: Topic[] = [
     difficultyCounts: {
       easy: { solved: 0, total: 1 },
       medium: { solved: 0, total: 3 },
-      hard: { solved: 0, total: 1 },
+      hard: { solved: 0, total: 1 }
     },
     status: "locked",
-    iconName: "Hourglass",
-  },
+    iconName: "Hourglass"
+  }
 ];

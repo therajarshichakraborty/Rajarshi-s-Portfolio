@@ -423,7 +423,9 @@ export default function GithubContributionBadge({
       setLoading(true);
       setStatsLoading(true);
       setError(null);
-      const res = await fetch(`/api/github-stats?username=${username}&t=${Date.now()}`);
+      const res = await fetch(
+        `/api/github-stats?username=${username}&t=${Date.now()}`
+      );
       if (!res.ok) throw new Error("Failed to load GitHub statistics.");
       const data = await res.json();
 
@@ -469,14 +471,16 @@ export default function GithubContributionBadge({
 
   const last31DaysContributions = useMemo(() => {
     if (!contributions || contributions.length === 0) return [];
-    const sorted = [...contributions].sort((a, b) => a.date.localeCompare(b.date));
+    const sorted = [...contributions].sort((a, b) =>
+      a.date.localeCompare(b.date)
+    );
     const todayStr = new Date().toISOString().slice(0, 10);
-    const filtered = sorted.filter(c => c.date <= todayStr);
+    const filtered = sorted.filter((c) => c.date <= todayStr);
     return filtered.slice(-31);
   }, [contributions]);
 
   const chartData = useMemo(() => {
-    return last31DaysContributions.map(item => ({
+    return last31DaysContributions.map((item) => ({
       date: item.date,
       contributions: item.count
     }));
@@ -710,8 +714,8 @@ export default function GithubContributionBadge({
           <div
             className="absolute left-1 top-1/2 -translate-y-1/2 text-[9px] font-semibold text-muted-foreground select-none"
             style={{
-              writingMode: 'vertical-lr',
-              transform: 'rotate(180deg)'
+              writingMode: "vertical-lr",
+              transform: "rotate(180deg)"
             }}
           >
             Contributions
@@ -742,19 +746,46 @@ export default function GithubContributionBadge({
                   margin={{ left: -10, right: 10, top: 5, bottom: 5 }}
                 >
                   <defs>
-                    <linearGradient id="contribGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="rgb(59, 130, 246)" stopOpacity={0.35} />
-                      <stop offset="95%" stopColor="rgb(59, 130, 246)" stopOpacity={0} />
+                    <linearGradient
+                      id="contribGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="5%"
+                        stopColor="rgb(59, 130, 246)"
+                        stopOpacity={0.35}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor="rgb(59, 130, 246)"
+                        stopOpacity={0}
+                      />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="2 2" stroke={isDark ? "rgba(148, 163, 184, 0.18)" : "rgba(148, 163, 184, 0.35)"} />
+                  <CartesianGrid
+                    strokeDasharray="2 2"
+                    stroke={
+                      isDark
+                        ? "rgba(148, 163, 184, 0.18)"
+                        : "rgba(148, 163, 184, 0.35)"
+                    }
+                  />
                   <XAxis
                     dataKey="date"
-                    tickFormatter={(tick) => new Date(tick + "T00:00:00").getDate().toString()}
+                    tickFormatter={(tick) =>
+                      new Date(tick + "T00:00:00").getDate().toString()
+                    }
                     tickLine={true}
                     axisLine={true}
                     tick={{ fontSize: 9, fill: "hsl(var(--muted-foreground))" }}
-                    stroke={isDark ? "rgba(148, 163, 184, 0.25)" : "rgba(148, 163, 184, 0.5)"}
+                    stroke={
+                      isDark
+                        ? "rgba(148, 163, 184, 0.25)"
+                        : "rgba(148, 163, 184, 0.5)"
+                    }
                   />
                   <YAxis
                     tickLine={true}
@@ -764,7 +795,11 @@ export default function GithubContributionBadge({
                     allowDecimals={false}
                     ticks={[0, 5, 10, 15, 20, 25]}
                     domain={[0, 25]}
-                    stroke={isDark ? "rgba(148, 163, 184, 0.25)" : "rgba(148, 163, 184, 0.5)"}
+                    stroke={
+                      isDark
+                        ? "rgba(148, 163, 184, 0.25)"
+                        : "rgba(148, 163, 184, 0.5)"
+                    }
                   />
                   <ChartTooltip
                     content={({ active, payload }) => {
@@ -772,9 +807,14 @@ export default function GithubContributionBadge({
                         const data = payload[0].payload;
                         return (
                           <div className="rounded-lg border border-border bg-popover/90 backdrop-blur-md px-3 py-2 text-[10px] text-popover-foreground shadow-md transition-all">
-                            <p className="font-semibold text-muted-foreground mb-0.5">{formatDate(data.date, true)}</p>
+                            <p className="font-semibold text-muted-foreground mb-0.5">
+                              {formatDate(data.date, true)}
+                            </p>
                             <p className="text-blue-500 font-bold text-xs">
-                              {data.contributions} {data.contributions === 1 ? "contribution" : "contributions"}
+                              {data.contributions}{" "}
+                              {data.contributions === 1
+                                ? "contribution"
+                                : "contributions"}
                             </p>
                           </div>
                         );
@@ -787,8 +827,18 @@ export default function GithubContributionBadge({
                     dataKey="contributions"
                     stroke="rgb(59, 130, 246)"
                     strokeWidth={2}
-                    dot={{ r: 2.5, fill: "rgb(59, 130, 246)", stroke: "rgb(59, 130, 246)", strokeWidth: 0 }}
-                    activeDot={{ r: 4.5, fill: "rgb(59, 130, 246)", stroke: "white", strokeWidth: 1.5 }}
+                    dot={{
+                      r: 2.5,
+                      fill: "rgb(59, 130, 246)",
+                      stroke: "rgb(59, 130, 246)",
+                      strokeWidth: 0
+                    }}
+                    activeDot={{
+                      r: 4.5,
+                      fill: "rgb(59, 130, 246)",
+                      stroke: "white",
+                      strokeWidth: 1.5
+                    }}
                     fillOpacity={1}
                     fill="url(#contribGradient)"
                   />
@@ -806,11 +856,8 @@ export default function GithubContributionBadge({
       <div className="relative w-full overflow-hidden justify-center items-center flex">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-orange-500/40 to-transparent" />
 
-
-
         <div className="px-2 sm:px-6 py-5">
           <div className="flex flex-row items-start justify-between gap-2 sm:gap-6">
-
             {/* Total Contributions */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
               <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-orange-500 shrink-0">
@@ -842,13 +889,20 @@ export default function GithubContributionBadge({
             {/* Total Stars */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1 sm:gap-4 flex-1 min-w-0">
               <div className="flex items-center justify-center size-10 sm:size-12 rounded-xl bg-transparent text-orange-500 shrink-0">
-                <Star className="size-6 sm:size-7 text-gray-500" fill="currentColor" strokeWidth={0} />
-
+                <Star
+                  className="size-6 sm:size-7 text-gray-500"
+                  fill="currentColor"
+                  strokeWidth={0}
+                />
               </div>
 
               <div className="min-w-0">
                 <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground truncate">
-                  {statsLoading ? "—" : (starsCount !== null ? starsCount.toLocaleString() : "—")}
+                  {statsLoading
+                    ? "—"
+                    : starsCount !== null
+                      ? starsCount.toLocaleString()
+                      : "—"}
                 </div>
 
                 <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
@@ -872,7 +926,11 @@ export default function GithubContributionBadge({
 
               <div className="min-w-0">
                 <div className="text-xl sm:text-2xl font-bold tracking-tight text-foreground truncate">
-                  {statsLoading ? "—" : (reposCount !== null ? reposCount.toLocaleString() : "—")}
+                  {statsLoading
+                    ? "—"
+                    : reposCount !== null
+                      ? reposCount.toLocaleString()
+                      : "—"}
                 </div>
 
                 <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
@@ -884,10 +942,8 @@ export default function GithubContributionBadge({
                 </p>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );
