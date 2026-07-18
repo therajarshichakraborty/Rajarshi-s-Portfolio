@@ -366,7 +366,7 @@ export function ProjectArchitectureDiagram({
                       {step.icon && (
                         <div className="flex items-center justify-center size-8 rounded-lg border border-border/30 bg-muted/25 text-foreground/70 group-hover:text-foreground group-hover:bg-muted/40 transition-all duration-300 shrink-0">
                           {React.isValidElement(step.icon)
-                            ? React.cloneElement(step.icon as React.ReactElement, {
+                            ? React.cloneElement(step.icon as React.ReactElement<any>, {
                                 className: "size-4 text-foreground/70 group-hover:text-foreground transition-colors duration-300"
                               })
                             : step.icon}
