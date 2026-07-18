@@ -18,7 +18,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { DATA } from "@/data/resume";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS, type ProjectData } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
 interface ActionItem {
@@ -417,9 +417,8 @@ export default function CommandPalette() {
                     .map((item, index) => ({ item, index }))
                     .filter(({ item }) => item.type === "project")
                     .map(({ item, index }) => {
-                      //@ts-nocheck
                       const project =
-                        item.item as (typeof DATA.projects)[number];
+                        item.item as ProjectData;
                       const isActive = index === selectedIndex;
                       return (
                         <button
