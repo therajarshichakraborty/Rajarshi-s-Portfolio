@@ -178,18 +178,18 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="flex flex-col gap-y-4 items-center text-center">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-semibold tracking-wider uppercase text-foreground/50">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-semibold tracking-wider uppercase text-black/60 dark:text-foreground/50">
               <Layers className="size-3.5" />
               System Architecture & Performance Metrics
             </span>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-foreground">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl text-black dark:text-foreground">
               My Engineering Portfolio
             </h1>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <p className="text-foreground/70 md:text-lg max-w-2xl leading-relaxed text-balance">
+            <p className="text-black/85 dark:text-foreground/70 md:text-lg max-w-2xl leading-relaxed text-balance">
               Explore the system designs, backend pipelines, and performance
               benchmarks behind my latest software engineering projects.
             </p>
@@ -205,18 +205,18 @@ export default function ProjectsPage() {
                   {/* 1. Header Info: Title, Duration, Category */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-foreground/50">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-black/60 dark:text-foreground/50">
                         {project.category}
                       </span>
-                      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-1 group-hover:text-primary transition-colors duration-300">
+                      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black dark:text-foreground mt-1 group-hover:text-primary transition-colors duration-300">
                         {project.title}
                       </h2>
-                      <p className="text-sm font-medium text-foreground/75 mt-1.5">
+                      <p className="text-sm font-medium text-black/80 dark:text-foreground/75 mt-1.5">
                         {project.tagline}
                       </p>
                     </div>
                     <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
-                      <span className="text-xs font-mono text-foreground/60 bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
+                      <span className="text-xs font-mono text-black/70 dark:text-foreground/60 bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
                         {project.duration}
                       </span>
 
@@ -267,35 +267,36 @@ export default function ProjectsPage() {
                   <hr className="border-border/30" />
 
                   {/* 2. Project Details: Overview, Capabilities, Technologies */}
+                  {/* 2. Project Details: Overview, Capabilities, Technologies */}
                   <div className="flex flex-col gap-y-8">
                     {/* Project Overview */}
                     <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-2.5">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60 mb-2.5">
                         Project Overview
                       </h4>
-                      <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-line max-w-3xl">
+                      <p className="text-sm text-black dark:text-foreground/80 leading-relaxed whitespace-pre-line max-w-3xl">
                         {project.description}
                       </p>
                     </div>
 
                     {/* Key Capabilities */}
                     <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-3.5">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60 mb-3.5">
                         Key Capabilities
                       </h4>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         {project.features.map((feature, idx) => (
                           <li
                             key={idx}
-                            className="flex items-start gap-3 text-xs text-foreground/85 bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:bg-muted/15 hover:border-border/30 transition-all duration-200"
+                            className="group/capability flex items-start gap-3 text-xs text-black/90 dark:text-foreground/80 bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:bg-muted/15 hover:border-foreground/15 hover:-translate-y-0.5 hover:scale-[1.01] active:scale-[0.99] transition-all duration-300 ease-out cursor-pointer"
                           >
-                            <span className="flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-lg bg-foreground/5 text-foreground/80 border border-border/30">
+                            <span className="flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-lg bg-foreground/5 text-foreground/60 border border-border/30 group-hover/capability:bg-foreground/10 group-hover/capability:border-foreground/30 group-hover/capability:text-foreground transition-all duration-300 ease-out">
                               <DynIcon
                                 name={feature.icon}
-                                className="size-3"
+                                className="size-3 transition-transform duration-300 group-hover/capability:rotate-12 group-hover/capability:scale-110"
                               />
                             </span>
-                            <span className="leading-normal">
+                            <span className="leading-normal group-hover/capability:text-black dark:group-hover/capability:text-foreground transition-colors duration-300">
                               {feature.text}
                             </span>
                           </li>
@@ -305,7 +306,7 @@ export default function ProjectsPage() {
 
                     {/* Technologies Deployed */}
                     <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-3">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60 mb-3">
                         Technologies Deployed
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
@@ -317,7 +318,7 @@ export default function ProjectsPage() {
                               className="group/tech inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground/90 cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-xs hover:shadow-primary/5 active:scale-[0.98]"
                             >
                               {Icon && (
-                                  <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-6" />
+                                <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-6" />
                               )}
                               <span className="transition-colors duration-300 group-hover/tech:text-primary">
                                 {tech.name}
@@ -334,10 +335,10 @@ export default function ProjectsPage() {
                   {/* 3. System Architecture & Performance Grid */}
                   <div className="flex flex-col gap-y-4">
                     <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-2.5">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60 mb-2.5">
                         System Architecture & Technical Specifications
                       </h4>
-                      <p className="text-xs font-mono text-foreground/75 leading-relaxed bg-muted/30 border border-border/30 rounded-lg p-3">
+                      <p className="text-xs font-mono text-black dark:text-foreground/75 leading-relaxed bg-muted/30 border border-border/30 rounded-lg p-3">
                         {project.architecture}
                       </p>
                     </div>
@@ -353,7 +354,7 @@ export default function ProjectsPage() {
                     <>
                       <hr className="border-border/30" />
                       <div className="flex flex-col gap-y-4">
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60">
                           Key Technical Challenges & Solutions
                         </h4>
                         <div className="flex flex-col divide-y divide-border/10 border-t border-b border-border/10">
@@ -363,13 +364,13 @@ export default function ProjectsPage() {
                               className="group/challenge flex flex-col sm:flex-row gap-x-6 gap-y-2 py-4 transition-all duration-200"
                             >
                               <div className="flex items-center gap-2 sm:flex-col sm:items-start shrink-0 w-28">
-                                <span className="font-mono text-[9px] font-bold text-foreground/45 tracking-widest uppercase">
+                                <span className="font-mono text-[9px] font-bold text-black/50 dark:text-foreground/45 tracking-widest uppercase">
                                   Challenge {String(idx + 1).padStart(2, "0")}
                                 </span>
                                 <span className="h-[1px] w-4 bg-border/40 hidden sm:block mt-1.5 group-hover/challenge:w-8 group-hover/challenge:bg-foreground/50 transition-all duration-300" />
                               </div>
                               <div className="flex-1">
-                                <p className="text-[13px] text-foreground/75 group-hover/challenge:text-foreground transition-colors duration-300 leading-relaxed font-normal">
+                                <p className="text-[13px] text-black/90 dark:text-foreground/75 group-hover/challenge:text-black dark:group-hover/challenge:text-foreground transition-colors duration-300 leading-relaxed font-normal">
                                   {challenge}
                                 </p>
                               </div>

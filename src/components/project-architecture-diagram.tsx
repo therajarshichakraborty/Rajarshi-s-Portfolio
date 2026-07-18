@@ -318,10 +318,10 @@ export function ProjectArchitectureDiagram({
   return (
     <div className="w-full flex flex-col gap-y-4 rounded-2xl bg-transparent relative overflow-hidden">
       <div className="flex flex-col gap-y-1">
-        <h5 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
+        <h5 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60">
           System Pipeline Flow
         </h5>
-        <p className="text-[11px] text-foreground/75 leading-relaxed mb-3 font-mono">
+        <p className="text-[11px] text-black dark:text-foreground/75 leading-relaxed mb-3 font-mono">
           Visualizing the step-by-step lifecycle of request payloads and data pathways.
         </p>
       </div>
@@ -360,7 +360,7 @@ export function ProjectArchitectureDiagram({
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] font-bold text-foreground/40 shrink-0">
+                      <span className="font-mono text-[10px] font-bold text-black/40 dark:text-foreground/40 shrink-0">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       {step.icon && (
@@ -372,15 +372,15 @@ export function ProjectArchitectureDiagram({
                             : step.icon}
                         </div>
                       )}
-                      <h6 className="text-sm font-bold text-foreground leading-tight tracking-tight">
+                      <h6 className="text-sm font-bold text-black dark:text-foreground leading-tight tracking-tight">
                         {step.title}
                       </h6>
                     </div>
-                    <span className="text-[10px] font-mono tracking-wider font-semibold text-foreground/75 bg-muted/30 border border-border/30 px-2.5 py-0.5 rounded-md shrink-0">
+                    <span className="text-[10px] font-mono tracking-wider font-semibold text-black/80 dark:text-foreground/75 bg-muted/30 border border-border/30 px-2.5 py-0.5 rounded-md shrink-0">
                       {step.annotation}
                     </span>
                   </div>
-                  <p className="text-[12px] text-foreground/80 leading-relaxed pl-0 sm:pl-11 mt-0.5">
+                  <p className="text-[12px] text-black/90 dark:text-foreground/80 leading-relaxed pl-0 sm:pl-11 mt-0.5">
                     {step.details}
                   </p>
                 </div>
