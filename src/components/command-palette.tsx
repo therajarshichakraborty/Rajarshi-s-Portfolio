@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { DATA } from "@/data/resume";
+import { PROJECTS } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
 interface ActionItem {
@@ -78,22 +79,11 @@ export default function CommandPalette() {
       icon: FileDown,
       onTrigger: () => {
         const a = document.createElement("a");
-        a.href = "/Rajarshi's-Resume-01.pdf";
-        a.download = "Rajarshi's-Resume.pdf";
+        a.href = "/rajarshi_chakraborty_resume.pdf";
+        a.download = "rajarshi_chakraborty_resume.pdf";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-      }
-    },
-    {
-      id: "theme",
-      title: "Switch Theme",
-      description: `Toggle between dark and light mode (currently ${resolvedTheme})`,
-      shortcut: "T",
-      category: "Actions",
-      icon: resolvedTheme === "dark" ? Sun : Moon,
-      onTrigger: () => {
-        setTheme(resolvedTheme === "dark" ? "light" : "dark");
       }
     },
     {
@@ -114,12 +104,12 @@ export default function CommandPalette() {
     {
       id: "blog",
       title: "View Blogs",
-      description: "Read my technical articles and blog posts",
+      description: "Read my technical articles and blog posts on Hashnode",
       shortcut: "B",
       category: "Navigation",
       icon: BookOpen,
       onTrigger: () => {
-        router.push("/blog");
+        window.open("https://hashnode.com/@Rajarshi2005", "_blank", "noopener,noreferrer");
       }
     }
   ];
@@ -134,14 +124,14 @@ export default function CommandPalette() {
   });
 
   const filteredProjects = searchQuery
-    ? DATA.projects.filter(
+    ? PROJECTS.filter(
         (project) =>
           project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           project.description
             .toLowerCase()
             .includes(searchQuery.toLowerCase()) ||
           project.technologies.some((tech) =>
-            tech.toLowerCase().includes(searchQuery.toLowerCase())
+            tech.name.toLowerCase().includes(searchQuery.toLowerCase())
           )
       )
     : [];
@@ -252,20 +242,17 @@ export default function CommandPalette() {
         } else if (key === "r") {
           e.preventDefault();
           const a = document.createElement("a");
-          a.href = "/Rajarshi's-Resume-01.pdf";
-          a.download = "Rajarshi's-Resume.pdf";
+          a.href = "/rajarshi_chakraborty_resume.pdf";
+          a.download = "rajarshi_chakraborty_resume.pdf";
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
         } else if (key === "b") {
           e.preventDefault();
-          router.push("/blog");
+          window.open("https://hashnode.com/@Rajarshi2005", "_blank", "noopener,noreferrer");
         } else if (key === "p") {
           e.preventDefault();
           router.push("/projects");
-        } else if (key === "t") {
-          e.preventDefault();
-          setTheme(resolvedTheme === "dark" ? "light" : "dark");
         } else if (key === "m") {
           e.preventDefault();
           window.open(
@@ -430,6 +417,7 @@ export default function CommandPalette() {
                     .map((item, index) => ({ item, index }))
                     .filter(({ item }) => item.type === "project")
                     .map(({ item, index }) => {
+                      //@ts-nocheck
                       const project =
                         item.item as (typeof DATA.projects)[number];
                       const isActive = index === selectedIndex;
