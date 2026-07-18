@@ -316,26 +316,22 @@ export function ProjectArchitectureDiagram({
   if (!steps) return null;
 
   return (
-    <div className="w-full flex flex-col gap-y-4 rounded-2xl bg-transparent p-5 sm:p-6 backdrop-blur-xs relative overflow-hidden">
-      {/* Background visual indicators */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 size-80 rounded-full bg-transparent opacity-[0.03] blur-3xl pointer-events-none -z-10" />
-
+    <div className="w-full flex flex-col gap-y-4 rounded-2xl bg-transparent relative overflow-hidden">
       <div className="flex flex-col gap-y-1">
-        <h5 className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+        <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
           System Pipeline Flow
         </h5>
-        <p className="text-xs text-muted-foreground/80 leading-relaxed mb-4">
-          Visualizing the step-by-step lifecycle of request payloads and data
-          pathways.
+        <p className="text-[11px] text-muted-foreground/80 leading-relaxed mb-3 font-mono">
+          Visualizing the step-by-step lifecycle of request payloads and data pathways.
         </p>
       </div>
 
       {/* Vertical Timeline container */}
-      <div className="relative pl-3 sm:pl-4">
-        {/* Continuous dashed line background */}
-        <div className="absolute left-[31px] sm:left-[35px] top-6 bottom-6 w-[2px]  pointer-events-none" />
+      <div className="relative pl-6 sm:pl-8">
+        {/* Continuous gradient line background */}
+        <div className="absolute left-2.5 sm:left-3 top-4 bottom-4 w-[1px] bg-gradient-to-b from-border/80 via-border/40 to-transparent pointer-events-none" />
 
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-5">
           {steps.map((step, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
@@ -343,45 +339,48 @@ export function ProjectArchitectureDiagram({
                 key={idx}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className="flex items-start gap-4 sm:gap-6 relative transition-all duration-300"
+                className="group relative flex items-start gap-4 sm:gap-6 transition-all duration-300"
               >
-                {/* Number bullet and vertical line indicator */}
+                {/* Connection dot */}
                 <div
-                  className={`flex size-10 items-center justify-center rounded-full bg-transparent relative z-10 shrink-0 shadow-xs transition-all duration-300 ${
-                   isHovered
-                      ? "bg-transparent"
-                      : "bg-transparent"
+                  className={`absolute left-2.5 sm:left-3 -translate-x-1/2 top-[22px] flex items-center justify-center rounded-full transition-all duration-300 z-20 ${
+                    isHovered
+                      ? "w-3 h-3 bg-foreground ring-4 ring-muted scale-110"
+                      : "w-2 h-2 bg-muted-foreground/30 ring-4 ring-background"
                   }`}
-                >
-                  <span className="text-[10px] font-bold font-mono text-muted-foreground/80">
-                    {idx + 1}
-                  </span>
-                </div>
+                />
 
                 {/* Node details card */}
                 <div
-                  className={`flex-1 flex flex-col gap-y-1.5 rounded-xl p-4 transition-all duration-300 ${
+                  className={`flex-1 flex flex-col gap-y-2 rounded-xl border border-border/20 bg-muted/5 p-4 sm:p-5 transition-all duration-300 ${
                     isHovered
-                      ? "bg-transparent"
-                      : "bg-transparent"
+                      ? "border-border/60 bg-muted/15 shadow-[0_4px_20px_rgba(0,0,0,0.015)] translate-x-0.5"
+                      : "hover:border-border/30 hover:bg-muted/8"
                   }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`p-1.5 rounded-md bg-transparent ${step.colorClass}`}
-                      >
-                        {step.icon}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[10px] font-bold text-muted-foreground/40 shrink-0">
+                        {String(idx + 1).padStart(2, "0")}
                       </span>
-                      <h6 className="text-sm font-bold text-foreground leading-tight">
+                      {step.icon && (
+                        <div className="flex items-center justify-center size-8 rounded-lg border border-border/30 bg-muted/25 text-muted-foreground group-hover:text-foreground group-hover:bg-muted/40 transition-all duration-300 shrink-0">
+                          {React.isValidElement(step.icon)
+                            ? React.cloneElement(step.icon as React.ReactElement, {
+                                className: "size-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+                              })
+                            : step.icon}
+                        </div>
+                      )}
+                      <h6 className="text-sm font-bold text-foreground leading-tight tracking-tight">
                         {step.title}
                       </h6>
                     </div>
-                    <span className="text-[10px] font-mono font-medium text-primary/80 bg-primary/5 dark:bg-primary/10 px-2 py-0.5 rounded-sm w-fit">
+                    <span className="text-[10px] font-mono tracking-wider font-semibold text-muted-foreground bg-muted/30 border border-border/30 px-2.5 py-0.5 rounded-md shrink-0">
                       {step.annotation}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                  <p className="text-[12px] text-muted-foreground/90 leading-relaxed pl-0 sm:pl-11 mt-0.5">
                     {step.details}
                   </p>
                 </div>

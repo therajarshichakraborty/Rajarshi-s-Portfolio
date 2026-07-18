@@ -385,20 +385,27 @@ export default function ProjectsPage() {
                   {project.challenges && project.challenges.length > 0 && (
                     <>
                       <hr className="border-border/30" />
-                      <div className="flex flex-col gap-y-3">
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                      <div className="flex flex-col gap-y-4">
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
                           Key Technical Challenges & Solutions
                         </h4>
-                        <div className="flex flex-col gap-y-3">
+                        <div className="flex flex-col divide-y divide-border/10 border-t border-b border-border/10">
                           {project.challenges.map((challenge, idx) => (
                             <div
                               key={idx}
-                              className="flex gap-3 text-xs leading-relaxed text-muted-foreground bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:border-border transition-colors duration-200"
+                              className="group/challenge flex flex-col sm:flex-row gap-x-6 gap-y-2 py-4 transition-all duration-200"
                             >
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-mono font-bold text-[10px]">
-                                {idx + 1}
-                              </span>
-                              <p className="mt-0.5">{challenge}</p>
+                              <div className="flex items-center gap-2 sm:flex-col sm:items-start shrink-0 w-28">
+                                <span className="font-mono text-[9px] font-bold text-muted-foreground/50 tracking-widest uppercase">
+                                  Challenge {String(idx + 1).padStart(2, "0")}
+                                </span>
+                                <span className="h-[1px] w-4 bg-border/40 hidden sm:block mt-1.5 group-hover/challenge:w-8 group-hover/challenge:bg-foreground/50 transition-all duration-300" />
+                              </div>
+                              <div className="flex-1">
+                                <p className="text-[13px] text-muted-foreground group-hover/challenge:text-foreground transition-colors duration-300 leading-relaxed font-normal">
+                                  {challenge}
+                                </p>
+                              </div>
                             </div>
                           ))}
                         </div>
