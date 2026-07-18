@@ -318,10 +318,10 @@ export function ProjectArchitectureDiagram({
   return (
     <div className="w-full flex flex-col gap-y-4 rounded-2xl bg-transparent relative overflow-hidden">
       <div className="flex flex-col gap-y-1">
-        <h5 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
+        <h5 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
           System Pipeline Flow
         </h5>
-        <p className="text-[11px] text-muted-foreground/80 leading-relaxed mb-3 font-mono">
+        <p className="text-[11px] text-foreground/75 leading-relaxed mb-3 font-mono">
           Visualizing the step-by-step lifecycle of request payloads and data pathways.
         </p>
       </div>
@@ -346,7 +346,7 @@ export function ProjectArchitectureDiagram({
                   className={`absolute left-2.5 sm:left-3 -translate-x-1/2 top-[22px] flex items-center justify-center rounded-full transition-all duration-300 z-20 ${
                     isHovered
                       ? "w-3 h-3 bg-foreground ring-4 ring-muted scale-110"
-                      : "w-2 h-2 bg-muted-foreground/30 ring-4 ring-background"
+                      : "w-2 h-2 bg-foreground/20 ring-4 ring-background"
                   }`}
                 />
 
@@ -360,14 +360,14 @@ export function ProjectArchitectureDiagram({
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] font-bold text-muted-foreground/40 shrink-0">
+                      <span className="font-mono text-[10px] font-bold text-foreground/40 shrink-0">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       {step.icon && (
-                        <div className="flex items-center justify-center size-8 rounded-lg border border-border/30 bg-muted/25 text-muted-foreground group-hover:text-foreground group-hover:bg-muted/40 transition-all duration-300 shrink-0">
+                        <div className="flex items-center justify-center size-8 rounded-lg border border-border/30 bg-muted/25 text-foreground/70 group-hover:text-foreground group-hover:bg-muted/40 transition-all duration-300 shrink-0">
                           {React.isValidElement(step.icon)
                             ? React.cloneElement(step.icon as React.ReactElement, {
-                                className: "size-4 text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+                                className: "size-4 text-foreground/70 group-hover:text-foreground transition-colors duration-300"
                               })
                             : step.icon}
                         </div>
@@ -376,11 +376,11 @@ export function ProjectArchitectureDiagram({
                         {step.title}
                       </h6>
                     </div>
-                    <span className="text-[10px] font-mono tracking-wider font-semibold text-muted-foreground bg-muted/30 border border-border/30 px-2.5 py-0.5 rounded-md shrink-0">
+                    <span className="text-[10px] font-mono tracking-wider font-semibold text-foreground/75 bg-muted/30 border border-border/30 px-2.5 py-0.5 rounded-md shrink-0">
                       {step.annotation}
                     </span>
                   </div>
-                  <p className="text-[12px] text-muted-foreground/90 leading-relaxed pl-0 sm:pl-11 mt-0.5">
+                  <p className="text-[12px] text-foreground/80 leading-relaxed pl-0 sm:pl-11 mt-0.5">
                     {step.details}
                   </p>
                 </div>

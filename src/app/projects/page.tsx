@@ -178,7 +178,7 @@ export default function ProjectsPage() {
         {/* Header */}
         <div className="flex flex-col gap-y-4 items-center text-center">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-semibold tracking-wider uppercase text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 text-xs font-semibold tracking-wider uppercase text-foreground/50">
               <Layers className="size-3.5" />
               System Architecture & Performance Metrics
             </span>
@@ -189,7 +189,7 @@ export default function ProjectsPage() {
             </h1>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <p className="text-muted-foreground md:text-lg max-w-2xl leading-relaxed text-balance">
+            <p className="text-foreground/70 md:text-lg max-w-2xl leading-relaxed text-balance">
               Explore the system designs, backend pipelines, and performance
               benchmarks behind my latest software engineering projects.
             </p>
@@ -205,18 +205,18 @@ export default function ProjectsPage() {
                   {/* 1. Header Info: Title, Duration, Category */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-foreground/50">
                         {project.category}
                       </span>
                       <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-1 group-hover:text-primary transition-colors duration-300">
                         {project.title}
                       </h2>
-                      <p className="text-sm font-medium text-muted-foreground mt-1.5">
+                      <p className="text-sm font-medium text-foreground/75 mt-1.5">
                         {project.tagline}
                       </p>
                     </div>
                     <div className="flex flex-col sm:items-end gap-1.5 shrink-0">
-                      <span className="text-xs font-mono text-muted-foreground bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
+                      <span className="text-xs font-mono text-foreground/60 bg-muted/40 border border-border/40 px-2 py-0.5 rounded-md">
                         {project.duration}
                       </span>
 
@@ -266,98 +266,65 @@ export default function ProjectsPage() {
 
                   <hr className="border-border/30" />
 
-                  {/* 2. Main Grid: Overview & Features (Left) | Tech & Stats (Right) */}
-                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8">
-                    {/* Left side: Overview & Key Features */}
-                    <div className="flex flex-col gap-y-5">
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
-                          Project Overview
-                        </h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                          Key Capabilities
-                        </h4>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {project.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-2.5 text-xs text-muted-foreground"
-                            >
-                              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary border border-primary/10">
-                                <DynIcon
-                                  name={feature.icon}
-                                  className="size-3"
-                                />
-                              </span>
-                              <span className="leading-normal mt-0.5">
-                                {feature.text}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                  {/* 2. Project Details: Overview, Capabilities, Technologies */}
+                  <div className="flex flex-col gap-y-8">
+                    {/* Project Overview */}
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-2.5">
+                        Project Overview
+                      </h4>
+                      <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-line max-w-3xl">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <div className="flex flex-col gap-y-6">
-                    
-                      {/* <div>
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                          Quick Metrics
-                        </h4>
-                        <div className="grid grid-cols-2 gap-3">
-                          {project.stats.map((stat, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center gap-2.5 rounded-xl border border-border bg-muted/10 p-3 hover:border-border transition-colors duration-200"
-                            >
-                              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground border border-border">
-                                <DynIcon
-                                  name={stat.icon}
-                                  className="size-3.5"
-                                />
-                              </span>
-                              <div className="min-w-0">
-                                <p className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold">
-                                  {stat.label}
-                                </p>
-                                <p className="text-xs font-bold text-foreground truncate mt-0.5">
-                                  {stat.value}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div> */}
+                    {/* Key Capabilities */}
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-3.5">
+                        Key Capabilities
+                      </h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        {project.features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-3 text-xs text-foreground/85 bg-muted/10 border border-border/20 rounded-xl p-3.5 hover:bg-muted/15 hover:border-border/30 transition-all duration-200"
+                          >
+                            <span className="flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-lg bg-foreground/5 text-foreground/80 border border-border/30">
+                              <DynIcon
+                                name={feature.icon}
+                                className="size-3"
+                              />
+                            </span>
+                            <span className="leading-normal">
+                              {feature.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                      {/* Tech badges */}
-                      <div>
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                          Technologies Deployed
-                        </h4>
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.technologies.map((tech) => {
-                            const Icon = getTagIcon(tech.name);
-                            return (
-                              <span
-                                key={tech.name}
-                                className="group/tech inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-xs hover:shadow-primary/5 active:scale-[0.98]"
-                              >
-                                {Icon && (
+                    {/* Technologies Deployed */}
+                    <div>
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-3">
+                        Technologies Deployed
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.map((tech) => {
+                          const Icon = getTagIcon(tech.name);
+                          return (
+                            <span
+                              key={tech.name}
+                              className="group/tech inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground/90 cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-xs hover:shadow-primary/5 active:scale-[0.98]"
+                            >
+                              {Icon && (
                                   <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-6" />
-                                )}
-                                <span className="transition-colors duration-300 group-hover/tech:text-primary">
-                                  {tech.name}
-                                </span>
+                              )}
+                              <span className="transition-colors duration-300 group-hover/tech:text-primary">
+                                {tech.name}
                               </span>
-                            );
-                          })}
-                        </div>
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -367,10 +334,10 @@ export default function ProjectsPage() {
                   {/* 3. System Architecture & Performance Grid */}
                   <div className="flex flex-col gap-y-4">
                     <div>
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">
+                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60 mb-2.5">
                         System Architecture & Technical Specifications
                       </h4>
-                      <p className="text-xs font-mono text-muted-foreground/80 leading-relaxed bg-muted/30 border border-border/30 rounded-lg p-2.5">
+                      <p className="text-xs font-mono text-foreground/75 leading-relaxed bg-muted/30 border border-border/30 rounded-lg p-3">
                         {project.architecture}
                       </p>
                     </div>
@@ -386,7 +353,7 @@ export default function ProjectsPage() {
                     <>
                       <hr className="border-border/30" />
                       <div className="flex flex-col gap-y-4">
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
                           Key Technical Challenges & Solutions
                         </h4>
                         <div className="flex flex-col divide-y divide-border/10 border-t border-b border-border/10">
@@ -396,13 +363,13 @@ export default function ProjectsPage() {
                               className="group/challenge flex flex-col sm:flex-row gap-x-6 gap-y-2 py-4 transition-all duration-200"
                             >
                               <div className="flex items-center gap-2 sm:flex-col sm:items-start shrink-0 w-28">
-                                <span className="font-mono text-[9px] font-bold text-muted-foreground/50 tracking-widest uppercase">
+                                <span className="font-mono text-[9px] font-bold text-foreground/45 tracking-widest uppercase">
                                   Challenge {String(idx + 1).padStart(2, "0")}
                                 </span>
                                 <span className="h-[1px] w-4 bg-border/40 hidden sm:block mt-1.5 group-hover/challenge:w-8 group-hover/challenge:bg-foreground/50 transition-all duration-300" />
                               </div>
                               <div className="flex-1">
-                                <p className="text-[13px] text-muted-foreground group-hover/challenge:text-foreground transition-colors duration-300 leading-relaxed font-normal">
+                                <p className="text-[13px] text-foreground/75 group-hover/challenge:text-foreground transition-colors duration-300 leading-relaxed font-normal">
                                   {challenge}
                                 </p>
                               </div>
