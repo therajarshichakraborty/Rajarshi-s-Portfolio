@@ -71,7 +71,7 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
     { href: "/projects", icon: Code, label: "Projects" }
   ],
   contact: {
-    email: "rajarshi29032005@gmail.com",
+    email: "rajarshichakraborty20000@gmail.com",
     tel: "+91 8001950250",
     social: {
       GitHub: {
