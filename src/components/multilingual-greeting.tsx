@@ -9,15 +9,18 @@ const GREETINGS = [
   { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "Hola", name: "Rajarshi Chakraborty" }, // Spanish
   { hello: "안녕하세요", name: "라자르시 차크라보르티" }, // Korean
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "नमस्ते", name: "राजर्षि चक्रवर्ती" }, // Hindi
   { hello: "Bonjour", name: "Rajarshi Chakraborty" }, // French
   { hello: "你好", name: "拉贾尔希·查克拉博蒂" }, // Chinese
   { hello: "ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ", name: "ਰਾਜਰਸ਼ੀ ਚੱਕਰਵਰਤੀ" }, // Punjabi
   { hello: "Привет", name: "Раджарши Чакраборти" }, // Russian
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "வணக்கம்", name: "ராஜர்ஷி சக்ரவர்த்தி" }, // Tamil
   { hello: "Ciao", name: "Rajarshi Chakraborty" }, // Italian
   { hello: "Γεια σας", name: "Ρατζάρσι Τσακραβόρτι" }, // Greek
   { hello: "నమస్కారం", name: "రాజర్షి చక్రవర్తి" }, // Telugu
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "Hallo", name: "Rajarshi Chakraborty" }, // German
   { hello: "سلام", name: "راجارشی چاکرابورتی" }, // Persian
   { hello: "નમસ્તે", name: "રાજર્ષિ ચક્રવર્તી" }, // Gujarati
@@ -25,6 +28,7 @@ const GREETINGS = [
   { hello: "നമസ്കാരം", name: "രാജർഷി ചക്രവർത്തി" }, // Malayalam
   { hello: "مرحباً", name: "راجارشي تشاكرابورتي" }, // Arabic
   { hello: "नमस्कार", name: "राजर्षी चक्रवर्ती" }, // Marathi
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "Hej", name: "Rajarshi Chakraborty" }, // Swedish
   { hello: "ଓଡ଼ିଆ ନମସ୍କାର", name: "ରାଜର୍ଷି ଚକ୍ରବର୍ତ୍ତୀ" }, // Odia
   { hello: "שלום", name: "רג'רשי צ'קרבורטי" }, // Hebrew
@@ -32,13 +36,16 @@ const GREETINGS = [
   { hello: "Xin chào", name: "Ra-gia-si Cha-kra-bô-ti" }, // Vietnamese
   { hello: "ꯈꯨꯔꯨꯝꯖꯔꯤ", name: "ꯔꯥꯖꯔꯁꯤ ꯆꯛꯔꯕꯔ꯭ꯇꯤ" }, // Manipuri
   { hello: "Привіт", name: "Раджарші Чакраборті" }, // Ukrainian
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "नमस्कार", name: "राजर्षि चक्रवर्ती" }, // Nepali
   { hello: "สวัสดี", name: "ราชาร์ชี จักรบอร์ตี" }, // Thai
   { hello: "ꦱꦸꦒꦼꦁ", name: "ꦫꦗꦂꦯꦶ ꦕꦏꦿꦮꦂꦠꦶ" }, // Javanese
   { hello: "Olá", name: "Rajarshi Chakraborty" }, // Portuguese
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "မင်္ဂလာပါ", name: "ရာဇာရှီ ချက်ကရာဗိုတီ" }, // Burmese
   { hello: "Aloha", name: "Rajarshi Chakraborty" }, // Hawaiian
-  { hello: "សួស្តី", name: "រ៉ាចារស៊ី ចាក្រាបរទី" } // Khmer
+  { hello: "សួស្តី", name: "រ៉ាចារស៊ី ចាក្រាបរទី" } ,// Khmer
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
 ];
 
 export default function MultilingualGreeting() {
