@@ -187,7 +187,9 @@ const LUCIDE_ICON_MAP: Record<string, React.ComponentType<any>> = {
 function getTagIcon(tag: string) {
   const key = tag.toLowerCase();
   const keyClean = key.replace(/[^a-z0-9]/g, "");
-  return tagIconMap[key] ?? tagIconMap[keyClean] ?? LUCIDE_ICON_MAP[tag] ?? undefined;
+  return (
+    tagIconMap[key] ?? tagIconMap[keyClean] ?? LUCIDE_ICON_MAP[tag] ?? undefined
+  );
 }
 
 function DynIcon({ name, className }: { name: string; className?: string }) {

@@ -44,8 +44,8 @@ const GREETINGS = [
   { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
   { hello: "မင်္ဂလာပါ", name: "ရာဇာရှီ ချက်ကရာဗိုတီ" }, // Burmese
   { hello: "Aloha", name: "Rajarshi Chakraborty" }, // Hawaiian
-  { hello: "សួស្តី", name: "រ៉ាចារស៊ី ចាក្រាបរទី" } ,// Khmer
-  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" }, // Bengali
+  { hello: "សួស្តី", name: "រ៉ាចារស៊ី ចាក្រាបរទី" }, // Khmer
+  { hello: "নমস্কার", name: "রাজর্ষি চক্রবর্তী" } // Bengali
 ];
 
 export default function MultilingualGreeting() {

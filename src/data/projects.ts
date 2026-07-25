@@ -73,7 +73,7 @@ export interface ProjectData {
   links: ProjectLink[];
   challenges: string[];
   architecture: string;
-  isBuilding:boolean;
+  isBuilding: boolean;
 }
 
 export const TECH_COLORS: Record<string, string> = {
@@ -165,7 +165,7 @@ OpenStack combines a powerful NestJS backend with a high-performance Next.js das
       { name: "BullMQ" },
       { name: "WebSockets" },
       { name: "Tailwind CSS" },
-      {name:"Redis"}
+      { name: "Redis" }
     ],
     features: [
       {
@@ -240,11 +240,11 @@ OpenStack combines a powerful NestJS backend with a high-performance Next.js das
     isBuilding: true
   },
   {
-  id: "codepilot",
-  title: "CodePilot",
-  tagline: "AI-Powered Browser-Based Code Editor",
-  description: `CodePilot is a browser-native code editor that combines a Monaco-powered editing experience with real-time AI assistance. Built for developers who want a fast, distraction-free environment, it delivers fluid theme transitions, secure authentication, and a premium glassmorphic interface without requiring any local installation.`,
-  longDescription: `Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Monaco Editor, NextAuth (Auth.js), Prisma ORM, PostgreSQL, Winston, Bun.
+    id: "codepilot",
+    title: "CodePilot",
+    tagline: "AI-Powered Browser-Based Code Editor",
+    description: `CodePilot is a browser-native code editor that combines a Monaco-powered editing experience with real-time AI assistance. Built for developers who want a fast, distraction-free environment, it delivers fluid theme transitions, secure authentication, and a premium glassmorphic interface without requiring any local installation.`,
+    longDescription: `Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Monaco Editor, NextAuth (Auth.js), Prisma ORM, PostgreSQL, Winston, Bun.
 Engineered a fully browser-based code editor using Next.js App Router and React 19, integrating Monaco Editor to deliver a native IDE-grade editing experience directly in the browser.
 
 Implemented secure authentication with NextAuth and JWT-based session handling, using middleware-level route protection to manage user access across the editor workspace.
@@ -259,100 +259,100 @@ Integrated Prisma ORM with PostgreSQL for persistent user and session data, esta
 
 Adopted Bun as the runtime and package manager, reducing install and cold-start times during local development.`,
 
-//@ts-ignore
-  category: "Developer Tools and AI Platform",
-  duration: "June 2026 - Present",
-  image: "/background/codepilot.png",
+    //@ts-ignore
+    category: "Developer Tools and AI Platform",
+    duration: "June 2026 - Present",
+    image: "/background/codepilot.png",
 
-  technologies: [
-    { name: "Next.js" },
-    { name: "TypeScript" },
-    { name: "React" },
-    { name: "Tailwind CSS" },
-    { name: "Monaco Editor" },
-    { name: "NextAuth" },
-    { name: "Prisma ORM" },
-    { name: "PostgreSQL" },
-    { name: "Winston" },
-    { name: "Bun" }
-  ],
+    technologies: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "Tailwind CSS" },
+      { name: "Monaco Editor" },
+      { name: "NextAuth" },
+      { name: "Prisma ORM" },
+      { name: "PostgreSQL" },
+      { name: "Winston" },
+      { name: "Bun" }
+    ],
 
-  features: [
-    {
-      text: "In-browser code editing powered by Monaco Editor",
-      icon: "Code"
-    },
-    {
-      text: "Fluid theme transitions using the native View Transitions API",
-      icon: "Sparkles"
-    },
-    {
-      text: "Secure authentication and JWT session handling via NextAuth",
-      icon: "Lock"
-    },
-    {
-      text: "Modern glassmorphic interface with dark-backdrop card styling",
-      icon: "Layers"
-    },
-    {
-      text: "Centralized structured logging with Winston",
-      icon: "FileText"
-    },
-    {
-      text: "Persistent user and session data through Prisma and PostgreSQL",
-      icon: "Database"
-    },
-    {
-      text: "Custom typography built around a distinct, personal design style",
-      icon: "Type"
-    },
-    {
-      text: "Bun-powered runtime for fast installs and cold starts",
-      icon: "Zap"
-    }
-  ],
+    features: [
+      {
+        text: "In-browser code editing powered by Monaco Editor",
+        icon: "Code"
+      },
+      {
+        text: "Fluid theme transitions using the native View Transitions API",
+        icon: "Sparkles"
+      },
+      {
+        text: "Secure authentication and JWT session handling via NextAuth",
+        icon: "Lock"
+      },
+      {
+        text: "Modern glassmorphic interface with dark-backdrop card styling",
+        icon: "Layers"
+      },
+      {
+        text: "Centralized structured logging with Winston",
+        icon: "FileText"
+      },
+      {
+        text: "Persistent user and session data through Prisma and PostgreSQL",
+        icon: "Database"
+      },
+      {
+        text: "Custom typography built around a distinct, personal design style",
+        icon: "Type"
+      },
+      {
+        text: "Bun-powered runtime for fast installs and cold starts",
+        icon: "Zap"
+      }
+    ],
 
-  stats: [
-    {
-      label: "Type",
-      value: "Developer Tool",
-      icon: "Sparkles"
-    },
-    {
-      label: "Editor Engine",
-      value: "Monaco",
-      icon: "Code"
-    },
-    {
-      label: "Architecture",
-      value: "Modular",
-      icon: "Layers"
-    },
-    {
-      label: "Status",
-      value: "Active",
-      icon: "Rocket"
-    }
-  ],
+    stats: [
+      {
+        label: "Type",
+        value: "Developer Tool",
+        icon: "Sparkles"
+      },
+      {
+        label: "Editor Engine",
+        value: "Monaco",
+        icon: "Code"
+      },
+      {
+        label: "Architecture",
+        value: "Modular",
+        icon: "Layers"
+      },
+      {
+        label: "Status",
+        value: "Active",
+        icon: "Rocket"
+      }
+    ],
 
-  links: [
-    {
-      type: "GitHub",
-      href: "https://github.com/therajarshichakraborty/CodePilot"
-    }
-  ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/CodePilot"
+      }
+    ],
 
-  challenges: [
-    "Integrating Monaco Editor into a Next.js App Router environment without compromising initial load performance.",
-    "Synchronizing theme state with the View Transitions API across browsers with inconsistent support.",
-    "Designing a glassmorphic UI that stays performant while layering blurred backdrops and glowing elements.",
-    "Implementing JWT-based session handling that stays secure without adding noticeable latency.",
-    "Maintaining consistent custom typography and spacing across editor and authentication surfaces."
-  ],
+    challenges: [
+      "Integrating Monaco Editor into a Next.js App Router environment without compromising initial load performance.",
+      "Synchronizing theme state with the View Transitions API across browsers with inconsistent support.",
+      "Designing a glassmorphic UI that stays performant while layering blurred backdrops and glowing elements.",
+      "Implementing JWT-based session handling that stays secure without adding noticeable latency.",
+      "Maintaining consistent custom typography and spacing across editor and authentication surfaces."
+    ],
 
-  architecture:
-    "Next.js App Router -> Server Components and Route Handlers -> NextAuth JWT Session Handling -> Prisma ORM -> PostgreSQL | Monaco Editor Workspace | View Transitions API Theme Engine | Winston Structured Logging",
-    isBuilding:true
+    architecture:
+      "Next.js App Router -> Server Components and Route Handlers -> NextAuth JWT Session Handling -> Prisma ORM -> PostgreSQL | Monaco Editor Workspace | View Transitions API Theme Engine | Winston Structured Logging",
+    isBuilding: true
   },
   {
     id: "reviewray",
@@ -473,7 +473,7 @@ Integrated Razorpay payment systems, achieving a 100% success rate in processing
 
     architecture:
       "Next.js App Router -> Server Actions and Route Handlers -> Prisma ORM -> PostgreSQL | Better Auth Session Handling | Inngest Background Jobs | OpenRouter and Pinecone Client -> Model Inference via GitHub Webhooks",
-      isBuilding:false
+    isBuilding: false
   },
   {
     id: "exeos-ai",
@@ -595,7 +595,7 @@ Focused on scalability, maintainability, and developer experience through modula
 
     architecture:
       "Next.js App Router → Server Actions & Route Handlers → Drizzle ORM → PostgreSQL │ Clerk Authentication │ Inngest Background Jobs │ OpenRouter & Vercel AI SDK → OpenAI · Claude · Gemini · Tencent Models",
-      isBuilding:false
+    isBuilding: false
   },
   {
     id: "zenith-cli",
@@ -666,7 +666,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     ],
     architecture:
       "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management",
-      isBuilding:false
+    isBuilding: false
   },
 
   {
@@ -722,7 +722,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     ],
     architecture:
       "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment",
-      isBuilding:false
+    isBuilding: false
   },
 
   {
@@ -785,7 +785,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     ],
     architecture:
       "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment",
-      isBuilding:false
+    isBuilding: false
   },
 
   {
@@ -839,7 +839,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
     ],
     architecture:
       "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment",
-      isBuilding:false
+    isBuilding: false
   },
 
   {
@@ -894,6 +894,6 @@ If you have a link: If you have the GitHub repository public, place it right nex
     ],
     architecture:
       "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution",
-      isBuilding:false
+    isBuilding: false
   }
 ];

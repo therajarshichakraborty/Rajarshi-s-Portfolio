@@ -52,14 +52,14 @@ import {
   type ProjectData
 } from "@/data/projects";
 
-
 // Build a normalized name → icon lookup from the shared skills array
 const SKILL_ICON_MAP: Record<
   string,
   React.ComponentType<{ className?: string }>
 > = {};
 for (const s of skills) {
-  const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const normalize = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9]/g, "");
   SKILL_ICON_MAP[normalize(s.name)] = s.icon as React.ComponentType<{
     className?: string;
   }>;
@@ -136,7 +136,7 @@ const statusConfig: Record<
     text: "text-amber-600 dark:text-amber-300 font-bold",
     border: "border-amber-500/30 dark:border-amber-400/30",
     bg: "bg-amber-500/10 dark:bg-amber-400/15",
-    glow: "shadow-[0_0_12px_rgba(245,158,11,0.25)]",
+    glow: "shadow-[0_0_12px_rgba(245,158,11,0.25)]"
   },
   live: {
     label: "Live",
@@ -145,7 +145,7 @@ const statusConfig: Record<
     text: "text-emerald-600 dark:text-emerald-300 font-bold",
     border: "border-emerald-500/30 dark:border-emerald-400/30",
     bg: "bg-emerald-500/10 dark:bg-emerald-400/15",
-    glow: "shadow-[0_0_12px_rgba(16,185,129,0.25)]",
+    glow: "shadow-[0_0_12px_rgba(16,185,129,0.25)]"
   },
   archived: {
     label: "Archived",
@@ -154,8 +154,8 @@ const statusConfig: Record<
     text: "text-zinc-500 dark:text-zinc-400 font-bold",
     border: "border-zinc-500/30",
     bg: "bg-zinc-500/10",
-    glow: "",
-  },
+    glow: ""
+  }
 };
 
 interface StatusBadgeProps {
@@ -185,7 +185,12 @@ function StatusBadge({ status }: StatusBadgeProps) {
             )}
           />
         )}
-        <span className={cn("relative inline-flex rounded-full h-2 w-2", config.dot)} />
+        <span
+          className={cn(
+            "relative inline-flex rounded-full h-2 w-2",
+            config.dot
+          )}
+        />
       </span>
       <span>{config.label}</span>
     </span>
@@ -193,7 +198,8 @@ function StatusBadge({ status }: StatusBadgeProps) {
 }
 
 function TechBadge({ name, delay }: { name: string; delay: number }) {
-  const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const normalize = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9]/g, "");
   const Icon =
     SKILL_ICON_MAP[normalize(name)] ??
     SKILL_ICON_MAP[name.toLowerCase()] ??
@@ -305,8 +311,8 @@ function CtaButton({
         isLive
           ? "bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 text-white shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/35 hover:scale-[1.04] hover:-translate-y-0.5 border border-emerald-300/40"
           : isGithub
-          ? "border border-border/80 bg-background text-foreground hover:bg-muted hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
-          : "border border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
+            ? "border border-border/80 bg-background text-foreground hover:bg-muted hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
+            : "border border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
       )}
       aria-label={type}
     >
@@ -426,15 +432,13 @@ function DetailsPanel({ project }: { project: ProjectData }) {
 
         <div className="flex flex-col gap-2 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
           <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
-
-              <span className="inline-flex items-center rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md">
-                {project.category}
-              </span>
+            <span className="inline-flex items-center rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md">
+              {project.category}
+            </span>
             <span className="font-medium">{project.duration}</span>
             <StatusBadge status={project.isBuilding ? "building" : "live"} />
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            
             {project.description}
           </p>
         </div>

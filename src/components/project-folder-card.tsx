@@ -290,7 +290,10 @@ export function ProjectFolderCard({
           {links && links.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-auto pt-1">
               {links.map((link, idx) => {
-                const isLive = link.type === "Live" || link.type === "Live Demo" || link.type === "Website";
+                const isLive =
+                  link.type === "Live" ||
+                  link.type === "Live Demo" ||
+                  link.type === "Website";
                 return (
                   <Link
                     href={link.href}

@@ -288,7 +288,10 @@ export function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-900/60">
             {links.map((link, idx) => {
-              const isLive = link.type === "Live" || link.type === "Live Demo" || link.type === "Website";
+              const isLive =
+                link.type === "Live" ||
+                link.type === "Live Demo" ||
+                link.type === "Website";
               return (
                 <Link
                   href={link.href}

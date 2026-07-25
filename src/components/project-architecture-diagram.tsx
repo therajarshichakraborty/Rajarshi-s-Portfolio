@@ -322,7 +322,8 @@ export function ProjectArchitectureDiagram({
           System Pipeline Flow
         </h5>
         <p className="text-[11px] text-black dark:text-foreground/75 leading-relaxed mb-3 font-mono">
-          Visualizing the step-by-step lifecycle of request payloads and data pathways.
+          Visualizing the step-by-step lifecycle of request payloads and data
+          pathways.
         </p>
       </div>
 
@@ -366,9 +367,13 @@ export function ProjectArchitectureDiagram({
                       {step.icon && (
                         <div className="flex items-center justify-center size-8 rounded-lg border border-border/30 bg-muted/25 text-foreground/70 group-hover:text-foreground group-hover:bg-muted/40 transition-all duration-300 shrink-0">
                           {React.isValidElement(step.icon)
-                            ? React.cloneElement(step.icon as React.ReactElement<any>, {
-                                className: "size-4 text-foreground/70 group-hover:text-foreground transition-colors duration-300"
-                              })
+                            ? React.cloneElement(
+                                step.icon as React.ReactElement<any>,
+                                {
+                                  className:
+                                    "size-4 text-foreground/70 group-hover:text-foreground transition-colors duration-300"
+                                }
+                              )
                             : step.icon}
                         </div>
                       )}

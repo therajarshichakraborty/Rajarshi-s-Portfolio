@@ -6,7 +6,10 @@ const Express = ({ className }: { className?: string }) => (
   <img
     src="/svgs/Express.svg"
     alt="Express"
-    className={cn("inline-block shrink-0 size-4 object-contain dark:invert", className)}
+    className={cn(
+      "inline-block shrink-0 size-4 object-contain dark:invert",
+      className
+    )}
   />
 );
 

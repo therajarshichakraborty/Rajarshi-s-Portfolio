@@ -109,7 +109,11 @@ export default function CommandPalette() {
       category: "Navigation",
       icon: BookOpen,
       onTrigger: () => {
-        window.open("https://hashnode.com/@Rajarshi2005", "_blank", "noopener,noreferrer");
+        window.open(
+          "https://hashnode.com/@Rajarshi2005",
+          "_blank",
+          "noopener,noreferrer"
+        );
       }
     }
   ];
@@ -249,7 +253,11 @@ export default function CommandPalette() {
           document.body.removeChild(a);
         } else if (key === "b") {
           e.preventDefault();
-          window.open("https://hashnode.com/@Rajarshi2005", "_blank", "noopener,noreferrer");
+          window.open(
+            "https://hashnode.com/@Rajarshi2005",
+            "_blank",
+            "noopener,noreferrer"
+          );
         } else if (key === "p") {
           e.preventDefault();
           router.push("/projects");
@@ -417,8 +425,7 @@ export default function CommandPalette() {
                     .map((item, index) => ({ item, index }))
                     .filter(({ item }) => item.type === "project")
                     .map(({ item, index }) => {
-                      const project =
-                        item.item as ProjectData;
+                      const project = item.item as ProjectData;
                       const isActive = index === selectedIndex;
                       return (
                         <button
