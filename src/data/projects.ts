@@ -68,9 +68,9 @@ export interface ProjectData {
   links: ProjectLink[];
   challenges: string[];
   architecture: string;
+  isBuilding:boolean;
 }
 
-// ─── Color tokens ─────────────────────────────────────────────────────────────
 export const TECH_COLORS: Record<string, string> = {
   blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
   cyan: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
@@ -120,6 +120,121 @@ export const skills = [
 
 export const PROJECTS: ProjectData[] = [
   {
+  id: "codepilot",
+  title: "CodePilot",
+  tagline: "AI-Powered Browser-Based Code Editor",
+  description: `CodePilot is a browser-native code editor that combines a Monaco-powered editing experience with real-time AI assistance. Built for developers who want a fast, distraction-free environment, it delivers fluid theme transitions, secure authentication, and a premium glassmorphic interface without requiring any local installation.`,
+  longDescription: `Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Monaco Editor, NextAuth (Auth.js), Prisma ORM, PostgreSQL, Winston, Bun.
+Engineered a fully browser-based code editor using Next.js App Router and React 19, integrating Monaco Editor to deliver a native IDE-grade editing experience directly in the browser.
+
+Implemented secure authentication with NextAuth and JWT-based session handling, using middleware-level route protection to manage user access across the editor workspace.
+
+Built a fluid theme-switching system using the native browser View Transitions API, combining circle-wipe animations with synchronous state management through next-themes for instant, jank-free transitions.
+
+Designed a modern glassmorphic UI with dark-backdrop cards, glowing embedded backgrounds, and high-fidelity OAuth buttons, maintaining consistent visual language across every screen.
+
+Structured backend observability using Winston for centralized logging, improving debuggability across authentication flows and server-side operations.
+
+Integrated Prisma ORM with PostgreSQL for persistent user and session data, establishing a clean data layer that scales alongside future editor features.
+
+Adopted Bun as the runtime and package manager, reducing install and cold-start times during local development.`,
+
+//@ts-ignore
+  category: "Developer Tools and AI Platform",
+  duration: "June 2026 - Present",
+  image: "/background/codepilot.png",
+
+  technologies: [
+    { name: "Next.js" },
+    { name: "TypeScript" },
+    { name: "React" },
+    { name: "Tailwind CSS" },
+    { name: "Monaco Editor" },
+    { name: "NextAuth" },
+    { name: "Prisma ORM" },
+    { name: "PostgreSQL" },
+    { name: "Winston" },
+    { name: "Bun" }
+  ],
+
+  features: [
+    {
+      text: "In-browser code editing powered by Monaco Editor",
+      icon: "Code"
+    },
+    {
+      text: "Fluid theme transitions using the native View Transitions API",
+      icon: "Sparkles"
+    },
+    {
+      text: "Secure authentication and JWT session handling via NextAuth",
+      icon: "Lock"
+    },
+    {
+      text: "Modern glassmorphic interface with dark-backdrop card styling",
+      icon: "Layers"
+    },
+    {
+      text: "Centralized structured logging with Winston",
+      icon: "FileText"
+    },
+    {
+      text: "Persistent user and session data through Prisma and PostgreSQL",
+      icon: "Database"
+    },
+    {
+      text: "Custom typography built around a distinct, personal design style",
+      icon: "Type"
+    },
+    {
+      text: "Bun-powered runtime for fast installs and cold starts",
+      icon: "Zap"
+    }
+  ],
+
+  stats: [
+    {
+      label: "Type",
+      value: "Developer Tool",
+      icon: "Sparkles"
+    },
+    {
+      label: "Editor Engine",
+      value: "Monaco",
+      icon: "Code"
+    },
+    {
+      label: "Architecture",
+      value: "Modular",
+      icon: "Layers"
+    },
+    {
+      label: "Status",
+      value: "Active",
+      icon: "Rocket"
+    }
+  ],
+
+  links: [
+    {
+      type: "GitHub",
+      href: "https://github.com/therajarshichakraborty/CodePilot"
+    }
+  ],
+
+  challenges: [
+    "Integrating Monaco Editor into a Next.js App Router environment without compromising initial load performance.",
+    "Synchronizing theme state with the View Transitions API across browsers with inconsistent support.",
+    "Designing a glassmorphic UI that stays performant while layering blurred backdrops and glowing elements.",
+    "Implementing JWT-based session handling that stays secure without adding noticeable latency.",
+    "Maintaining consistent custom typography and spacing across editor and authentication surfaces."
+  ],
+
+  architecture:
+    "Next.js App Router -> Server Components and Route Handlers -> NextAuth JWT Session Handling -> Prisma ORM -> PostgreSQL | Monaco Editor Workspace | View Transitions API Theme Engine | Winston Structured Logging",
+    isBuilding:true
+  },
+  {
     id: "reviewray",
     title: "ReviewRay",
     tagline: "AI-Powered Code Review Engine",
@@ -141,9 +256,7 @@ Integrated Razorpay payment systems, achieving a 100% success rate in processing
 
     //@ts-ignore
     category: "Developer Tools and AI Platform",
-
     duration: "May 2026 - July 2026",
-
     image: "/background/reviewray.png",
 
     technologies: [
@@ -239,7 +352,8 @@ Integrated Razorpay payment systems, achieving a 100% success rate in processing
     ],
 
     architecture:
-      "Next.js App Router -> Server Actions and Route Handlers -> Prisma ORM -> PostgreSQL | Better Auth Session Handling | Inngest Background Jobs | OpenRouter and Pinecone Client -> Model Inference via GitHub Webhooks"
+      "Next.js App Router -> Server Actions and Route Handlers -> Prisma ORM -> PostgreSQL | Better Auth Session Handling | Inngest Background Jobs | OpenRouter and Pinecone Client -> Model Inference via GitHub Webhooks",
+      isBuilding:false
   },
   {
     id: "exeos-ai",
@@ -360,7 +474,8 @@ Focused on scalability, maintainability, and developer experience through modula
     ],
 
     architecture:
-      "Next.js App Router → Server Actions & Route Handlers → Drizzle ORM → PostgreSQL │ Clerk Authentication │ Inngest Background Jobs │ OpenRouter & Vercel AI SDK → OpenAI · Claude · Gemini · Tencent Models"
+      "Next.js App Router → Server Actions & Route Handlers → Drizzle ORM → PostgreSQL │ Clerk Authentication │ Inngest Background Jobs │ OpenRouter & Vercel AI SDK → OpenAI · Claude · Gemini · Tencent Models",
+      isBuilding:false
   },
   {
     id: "zenith-cli",
@@ -430,10 +545,10 @@ If you have a link: If you have the GitHub repository public, place it right nex
       "Managing secure API key storage in the CLI context"
     ],
     architecture:
-      "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management"
+      "Commander.js CLI → Express.js API → Prisma → PostgreSQL | Next.js Dashboard | OpenAI API for AI inference | Better Auth for user management",
+      isBuilding:false
   },
 
-  // ── 3. Synapse UI ────────────────────────────────────────────────────────────
   {
     id: "synapse-ui",
     title: "Synapse UI",
@@ -486,10 +601,10 @@ If you have a link: If you have the GitHub repository public, place it right nex
       "Maintaining consistency across 30+ components with a single design system"
     ],
     architecture:
-      "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment"
+      "Next.js App Router → FumaDocs MDX → Component Registry | TailwindCSS design tokens | Shadcn CLI integration | Vercel deployment",
+      isBuilding:false
   },
 
-  // ── 4. SocketPoll ────────────────────────────────────────────────────────────
   {
     id: "socket-poll",
     title: "SocketPoll",
@@ -549,10 +664,10 @@ If you have a link: If you have the GitHub repository public, place it right nex
       "Designing the database schema for high-throughput vote writes"
     ],
     architecture:
-      "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment"
+      "React + Vite SPA → WebSocket (ws) → Express.js → Drizzle ORM → PostgreSQL | Real-time event broadcasting | Vercel deployment",
+      isBuilding:false
   },
 
-  // ── 5. LinkedUp ──────────────────────────────────────────────────────────────
   {
     id: "linked-up",
     title: "LinkedUp",
@@ -603,10 +718,10 @@ If you have a link: If you have the GitHub repository public, place it right nex
       "Building a low-friction UX with zero infrastructure in Streamlit"
     ],
     architecture:
-      "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment"
+      "Streamlit UI → LangChain Prompt Pipeline → Groq LLM Inference → Pydantic Output Parser | Streamlit Cloud deployment",
+      isBuilding:false
   },
 
-  // ── 6. Mini-TailwindCSS ──────────────────────────────────────────────────────
   {
     id: "mini-tailwindcss",
     title: "Mini-TailwindCSS",
@@ -658,6 +773,7 @@ If you have a link: If you have the GitHub repository public, place it right nex
       "Making the extensible class map intuitive for third-party consumers"
     ],
     architecture:
-      "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution"
+      "Vanilla JS Utility Parser → DOM Style Injection → Class Map Registry | React Adapter Layer | Netlify deployment | NPM package distribution",
+      isBuilding:false
   }
 ];

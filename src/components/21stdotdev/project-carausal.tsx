@@ -52,6 +52,7 @@ import {
   type ProjectData
 } from "@/data/projects";
 
+
 // Build a normalized name → icon lookup from the shared skills array
 const SKILL_ICON_MAP: Record<
   string,
@@ -110,24 +111,64 @@ function DynIcon({ name, className }: { name: string; className?: string }) {
   return <Comp className={className} />;
 }
 
-function StatusBadge() {
+type BadgeStatus = "building" | "live" | "archived";
+
+const statusConfig: Record<BadgeStatus, { label: string; dot: string; ring: string; text: string; border: string; bg: string }> = {
+  building: {
+    label: "Building",
+    dot: "bg-amber-400",
+    ring: "bg-amber-400",
+    text: "text-amber-300",
+    border: "border-amber-400/30",
+    bg: "bg-amber-400/10",
+  },
+  live: {
+    label: "Live",
+    dot: "bg-emerald-400",
+    ring: "bg-emerald-400",
+    text: "text-emerald-300",
+    border: "border-emerald-400/30",
+    bg: "text-lime-400",
+  },
+  archived: {
+    label: "Archived",
+    dot: "bg-zinc-500",
+    ring: "bg-zinc-500",
+    text: "text-zinc-400",
+    border: "border-zinc-500/30",
+    bg: "bg-zinc-500/10",
+  },
+};
+
+interface StatusBadgeProps {
+  status: BadgeStatus;
+}
+
+function StatusBadge({ status }: StatusBadgeProps) {
+  const config = statusConfig[status];
+  const isAnimated = status === "building" || status === "live";
+
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold tracking-widest uppercase select-none"
+        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold tracking-widest uppercase select-none",
+        config.border,
+        config.bg,
+        config.text,
       )}
     >
       <span className="relative flex h-1.5 w-1.5">
-        {status !== "Completed" && (
+        {isAnimated && (
           <span
             className={cn(
-              "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+              "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+              config.ring
             )}
           />
         )}
-        <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5")} />
+        <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", config.dot)} />
       </span>
-      {status}
+      {config.label}
     </span>
   );
 }
@@ -342,12 +383,6 @@ function DetailsPanel({ project }: { project: ProjectData }) {
             <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/15 to-transparent" />
             <div className="absolute inset-0 bg-linear-to-r from-black/30 via-transparent to-transparent" />
 
-            <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-              <span className="inline-flex items-center rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] font-medium text-white/90 backdrop-blur-md">
-                {project.category}
-              </span>
-            </div>
-
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
               <div className="flex items-end justify-between gap-3">
                 <div className="min-w-0">
@@ -363,21 +398,22 @@ function DetailsPanel({ project }: { project: ProjectData }) {
           </div>
         </div>
 
-        {/* ── META + DESCRIPTION ─────────────────────────────────────────── */}
         <div className="flex flex-col gap-2 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
           <div className="flex items-center gap-2 flex-wrap text-xs text-muted-foreground">
+
+              <span className="inline-flex items-center rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md">
+                {project.category}
+              </span>
             <span className="font-medium">{project.duration}</span>
+            <StatusBadge status={project.isBuilding ? "building" : "live"} />
           </div>
           <p className="text-sm leading-relaxed text-muted-foreground">
+            
             {project.description}
           </p>
         </div>
 
-        {/* ── FEATURES + TECH / CTAS — side by side on md+ ───────────────── */}
         <div className="grid grid-cols-1 gap-4 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
-          {/* Features */}
-
-          {/* Tech stack + CTAs */}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
               <div className="w-full rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm">
@@ -494,18 +530,12 @@ export function ProjectCarousel() {
         </div>
       </div>
 
-      {/* ── Main layout ───────────────────────────────────────────────────── */}
-      {/* Mobile/tablet: single column (details above, project strip below) */}
-      {/* Desktop lg+: 2 columns (project sidebar left, details right) */}
       <div className="flex flex-col lg:grid lg:grid-cols-[280px_1fr] gap-5 lg:gap-8 items-start">
-        {/* ── Details panel: shows FIRST on mobile, SECOND column on lg ── */}
         <div className="min-w-0 w-full order-1 lg:order-2">
           <DetailsPanel project={active} />
         </div>
 
-        {/* ── Project selector: shows BELOW on mobile, LEFT sidebar on lg ── */}
         <div className="order-2 lg:order-1 w-full lg:w-auto">
-          {/* Grid layout on sm/md; vertical list on lg+ */}
           <div
             className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-col gap-2 lg:overflow-y-auto pb-1 lg:pb-0 lg:max-h-[480px]"
             style={
