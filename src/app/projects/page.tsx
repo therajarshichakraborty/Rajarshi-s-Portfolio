@@ -309,18 +309,18 @@ export default function ProjectsPage() {
                       <h4 className="text-[10px] font-bold uppercase tracking-widest text-black/70 dark:text-foreground/60 mb-3">
                         Technologies Deployed
                       </h4>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => {
                           const Icon = getTagIcon(tech.name);
                           return (
                             <span
                               key={tech.name}
-                              className="group/tech inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border border-border/40 bg-muted/20 text-foreground/90 cursor-pointer select-none transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-xs hover:shadow-primary/5 active:scale-[0.98]"
+                              className="group/tech inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border-none bg-transparent text-foreground/90 cursor-pointer select-none transition-all duration-300 ease-out hover:scale-[1.06] hover:-translate-y-0.5 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 hover:shadow-xs active:scale-[0.98]"
                             >
                               {Icon && (
-                                <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-6" />
+                                <Icon className="size-4 shrink-0 transition-transform duration-300 group-hover/tech:scale-110 group-hover/tech:rotate-12" />
                               )}
-                              <span className="transition-colors duration-300 group-hover/tech:text-primary">
+                              <span className="transition-colors duration-300 group-hover/tech:text-foreground">
                                 {tech.name}
                               </span>
                             </span>

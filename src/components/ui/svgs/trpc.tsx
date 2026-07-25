@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const TRPC = ({ className }: { className?: string }) => (
-  <div className={cn("inline-flex items-center justify-center shrink-0 size-4", className)}>
-    <Image src="/svgs/trpc.svg" alt="tRPC" width={20} height={20} className="w-full h-full object-contain" />
-  </div>
+  <img
+    src="/svgs/trpc.svg"
+    alt="tRPC"
+    className={cn("inline-block shrink-0 size-4 object-contain", className)}
+  />
 );
 
 export { TRPC };

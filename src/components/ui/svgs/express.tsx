@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const Express = ({ className }: { className?: string }) => (
-  <div className={cn("inline-flex items-center justify-center shrink-0 size-4", className)}>
-    <Image src="/svgs/Express.svg" alt="Express" width={20} height={20} className="w-full h-full object-contain dark:invert" />
-  </div>
+  <img
+    src="/svgs/Express.svg"
+    alt="Express"
+    className={cn("inline-block shrink-0 size-4 object-contain dark:invert", className)}
+  />
 );
 
 export { Express };
