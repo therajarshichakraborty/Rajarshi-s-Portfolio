@@ -137,15 +137,12 @@ const ExperienceItem = ({
   };
 
   return (
-    <div className="group relative rounded-2xl border border-border/60 bg-card hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-white/5 overflow-hidden">
-      {/* Top accent gradient bar */}
-      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <div className="p-6 sm:p-7">
+    <div className="relative">
+      <div className="space-y-4">
         {/* ── Header row ── */}
         <div className="flex items-start gap-4">
           {/* Logo badge */}
-          <div className="flex-shrink-0 size-12 rounded-xl border border-border/70 bg-background flex items-center justify-center overflow-hidden shadow-sm">
+          <div className="flex-shrink-0 size-12 rounded-xl border border-border/70 bg-background flex items-center justify-center overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
             {getCompanyLogo()}
           </div>
 
@@ -155,9 +152,9 @@ const ExperienceItem = ({
               <span className="text-lg sm:text-xl font-bold tracking-tight leading-tight">
                 {company}
               </span>
-              {/* Period pill */}
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border border-border/70 bg-muted/40 text-muted-foreground whitespace-nowrap">
-                <Calendar className="size-3" />
+              {/* Animated Period pill */}
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full border border-border/70 bg-muted/40 text-muted-foreground whitespace-nowrap transition-all duration-300 ease-out hover:scale-105 hover:border-primary/50 hover:bg-accent/60 hover:text-foreground cursor-default shadow-2xs">
+                <Calendar className="size-3 transition-transform duration-300 group-hover:rotate-12" />
                 {period}
               </span>
             </div>
@@ -173,11 +170,8 @@ const ExperienceItem = ({
           </div>
         </div>
 
-        {/* ── Divider ── */}
-        <div className="my-5 h-px bg-border/60" />
-
         {/* ── Bullet points ── */}
-        <ul className="space-y-3">
+        <ul className="space-y-2.5 pt-1">
           {description.map((point, i) => {
             const colonIdx = point.indexOf(":");
             const hasLabel = colonIdx !== -1 && colonIdx < 35;
@@ -187,8 +181,8 @@ const ExperienceItem = ({
             return (
               <li key={i} className="flex items-start gap-3 group/bullet">
                 {/* Chevron-style bullet */}
-                <span className="mt-[5px] flex-shrink-0 size-[5px] rotate-45 border-r border-b border-muted-foreground/50 group-hover/bullet:border-foreground/70 transition-colors duration-200" />
-                <p className="text-sm leading-relaxed text-muted-foreground group-hover/bullet:text-foreground/75 transition-colors duration-200">
+                <span className="mt-[5px] flex-shrink-0 size-[3px] rotate-45 border-r border-b border-muted-foreground/50 group-hover/bullet:border-foreground/90 group-hover/bullet:scale-125 transition-all duration-200" />
+                <p className="text-sm leading-relaxed text-muted-foreground group-hover/bullet:text-foreground/90 transition-colors duration-200">
                   {label && (
                     <span className="font-semibold text-foreground/90">
                       {label}:{" "}
@@ -203,8 +197,7 @@ const ExperienceItem = ({
 
         {/* ── Tech stack ── */}
         {technologies.length > 0 && (
-          <>
-            <div className="my-5 h-px bg-border/60" />
+          <div className="pt-2">
             <div className="flex flex-wrap gap-2 items-center">
               {technologies.map((tech) => {
                 const techKey = tech.toLowerCase();
@@ -221,9 +214,9 @@ const ExperienceItem = ({
                       <Button
                         variant="outline"
                         size="sm"
-                        className="cursor-pointer flex items-center gap-1.5 h-7 px-2.5 text-xs bg-transparent text-foreground border-border/60 hover:border-border hover:bg-accent/50 transition-all duration-200 hover:scale-[1.03] hover:-translate-y-px active:scale-[0.98]"
+                        className="cursor-pointer flex items-center gap-1.5 h-7 px-2.5 text-xs bg-transparent text-foreground border-border/60 transition-all duration-300 ease-out hover:scale-108 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md hover:shadow-primary/5 active:scale-95"
                       >
-                        <Icon className="size-3.5" />
+                        <Icon className="size-3.5 transition-transform duration-300 group-hover:scale-110" />
                         <span>{techData.name}</span>
                       </Button>
                     </Link>
@@ -233,14 +226,14 @@ const ExperienceItem = ({
                 return (
                   <span
                     key={tech}
-                    className="inline-flex items-center h-7 px-2.5 text-xs rounded-md border border-border/60 bg-transparent text-muted-foreground"
+                    className="inline-flex items-center h-7 px-2.5 text-xs rounded-md border border-border/60 bg-transparent text-muted-foreground transition-all duration-300 hover:scale-105 hover:text-foreground hover:border-border"
                   >
                     {tech}
                   </span>
                 );
               })}
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -355,13 +348,13 @@ const Experience = () => {
 
         {/* Cards stack with connecting line */}
         <div className="relative flex flex-col gap-5">
-          {/* Vertical timeline rule */}
-          <div className="absolute left-[23px] top-12 bottom-12 w-px bg-gradient-to-b from-border via-border/40 to-transparent hidden sm:block" />
+          {/* Vertical timeline rule centered at 15px (half of 30px) */}
+          <div className="absolute left-[15px] top-6 bottom-6 w-px bg-gradient-to-b from-border via-border/40 to-transparent hidden sm:block" />
 
           {experiences.map((experience, index) => (
             <div key={index} className="relative flex gap-5 sm:gap-6 items-start">
-              {/* Index badge on the timeline */}
-              <div className="hidden sm:flex flex-shrink-0 size-[46px] rounded-full border border-border/70 bg-background items-center justify-center z-10 text-xs font-bold text-muted-foreground shadow-sm">
+              {/* Index badge on the timeline, mt-[9px] centers 30px badge with 48px company logo */}
+              <div className="hidden sm:flex flex-shrink-0 size-[30px] mt-[9px] rounded-full border border-primary/80 bg-black text-white dark:bg-white dark:text-black items-center justify-center z-10 text-xs font-bold shadow-md">
                 {String(index + 1).padStart(2, "0")}
               </div>
               <div className="flex-1 min-w-0">
