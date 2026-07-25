@@ -113,30 +113,44 @@ function DynIcon({ name, className }: { name: string; className?: string }) {
 
 type BadgeStatus = "building" | "live" | "archived";
 
-const statusConfig: Record<BadgeStatus, { label: string; dot: string; ring: string; text: string; border: string; bg: string }> = {
+const statusConfig: Record<
+  BadgeStatus,
+  {
+    label: string;
+    dot: string;
+    ring: string;
+    text: string;
+    border: string;
+    bg: string;
+    glow: string;
+  }
+> = {
   building: {
     label: "Building",
-    dot: "bg-amber-400",
+    dot: "bg-amber-400 shadow-[0_0_8px_#fbbf24]",
     ring: "bg-amber-400",
-    text: "text-amber-300",
-    border: "border-amber-400/30",
-    bg: "bg-amber-400/10",
+    text: "text-amber-600 dark:text-amber-300 font-bold",
+    border: "border-amber-500/30 dark:border-amber-400/30",
+    bg: "bg-amber-500/10 dark:bg-amber-400/15",
+    glow: "shadow-[0_0_12px_rgba(245,158,11,0.25)]",
   },
   live: {
     label: "Live",
-    dot: "bg-emerald-400",
+    dot: "bg-emerald-400 shadow-[0_0_8px_#34d399]",
     ring: "bg-emerald-400",
-    text: "text-emerald-300",
-    border: "border-emerald-400/30",
-    bg: "text-lime-400",
+    text: "text-emerald-600 dark:text-emerald-300 font-bold",
+    border: "border-emerald-500/30 dark:border-emerald-400/30",
+    bg: "bg-emerald-500/10 dark:bg-emerald-400/15",
+    glow: "shadow-[0_0_12px_rgba(16,185,129,0.25)]",
   },
   archived: {
     label: "Archived",
-    dot: "bg-zinc-500",
-    ring: "bg-zinc-500",
-    text: "text-zinc-400",
+    dot: "bg-zinc-400",
+    ring: "bg-zinc-400",
+    text: "text-zinc-500 dark:text-zinc-400 font-bold",
     border: "border-zinc-500/30",
     bg: "bg-zinc-500/10",
+    glow: "",
   },
 };
 
@@ -151,13 +165,14 @@ function StatusBadge({ status }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold tracking-widest uppercase select-none",
+        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-[10px] sm:text-[11px] font-bold tracking-widest uppercase select-none transition-all duration-300 backdrop-blur-md hover:scale-[1.05]",
         config.border,
         config.bg,
         config.text,
+        config.glow
       )}
     >
-      <span className="relative flex h-1.5 w-1.5">
+      <span className="relative flex h-2 w-2">
         {isAnimated && (
           <span
             className={cn(
@@ -166,9 +181,9 @@ function StatusBadge({ status }: StatusBadgeProps) {
             )}
           />
         )}
-        <span className={cn("relative inline-flex rounded-full h-1.5 w-1.5", config.dot)} />
+        <span className={cn("relative inline-flex rounded-full h-2 w-2", config.dot)} />
       </span>
-      {config.label}
+      <span>{config.label}</span>
     </span>
   );
 }
@@ -271,6 +286,7 @@ function CtaButton({
   delay: number;
 }) {
   const isGithub = type === "GitHub";
+  const isLive = type === "Live" || type === "Live Demo" || type === "Website";
   const Icon = isGithub ? Github : ExternalLink;
   if (!href) return null;
   return (
@@ -282,17 +298,25 @@ function CtaButton({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition-all duration-300",
-        "hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        isGithub
-          ? "border-border bg-background text-foreground hover:bg-muted hover:shadow-md hover:shadow-black/5"
-          : "border-primary/25 bg-transparent text-primary hover:bg-primary/15 hover:shadow-md hover:shadow-primary/10"
+        "group inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-300 select-none",
+        "active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        isLive
+          ? "bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 text-white shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-500/35 hover:scale-[1.04] hover:-translate-y-0.5 border border-emerald-300/40"
+          : isGithub
+          ? "border border-border/80 bg-background text-foreground hover:bg-muted hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
+          : "border border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:shadow-md hover:scale-[1.03] hover:-translate-y-0.5"
       )}
       aria-label={type}
     >
+      {isLive && (
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-white shadow-[0_0_6px_#ffffff]" />
+        </span>
+      )}
       <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-      {type}
-      <ArrowUpRight className="h-3 w-3 opacity-40 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <span>{type}</span>
+      <ArrowUpRight className="h-3.5 w-3.5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </motion.a>
   );
 }

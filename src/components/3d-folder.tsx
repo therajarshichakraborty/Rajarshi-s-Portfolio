@@ -725,13 +725,21 @@ export function ProjectLightbox({
                         {current.title}
                       </h3>
                     )}
-                    {current.isBuilding && (
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] tracking-widest uppercase font-bold rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">
-                        <span className="relative flex h-1.5 w-1.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                    {current.isBuilding ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-amber-500/10 dark:bg-amber-400/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 dark:border-amber-400/30 shadow-[0_0_12px_rgba(245,158,11,0.25)] select-none backdrop-blur-md">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
                         </span>
                         Building
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 dark:border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.25)] select-none backdrop-blur-md">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                        </span>
+                        Live
                       </span>
                     )}
                   </div>
@@ -742,17 +750,22 @@ export function ProjectLightbox({
                   )}
                 </div>
 
-                {/* Primary Action Buttons (Source + Website rebranded to "View" next to Title) */}
+                {/* Primary Action Buttons (Live Demo + Source) */}
                 <div className="flex items-center gap-2 shrink-0">
                   {websiteUrl && (
                     <a
                       href={websiteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-foreground bg-background hover:bg-muted border border-border transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                      className="inline-flex shrink-0 items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 border border-emerald-400/30 transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] group select-none"
                     >
-                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
-                      <span>View</span>
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white shadow-[0_0_6px_#ffffff]" />
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 text-white transition-transform duration-300 group-hover:scale-110" />
+                      <span>Live Demo</span>
+                      <ArrowUpRight className="w-3 h-3 text-white/80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   )}
                   {sourceLink && (
@@ -760,9 +773,9 @@ export function ProjectLightbox({
                       href={sourceLink.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-foreground bg-background hover:bg-muted border border-border transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                      className="inline-flex shrink-0 items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-foreground bg-background hover:bg-muted border border-border transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] group select-none shadow-xs"
                     >
-                      <Github className="w-3.5 h-3.5 text-muted-foreground" />
+                      <Github className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors duration-200" />
                       <span>Source</span>
                     </a>
                   )}

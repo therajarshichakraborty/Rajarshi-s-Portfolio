@@ -220,13 +220,21 @@ export function ProjectCard({
               <h3 className="font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300">
                 {title}
               </h3>
-              {isBuilding && (
-                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[9px] tracking-wider uppercase font-semibold rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 dark:border-emerald-500/30 select-none">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+              {isBuilding ? (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-amber-500/10 dark:bg-amber-400/15 text-amber-600 dark:text-amber-300 border border-amber-500/30 dark:border-amber-400/30 shadow-[0_0_12px_rgba(245,158,11,0.25)] backdrop-blur-md select-none">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
                   </span>
                   Building
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 dark:border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.25)] backdrop-blur-md select-none">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                  </span>
+                  Live
                 </span>
               )}
             </div>
@@ -281,19 +289,35 @@ export function ProjectCard({
 
         {links && links.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-900/60">
-            {links.map((link, idx) => (
-              <Link
-                href={link.href}
-                key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-border bg-background text-foreground shadow-xs hover:bg-muted transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.97]"
-              >
-                {link.icon}
-                <span>{link.type}</span>
-              </Link>
-            ))}
+            {links.map((link, idx) => {
+              const isLive = link.type === "Live" || link.type === "Live Demo" || link.type === "Website";
+              return (
+                <Link
+                  href={link.href}
+                  key={idx}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-xl border transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] group select-none",
+                    isLive
+                      ? "bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 text-white shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 border-emerald-400/30"
+                      : "border-border bg-background text-foreground hover:bg-muted shadow-xs hover:border-neutral-300 dark:hover:border-neutral-700"
+                  )}
+                >
+                  {isLive ? (
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white shadow-[0_0_6px_#ffffff]" />
+                    </span>
+                  ) : (
+                    link.icon
+                  )}
+                  <span>{link.type}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

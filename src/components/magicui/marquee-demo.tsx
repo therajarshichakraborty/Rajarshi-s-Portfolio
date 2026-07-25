@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "../ui/marquee";
 import type { ComponentType } from "react";
-
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
