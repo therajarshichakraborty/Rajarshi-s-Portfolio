@@ -264,19 +264,19 @@ export function ProjectFolderCard({
                   <BlurFade key={tag} delay={BLUR_FADE_DELAY * 10 + id * 0.025}>
                     <div
                       className="
-                        group/tag border border-neutral-200/60 dark:border-neutral-800/60
-                        bg-neutral-50/60 dark:bg-neutral-900/50
-                        hover:bg-neutral-100/90 dark:hover:bg-neutral-800/80
-                        rounded-full h-[22px] w-fit px-2.5 flex items-center gap-1.5
+                        group/tag border-none
+                        bg-transparent
+                        hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50
+                        rounded-xl h-[26px] w-fit px-3 flex items-center gap-1.5
                         transition-all duration-300 ease-out
-                        hover:scale-[1.04] hover:-translate-y-0.5
+                        hover:scale-[1.06] hover:-translate-y-0.5
                         cursor-pointer active:scale-[0.97] select-none
                       "
                     >
                       {FinalIcon && (
-                        <FinalIcon className="size-3 shrink-0 transition-transform duration-300 group-hover/tag:rotate-6" />
+                        <FinalIcon className="size-4 shrink-0 transition-transform duration-300 ease-out group-hover/tag:rotate-12 group-hover/tag:scale-110" />
                       )}
-                      <span className="text-muted-foreground group-hover/tag:text-foreground text-[10px] font-medium transition-colors duration-200 whitespace-nowrap">
+                      <span className="text-muted-foreground group-hover/tag:text-foreground text-[11px] font-semibold transition-colors duration-200 whitespace-nowrap">
                         {tag}
                       </span>
                     </div>

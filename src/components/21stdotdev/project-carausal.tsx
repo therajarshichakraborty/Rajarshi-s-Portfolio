@@ -199,22 +199,20 @@ function TechBadge({ name, delay }: { name: string; delay: number }) {
     <motion.span
       initial={{ opacity: 0, scale: 0.88 }}
       animate={{ opacity: 1, scale: 1 }}
-      whileHover={{ scale: 1.08, y: -1 }}
+      whileHover={{ scale: 1.08, y: -2 }}
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.2, delay }}
       className={cn(
-        "group inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-[11px] font-medium border cursor-default select-none",
-        "bg-transparent border-black/20 text-black",
-        "dark:border-white/20 dark:text-white",
-        "hover:border-black/50 hover:shadow-[0_0_8px_0px_rgba(0,0,0,0.12)]",
-        "dark:hover:border-white/50 dark:hover:shadow-[0_0_8px_0px_rgba(255,255,255,0.10)]",
-        "transition-[border-color,box-shadow] duration-200"
+        "group inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer select-none border-none",
+        "bg-transparent text-neutral-800 dark:text-neutral-200",
+        "hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 hover:text-foreground",
+        "hover:shadow-md hover:shadow-primary/5 transition-all duration-300 ease-out"
       )}
     >
       {Icon && (
-        <Icon className="size-3.5 shrink-0 transition-transform duration-300 group-hover:rotate-12" />
+        <Icon className="size-4.5 shrink-0 transition-transform duration-300 ease-out group-hover:rotate-12 group-hover:scale-110" />
       )}
-      {name}
+      <span>{name}</span>
     </motion.span>
   );
 }
@@ -440,12 +438,12 @@ function DetailsPanel({ project }: { project: ProjectData }) {
         <div className="grid grid-cols-1 gap-4 w-full lg:w-[550px] rounded-2xl lg:-ml-25">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
-              <div className="w-full rounded-2xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm">
-                <h4 className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+              <div className="w-full py-1">
+                <h4 className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground/80">
                   Tech Stack
                 </h4>
 
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {project.technologies.map((t, i) => (
                     <TechBadge key={t.name} name={t.name} delay={i * 0.03} />
                   ))}

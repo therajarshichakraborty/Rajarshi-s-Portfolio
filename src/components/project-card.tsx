@@ -263,21 +263,19 @@ export function ProjectCard({
                 <BlurFade key={tag} delay={BLUR_FADE_DELAY * 10 + id * 0.03}>
                   <div
                     className="
-                      group/tag border border-neutral-200/60 dark:border-neutral-800/60
-                      bg-neutral-50/50 dark:bg-neutral-900/40
-                      hover:bg-neutral-100/80 dark:hover:bg-neutral-800/80
-                      rounded-full h-6 w-fit px-2.5 flex items-center gap-1.5
+                      group/tag border-none
+                      bg-transparent
+                      hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50
+                      rounded-xl h-[26px] w-fit px-3 flex items-center gap-1.5
                       transition-all duration-300 ease-out
-                      hover:scale-[1.03] hover:-translate-y-0.5
-                      hover:shadow-xs hover:shadow-primary/5
-                      cursor-pointer
-                      active:scale-[0.98]
+                      hover:scale-[1.06] hover:-translate-y-0.5
+                      cursor-pointer active:scale-[0.98] select-none
                     "
                   >
                     {Icon && (
-                      <Icon className="size-3 transition-transform duration-300 group-hover/tag:rotate-6" />
+                      <Icon className="size-4 shrink-0 transition-transform duration-300 ease-out group-hover/tag:rotate-12 group-hover/tag:scale-110" />
                     )}
-                    <span className="text-muted-foreground group-hover/tag:text-foreground text-[10px] font-medium transition-colors duration-200">
+                    <span className="text-muted-foreground group-hover/tag:text-foreground text-[11px] font-semibold transition-colors duration-200">
                       {tag}
                     </span>
                   </div>

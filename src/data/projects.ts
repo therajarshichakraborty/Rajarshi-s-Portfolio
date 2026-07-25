@@ -159,7 +159,6 @@ OpenStack combines a powerful NestJS backend with a high-performance Next.js das
       { name: "Next.js" },
       { name: "TypeScript" },
       { name: "PostgreSQL" },
-      { name: "Redis" },
       { name: "Docker" },
       { name: "Monorepo" },
       { name: "Prisma" },

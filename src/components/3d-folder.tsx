@@ -796,10 +796,10 @@ export function ProjectLightbox({
                   {current.tags.map((tag, i) => (
                     <div
                       key={i}
-                      className="group/tag inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium border border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:scale-[1.03] hover:-translate-y-px select-none cursor-default transition-all duration-200"
+                      className="group/tag inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border-none bg-transparent text-muted-foreground hover:text-foreground hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 hover:scale-[1.06] hover:-translate-y-0.5 select-none cursor-pointer transition-all duration-300 ease-out"
                     >
                       {tag.icon && (
-                        <tag.icon className="size-3.5 shrink-0 grayscale opacity-75 group-hover/tag:grayscale-0 group-hover/tag:opacity-100 transition-all duration-300 group-hover/tag:rotate-12" />
+                        <tag.icon className="size-4 shrink-0 grayscale opacity-80 group-hover/tag:grayscale-0 group-hover/tag:opacity-100 transition-all duration-300 group-hover/tag:rotate-12 group-hover/tag:scale-110" />
                       )}
                       <span>{tag.name}</span>
                     </div>
