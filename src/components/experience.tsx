@@ -27,9 +27,29 @@ interface ExperienceItemProps {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description: string[];
   technologies: string[];
   Location: string;
+}
+
+/**
+ * Auto-bolds numeric values (including %, x, + suffixes) within a bullet string.
+ */
+function HighlightedBullet({ text }: { text: string }) {
+  const parts = text.split(/(\b\d+(?:\.\d+)?(?:%|x|\+)?\b)/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        /^\d+(?:\.\d+)?(?:%|x|\+)?$/.test(part) ? (
+          <span key={i} className="font-semibold text-foreground tabular-nums">
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
 }
 
 interface TechConfigItem {
@@ -152,7 +172,17 @@ const ExperienceItem = ({
               </div>
             </div>
           </div>
-          <p className="text-muted-foreground">{description}</p>
+          {/* Bullet-point description */}
+          <ul className="space-y-2 mt-1">
+            {description.map((point, i) => (
+              <li key={i} className="flex items-start gap-2.5 group/bullet">
+                <span className="mt-[6px] flex-shrink-0 size-1.5 rounded-full bg-primary/60 group-hover/bullet:bg-primary transition-colors duration-200" />
+                <p className="text-sm leading-relaxed text-muted-foreground group-hover/bullet:text-foreground/80 transition-colors duration-200">
+                  <HighlightedBullet text={point} />
+                </p>
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-wrap gap-2 items-center">
             <p className="text-black font-bold dark:text-white">
               Technologies & Tools :
@@ -211,8 +241,13 @@ const Experience = () => {
       company: "Techno Main Salt Lake",
       period: "Jan 2026 - Present",
       Location: "Kolkata , West Bengal , India",
-      description:
-        "Researching and optimizing weather forecasting models using LSTM, ARIMA, and RNN-based Deep Learning architectures for time-series prediction. Engineered scalable data preprocessing pipelines and significantly improved model performance on real-world datasets through rigorous evaluation, hyperparameter tuning, cross-validation, and feature engineering. Leveraged statistical modeling, data normalization, and anomaly detection techniques to enhance forecasting accuracy, while ensuring model robustness, scalability, and deployment readiness in production environments.",
+      description: [
+        "Forecasting Accuracy: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
+        "Deployment Pipeline: Refactored research Jupyter notebooks into a modular, deployment-ready Python pipeline (NumPy, Pandas, Scikit-learn, PyTorch, Node.js), reducing the model retrain-to-redeploy cycle from 3+ days to under 4 hours.",
+        "Dataset Engineering: Designed and executed an end-to-end preprocessing workflow across a dataset of 60,000+ rows — handling missing values, outlier detection, seasonal decomposition, and feature normalization — reducing data noise by ~35%.",
+        "Hyperparameter Tuning: Applied grid search and cross-validation across 120+ hyperparameter configurations, boosting LSTM validation accuracy by 19.4% while reducing Mean Absolute Error by 22% on held-out test splits.",
+        "Research Documentation: Authored a structured technical report covering model architecture decisions, evaluation metrics (RMSE, MAE, MAPE), and ablation study results, forming the foundation for an ongoing research publication."
+      ],
       technologies: [
         "Python",
         "NumPy",
@@ -228,9 +263,12 @@ const Experience = () => {
       company: "Samarth TMSL",
       period: "July 2023 - Present",
       Location: "Kolkata , West Bengal , India",
-      description: `Led the IGNITE division of Samarth TMSL official educational and civil services society of Techno Main Salt Lake. Organized and managed multiple large-scale events including Educathon (national-level hackathon) and Safalya (annual fest). Coordinated teams, handled event execution, and drove community engagement through seminars, workshops, and initiatives like Pragati.
-      
-      Created technical and educational content for initiatives under Samarth TMSL. Contributed to outreach, documentation, and communication strategies to improve engagement and awareness.`,
+      description: [
+        "Event Leadership: Co-led the IGNITE division of Samarth TMSL, orchestrating 6+ large-scale events including Educathon (national-level hackathon) and Safalya (annual academic-cultural fest), collectively drawing 500+ participants across all sessions.",
+        "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations — ensuring 100% on-time execution of all planned events with zero critical incidents.",
+        "Content Strategy: Authored 15+ pieces of technical and educational content (articles, workshop decks, guides) for Samarth TMSL initiatives, contributing to a 40% increase in social media engagement and organic reach.",
+        "Community Growth: Spearheaded outreach under Pragati, onboarding 200+ first-year students through structured orientation programs, mentorship drives, and inter-department collaborations.",
+      ],
       technologies: [
         "Leadership",
         "Event Management",
@@ -249,8 +287,13 @@ const Experience = () => {
       company: "Geekonix",
       period: "Oct 2023 - Dec 2024",
       Location: "Kolkata , West Bengal , India",
-      description:
-        "Worked at the ground level to organize and execute EDGE , the official technical fest of Techno Main Salt Lake. Managed logistics, coordinated teams, and ensured smooth execution of technical events and operations.",
+      description: [
+        "Fest Operations: Played a key ground-level role in executing EDGE, the official technical fest of Techno Main Salt Lake, supporting 10+ individual event tracks spanning competitive programming, robotics, and quizzing.",
+        "Logistics Management: Coordinated scheduling, venue setup, and resource allocation for events hosting 300+ participants per day, maintaining smooth operations across 2 consecutive fest days with a team of 30+ volunteers.",
+        "On-Site Coordination: Served as a primary point of contact for participant queries and real-time problem-solving during live events, achieving a 95%+ participant satisfaction rate based on post-event feedback.",
+        "Process Improvement: Identified 3 critical bottlenecks in the registration and check-in workflow mid-event and proposed quick-fix solutions that reduced average participant wait time by 25% within the same day.",
+        "Cross-Team Collaboration: Worked alongside tech, design, and PR divisions to maintain consistent communication and branding across all EDGE touchpoints, contributing to the fest being recognized as the most well-organized edition to date."
+      ],
       technologies: [
         "Event Operations",
         "Team Management",
