@@ -59,7 +59,7 @@ const SKILL_ICON_MAP: Record<
   React.ComponentType<{ className?: string }>
 > = {};
 for (const s of skills) {
-  const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
+  const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
   SKILL_ICON_MAP[normalize(s.name)] = s.icon as React.ComponentType<{
     className?: string;
   }>;
@@ -67,6 +67,10 @@ for (const s of skills) {
     className?: string;
   }>;
 }
+SKILL_ICON_MAP["prismaorm"] = SKILL_ICON_MAP["prisma"];
+SKILL_ICON_MAP["tailwindcss"] = SKILL_ICON_MAP["tailwind"];
+SKILL_ICON_MAP["postgresql"] = SKILL_ICON_MAP["postgres"];
+SKILL_ICON_MAP["nest"] = SKILL_ICON_MAP["nestjs"];
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Sparkles,
@@ -189,7 +193,7 @@ function StatusBadge({ status }: StatusBadgeProps) {
 }
 
 function TechBadge({ name, delay }: { name: string; delay: number }) {
-  const normalize = (str: string) => str.toLowerCase().replace(/[.\s+]/g, "");
+  const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, "");
   const Icon =
     SKILL_ICON_MAP[normalize(name)] ??
     SKILL_ICON_MAP[name.toLowerCase()] ??

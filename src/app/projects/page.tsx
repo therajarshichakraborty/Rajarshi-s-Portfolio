@@ -74,6 +74,11 @@ import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
 import { NextJs } from "@/components/ui/svgs/nextjs";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import { Redis } from "@/components/ui/svgs/redis";
+import { NestJs } from "@/components/ui/svgs/nestjs";
+import { TRPC } from "@/components/ui/svgs/trpc";
+import { Drizzle } from "@/components/ui/svgs/drizzle";
+import { LangChain } from "@/components/ui/svgs/langchain";
 
 const tagIconMap: Record<string, React.ComponentType<any>> = {
   typescript: Typescript,
@@ -90,6 +95,13 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
   reactjs: ReactIcon,
   postgres: Postgres,
   postgresql: Postgres,
+  redis: Redis,
+  nestjs: NestJs,
+  "nest.js": NestJs,
+  nest: NestJs,
+  drizzle: Drizzle,
+  trpc: TRPC,
+  langchain: LangChain,
   "c++": CPP,
   cpp: CPP,
   express: Express,
@@ -104,14 +116,31 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
   pytorch: Pytorch,
   tailwind: Tailwind,
   tailwindcss: Tailwind,
+  "tailwind css": Tailwind,
   git: Git,
   prisma: Prisma,
+  prismaorm: Prisma,
+  "prisma orm": Prisma,
   javascript: JavaScript,
   js: JavaScript,
   "next.js": NextJs,
   nextjs: NextJs,
   "c#": Csharp,
-  csharp: Csharp
+  csharp: Csharp,
+  turborepo: Layers,
+  monorepo: Layers,
+  bullmq: Layers,
+  websockets: Zap,
+  "monaco editor": Code,
+  monacoeditor: Code,
+  nextauth: Lock,
+  betterauth: Lock,
+  "better auth": Lock,
+  pinecone: Database,
+  inngest: Zap,
+  openrouter: Brain,
+  "shadcn/ui": Layers,
+  shadcnui: Layers
 };
 
 const LUCIDE_ICON_MAP: Record<string, React.ComponentType<any>> = {
@@ -157,7 +186,8 @@ const LUCIDE_ICON_MAP: Record<string, React.ComponentType<any>> = {
 
 function getTagIcon(tag: string) {
   const key = tag.toLowerCase();
-  return tagIconMap[key] ?? tagIconMap[key.replace(/[.\s]/g, "")] ?? undefined;
+  const keyClean = key.replace(/[^a-z0-9]/g, "");
+  return tagIconMap[key] ?? tagIconMap[keyClean] ?? LUCIDE_ICON_MAP[tag] ?? undefined;
 }
 
 function DynIcon({ name, className }: { name: string; className?: string }) {
