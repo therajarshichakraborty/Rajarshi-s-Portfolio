@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
-const TRPC = () => (
-  <div className="rounded-b-full">
-    <Image src="/svgs/trpc.svg" alt="TRPC" width={20} height={20} />
+import { cn } from "@/lib/utils";
+
+const TRPC = ({ className }: { className?: string }) => (
+  <div className={cn("inline-flex items-center justify-center shrink-0 size-4", className)}>
+    <Image src="/svgs/trpc.svg" alt="tRPC" width={20} height={20} className="w-full h-full object-contain" />
   </div>
 );
 

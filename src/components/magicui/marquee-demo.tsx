@@ -25,22 +25,24 @@ import { LangChain } from "@/components/ui/svgs/langchain";
 import { NestJs } from "@/components/ui/svgs/nestjs";
 import { TRPC } from "@/components/ui/svgs/trpc";
 import { Drizzle } from "@/components/ui/svgs/drizzle";
+import { Redis } from "@/components/ui/svgs/redis";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 
 const reviews = [
   { name: "React", icon: React },
   { name: "Tailwind", icon: Tailwind },
-  { name: "NextJs", icon: NextjsIconDark },
+  { name: "Next.js", icon: NextjsIconDark },
+  { name: "Redis", icon: Redis },
   { name: "JavaScript", icon: JavaScript },
   { name: "TypeScript", icon: Typescript },
   { name: "Express", icon: Express },
   { name: "MongoDB", icon: MongoDB },
-  { name: "NodeJs", icon: Nodejs },
+  { name: "Node.js", icon: Nodejs },
   { name: "Git", icon: Git },
-  { name: "NestJs", icon: NestJs },
+  { name: "NestJS", icon: NestJs },
   { name: "Python", icon: Python },
   { name: "Go", icon: Golang },
-  { name: "Postgres", icon: Postgres },
+  { name: "PostgreSQL", icon: Postgres },
   { name: "Prisma", icon: Prisma },
   { name: "Docker", icon: Docker },
   { name: "Kubernetes", icon: Kubernetes },
@@ -63,7 +65,7 @@ const ReviewCard = ({
   icon: Icon
 }: {
   name: string;
-  icon: ComponentType;
+  icon: ComponentType<{ className?: string }>;
 }) => {
   return (
     <figure
@@ -74,7 +76,7 @@ const ReviewCard = ({
       )}
     >
       <div className="flex items-center justify-center shrink-0">
-        <Icon />
+        <Icon className="size-5" />
       </div>
       <figcaption className="text-sm font-medium">{name}</figcaption>
     </figure>

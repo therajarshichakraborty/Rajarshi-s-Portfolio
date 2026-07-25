@@ -28,6 +28,11 @@ import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
 import { NextJs } from "@/components/ui/svgs/nextjs";
 import { Csharp } from "@/components/ui/svgs/csharp";
+import { Redis } from "@/components/ui/svgs/redis";
+import { NestJs } from "@/components/ui/svgs/nestjs";
+import { TRPC } from "@/components/ui/svgs/trpc";
+import { Drizzle } from "@/components/ui/svgs/drizzle";
+import { LangChain } from "@/components/ui/svgs/langchain";
 import type React from "react";
 
 const tagIconMap: Record<string, React.ComponentType<any>> = {
@@ -45,6 +50,13 @@ const tagIconMap: Record<string, React.ComponentType<any>> = {
   reactjs: ReactIcon,
   postgres: Postgres,
   postgresql: Postgres,
+  redis: Redis,
+  nestjs: NestJs,
+  "nest.js": NestJs,
+  nest: NestJs,
+  drizzle: Drizzle,
+  trpc: TRPC,
+  langchain: LangChain,
   "c++": CPP,
   cpp: CPP,
   express: Express,

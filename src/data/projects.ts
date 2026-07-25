@@ -24,6 +24,11 @@ import { Tailwind } from "@/components/ui/svgs/tailwind";
 import { Git } from "@/components/ui/svgs/git";
 import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
+import { Redis } from "@/components/ui/svgs/redis";
+import { NestJs } from "@/components/ui/svgs/nestjs";
+import { TRPC } from "@/components/ui/svgs/trpc";
+import { Drizzle } from "@/components/ui/svgs/drizzle";
+import { LangChain } from "@/components/ui/svgs/langchain";
 export type ProjectStatus = "In Progress" | "Completed" | "Production";
 export type ProjectCategory =
   | "AI / Full-Stack"
@@ -98,19 +103,24 @@ export const skills = [
   { name: "React", icon: React },
   { name: "Tailwind", icon: Tailwind },
   { name: "Next.js", icon: NextjsIconDark },
+  { name: "Redis", icon: Redis },
   { name: "Javascript", icon: JavaScript },
   { name: "Typescript", icon: Typescript },
+  { name: "NestJS", icon: NestJs },
   { name: "Express", icon: Express },
   { name: "MongoDB", icon: MongoDB },
   { name: "Node.js", icon: Nodejs },
   { name: "Git", icon: Git },
   { name: "Python", icon: Python },
   { name: "Go", icon: Golang },
-  { name: "Postgres", icon: Postgres },
+  { name: "PostgreSQL", icon: Postgres },
   { name: "Prisma", icon: Prisma },
   { name: "Docker", icon: Docker },
   { name: "Kubernetes", icon: Kubernetes },
   { name: "Java", icon: Java },
+  { name: "Drizzle", icon: Drizzle },
+  { name: "tRPC", icon: TRPC },
+  { name: "LangChain", icon: LangChain },
   { name: "NumPy", icon: NumPy },
   { name: "Pandas", icon: Pandas },
   { name: "Scikit Learn", icon: SkLearn },
@@ -119,6 +129,117 @@ export const skills = [
 ];
 
 export const PROJECTS: ProjectData[] = [
+  {
+    id: "openstack",
+    title: "OpenStack",
+    tagline: "Modern Open-Source Backend-as-a-Service Platform",
+    description: `OpenStack is a modern, open-source Backend-as-a-Service platform built for developers who want to move fast without sacrificing flexibility or control. Designed with a scalable monorepo architecture, OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience across authentication, databases, realtime APIs, storage, serverless functions, and AI integrations.`,
+    longDescription: `Technologies: Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, NestJS, PostgreSQL, Redis, Docker, Turborepo, pnpm, Prisma, BullMQ, WebSockets.
+OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience.
+
+ Authentication: Supports Email and password authentication, Social login providers, Multi-Factor Authentication (MFA), Session management, Role-Based Access Control (RBAC), and Organization support.
+
+ Database: Features Managed PostgreSQL, Automatic migrations, Connection pooling, Row Level Security, SQL editor, and Backup and restore.
+
+ Storage: Provides Object storage, Secure file uploads, Public and private buckets, Image optimization, and CDN-ready delivery.
+
+ Realtime: Enables Live subscriptions, WebSocket support, Event broadcasting, Presence, and Channels.
+
+ Functions: Supports Serverless functions, Scheduled jobs, Background workers with BullMQ, Webhooks, and Event-driven workflows.
+
+ AI Platform: Integrates AI SDK, Embeddings, Vector search, Retrieval pipelines, Model integrations, and AI workflows.
+
+ Developer Experience: Offers a beautiful Dashboard, CLI, SDKs, REST API, GraphQL, OpenAPI documentation, Local development, and Cloud deployment support.`,
+    //@ts-ignore
+    category: "Developer Tools and AI Platform",
+    duration: "July 2026 - Present",
+    image: "/background/openstack.png",
+    technologies: [
+      { name: "NestJS" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "PostgreSQL" },
+      { name: "Redis" },
+      { name: "Docker" },
+      { name: "Monorepo" },
+      { name: "Prisma" },
+      { name: "BullMQ" },
+      { name: "WebSockets" },
+      { name: "Tailwind CSS" },
+      {name:"Redis"}
+    ],
+    features: [
+      {
+        text: "Authentication with Email/Password, Social Auth, MFA, and RBAC",
+        icon: "Lock"
+      },
+      {
+        text: "Managed PostgreSQL database with automatic migrations and SQL editor",
+        icon: "Database"
+      },
+      {
+        text: "Object storage with secure file uploads, image optimization, and CDN",
+        icon: "FolderPlus"
+      },
+      {
+        text: "Realtime API with WebSockets, Live subscriptions, and Channels",
+        icon: "Zap"
+      },
+      {
+        text: "Serverless functions, background workers via BullMQ, and webhooks",
+        icon: "Layers"
+      },
+      {
+        text: "Built-in AI Platform with vector search, embeddings, and RAG pipelines",
+        icon: "Brain"
+      },
+      {
+        text: "High-performance Next.js developer dashboard and CLI tooling",
+        icon: "LayoutDashboard"
+      },
+      {
+        text: "Monorepo architecture powered by Turborepo, pnpm, and Docker",
+        icon: "Terminal"
+      }
+    ],
+    stats: [
+      {
+        label: "Type",
+        value: "BaaS Platform",
+        icon: "Sparkles"
+      },
+      {
+        label: "Backend",
+        value: "NestJS",
+        icon: "Terminal"
+      },
+      {
+        label: "Architecture",
+        value: "Monorepo",
+        icon: "Layers"
+      },
+      {
+        label: "Status",
+        value: "Building",
+        icon: "Rocket"
+      }
+    ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/openstack"
+      }
+    ],
+    challenges: [
+      "Designing a scalable monorepo architecture using Turborepo and pnpm for seamless cross-package dependencies.",
+      "Integrating high-throughput WebSocket event broadcasting alongside NestJS backend services.",
+      "Building fine-grained Row Level Security (RLS) and multi-tenant organization support into managed PostgreSQL.",
+      "Engineered reliable background job processing and scheduled queues using BullMQ and Redis."
+    ],
+    architecture:
+      "Next.js Dashboard -> NestJS API Gateway -> PostgreSQL + Prisma ORM | Redis + BullMQ Queue | Realtime WebSockets | Vector Search AI Pipeline",
+    isBuilding: true
+  },
   {
   id: "codepilot",
   title: "CodePilot",

@@ -765,6 +765,7 @@ export function ProjectLightbox({
                       </span>
                       <ExternalLink className="w-3.5 h-3.5 text-white transition-transform duration-300 group-hover:scale-110" />
                       <span>Live Demo</span>
+                      {/* @ts-ignore */}
                       <ArrowUpRight className="w-3 h-3 text-white/80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   )}

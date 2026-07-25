@@ -24,6 +24,11 @@ import { Tailwind } from "@/components/ui/svgs/tailwind";
 import { Git } from "@/components/ui/svgs/git";
 import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
+import { Redis } from "@/components/ui/svgs/redis";
+import { NestJs } from "@/components/ui/svgs/nestjs";
+import { TRPC } from "@/components/ui/svgs/trpc";
+import { Drizzle } from "@/components/ui/svgs/drizzle";
+import { LangChain } from "@/components/ui/svgs/langchain";
 
 export const DATA = {
   name: "Rajarshi Chakraborty",
@@ -42,19 +47,24 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
     { name: "React", icon: React },
     { name: "Tailwind", icon: Tailwind },
     { name: "Next.js", icon: NextjsIconDark },
+    { name: "Redis", icon: Redis },
     { name: "Javascript", icon: JavaScript },
     { name: "Typescript", icon: Typescript },
+    { name: "NestJS", icon: NestJs },
     { name: "Express", icon: Express },
     { name: "MongoDB", icon: MongoDB },
     { name: "Node.js", icon: Nodejs },
     { name: "Git", icon: Git },
     { name: "Python", icon: Python },
     { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgres },
+    { name: "PostgreSQL", icon: Postgres },
     { name: "Prisma", icon: Prisma },
     { name: "Docker", icon: Docker },
     { name: "Kubernetes", icon: Kubernetes },
     { name: "Java", icon: Java },
+    { name: "Drizzle", icon: Drizzle },
+    { name: "tRPC", icon: TRPC },
+    { name: "LangChain", icon: LangChain },
     { name: "NumPy", icon: NumPy },
     { name: "Pandas", icon: Pandas },
     { name: "Scikit Learn", icon: SkLearn },
@@ -267,6 +277,35 @@ Biology`
     }
   ],
   projects: [
+    {
+      title: "OpenStack",
+      href: "https://github.com/therajarshichakraborty/openstack",
+      dates: "July 2026 - Present",
+      active: true,
+      isBuilding: true,
+      description: `OpenStack is a modern, open-source Backend-as-a-Service platform built for developers who want to move fast without sacrificing flexibility or control. Designed with a scalable monorepo architecture, OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver a complete backend foundation including Authentication, Managed PostgreSQL, Object Storage, Realtime APIs, Serverless Functions, Background Workers, and AI Vector Search.`,
+      technologies: [
+        "NestJS",
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Turborepo",
+        "Prisma",
+        "BullMQ",
+        "WebSockets",
+        "TailwindCSS"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/therajarshichakraborty/openstack",
+          icon: <Icons.github className="size-3" />
+        }
+      ],
+      image: "/background/openstack.png"
+    },
     {
       title: "ApexZero",
       href: "",
