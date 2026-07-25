@@ -255,9 +255,9 @@ const Experience = () => {
       period: "Jan 2026 - Present",
       Location: "Kolkata , West Bengal , India",
       description: [
-        "**Forecasting Accuracy**: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
+        "Forecasting Accuracy: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
         "Deployment Pipeline: Refactored research Jupyter notebooks into a modular, deployment-ready Python pipeline (NumPy, Pandas, Scikit-learn, PyTorch, Node.js), reducing the model retrain-to-redeploy cycle from 3+ days to under 4 hours.",
-        "Dataset Engineering: Designed and executed an end-to-end preprocessing workflow across a dataset of 60,000+ rows - handling missing values, outlier detection, seasonal decomposition, and feature normalization - reducing data noise by ~35%.",
+        "Dataset Engineering: Designed and executed an end-to-end preprocessing workflow across a dataset of 60,000+ rows, covering missing values, outlier detection, seasonal decomposition, and feature normalization, reducing data noise by ~35%.",
         "Hyperparameter Tuning: Applied grid search and cross-validation across 120+ hyperparameter configurations, boosting LSTM validation accuracy by 19.4% while reducing Mean Absolute Error by 22% on held-out test splits.",
         "Research Documentation: Authored a structured technical report covering model architecture decisions, evaluation metrics (RMSE, MAE, MAPE), and ablation study results, forming the foundation for an ongoing research publication."
       ],
@@ -278,7 +278,7 @@ const Experience = () => {
       Location: "Kolkata , West Bengal , India",
       description: [
         "Event Leadership: Co-led the IGNITE division of Samarth TMSL, orchestrating 6+ large-scale events including Educathon (national-level hackathon) and Safalya (annual academic-cultural fest), collectively drawing 500+ participants across all sessions.",
-        "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations - ensuring 100% on-time execution of all planned events with zero critical incidents.",
+        "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations, ensuring 100% on-time execution of all planned events with zero critical incidents.",
         "Content Strategy: Authored 15+ pieces of technical and educational content (articles, workshop decks, guides) for Samarth TMSL initiatives, contributing to a 40% increase in social media engagement and organic reach.",
         "Community Growth: Spearheaded outreach under Pragati, onboarding 200+ first-year students through structured orientation programs, mentorship drives, and inter-department collaborations.",
       ],
@@ -321,13 +321,36 @@ const Experience = () => {
     <section id="experience" className="relative py-1 px-6">
       <div className="max-w-screen-md mx-auto">
         {/* Section heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Professional Journey
-          </h2>
-          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">
-            Mapping my journey of growth, innovation, and real-world impact.
-          </p>
+        <div className="flex flex-col gap-y-4 items-center justify-center mb-12">
+          <div className="flex items-center w-full">
+            <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="border bg-primary z-10 rounded-xl px-4 py-1">
+              <span className="text-white dark:text-black text-sm font-medium">
+                Work Experience
+              </span>
+            </div>
+            <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
+          </div>
+          <div className="flex flex-col gap-y-3 items-center justify-center">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl inline-block text-center">
+              Professional Journey
+            </h2>
+            <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
+              My background spans{" "}
+              <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
+                Undergraduate Research
+              </span>
+              , leadership as{" "}
+              <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
+                Co-Head at Samarth TMSL
+              </span>
+              , and management staff at{" "}
+              <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
+                Geekonix
+              </span>
+              . Mapping my journey of growth, technical execution, and community leadership.
+            </p>
+          </div>
         </div>
 
         {/* Cards stack with connecting line */}

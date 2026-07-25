@@ -125,21 +125,22 @@ export default async function Page() {
       <section id="work" className="-mt-20">
         <div className="flex min-h-0 flex-col gap-y-3 ">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <div className="flex items-center w-full">
-              <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            {/* <div className="flex items-center w-full"> */}
+              {/* <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
               <div className="border bg-primary z-10 rounded-xl px-4 py-1">
                 <span className="text-white dark:text-black text-sm font-medium ">
                   Experience
                 </span>
               </div>
               <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
-            </div>
+            </div> */}
 
             <br />
             <Experience />
           </BlurFade>
         </div>
       </section>
+      <br/>
       <section id="education" className="-mt-15">
         <div className="flex min-h-0 flex-col gap-y-6 -mt-16">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -147,7 +148,6 @@ export default async function Page() {
               Education
             </h2>
           </BlurFade>
-
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <Education />
           </BlurFade>
