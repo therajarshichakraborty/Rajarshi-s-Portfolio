@@ -30,18 +30,18 @@ import HeroAvatarOrbit from "@/components/hero-avatar-orbit";
 import { ProjectCarousel } from "@/components/21stdotdev/project-carausal";
 import Publications from "@/components/publications";
 
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.02;
 
 export default async function Page() {
   const raw = await getContestData("rajarshi_2005");
   const data = transformContestData(raw);
 
   return (
-    <main className="flex flex-col gap-20 md:gap-28 relative">
-      <section id="hero" className="w-full flex justify-center mt-4 md:mt-8">
+    <main className="flex flex-col gap-10 md:gap-14 relative">
+      <section id="hero" className="w-full flex justify-center mt-2 md:mt-4">
         <div className="w-full max-w-2xl space-y-8">
           <div className="gap-6 flex flex-col md:flex-row justify-between items-center md:items-start">
-            <div className="flex flex-col gap-3 order-2 md:order-1 pt-6 md:pt-18 w-full md:w-[380px] lg:w-[450px] shrink-0">
+            <div className="flex flex-col gap-3 order-2 md:order-1 pt-4 md:pt-10 w-full md:w-[380px] lg:w-[450px] shrink-0">
               <div className="flex flex-col">
                 <BlurFade delay={BLUR_FADE_DELAY}>
                   <MultilingualGreeting />
@@ -101,14 +101,14 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="about" className="mb-4 -mt-15">
+      <section id="about">
         <div className="flex min-h-0 flex-col gap-y-2">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <h2 className="text-xl font-bold mb-2 inline-block whitespace-nowrap">
               About
             </h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <BlurFade delay={BLUR_FADE_DELAY * 2.5}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert [&>*:last-child]:mb-0">
               <Markdown>{DATA.summary}</Markdown>
             </div>
@@ -116,52 +116,46 @@ export default async function Page() {
         </div>
       </section>
 
-      <section id="gallery" className="-mt-20">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+      <section id="gallery">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <Gallery />
         </BlurFade>
       </section>
 
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+          <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
             <Experience />
           </BlurFade>
         </div>
       </section>
 
-      <section id="education" className="mt-4 md:mt-8">
-        <div className="flex min-h-0 flex-col gap-y-6">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+      <section id="education">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <h2 className="inline-block whitespace-nowrap text-xl font-bold">
               Education
             </h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+          <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
             <Education />
           </BlurFade>
         </div>
       </section>
 
-      <section id="skills" className="mt-4 md:mt-8">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <div className="flex flex-col gap-y-4">
+      <section id="skills">
+        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <div className="flex flex-col gap-y-6">
             <h2 className="text-xl font-bold">Skills &amp; Activity</h2>
-            <div className="mt-3">
+            <div className="mt-1">
               <MarqueeDemo />
             </div>
-            <br />
-            <br />
-            <section id="projects">
-              <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <section id="projects" className="mt-2">
+              <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
                 <ProjectCarousel />
               </BlurFade>
             </section>
-            <br />
-            <br />
-            <br />
-            <br />
-            <div className="w-full -mt-20">
+            <div className="w-full mt-4">
               <div className="flex flex-col gap-y-4 items-center justify-center">
                 <div className="flex items-center w-full">
                   <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
@@ -190,14 +184,14 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="publications" className="-mt-8 md:-mt-12">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+      <section id="publications">
+        <BlurFade delay={BLUR_FADE_DELAY * 6}>
           <Publications />
         </BlurFade>
       </section>
 
-      <section id="leetcode" className="-mt-20 md:-mt-12">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+      <section id="leetcode">
+        <BlurFade delay={BLUR_FADE_DELAY * 6.5}>
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
             <div className="border bg-primary z-10 rounded-xl px-4 py-1">
@@ -246,7 +240,7 @@ export default async function Page() {
               </div>
             </div>
 
-            <div className="w-full lg:w-[320px] flex justify-center -mt-25 items-center">
+            <div className="w-full lg:w-[320px] flex justify-center items-center">
               <LeetCodeCard />
             </div>
           </div>
@@ -256,13 +250,13 @@ export default async function Page() {
         </BlurFade>
       </section>
 
-      <section id="contact" className="-mt-20">
-        <BlurFade delay={BLUR_FADE_DELAY * 16}>
+      <section id="contact">
+        <BlurFade delay={BLUR_FADE_DELAY * 7}>
           <HireMeSection />
         </BlurFade>
       </section>
 
-      <p className="text-center text-sm text-muted-foreground tracking-wide -mt-30">
+      <p className="text-center text-sm text-muted-foreground tracking-wide py-6">
         Design & Developed by{" "}
         <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
           Rajarshi Chakraborty
