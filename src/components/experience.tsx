@@ -102,135 +102,148 @@ const ExperienceItem = ({
   technologies,
   Location
 }: ExperienceItemProps) => {
+  const getCompanyLogo = () => {
+    if (company === "Techno Main Salt Lake")
+      return (
+        <Image
+          src="/techno-main.jpg"
+          alt={company}
+          className="size-full object-contain p-0.5"
+          width={36}
+          height={36}
+        />
+      );
+    if (company === "Samarth TMSL")
+      return (
+        <Image
+          src="/Samarth.jpg"
+          alt={company}
+          className="size-full object-contain p-0.5"
+          width={36}
+          height={36}
+        />
+      );
+    if (company === "Geekonix")
+      return (
+        <Image
+          src="/geekonix.png"
+          alt={company}
+          className="size-full object-contain p-0.5"
+          width={36}
+          height={36}
+        />
+      );
+    return <Building2 className="size-5 text-muted-foreground" />;
+  };
+
   return (
-    <>
-      <div className="relative pl-8 pb-12 group last:pb-0">
-        {/* Timeline line */}
-        <div className="absolute left-0 top-2.5 h-full w-[1px] bg-zinc-300 dark:bg-zinc-800 group-last:h-2">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full border-2 border-primary bg-black dark:bg-white" />
+    <div className="group relative rounded-2xl border border-border/60 bg-card hover:border-border transition-all duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-white/5 overflow-hidden">
+      {/* Top accent gradient bar */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="p-6 sm:p-7">
+        {/* ── Header row ── */}
+        <div className="flex items-start gap-4">
+          {/* Logo badge */}
+          <div className="flex-shrink-0 size-12 rounded-xl border border-border/70 bg-background flex items-center justify-center overflow-hidden shadow-sm">
+            {getCompanyLogo()}
+          </div>
+
+          {/* Company + title + meta */}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+              <span className="text-lg sm:text-xl font-bold tracking-tight leading-tight">
+                {company}
+              </span>
+              {/* Period pill */}
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border border-border/70 bg-muted/40 text-muted-foreground whitespace-nowrap">
+                <Calendar className="size-3" />
+                {period}
+              </span>
+            </div>
+
+            <h3 className="mt-0.5 text-sm sm:text-base font-semibold text-muted-foreground">
+              {title}
+            </h3>
+
+            <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground/70">
+              <MapPin className="size-3 flex-shrink-0" />
+              <span>{Location}</span>
+            </div>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 size-9 bg-accent rounded-full flex items-center justify-center overflow-hidden">
-              {(() => {
-                let icon;
+        {/* ── Divider ── */}
+        <div className="my-5 h-px bg-border/60" />
 
-                if (company === "Techno Main Salt Lake") {
-                  icon = (
-                    <Image
-                      src="/techno-main.jpg"
-                      alt="Techno Main Salt Lake"
-                      className="size-52 object-contain p-1"
-                      width={20}
-                      height={20}
-                    />
-                  );
-                } else if (company === "Samarth TMSL") {
-                  icon = (
-                    <Image
-                      src="/Samarth.jpg"
-                      alt="Samarth TMSL"
-                      className="size-full object-contain p-1"
-                      width={20}
-                      height={20}
-                    />
-                  );
-                } else if (company === "Geekonix") {
-                  icon = (
-                    <Image
-                      src="/geekonix.png"
-                      alt="Geekonix"
-                      className="size-full object-contain p-1"
-                      width={20}
-                      height={20}
-                    />
-                  );
-                } else {
-                  icon = <Building2 className="size-5 text-muted-foreground" />;
-                }
+        {/* ── Bullet points ── */}
+        <ul className="space-y-3">
+          {description.map((point, i) => {
+            const colonIdx = point.indexOf(":");
+            const hasLabel = colonIdx !== -1 && colonIdx < 35;
+            const label = hasLabel ? point.slice(0, colonIdx) : null;
+            const rest = hasLabel ? point.slice(colonIdx + 1).trim() : point;
 
-                return icon;
-              })()}
-            </div>
-
-            <span className="text-2xl sm:text-3xl font-bold">{company}</span>
-          </div>
-
-          <div>
-            <h3 className="text-xl sm:text-2xl font-medium">{title}</h3>
-
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between mt-1 text-sm w-full">
-              <div className="flex items-center gap-2">
-                <Calendar className="size-4" />
-                <span>{period}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="size-4" />
-                <span>{Location}</span>
-              </div>
-            </div>
-          </div>
-          {/* Bullet-point description */}
-          <ul className="space-y-2 mt-1">
-            {description.map((point, i) => (
-              <li key={i} className="flex items-start gap-2.5 group/bullet">
-                <span className="mt-[6px] flex-shrink-0 size-1.5 rounded-full bg-primary/60 group-hover/bullet:bg-primary transition-colors duration-200" />
-                <p className="text-sm leading-relaxed text-muted-foreground group-hover/bullet:text-foreground/80 transition-colors duration-200">
-                  <HighlightedBullet text={point} />
+            return (
+              <li key={i} className="flex items-start gap-3 group/bullet">
+                {/* Chevron-style bullet */}
+                <span className="mt-[5px] flex-shrink-0 size-[5px] rotate-45 border-r border-b border-muted-foreground/50 group-hover/bullet:border-foreground/70 transition-colors duration-200" />
+                <p className="text-sm leading-relaxed text-muted-foreground group-hover/bullet:text-foreground/75 transition-colors duration-200">
+                  {label && (
+                    <span className="font-semibold text-foreground/90">
+                      {label}:{" "}
+                    </span>
+                  )}
+                  <HighlightedBullet text={rest} />
                 </p>
               </li>
-            ))}
-          </ul>
-          <div className="flex flex-wrap gap-2 items-center">
-            <p className="text-black font-bold dark:text-white">
-              Technologies & Tools :
-            </p>
-            <br />
-            {technologies.map((tech) => {
-              const techKey = tech.toLowerCase();
-              const techData = techConfig[techKey];
+            );
+          })}
+        </ul>
 
-              if (techData) {
-                const Icon = techData.icon;
-                return (
-                  <Link
-                    href={techData.url}
-                    target="_blank"
-                    key={tech}
-                    className="flex items-center"
-                  >
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="cursor-pointer flex items-center gap-2 bg-transparent text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98]"
+        {/* ── Tech stack ── */}
+        {technologies.length > 0 && (
+          <>
+            <div className="my-5 h-px bg-border/60" />
+            <div className="flex flex-wrap gap-2 items-center">
+              {technologies.map((tech) => {
+                const techKey = tech.toLowerCase();
+                const techData = techConfig[techKey];
+
+                if (techData) {
+                  const Icon = techData.icon;
+                  return (
+                    <Link
+                      href={techData.url}
+                      target="_blank"
+                      key={tech}
                     >
-                      <Icon className="size-4" />
-                      <span>{techData.name}</span>
-                    </Button>
-                  </Link>
-                );
-              }
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="cursor-pointer flex items-center gap-1.5 h-7 px-2.5 text-xs bg-transparent text-foreground border-border/60 hover:border-border hover:bg-accent/50 transition-all duration-200 hover:scale-[1.03] hover:-translate-y-px active:scale-[0.98]"
+                      >
+                        <Icon className="size-3.5" />
+                        <span>{techData.name}</span>
+                      </Button>
+                    </Link>
+                  );
+                }
 
-              return (
-                <div key={tech} className="flex items-center">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="bg-transparent text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98] cursor-default flex items-center gap-2"
+                return (
+                  <span
+                    key={tech}
+                    className="inline-flex items-center h-7 px-2.5 text-xs rounded-md border border-border/60 bg-transparent text-muted-foreground"
                   >
                     {tech}
-                  </Button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <br />
-        <br />
+                  </span>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
@@ -242,9 +255,9 @@ const Experience = () => {
       period: "Jan 2026 - Present",
       Location: "Kolkata , West Bengal , India",
       description: [
-        "Forecasting Accuracy: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
+        "**Forecasting Accuracy**: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
         "Deployment Pipeline: Refactored research Jupyter notebooks into a modular, deployment-ready Python pipeline (NumPy, Pandas, Scikit-learn, PyTorch, Node.js), reducing the model retrain-to-redeploy cycle from 3+ days to under 4 hours.",
-        "Dataset Engineering: Designed and executed an end-to-end preprocessing workflow across a dataset of 60,000+ rows — handling missing values, outlier detection, seasonal decomposition, and feature normalization — reducing data noise by ~35%.",
+        "Dataset Engineering: Designed and executed an end-to-end preprocessing workflow across a dataset of 60,000+ rows - handling missing values, outlier detection, seasonal decomposition, and feature normalization - reducing data noise by ~35%.",
         "Hyperparameter Tuning: Applied grid search and cross-validation across 120+ hyperparameter configurations, boosting LSTM validation accuracy by 19.4% while reducing Mean Absolute Error by 22% on held-out test splits.",
         "Research Documentation: Authored a structured technical report covering model architecture decisions, evaluation metrics (RMSE, MAE, MAPE), and ablation study results, forming the foundation for an ongoing research publication."
       ],
@@ -265,7 +278,7 @@ const Experience = () => {
       Location: "Kolkata , West Bengal , India",
       description: [
         "Event Leadership: Co-led the IGNITE division of Samarth TMSL, orchestrating 6+ large-scale events including Educathon (national-level hackathon) and Safalya (annual academic-cultural fest), collectively drawing 500+ participants across all sessions.",
-        "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations — ensuring 100% on-time execution of all planned events with zero critical incidents.",
+        "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations - ensuring 100% on-time execution of all planned events with zero critical incidents.",
         "Content Strategy: Authored 15+ pieces of technical and educational content (articles, workshop decks, guides) for Samarth TMSL initiatives, contributing to a 40% increase in social media engagement and organic reach.",
         "Community Growth: Spearheaded outreach under Pragati, onboarding 200+ first-year students through structured orientation programs, mentorship drives, and inter-department collaborations.",
       ],
@@ -307,11 +320,9 @@ const Experience = () => {
   return (
     <section id="experience" className="relative py-1 px-6">
       <div className="max-w-screen-md mx-auto">
+        {/* Section heading */}
         <div className="text-center mb-12">
-          {/* <Button size={"sm"} className=" bg-white text-black border-black cursor-pointer gap-2 mb-8">
-            Experience
-          </Button> */}
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight ">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
             Professional Journey
           </h2>
           <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">
@@ -319,9 +330,21 @@ const Experience = () => {
           </p>
         </div>
 
-        <div className="relative">
+        {/* Cards stack with connecting line */}
+        <div className="relative flex flex-col gap-5">
+          {/* Vertical timeline rule */}
+          <div className="absolute left-[23px] top-12 bottom-12 w-px bg-gradient-to-b from-border via-border/40 to-transparent hidden sm:block" />
+
           {experiences.map((experience, index) => (
-            <ExperienceItem key={index} {...experience} />
+            <div key={index} className="relative flex gap-5 sm:gap-6 items-start">
+              {/* Index badge on the timeline */}
+              <div className="hidden sm:flex flex-shrink-0 size-[46px] rounded-full border border-border/70 bg-background items-center justify-center z-10 text-xs font-bold text-muted-foreground shadow-sm">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <div className="flex-1 min-w-0">
+                <ExperienceItem {...experience} />
+              </div>
+            </div>
           ))}
         </div>
       </div>
