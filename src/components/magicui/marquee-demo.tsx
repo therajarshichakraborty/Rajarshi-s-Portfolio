@@ -22,18 +22,23 @@ import { Tailwind } from "@/components/ui/svgs/tailwind";
 import { Git } from "@/components/ui/svgs/git";
 import { Prisma } from "@/components/ui/svgs/prisma";
 import { JavaScript } from "@/components/ui/svgs/js";
+import { LangChain } from "@/components/ui/svgs/langchain";
+import { NestJs } from "@/components/ui/svgs/nestjs";
+import { TRPC } from "@/components/ui/svgs/trpc";
+import { Drizzle } from "@/components/ui/svgs/drizzle";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 
 const reviews = [
   { name: "React", icon: React },
   { name: "Tailwind", icon: Tailwind },
-  { name: "Next.js", icon: NextjsIconDark },
-  { name: "Javascript", icon: JavaScript },
-  { name: "Typescript", icon: Typescript },
+  { name: "NextJs", icon: NextjsIconDark },
+  { name: "JavaScript", icon: JavaScript },
+  { name: "TypeScript", icon: Typescript },
   { name: "Express", icon: Express },
   { name: "MongoDB", icon: MongoDB },
-  { name: "Node.js", icon: Nodejs },
+  { name: "NodeJs", icon: Nodejs },
   { name: "Git", icon: Git },
+  { name: "NestJs", icon: NestJs },
   { name: "Python", icon: Python },
   { name: "Go", icon: Golang },
   { name: "Postgres", icon: Postgres },
@@ -43,9 +48,12 @@ const reviews = [
   { name: "Java", icon: Java },
   { name: "NumPy", icon: NumPy },
   { name: "Pandas", icon: Pandas },
-  { name: "Scikit Learn", icon: SkLearn },
+  { name: "Scikit-Learn", icon: SkLearn },
   { name: "PyTorch", icon: Pytorch },
-  { name: "C++", icon: CPP }
+  { name: "C++", icon: CPP },
+  { name: "tRPC", icon: TRPC },
+  { name: "LangChain", icon: LangChain },
+  { name: "Drizzle", icon: Drizzle }
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
