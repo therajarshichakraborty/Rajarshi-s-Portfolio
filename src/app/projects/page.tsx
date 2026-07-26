@@ -208,10 +208,16 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function ProjectsPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTabs, setActiveTabs] = useState<Record<string, "overview" | "capabilities" | "architecture" | "challenges">>({});
+  const [activeTabs, setActiveTabs] = useState<
+    Record<string, "overview" | "capabilities" | "architecture" | "challenges">
+  >({});
 
-  const getActiveTab = (projectId: string) => activeTabs[projectId] ?? "overview";
-  const setProjectTab = (projectId: string, tab: "overview" | "capabilities" | "architecture" | "challenges") => {
+  const getActiveTab = (projectId: string) =>
+    activeTabs[projectId] ?? "overview";
+  const setProjectTab = (
+    projectId: string,
+    tab: "overview" | "capabilities" | "architecture" | "challenges"
+  ) => {
     setActiveTabs((prev) => ({ ...prev, [projectId]: tab }));
   };
 
@@ -222,16 +228,15 @@ export default function ProjectsPage() {
       const titleMatch = project.title.toLowerCase().includes(q);
       const taglineMatch = project.tagline.toLowerCase().includes(q);
       const descMatch = project.description.toLowerCase().includes(q);
-      const techMatch = project.technologies.some((t) => t.name.toLowerCase().includes(q));
+      const techMatch = project.technologies.some((t) =>
+        t.name.toLowerCase().includes(q)
+      );
       return titleMatch || taglineMatch || descMatch || techMatch;
     });
   }, [searchQuery]);
 
   return (
-    <section
-      id="projects-page"
-      className="w-full py-6 md:py-10 relative"
-    >
+    <section id="projects-page" className="w-full py-6 md:py-10 relative">
       <div className="flex flex-col gap-y-10 max-w-5xl mx-auto px-4">
         {/* ── 1. Hero Header ── */}
         <div className="flex flex-col gap-y-3 items-center text-center">
@@ -243,7 +248,9 @@ export default function ProjectsPage() {
 
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <p className="text-muted-foreground md:text-lg max-w-2xl leading-relaxed text-balance">
-              Deep dive into system architectures, real-time backend pipelines, AI workflows, and performance metrics across my software engineering projects.
+              Deep dive into system architectures, real-time backend pipelines,
+              AI workflows, and performance metrics across my software
+              engineering projects.
             </p>
           </BlurFade>
         </div>
@@ -293,9 +300,12 @@ export default function ProjectsPage() {
         {filteredProjects.length === 0 && (
           <div className="flex flex-col items-center justify-center py-16 text-center border border-dashed border-border/60 rounded-3xl bg-card/20">
             <Search className="size-10 text-muted-foreground/40 mb-3" />
-            <h3 className="text-lg font-bold text-foreground">No matching projects found</h3>
+            <h3 className="text-lg font-bold text-foreground">
+              No matching projects found
+            </h3>
             <p className="text-xs text-muted-foreground mt-1 max-w-sm">
-              No software projects matched &quot;{searchQuery}&quot;. Try searching for a different framework or technology.
+              No software projects matched &quot;{searchQuery}&quot;. Try
+              searching for a different framework or technology.
             </p>
             <button
               onClick={() => setSearchQuery("")}
@@ -310,7 +320,8 @@ export default function ProjectsPage() {
         <div className="flex flex-col gap-y-16">
           {filteredProjects.map((project, index) => {
             const currentTab = getActiveTab(project.id);
-            const hasChallenges = project.challenges && project.challenges.length > 0;
+            const hasChallenges =
+              project.challenges && project.challenges.length > 0;
 
             return (
               <BlurFade key={project.id} delay={BLUR_FADE_DELAY * (2 + index)}>
@@ -381,7 +392,9 @@ export default function ProjectsPage() {
                       </button>
 
                       <button
-                        onClick={() => setProjectTab(project.id, "capabilities")}
+                        onClick={() =>
+                          setProjectTab(project.id, "capabilities")
+                        }
                         className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                           currentTab === "capabilities"
                             ? "bg-background text-foreground shadow-xs"
@@ -392,7 +405,9 @@ export default function ProjectsPage() {
                       </button>
 
                       <button
-                        onClick={() => setProjectTab(project.id, "architecture")}
+                        onClick={() =>
+                          setProjectTab(project.id, "architecture")
+                        }
                         className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                           currentTab === "architecture"
                             ? "bg-background text-foreground shadow-xs"
@@ -404,7 +419,9 @@ export default function ProjectsPage() {
 
                       {hasChallenges && (
                         <button
-                          onClick={() => setProjectTab(project.id, "challenges")}
+                          onClick={() =>
+                            setProjectTab(project.id, "challenges")
+                          }
                           className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                             currentTab === "challenges"
                               ? "bg-background text-foreground shadow-xs"
@@ -451,7 +468,8 @@ export default function ProjectsPage() {
                           {/* Tech Stack Chips */}
                           <div>
                             <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                              Technologies Deployed ({project.technologies.length})
+                              Technologies Deployed (
+                              {project.technologies.length})
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {project.technologies.map((tech) => {
@@ -514,7 +532,9 @@ export default function ProjectsPage() {
 
                           {/* Architecture step-by-step diagram */}
                           <div className="w-full">
-                            <ProjectArchitectureDiagram projectId={project.id} />
+                            <ProjectArchitectureDiagram
+                              projectId={project.id}
+                            />
                           </div>
                         </div>
                       )}

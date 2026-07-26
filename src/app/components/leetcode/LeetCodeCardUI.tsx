@@ -1,26 +1,76 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useSpring, useTransform } from "motion/react";
 import { LeetCodeStats } from "@/types/leetcode";
 import LeetCodeRadial from "./LeetCodeRadial";
 
-interface StatProps {
-  color: string;
-  label: string;
-  value: number;
+function AnimatedNumber({ value }: { value: number }) {
+  const spring = useSpring(0, { mass: 0.5, stiffness: 100, damping: 15 });
+  const display = useTransform(spring, (current) => Math.round(current));
+  const [currentValue, setCurrentValue] = useState(0);
+
+  useEffect(() => {
+    spring.set(value);
+  }, [value, spring]);
+
+  useEffect(() => {
+    return display.on("change", (latest) => {
+      setCurrentValue(latest);
+    });
+  }, [display]);
+
+  return <span>{currentValue}</span>;
 }
 
-function Stat({ color, label, value }: StatProps) {
+interface StatProps {
+  color: string;
+  gradientClass: string;
+  label: string;
+  value: number;
+  max: number;
+  delay: number;
+}
+
+function Stat({ color, gradientClass, label, value, max, delay }: StatProps) {
+  const percentage =
+    max > 0 ? Math.min(100, Math.round((value / max) * 100)) : 0;
+
   return (
-    <div className="flex items-center gap-2 transition-transform duration-200 ease-out hover:translate-x-1 cursor-default group">
-      <span className={`w-2 h-2 rounded-full transition-transform duration-200 group-hover:scale-125 ${color}`} />
-      <span className="text-zinc-600 dark:text-zinc-300">
-        {label}:{" "}
-        <span className="font-medium text-zinc-800 dark:text-white">
-          {value}
+    <motion.div
+      initial={{ opacity: 0, x: -8 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3, delay }}
+      className="group flex flex-col gap-1 cursor-pointer"
+    >
+      <div className="flex items-center justify-between text-xs transition-transform duration-200 ease-out group-hover:translate-x-1">
+        <div className="flex items-center gap-2">
+          <span
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_8px_rgba(168,85,247,0.6)] ${color}`}
+          />
+          <span className="text-zinc-600 dark:text-zinc-300 font-medium">
+            {label}
+          </span>
+        </div>
+        <span className="font-semibold text-zinc-800 dark:text-white ml-2">
+          <AnimatedNumber value={value} />
         </span>
-      </span>
-    </div>
+      </div>
+
+      {/* Mini Gradient Progress Bar */}
+      <div className="w-full h-1.5 bg-transparent rounded-full overflow-hidden p-[1px]">
+        <motion.div
+          className={`h-full rounded-full ${gradientClass}`}
+          initial={{ width: 0 }}
+          animate={{ width: `${percentage}%` }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1],
+            delay: delay + 0.1
+          }}
+        />
+      </div>
+    </motion.div>
   );
 }
 
@@ -28,52 +78,81 @@ export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
   return (
     <div className="mt-15 flex justify-center">
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ y: -3 }}
-        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 15, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="
-            w-[300px] sm:w-[260px]
-            ml-2 sm:ml-6 md:ml-10
-            p-5 rounded-2xl
-            bg-transparent 
-            backdrop-blur-md
-            transition-shadow duration-300
-            hover:shadow-lg hover:shadow-purple-500/5
-            "
+          relative
+          w-[310px] sm:w-[280px]
+          ml-2 sm:ml-6 md:ml-10
+          p-5 rounded-2xl
+          bg-transparent
+          backdrop-blur-xl
+          transition-all duration-300
+          hover:border-violet-500/30 dark:hover:border-violet-500/30
+          hover:shadow-2xl hover:shadow-violet-500/15
+          overflow-hidden
+          -mt-20
+        "
       >
-        <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4 flex items-center gap-2">
-          LeetCode Progress
-        </h2>
+        {/* Glow corner flare */}
+
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-sm font-bold text-zinc-800 dark:text-zinc-100 flex items-center gap-2 tracking-tight">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+            </span>
+            LeetCode Progress
+          </h2>
+        </div>
 
         <div className="flex items-center gap-5">
           <LeetCodeRadial {...data} />
 
-          <div className="space-y-2 text-xs">
+          <div className="space-y-2.5 text-xs flex-1">
             <Stat
-              color="bg-[oklch(75%_0.14_290)] dark:bg-violet-400"
+              color="bg-violet-400"
+              gradientClass="bg-gradient-to-r from-violet-400 to-purple-400"
               label="Easy"
               value={data.easy}
+              max={800}
+              delay={0.1}
             />
 
             <Stat
-              color="bg-[oklch(60%_0.18_295)] dark:bg-violet-500"
+              color="bg-violet-500"
+              gradientClass="bg-gradient-to-r from-purple-500 to-fuchsia-500"
               label="Medium"
               value={data.medium}
+              max={1600}
+              delay={0.2}
             />
 
             <Stat
-              color="bg-[oklch(30%_0.24_305)] dark:bg-violet-700"
+              color="bg-violet-700"
+              gradientClass="bg-gradient-to-r from-purple-700 to-indigo-700"
               label="Hard"
               value={data.hard}
+              max={700}
+              delay={0.3}
             />
 
-            <div className="pt-2 text-zinc-500 dark:text-zinc-400">
-              Total:{" "}
-              <span className="font-semibold text-zinc-800 dark:text-white">
-                {data.total}/3906
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="pt-2 flex items-center justify-between text-zinc-500 dark:text-zinc-400 border-t border-zinc-100 dark:border-zinc-800/80 font-medium"
+            >
+              <span>Total:</span>
+              <span className="font-bold text-zinc-800 dark:text-white">
+                <AnimatedNumber value={data.total} />
+                <span className="text-zinc-400 dark:text-zinc-500 text-[11px] font-normal">
+                  /4003
+                </span>
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>

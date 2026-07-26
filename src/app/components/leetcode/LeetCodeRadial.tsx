@@ -1,7 +1,26 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useSpring, useTransform } from "motion/react";
+
+function AnimatedNumber({ value }: { value: number }) {
+  const spring = useSpring(0, { mass: 0.5, stiffness: 100, damping: 15 });
+  const display = useTransform(spring, (current) => Math.round(current));
+  const [currentValue, setCurrentValue] = useState(0);
+
+  useEffect(() => {
+    spring.set(value);
+  }, [value, spring]);
+
+  useEffect(() => {
+    return display.on("change", (latest) => {
+      setCurrentValue(latest);
+    });
+  }, [display]);
+
+  return <span>{currentValue}</span>;
+}
 
 interface LeetCodeRadialProps {
   easy: number;
@@ -17,8 +36,8 @@ export default function LeetCodeRadial({
   const total = easy + medium + hard;
   const safeTotal = total || 1;
 
-  const radius = 50;
-  const stroke = 10;
+  const radius = 52;
+  const stroke = 9;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
 
@@ -28,19 +47,38 @@ export default function LeetCodeRadial({
 
   return (
     <motion.div
-      className="relative group cursor-pointer"
-      whileHover={{ scale: 1.06 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="relative group cursor-pointer p-1"
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 350, damping: 22 }}
     >
-      <svg
-        height={radius * 2}
-        width={radius * 2}
-        className="transform transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.35)]"
-      >
+      {/* Background ambient glow */}
+
+      <svg height={radius * 2} width={radius * 2}>
+        <defs>
+          <linearGradient id="easyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#c084fc" />
+            <stop offset="100%" stopColor="#a855f7" />
+          </linearGradient>
+          <linearGradient
+            id="mediumGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#a855f7" />
+            <stop offset="100%" stopColor="#7e22ce" />
+          </linearGradient>
+          <linearGradient id="hardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#7e22ce" />
+            <stop offset="100%" stopColor="#581c87" />
+          </linearGradient>
+        </defs>
+
         {/* TRACK */}
         <circle
           stroke="currentColor"
-          className="text-zinc-200 dark:text-zinc-700/60"
+          className="text-zinc-200 dark:text-zinc-800"
           fill="transparent"
           strokeWidth={stroke}
           r={normalizedRadius}
@@ -50,7 +88,7 @@ export default function LeetCodeRadial({
 
         {/* EASY */}
         <motion.circle
-          className="stroke-[oklch(75%_0.14_290)] dark:stroke-violet-400 transition-all duration-300 hover:stroke-[oklch(82%_0.16_290)] dark:hover:stroke-violet-300"
+          stroke="url(#easyGradient)"
           fill="transparent"
           strokeWidth={stroke}
           strokeLinecap="round"
@@ -60,12 +98,13 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${easyLen} ${circumference}` }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
+          className="transition-all duration-300 hover:brightness-125"
         />
 
         {/* MEDIUM */}
         <motion.circle
-          className="stroke-[oklch(60%_0.18_295)] dark:stroke-violet-500 transition-all duration-300 hover:stroke-[oklch(67%_0.20_295)] dark:hover:stroke-violet-400"
+          stroke="url(#mediumGradient)"
           fill="transparent"
           strokeWidth={stroke}
           strokeDashoffset={-easyLen}
@@ -76,12 +115,13 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${mediumLen} ${circumference}` }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+          className="transition-all duration-300 hover:brightness-125"
         />
 
         {/* HARD */}
         <motion.circle
-          className="stroke-[oklch(30%_0.24_305)] dark:stroke-violet-700 transition-all duration-300 hover:stroke-[oklch(37%_0.26_305)] dark:hover:stroke-violet-600"
+          stroke="url(#hardGradient)"
           fill="transparent"
           strokeWidth={stroke}
           strokeDashoffset={-(easyLen + mediumLen)}
@@ -92,31 +132,32 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${hardLen} ${circumference}` }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="transition-all duration-300 hover:brightness-125"
         />
       </svg>
 
       {/* center text */}
       <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center select-none"
-        initial={{ opacity: 0, scale: 0.8 }}
+        className="absolute inset-0 flex flex-col items-center justify-center select-none z-20"
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
+        transition={{ duration: 0.35, delay: 0.2 }}
       >
         <motion.span
-          className="text-sm font-bold text-zinc-800 dark:text-white"
-          whileHover={{ scale: 1.15 }}
+          className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-white drop-shadow-sm"
+          whileHover={{ scale: 1.12 }}
           transition={{ type: "spring", stiffness: 400 }}
         >
-          {total}
+          <AnimatedNumber value={total} />
         </motion.span>
-        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-0.5">
+        <span className="text-[10px] font-medium text-zinc-500 dark:text-zinc-400 flex items-center gap-0.5 tracking-wider uppercase">
           solved
           <motion.div
             initial={{ scale: 0, rotate: -30 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 400, delay: 0.3 }}
-            whileHover={{ rotate: [0, -12, 12, 0] }}
+            transition={{ type: "spring", stiffness: 400, delay: 0.35 }}
+            whileHover={{ rotate: [0, -12, 12, 0], scale: 1.2 }}
             className="inline-block"
           >
             <Image src="/icons8-tick.svg" alt="Tick" width={14} height={14} />

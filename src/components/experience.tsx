@@ -206,11 +206,7 @@ const ExperienceItem = ({
                 if (techData) {
                   const Icon = techData.icon;
                   return (
-                    <Link
-                      href={techData.url}
-                      target="_blank"
-                      key={tech}
-                    >
+                    <Link href={techData.url} target="_blank" key={tech}>
                       <Button
                         variant="outline"
                         size="sm"
@@ -273,7 +269,7 @@ const Experience = () => {
         "Event Leadership: Co-led the IGNITE division of Samarth TMSL, orchestrating 6+ large-scale events including Educathon (national-level hackathon) and Safalya (annual academic-cultural fest), collectively drawing 500+ participants across all sessions.",
         "Team Coordination: Directed cross-functional teams of 20+ volunteers across logistics, design, outreach, and operations, ensuring 100% on-time execution of all planned events with zero critical incidents.",
         "Content Strategy: Authored 15+ pieces of technical and educational content (articles, workshop decks, guides) for Samarth TMSL initiatives, contributing to a 40% increase in social media engagement and organic reach.",
-        "Community Growth: Spearheaded outreach under Pragati, onboarding 200+ first-year students through structured orientation programs, mentorship drives, and inter-department collaborations.",
+        "Community Growth: Spearheaded outreach under Pragati, onboarding 200+ first-year students through structured orientation programs, mentorship drives, and inter-department collaborations."
       ],
       technologies: [
         "Leadership",
@@ -341,7 +337,8 @@ const Experience = () => {
               <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent font-medium">
                 Geekonix
               </span>
-              . Mapping my journey of growth, technical execution, and community leadership.
+              . Mapping my journey of growth, technical execution, and community
+              leadership.
             </p>
           </div>
         </div>
@@ -352,10 +349,13 @@ const Experience = () => {
           <div className="absolute left-[15px] top-6 bottom-6 w-px bg-gradient-to-b from-border via-border/40 to-transparent hidden sm:block" />
 
           {experiences.map((experience, index) => (
-            <div key={index} className="relative flex gap-5 sm:gap-6 items-start">
+            <div
+              key={index}
+              className="relative flex gap-5 sm:gap-6 items-start"
+            >
               {/* Index badge on the timeline, mt-[9px] centers 30px badge with 48px company logo */}
               <div className="hidden sm:flex flex-shrink-0 size-[30px] mt-[9px] rounded-full border border-primary/80 bg-black text-white dark:bg-white dark:text-black items-center justify-center z-10 text-xs font-bold shadow-md">
-                {String(index + 1).padStart(2, "0")}
+                {String(index + 1).padStart(2, "")}
               </div>
               <div className="flex-1 min-w-0">
                 <ExperienceItem {...experience} />
