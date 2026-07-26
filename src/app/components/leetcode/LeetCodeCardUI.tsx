@@ -31,7 +31,7 @@ export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ y: -3 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
         className="
             w-[300px] sm:w-[260px]
             ml-2 sm:ml-6 md:ml-10

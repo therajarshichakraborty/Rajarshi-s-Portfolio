@@ -60,7 +60,7 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${easyLen} ${circumference}` }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
         />
 
         {/* MEDIUM */}
@@ -76,7 +76,7 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${mediumLen} ${circumference}` }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
         />
 
         {/* HARD */}
@@ -92,7 +92,7 @@ export default function LeetCodeRadial({
           transform={`rotate(-90 ${radius} ${radius})`}
           initial={{ strokeDasharray: `0 ${circumference}` }}
           animate={{ strokeDasharray: `${hardLen} ${circumference}` }}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         />
       </svg>
 
@@ -101,7 +101,7 @@ export default function LeetCodeRadial({
         className="absolute inset-0 flex flex-col items-center justify-center select-none"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
       >
         <motion.span
           className="text-sm font-bold text-zinc-800 dark:text-white"
@@ -115,7 +115,7 @@ export default function LeetCodeRadial({
           <motion.div
             initial={{ scale: 0, rotate: -30 }}
             animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 350, delay: 0.7 }}
+            transition={{ type: "spring", stiffness: 400, delay: 0.3 }}
             whileHover={{ rotate: [0, -12, 12, 0] }}
             className="inline-block"
           >
