@@ -141,42 +141,39 @@ function StatsBar({
 
   const stats = [
     {
-      icon: <Award className="size-4 text-amber-500" />,
+      icon: <Award className="size-4 text-amber-500 fill-amber-500" />,
       label: "Badges",
       value: badgesCount > 0 ? badgesCount.toString() : "—",
-      sub: "earned",
-      accent: "via-amber-500/40"
+      sub: "",
+      accent: "via-amber-500"
     },
     {
-      icon: <TrendingUp className="size-4 text-orange-400" />,
+      icon: <TrendingUp className="size-4 text-orange-400 fill-orange-400" />,
       label: "Top",
       value: pct !== null ? `${pct}%` : "—",
-      sub: "globally",
-      accent: "via-orange-400/40"
+      sub: "",
+      accent: "via-orange-400"
     },
     {
-      icon: <Trophy className="size-4 text-violet-500" />,
+      icon: <Trophy className="size-4 text-violet-500 fill-violet-500" />,
       label: "Contest Rating",
       value: rating !== null ? Math.round(rating).toLocaleString() : "—",
-      sub: "rating",
-      accent: "via-violet-500/40"
+      sub: "",
+      accent: "via-violet-500"
     },
     {
-      icon: <Users className="size-4 text-blue-400" />,
+      icon: <Users className="size-4 text-blue-400 fill-blue-400" />,
       label: "Global Rank",
       value: globalRanking !== null ? globalRanking.toLocaleString() : "—",
-      sub:
-        totalParticipants !== null
-          ? `of ${(totalParticipants / 1000).toFixed(0)}K`
-          : "rank",
-      accent: "via-blue-400/40"
+      sub: "",
+      accent: "via-blue-400"
     },
     {
-      icon: <Zap className="size-4 text-emerald-400" />,
+      icon: <Zap className="size-5 text-lime-400 fill-lime-400" />,
       label: "Attended",
       value: contestAttend !== null ? contestAttend.toString() : "—",
-      sub: "contests",
-      accent: "via-emerald-400/40"
+      sub: "",
+      accent: "via-lime-400"
     }
   ];
 
@@ -185,7 +182,7 @@ function StatsBar({
       {stats.map(({ icon, label, value, sub, accent }) => (
         <div
           key={label}
-          className="relative rounded-xl bg-transparent px-4 py-3.5 flex flex-col gap-1 overflow-hidden hover:shadow-md transition-all duration-300"
+          className="relative rounded-xl bg-transparent px-1.5 py-3.5 flex flex-col items-center gap-1 overflow-hidden hover:shadow-md transition-all duration-300"
         >
           <div
             className={`absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent ${accent} to-transparent`}
@@ -196,11 +193,11 @@ function StatsBar({
               {label}
             </span>
           </div>
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline justify-center gap-1">
             {loading ? (
               <span className="inline-block w-10 h-6 bg-muted/40 animate-pulse rounded" />
             ) : (
-              <span className="text-2xl font-bold text-foreground tabular-nums">
+              <span className="text-xl font-bold text-foreground tabular-nums">
                 {value}
               </span>
             )}
