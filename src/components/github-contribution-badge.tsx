@@ -370,9 +370,11 @@ function ActivityOverviewChart({
 }
 
 export default function GithubContributionBadge({
-  username
+  username,
+  theme = "green"
 }: {
   username: string;
+  theme?: "green" | "purple";
 }) {
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const [totalThisYear, setTotalThisYear] = useState(0);
@@ -630,6 +632,7 @@ export default function GithubContributionBadge({
                 blockMargin={3}
                 blockRadius={2}
                 fontSize={11}
+                theme={theme}
               >
                 <ContributionGraphCalendar
                   onMouseLeave={() => setTooltip(null)}
