@@ -44,19 +44,19 @@ export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
 
           <div className="space-y-2 text-xs">
             <Stat
-              color="bg-[#d2ee9a] dark:bg-violet-400"
+              color="bg-[oklch(75%_0.14_290)] dark:bg-violet-400"
               label="Easy"
               value={data.easy}
             />
 
             <Stat
-              color="bg-[#2fb344] dark:bg-violet-500"
+              color="bg-[oklch(60%_0.18_295)] dark:bg-violet-500"
               label="Medium"
               value={data.medium}
             />
 
             <Stat
-              color="bg-[#1f7a34] dark:bg-violet-700"
+              color="bg-[oklch(30%_0.24_305)] dark:bg-violet-700"
               label="Hard"
               value={data.hard}
             />

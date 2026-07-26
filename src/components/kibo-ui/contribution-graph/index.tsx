@@ -88,6 +88,7 @@ type ContributionGraphContextType = {
   year: number;
   width: number;
   height: number;
+  theme?: "green" | "purple";
 };
 
 const ContributionGraphContext =
@@ -237,6 +238,7 @@ export type ContributionGraphProps = HTMLAttributes<HTMLDivElement> & {
   weekStart?: WeekDay;
   children: ReactNode;
   className?: string;
+  theme?: "green" | "purple";
 };
 
 export const ContributionGraph = ({
@@ -251,6 +253,7 @@ export const ContributionGraph = ({
   totalCount: totalCountProp = undefined,
   weekStart = 0,
   className,
+  theme = "green",
   ...props
 }: ContributionGraphProps) => {
   const maxLevel = Math.max(1, maxLevelProp);
@@ -293,7 +296,8 @@ export const ContributionGraph = ({
         weekStart,
         year,
         width,
-        height
+        height,
+        theme
       }}
     >
       <div
@@ -318,7 +322,7 @@ export const ContributionGraphBlock = ({
   className,
   ...props
 }: ContributionGraphBlockProps) => {
-  const { blockSize, blockMargin, blockRadius, labelHeight, maxLevel } =
+  const { blockSize, blockMargin, blockRadius, labelHeight, maxLevel, theme } =
     useContributionGraph();
 
   if (activity.level < 0 || activity.level > maxLevel) {
@@ -327,22 +331,26 @@ export const ContributionGraphBlock = ({
     );
   }
 
+  const themeClasses =
+    theme === "purple"
+      ? [
+          'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
+          'data-[level="1"]:fill-[oklch(75%_0.14_290)]',
+          'data-[level="2"]:fill-[oklch(60%_0.18_295)]',
+          'data-[level="3"]:fill-[oklch(45%_0.21_300)]',
+          'data-[level="4"]:fill-[oklch(30%_0.24_305)]'
+        ]
+      : [
+          'data-[level="0"]:fill-[#eef1f4]',
+          'data-[level="1"]:fill-[#d2ee9a]',
+          'data-[level="2"]:fill-[#84d178]',
+          'data-[level="3"]:fill-[#2fb344]',
+          'data-[level="4"]:fill-[#1f7a34]'
+        ];
+
   return (
     <rect
-      className={cn(
-        'dark:data-[level="0"]:fill-[oklch(92%_0.02_280)]',
-        'dark:data-[level="0"]:fill-[#161b22]',
-        'dark:data-[level="1"]:fill-[oklch(75%_0.14_290)]',
-        'dark:data-[level="2"]:fill-[oklch(60%_0.18_295)]',
-        'dark:data-[level="3"]:fill-[oklch(45%_0.21_300)]',
-        'dark:data-[level="4"]:fill-[oklch(30%_0.24_305)]',
-
-        'data-[level="0"]:fill-[#eef1f4]',
-        'data-[level="1"]:fill-[#d2ee9a]',
-        'data-[level="2"]:fill-[#84d178]',
-        'data-[level="3"]:fill-[#2fb344]',
-        'data-[level="4"]:fill-[#1f7a34]'
-      )}
+      className={cn(...themeClasses, className)}
       data-count={activity.count}
       data-date={activity.date}
       data-level={activity.level}
@@ -502,7 +510,25 @@ export const ContributionGraphLegend = ({
   children,
   ...props
 }: ContributionGraphLegendProps) => {
-  const { labels, maxLevel, blockSize, blockRadius } = useContributionGraph();
+  const { labels, maxLevel, blockSize, blockRadius, theme } =
+    useContributionGraph();
+
+  const themeClasses =
+    theme === "purple"
+      ? [
+          'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
+          'data-[level="1"]:fill-[oklch(75%_0.14_290)]',
+          'data-[level="2"]:fill-[oklch(60%_0.18_295)]',
+          'data-[level="3"]:fill-[oklch(45%_0.21_300)]',
+          'data-[level="4"]:fill-[oklch(30%_0.24_305)]'
+        ]
+      : [
+          'data-[level="0"]:fill-[#eef1f4]',
+          'data-[level="1"]:fill-[#d2ee9a]',
+          'data-[level="2"]:fill-[#84d178]',
+          'data-[level="3"]:fill-[#2fb344]',
+          'data-[level="4"]:fill-[#1f7a34]'
+        ];
 
   return (
     <div
@@ -519,20 +545,7 @@ export const ContributionGraphLegend = ({
           <svg height={blockSize} key={level} width={blockSize}>
             <title>{`${level} contributions`}</title>
             <rect
-              className={cn(
-                // 'data-[level="0"]:fill-[oklch(92%_0.02_280)]',
-                'dark:data-[level="0"]:fill-[#161b22]',
-                'dark:data-[level="1"]:fill-[oklch(75%_0.14_290)]',
-                'dark:data-[level="2"]:fill-[oklch(60%_0.18_295)]',
-                'dark:data-[level="3"]:fill-[oklch(45%_0.21_300)]',
-                'dark:data-[level="4"]:fill-[oklch(30%_0.24_305)]',
-
-                'data-[level="0"]:fill-[#eef1f4]',
-                'data-[level="1"]:fill-[#d2ee9a]',
-                'data-[level="2"]:fill-[#84d178]',
-                'data-[level="3"]:fill-[#2fb344]',
-                'data-[level="4"]:fill-[#1f7a34]'
-              )}
+              className={cn(...themeClasses)}
               data-level={level}
               height={blockSize}
               rx={blockRadius}

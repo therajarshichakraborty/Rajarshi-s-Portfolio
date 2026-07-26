@@ -96,6 +96,7 @@ export default function LeetCodeGraph() {
         <TooltipProvider>
           <ContributionGraph
             data={data}
+            theme="purple"
             className="
   transition-[background-color,color,border-color,fill,stroke]
   duration-500

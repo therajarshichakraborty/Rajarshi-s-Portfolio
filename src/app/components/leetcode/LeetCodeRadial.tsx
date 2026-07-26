@@ -8,21 +8,21 @@ interface LeetCodeRadialProps {
 }
 
 export default function LeetCodeRadial({
-  easy,
-  medium,
-  hard
+  easy = 0,
+  medium = 0,
+  hard = 0
 }: LeetCodeRadialProps) {
   const total = easy + medium + hard;
-  if (!total) return null;
+  const safeTotal = total || 1;
 
   const radius = 50;
   const stroke = 10;
   const normalizedRadius = radius - stroke / 2;
   const circumference = 2 * Math.PI * normalizedRadius;
 
-  const easyLen = (easy / total) * circumference;
-  const mediumLen = (medium / total) * circumference;
-  const hardLen = (hard / total) * circumference;
+  const easyLen = (easy / safeTotal) * circumference;
+  const mediumLen = (medium / safeTotal) * circumference;
+  const hardLen = (hard / safeTotal) * circumference;
 
   return (
     <div className="relative">
@@ -40,7 +40,7 @@ export default function LeetCodeRadial({
 
         {/* EASY */}
         <circle
-          className="stroke-[#d2ee9a] dark:stroke-violet-400"
+          className="stroke-[oklch(75%_0.14_290)] dark:stroke-violet-400"
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={`${easyLen} ${circumference}`}
@@ -53,7 +53,7 @@ export default function LeetCodeRadial({
 
         {/* MEDIUM */}
         <circle
-          className="stroke-[#2fb344] dark:stroke-violet-500"
+          className="stroke-[oklch(60%_0.18_295)] dark:stroke-violet-500"
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={`${mediumLen} ${circumference}`}
@@ -67,7 +67,7 @@ export default function LeetCodeRadial({
 
         {/* HARD */}
         <circle
-          className="stroke-[#1f7a34] dark:stroke-violet-700"
+          className="stroke-[oklch(30%_0.24_305)] dark:stroke-violet-700"
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={`${hardLen} ${circumference}`}
