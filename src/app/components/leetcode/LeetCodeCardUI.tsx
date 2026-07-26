@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "motion/react";
 import { LeetCodeStats } from "@/types/leetcode";
 import LeetCodeRadial from "./LeetCodeRadial";
 
@@ -11,8 +12,8 @@ interface StatProps {
 
 function Stat({ color, label, value }: StatProps) {
   return (
-    <div className="flex items-center gap-2">
-      <span className={`w-2 h-2 rounded-full ${color}`} />
+    <div className="flex items-center gap-2 transition-transform duration-200 ease-out hover:translate-x-1 cursor-default group">
+      <span className={`w-2 h-2 rounded-full transition-transform duration-200 group-hover:scale-125 ${color}`} />
       <span className="text-zinc-600 dark:text-zinc-300">
         {label}:{" "}
         <span className="font-medium text-zinc-800 dark:text-white">
@@ -26,16 +27,22 @@ function Stat({ color, label, value }: StatProps) {
 export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
   return (
     <div className="mt-15 flex justify-center">
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ y: -3 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="
             w-[300px] sm:w-[260px]
             ml-2 sm:ml-6 md:ml-10
             p-5 rounded-2xl
             bg-transparent 
             backdrop-blur-md
+            transition-shadow duration-300
+            hover:shadow-lg hover:shadow-purple-500/5
             "
       >
-        <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4">
+        <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 mb-4 flex items-center gap-2">
           LeetCode Progress
         </h2>
 
@@ -69,7 +76,7 @@ export default function LeetCodeCardUI({ data }: { data: LeetCodeStats }) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
