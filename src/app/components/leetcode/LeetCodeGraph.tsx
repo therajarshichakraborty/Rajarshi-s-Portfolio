@@ -108,10 +108,15 @@ function BadgeCard({
             </p>
           </div>
         </TooltipTrigger>
-        <TooltipContent side="top" className="text-xs max-w-[180px] text-center">
+        <TooltipContent
+          side="top"
+          className="text-xs max-w-[180px] text-center"
+        >
           <p className="font-semibold">{badge.displayName}</p>
           {formattedDate && (
-            <p className="text-muted-foreground mt-0.5">Earned {formattedDate}</p>
+            <p className="text-muted-foreground mt-0.5">
+              Earned {formattedDate}
+            </p>
           )}
         </TooltipContent>
       </Tooltip>
@@ -217,8 +222,9 @@ export default function LeetCodeGraph() {
 
   const [badgesCount, setBadgesCount] = useState<number>(0);
   const [badges, setBadges] = useState<LeetCodeBadge[]>([]);
-  const [mostRecentBadge, setMostRecentBadge] =
-    useState<LeetCodeBadge | null>(null);
+  const [mostRecentBadge, setMostRecentBadge] = useState<LeetCodeBadge | null>(
+    null
+  );
 
   const [contestTopPercentage, setContestTopPercentage] = useState<
     number | null
@@ -243,7 +249,7 @@ export default function LeetCodeGraph() {
         const calendar =
           typeof json.calendar === "string"
             ? JSON.parse(json.calendar)
-            : json.calendar ?? {};
+            : (json.calendar ?? {});
 
         let totalCount = 0;
         const transformed: Activity[] = Object.entries(calendar).map(
@@ -312,9 +318,7 @@ export default function LeetCodeGraph() {
   }
 
   // Remaining badges for the overflow row
-  const remainingBadges = badges.filter(
-    (b) => !featuredBadgeNames.has(b.id)
-  );
+  const remainingBadges = badges.filter((b) => !featuredBadgeNames.has(b.id));
 
   return (
     <>
@@ -384,7 +388,6 @@ export default function LeetCodeGraph() {
           </TooltipProvider>
         </div>
       </div>
-
     </>
   );
 }
