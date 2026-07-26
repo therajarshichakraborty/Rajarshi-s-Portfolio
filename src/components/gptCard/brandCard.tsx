@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Button } from "../ui/button";
 import { LeetCode } from "../ui/svgs/leetcode";
 import Link from "next/link";
