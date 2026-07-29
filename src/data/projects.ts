@@ -128,7 +128,8 @@ export const skills = [
   { name: "C++", icon: CPP }
 ];
 
-export const PROJECTS: ProjectData[] = [  {
+export const PROJECTS: ProjectData[] = [
+  {
     id: "talk-to-your-github",
     title: "Talk To Your GitHub",
     tagline: "AI-Powered Conversational Repository Intelligence Platform",

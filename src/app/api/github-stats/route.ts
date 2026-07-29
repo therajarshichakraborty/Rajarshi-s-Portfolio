@@ -37,6 +37,7 @@ export async function GET(request: NextRequest) {
   try {
     // 1. Fetch contribution calendar (GraphQL API if token exists, fallback to jogruber)
     let calendar: CalendarData | null = null;
+    let gqlReposCount: number | null = null;
 
     if (token) {
       try {
@@ -47,6 +48,9 @@ export async function GET(request: NextRequest) {
         const query = `
           query($username: String!, $from: DateTime!, $to: DateTime!) {
             user(login: $username) {
+              repositories(ownerAffiliations: [OWNER, COLLABORATOR]) {
+                totalCount
+              }
               rollingCalendar: contributionsCollection {
                 contributionCalendar {
                   totalContributions
@@ -87,6 +91,10 @@ export async function GET(request: NextRequest) {
             resBody?.data?.user?.rollingCalendar?.contributionCalendar;
           const currentYearRaw =
             resBody?.data?.user?.currentYearCalendar?.contributionCalendar;
+
+          if (resBody?.data?.user?.repositories?.totalCount !== undefined) {
+            gqlReposCount = resBody.data.user.repositories.totalCount;
+          }
 
           if (rollingRaw) {
             const contributions: Contribution[] = [];
@@ -209,8 +217,12 @@ export async function GET(request: NextRequest) {
       ),
       fetchHelper(`https://api.github.com/users/${username}`, "User Profile"),
       fetchHelper(
-        `https://api.github.com/users/${username}/repos?per_page=100`,
+        `https://api.github.com/users/${username}/repos?per_page=100&type=all`,
         "User Repos"
+      ),
+      fetchHelper(
+        `https://api.github.com/search/repositories?q=user:${username}+fork:true`,
+        "Repos Search Count"
       )
     ];
 
@@ -220,7 +232,8 @@ export async function GET(request: NextRequest) {
       issuesData,
       reviewsData,
       profileData,
-      reposData
+      reposData,
+      reposSearchData
     ] = await Promise.all(statsPromises);
 
     let totalStars = 0;
@@ -231,14 +244,19 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const reposCount =
+      gqlReposCount ??
+      reposSearchData?.total_count ??
+      (Array.isArray(reposData) ? reposData.length : null) ??
+      profileData?.public_repos ??
+      null;
+
     const stats = {
       totalCommits: commitsData?.total_count ?? null,
       prCount: prsData?.total_count ?? null,
       issuesCount: issuesData?.total_count ?? null,
       reviewCount: reviewsData?.total_count ?? null,
-      reposCount:
-        profileData?.public_repos ??
-        (Array.isArray(reposData) ? reposData.length : null),
+      reposCount,
       starsCount: totalStars
     };
 
