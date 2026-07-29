@@ -128,7 +128,111 @@ export const skills = [
   { name: "C++", icon: CPP }
 ];
 
-export const PROJECTS: ProjectData[] = [
+export const PROJECTS: ProjectData[] = [  {
+    id: "talk-to-your-github",
+    title: "Talk To Your GitHub",
+    tagline: "AI-Powered Conversational Repository Intelligence Platform",
+    description: `Talk To Your GitHub is an advanced AI-powered platform that lets developers talk to their public and private GitHub repositories using natural language. Built with a modern Next.js 16 stack, PostgreSQL, and vector search, it provides instant conversational search across commits, pull requests, issues, branches, and code documentation.`,
+    longDescription: `Technologies: Next.js 16, React, TypeScript, Tailwind CSS, shadcn/ui, PostgreSQL, Drizzle ORM, Inngest, Pinecone Vector DB, BetterAuth, Corsair Integration, Vercel AI SDK, OpenRouter.
+Talk To Your GitHub bridges GitHub repository metadata with generative AI to deliver a seamless developer experience.
+
+ Authentication & OAuth: Supports GitHub OAuth authentication via BetterAuth with multi-tenant isolation, automatic Corsair tenant provisioning, and fine-grained repository access control (repo scope).
+
+ Hybrid Data Architecture: Features local PostgreSQL caching for sub-millisecond query responses paired with live GitHub API proxy fallbacks via Corsair integrations.
+
+ Vector Search & Embeddings: Implements automated content extraction, 1000-character overlapping window text chunking for READMEs, and vector indexing powered by Pinecone and OpenRouter AI embeddings.
+
+ Background Processing: Leverages Inngest event-driven workflows for automated repository summarization, entity embedding generation, developer activity tracking, and intelligent next-action cards.
+
+ Developer Intelligence: Offers conversational chat interface with dynamic tool execution (maxSteps streaming), repository summaries, continue-working productivity cards, and real-time system health diagnostics.`,
+    //@ts-ignore
+    category: "Developer Tools and AI Platform",
+    duration: "July 2026 - Present",
+    image: "/background/image.png",
+    technologies: [
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "PostgreSQL" },
+      { name: "Drizzle ORM" },
+      { name: "Inngest" },
+      { name: "Pinecone" },
+      { name: "Vercel AI SDK" },
+      { name: "BetterAuth" },
+      { name: "Corsair" },
+      { name: "Tailwind CSS" }
+    ],
+    features: [
+      {
+        text: "Natural language chat interface with dynamic AI tool execution and real-time streaming",
+        icon: "MessageSquare"
+      },
+      {
+        text: "Semantic vector search across commits, PRs, issues, and READMEs powered by Pinecone",
+        icon: "Search"
+      },
+      {
+        text: "Event-driven background workflows powered by Inngest for automated repository indexing",
+        icon: "Layers"
+      },
+      {
+        text: "GitHub OAuth authentication with automatic multi-tenant Corsair integration provisioning",
+        icon: "Lock"
+      },
+      {
+        text: "Automated 2-3 paragraph AI repository summaries saved directly to PostgreSQL",
+        icon: "Brain"
+      },
+      {
+        text: "Intelligent 'Continue Working' developer dashboard cards with repo-specific action items",
+        icon: "Zap"
+      },
+      {
+        text: "Hybrid data architecture with sub-millisecond local DB caching and live API proxy fallbacks",
+        icon: "Database"
+      },
+      {
+        text: "Comprehensive diagnostic API route for PostgreSQL, Pinecone, and OAuth token scope inspection",
+        icon: "Terminal"
+      }
+    ],
+    stats: [
+      {
+        label: "Type",
+        value: "Developer Tool",
+        icon: "Sparkles"
+      },
+      {
+        label: "AI SDK",
+        value: "Vercel AI + OpenRouter",
+        icon: "Brain"
+      },
+      {
+        label: "Vector Store",
+        value: "Pinecone",
+        icon: "Database"
+      },
+      {
+        label: "Status",
+        value: "Completed",
+        icon: "Rocket"
+      }
+    ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/therajarshichakraborty/TalkToYourGithub"
+      }
+    ],
+    challenges: [
+      "Building a multi-tenant OAuth provisioning pipeline linking BetterAuth user accounts with Corsair GitHub integration tenants.",
+      "Implementing multi-chunk overlapping text segmentation for repository documentation to optimize vector retrieval.",
+      "Ensuring strict foreign key data integrity across asynchronous Inngest background event executions.",
+      "Designing case-insensitive SQL query filters using Drizzle ORM for repository-scoped activity log synthesis."
+    ],
+    architecture:
+      "Next.js Dashboard -> BetterAuth OAuth -> Corsair Integration Proxy -> Inngest Event Pipeline -> PostgreSQL (Drizzle) + Pinecone Vector DB -> Vercel AI SDK",
+    isBuilding: true
+  },
   {
     id: "openstack",
     title: "OpenStack",
