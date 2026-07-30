@@ -55,7 +55,7 @@ export default function DSAHeader({
           </h2>
         </div>
         <p className="text-[11px] text-muted-foreground font-medium leading-none mt-1">
-          Grind 169 & dsa.chaicode.in
+          Grind 169, ChaiCode & CSES
         </p>
       </div>
 

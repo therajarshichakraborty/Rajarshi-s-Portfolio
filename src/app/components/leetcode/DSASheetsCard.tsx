@@ -1,15 +1,23 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function DSASheetsCard() {
   return (
     <div className="w-full max-w-7xl mx-auto mt-8 flex flex-col items-center">
       <div className="w-full max-w-3xl bg-transparent p-6 rounded-2xl">
-        <h2 className="text-base font-bold text-foreground mb-4 flex items-center gap-2">
-          <BookOpen className="h-4.5 w-4.5 text-primary" />
-          DSA Practice Sheets
+        <h2 className="text-base font-bold mb-4 flex items-center gap-2">
+          <span
+            className="inline-block"
+            style={{
+              background: "linear-gradient(90deg, #ef4444 0%, #d946ef 50%, #8b5cf6 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent"
+            }}
+          >
+            DSA Practice Sheets
+          </span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <a
@@ -59,11 +67,38 @@ export default function DSASheetsCard() {
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1.5">
-              <span className="text-[10px] font-bold text-gray-500 bg-transparent px-2 py-0.5 rounded-md border border-gray-500/20 uppercase tracking-wider">
+              <span className="text-[10px] font-bold text-muted-foreground bg-transparent px-2 py-0.5 rounded-md border border-gray-500/20 uppercase tracking-wider">
                 Interactive
               </span>
-              <span className="text-[10px] font-bold text-gray-500 bg-transparent px-2 py-0.5 rounded-md border border-gray-500/20 uppercase tracking-wider">
+              <span className="text-[10px] font-bold text-muted-foreground bg-transparent px-2 py-0.5 rounded-md border border-gray-500/20 uppercase tracking-wider">
                 Comprehensive
+              </span>
+            </div>
+          </a>
+
+          <a
+            href="https://cses.fi/problemset/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col justify-between p-4 rounded-xl border border-border/40 bg-transparent hover:bg-muted/15 dark:hover:bg-muted/10 transition-all group cursor-pointer hover:border-border/80 hover:-translate-y-0.5"
+          >
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  CSES Problem Set
+                </span>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </div>
+              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                Collection of algorithmic problems designed to practice competitive programming and algorithm implementation.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1.5">
+              <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-muted/50 px-2 py-0.5 rounded-md border border-border/40">
+                400+ Problems
+              </span>
+              <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-muted/50 px-2 py-0.5 rounded-md border border-border/40">
+                Competitive
               </span>
             </div>
           </a>
