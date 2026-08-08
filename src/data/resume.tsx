@@ -207,9 +207,10 @@ I thrive on continuous learning, innovation, and practical application to solve 
       logoUrl: "/tmsl2.png",
       start: " June 2023",
       end: "Present",
-      description: `Grade: GPA - 8.01/10 (Academic Progress till Semester 5th)
+      description: `Grade: GPA - 8.136/10 (Academic Progress till Semester 6th)
 
-Actively exploring and mastering new skills and emerging technologies in the dynamic field of Computer Science and Engineering. As a STEM major in Computer Science, I am an aspiring Software Developer with a strong enthusiasm for AI and Machine Learning. I thrive on continuous learning, innovation, and practical application to solve real-world challenges.
+Computer Science and Engineering professional with a strong foundation in Software Development, Artificial Intelligence, and Machine Learning. Experienced in building scalable, reliable, and high-performance software solutions using modern technologies and engineering practices. Strong problem-solving and analytical skills with a focus on designing efficient systems, developing practical solutions, and applying emerging technologies to real-world challenges. Committed to continuous learning, technical excellence, and delivering impactful software solutions.
+
 
 Undergrad Coursework :
 BEE101/BEE191: Basic Electrical Engineering
@@ -232,24 +233,15 @@ PCCICB601: Cryptography & Network Security
 PCCCS601: Database Management System 
 PCCCS602: Ethical Hacking 
 PECICB601-D: Software Engineering 
-OECICB601-A: Human Resource Development & Organizational Behavior`
+OECICB601-A: Human Resource Development & Organizational Behavior
+PECICB701-A: Blockchain and Cryptocurrency
+PECICB702-A: Machine Learning
+OECICB701-A: Soft skill and Interpersonal Communication
+HSMC701: Project Management and Entrepreneurship
+PROJICB681: Project I
+PROJICB781: Project II
+`
     },
-    // {
-    //   school: "University of Waterloo",
-    //   href: "https://uwaterloo.ca",
-    //   degree: "Bachelor's Degree of Computer Science (BCS)",
-    //   logoUrl: "/waterloo.png",
-    //   start: "2016",
-    //   end: "2021",
-    // },
-    // {
-    //   school: "Wilfrid Laurier University",
-    //   href: "https://wlu.ca",
-    //   degree: "Bachelor's Degree of Business Administration (BBA)",
-    //   logoUrl: "/laurier.png",
-    //   start: "2016",
-    //   end: "2021",
-    // },
     {
       school: "West Bengal Council of Higher Secondary Education",
       href: "https://wbchse.wb.gov.in/",
@@ -892,19 +884,19 @@ Biology`
   publications: [
     {
       title:
-        "Deep Learning enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
+        "Deep Learning Enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
       authors: [
-        "Rajarshi Chakraborty*",
-        "Dr. Subhankar Chatterjee [Professor of Techno Main Salt Lake]",
-        "Anik Dey",
-        "Aditi Nandi Tokder [Assistant Professor of Techno Main Salt Lake]"
+        "Rajarshi Chakraborty* [ UnderGrad Researcher, Techno Main Salt Lake | Kolkata ]",
+        "Dr. Subhankar Chatterjee [ Professor, Techno Main Salt Lake | Kolkata ]",
+        "Aditi Nandi Tokder [ Assistant Professor, Techno Main Salt Lake | Kolkata ]",
+        "Dr. Anirban Bose [ Assistant Professor, Dr. B. C. Roy Engineering College | Durgapur ]"
       ],
       conference: "CIACON 2026",
       conferenceFullName:
         "International Conference on Control, Instrumentation, Energy & Communication",
       status: "Under Review",
       paperId: "2074",
-      date: "June 2026",
+      date: "July 2026",
       description:
         "Proposes a novel deep learning framework that integrates hyper-spectral features using a fusion network to assess fruit quality with high precision, combining external appearance defects with internal chemical composition data.",
       links: [

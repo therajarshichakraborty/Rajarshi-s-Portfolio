@@ -133,9 +133,9 @@ export const PROJECTS: ProjectData[] = [
     id: "talk-to-your-github",
     title: "Talk To Your GitHub",
     tagline: "AI-Powered Conversational Repository Intelligence Platform",
-    description: `Talk To Your GitHub is an advanced AI-powered platform that lets developers talk to their public and private GitHub repositories using natural language. Built with a modern Next.js 16 stack, PostgreSQL, and vector search, it provides instant conversational search across commits, pull requests, issues, branches, and code documentation.`,
+    description: `Talk-To-Your-GitHub is an advanced AI-powered platform that lets developers talk to their public and private GitHub repositories using natural language. Built with a modern Next.js 16 stack, PostgreSQL, and vector search, it provides instant conversational search across commits, pull requests, issues, branches, and code documentation.`,
     longDescription: `Technologies: Next.js 16, React, TypeScript, Tailwind CSS, shadcn/ui, PostgreSQL, Drizzle ORM, Inngest, Pinecone Vector DB, BetterAuth, Corsair Integration, Vercel AI SDK, OpenRouter.
-Talk To Your GitHub bridges GitHub repository metadata with generative AI to deliver a seamless developer experience.
+Talk-To-Your-GitHub bridges GitHub repository metadata with generative AI to deliver a seamless developer experience.
 
  Authentication & OAuth: Supports GitHub OAuth authentication via BetterAuth with multi-tenant isolation, automatic Corsair tenant provisioning, and fine-grained repository access control (repo scope).
 
@@ -149,7 +149,7 @@ Talk To Your GitHub bridges GitHub repository metadata with generative AI to del
     //@ts-ignore
     category: "Developer Tools and AI Platform",
     duration: "July 2026 - Present",
-    image: "/background/image.png",
+    image: "/ttyg.png",
     technologies: [
       { name: "Next.js" },
       { name: "TypeScript" },
@@ -235,12 +235,12 @@ Talk To Your GitHub bridges GitHub repository metadata with generative AI to del
     isBuilding: true
   },
   {
-    id: "openstack",
-    title: "OpenStack",
+    id: "Edith AI",
+    title: "Edith AI",
     tagline: "Modern Open-Source Backend-as-a-Service Platform",
-    description: `OpenStack is a modern, open-source Backend-as-a-Service platform built for developers who want to move fast without sacrificing flexibility or control. Designed with a scalable monorepo architecture, OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience across authentication, databases, realtime APIs, storage, serverless functions, and AI integrations.`,
+    description: `Edith AI is a modern, open-source Backend-as-a-Service platform built for developers who want to move fast without sacrificing flexibility or control. Designed with a scalable monorepo architecture, OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience across authentication, databases, realtime APIs, storage, serverless functions, and AI integrations.`,
     longDescription: `Technologies: Next.js, React, TypeScript, Tailwind CSS, shadcn/ui, NestJS, PostgreSQL, Redis, Docker, Turborepo, pnpm, Prisma, BullMQ, WebSockets.
-OpenStack combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience.
+Edith AI combines a powerful NestJS backend with a high-performance Next.js dashboard to deliver an exceptional developer experience.
 
  Authentication: Supports Email and password authentication, Social login providers, Multi-Factor Authentication (MFA), Session management, Role-Based Access Control (RBAC), and Organization support.
 
@@ -258,7 +258,7 @@ OpenStack combines a powerful NestJS backend with a high-performance Next.js das
     //@ts-ignore
     category: "Developer Tools and AI Platform",
     duration: "July 2026 - Present",
-    image: "/background/openstack.png",
+    image: "/edith.png",
     technologies: [
       { name: "NestJS" },
       { name: "Next.js" },

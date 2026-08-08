@@ -97,7 +97,7 @@ export function Publications() {
                   <span className="font-semibold text-foreground">
                     {pub.conference}
                   </span>{" "}
-                  —{" "}
+                  -{" "}
                   <span className="text-muted-foreground/90">
                     {pub.conferenceFullName}
                   </span>{" "}

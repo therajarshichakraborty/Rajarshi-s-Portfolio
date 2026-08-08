@@ -76,7 +76,8 @@ export default function MultilingualGreeting() {
             <span
               className="inline-block bg-linear-to-r from-red-500 via-rose-500 to-violet-500 bg-clip-text text-transparent font-extrabold pr-4"
               style={{
-                background: "linear-gradient(90deg, #ef4444 0%, #d946ef 50%, #8b5cf6 100%)",
+                background:
+                  "linear-gradient(90deg, #ef4444 0%, #d946ef 50%, #8b5cf6 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent"
               }}

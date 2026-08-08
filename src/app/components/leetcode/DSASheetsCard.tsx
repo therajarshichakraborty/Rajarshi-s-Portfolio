@@ -11,7 +11,8 @@ export default function DSASheetsCard() {
           <span
             className="inline-block"
             style={{
-              background: "linear-gradient(90deg, #ef4444 0%, #d946ef 50%, #8b5cf6 100%)",
+              background:
+                "linear-gradient(90deg, #ef4444 0%, #d946ef 50%, #8b5cf6 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent"
             }}
@@ -77,7 +78,7 @@ export default function DSASheetsCard() {
           </a>
 
           <a
-            href="https://cses.fi/problemset/"
+            href="https://neetcode.io/practice/practice/neetcode250"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col justify-between p-4 rounded-xl border border-border/40 bg-transparent hover:bg-muted/15 dark:hover:bg-muted/10 transition-all group cursor-pointer hover:border-border/80 hover:-translate-y-0.5"
@@ -85,20 +86,21 @@ export default function DSASheetsCard() {
             <div>
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                  CSES Problem Set
+                  NeetCode 250
                 </span>
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </div>
               <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                Collection of algorithmic problems designed to practice competitive programming and algorithm implementation.
+                Collection of algorithmic problems designed to practice
+                competitive programming and algorithm implementation.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1.5">
               <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-muted/50 px-2 py-0.5 rounded-md border border-border/40">
-                400+ Problems
+                250 Problems
               </span>
               <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider bg-muted/50 px-2 py-0.5 rounded-md border border-border/40">
-                Competitive
+                Pattern
               </span>
             </div>
           </a>
