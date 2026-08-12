@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import DeveloperCodeCard from "./developer-code-card";
 import {
   Mail,
   Phone,
@@ -175,6 +176,11 @@ export default function ContactSidebar() {
               </div>
             </a>
           </div>
+        </div>
+
+        {/* Developer Object Code Card */}
+        <div className="mt-10">
+          <DeveloperCodeCard />
         </div>
       </div>
     </div>
