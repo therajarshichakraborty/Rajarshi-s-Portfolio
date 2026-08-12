@@ -220,6 +220,11 @@ Talk-To-Your-GitHub bridges GitHub repository metadata with generative AI to del
     ],
     links: [
       {
+        //@ts-ignore
+        type: "Live",
+        href: "https://talk-to-your-github.vercel.app/"
+      },
+      {
         type: "GitHub",
         href: "https://github.com/therajarshichakraborty/TalkToYourGithub"
       }
@@ -232,7 +237,7 @@ Talk-To-Your-GitHub bridges GitHub repository metadata with generative AI to del
     ],
     architecture:
       "Next.js Dashboard -> BetterAuth OAuth -> Corsair Integration Proxy -> Inngest Event Pipeline -> PostgreSQL (Drizzle) + Pinecone Vector DB -> Vercel AI SDK",
-    isBuilding: true
+    isBuilding: false
   },
   {
     id: "Edith AI",
