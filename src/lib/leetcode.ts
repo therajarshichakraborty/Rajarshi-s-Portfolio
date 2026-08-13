@@ -1,10 +1,31 @@
 export async function getLeetCodeStats(username: string) {
   const fallback = { easy: 206, medium: 346, hard: 104, total: 656 };
   try {
-    const res = await fetch(
-      `https://alfa-leetcode-api.onrender.com/${username}/progress`,
-      { next: { revalidate: 600 } }
-    );
+    const res = await fetch("https://leetcode.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        Referer: `https://leetcode.com/u/${username}/`
+      },
+      body: JSON.stringify({
+        query: `
+          query userProblemsSolved($username: String!) {
+            matchedUser(username: $username) {
+              submitStatsGlobal {
+                acSubmissionNum {
+                  difficulty
+                  count
+                }
+              }
+            }
+          }
+        `,
+        variables: { username }
+      }),
+      next: { revalidate: 600 }
+    });
 
     if (!res.ok) {
       console.warn(
@@ -13,12 +34,11 @@ export async function getLeetCodeStats(username: string) {
       return fallback;
     }
 
-    const data = await res.json();
-    const stats = data?.numAcceptedQuestions?.numAcceptedQuestions || [];
-    const easy = stats.find((s: any) => s.difficulty === "EASY")?.count || 0;
-    const medium =
-      stats.find((s: any) => s.difficulty === "MEDIUM")?.count || 0;
-    const hard = stats.find((s: any) => s.difficulty === "HARD")?.count || 0;
+    const json = await res.json();
+    const stats = json?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [];
+    const easy = stats.find((s: any) => s.difficulty.toUpperCase() === "EASY")?.count || 0;
+    const medium = stats.find((s: any) => s.difficulty.toUpperCase() === "MEDIUM")?.count || 0;
+    const hard = stats.find((s: any) => s.difficulty.toUpperCase() === "HARD")?.count || 0;
     const total = easy + medium + hard;
 
     if (total === 0) {
