@@ -1,4 +1,35 @@
-async function fetchRecentSubmissions(username: string) {
+export async function GET() {
+  const username = "rajarshi_2005";
+
+  const LEETCODE_GRAPHQL_QUERY = `
+    query getLeetCodeUserData($username: String!, $limit: Int!) {
+      matchedUser(username: $username) {
+        userCalendar {
+          submissionCalendar
+        }
+        badges {
+          id
+          displayName
+          icon
+          creationDate
+        }
+      }
+      userContestRanking(username: $username) {
+        attendedContestsCount
+        rating
+        globalRanking
+        totalParticipants
+        topPercentage
+      }
+      recentAcSubmissionList(username: $username, limit: $limit) {
+        id
+        title
+        titleSlug
+        timestamp
+      }
+    }
+  `;
+
   try {
     const gqlRes = await fetch("https://leetcode.com/graphql", {
       method: "POST",
@@ -9,141 +40,36 @@ async function fetchRecentSubmissions(username: string) {
         Referer: `https://leetcode.com/u/${username}/`
       },
       body: JSON.stringify({
-        query: `
-          query recentAcSubmissions($username: String!, $limit: Int!) {
-            recentAcSubmissionList(username: $username, limit: $limit) {
-              id
-              title
-              titleSlug
-              timestamp
-            }
-          }
-        `,
+        query: LEETCODE_GRAPHQL_QUERY,
         variables: { username, limit: 50 }
       }),
       next: { revalidate: 300 }
     });
 
-    if (gqlRes.ok) {
-      const gqlData = await gqlRes.json();
-      const list = gqlData?.data?.recentAcSubmissionList;
-      if (Array.isArray(list) && list.length > 0) {
-        return list.map((item: any) => ({
-          id: item.id ? String(item.id) : "",
-          title: item.title || item.titleSlug,
-          titleSlug: item.titleSlug || "",
-          timestamp: item.timestamp,
-          statusDisplay: "Accepted"
-        }));
-      }
+    if (!gqlRes.ok) {
+      throw new Error(`LeetCode GraphQL request failed with status ${gqlRes.status}`);
     }
-  } catch (err) {
-    console.error("LeetCode GraphQL fetch failed:", err);
-  }
 
-  // Source 2: Alfa LeetCode API acSubmission
-  try {
-    const alfaRes = await fetch(
-      `https://alfa-leetcode-api.onrender.com/${username}/acSubmission`,
-      {
-        next: { revalidate: 600 }
-      }
-    );
-    if (alfaRes.ok) {
-      const data = await alfaRes.json();
-      const list =
-        data?.submission ||
-        data?.recentSubmissions ||
-        data?.recentSubmissionList ||
-        (Array.isArray(data) ? data : []);
-      if (Array.isArray(list) && list.length > 0) {
-        return list.map((item: any) => ({
-          id:
-            item.id || item.submissionId
-              ? String(item.id || item.submissionId)
-              : "",
-          title: item.title || item.titleSlug || "Submission",
-          titleSlug: item.titleSlug || "",
-          timestamp: item.timestamp,
-          statusDisplay: item.statusDisplay || item.status || "Accepted"
-        }));
-      }
-    }
-  } catch (err) {
-    console.error("Alfa LeetCode acSubmission fetch failed:", err);
-  }
+    const gqlData = await gqlRes.json();
+    const data = gqlData?.data;
 
-  // Source 3: Alfa LeetCode API recentSubmissions
-  try {
-    const alfaRes2 = await fetch(
-      `https://alfa-leetcode-api.onrender.com/recentSubmissions/${username}`,
-      {
-        next: { revalidate: 600 }
-      }
-    );
-    if (alfaRes2.ok) {
-      const data = await alfaRes2.json();
-      const list =
-        data?.recentSubmissionList ||
-        data?.submission ||
-        (Array.isArray(data) ? data : []);
-      if (Array.isArray(list) && list.length > 0) {
-        return list.map((item: any) => ({
-          id:
-            item.id || item.submissionId
-              ? String(item.id || item.submissionId)
-              : "",
-          title: item.title || item.titleSlug || "Submission",
-          titleSlug: item.titleSlug || "",
-          timestamp: item.timestamp,
-          statusDisplay: item.statusDisplay || item.status || "Accepted"
-        }));
-      }
-    }
-  } catch (err) {
-    console.error("Alfa LeetCode recentSubmissions fetch failed:", err);
-  }
-
-  return [];
-}
-
-export async function GET() {
-  try {
-    const username = "rajarshi_2005";
-
-    const [calendarRes, badgesRes, contestRes, submissionsList] =
-      await Promise.all([
-        fetch(`https://alfa-leetcode-api.onrender.com/${username}/calendar`, {
-          next: { revalidate: 600 }
-        })
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null),
-        fetch(`https://alfa-leetcode-api.onrender.com/${username}/badges`, {
-          next: { revalidate: 600 }
-        })
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null),
-        fetch(`https://alfa-leetcode-api.onrender.com/${username}/contest`, {
-          next: { revalidate: 600 }
-        })
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null),
-        fetchRecentSubmissions(username)
-      ]);
-
-    // Parse calendar
+    // 1. Parse Calendar
     let calendar: Record<string, number> = {};
-    if (calendarRes?.submissionCalendar) {
-      calendar =
-        typeof calendarRes.submissionCalendar === "string"
-          ? JSON.parse(calendarRes.submissionCalendar)
-          : calendarRes.submissionCalendar;
+    const rawCalendar = data?.matchedUser?.userCalendar?.submissionCalendar;
+    if (rawCalendar) {
+      calendar = typeof rawCalendar === "string" ? JSON.parse(rawCalendar) : rawCalendar;
     }
 
-    // Parse badges
-    let badgesCount = badgesRes?.badgesCount ?? 0;
-    let badges = badgesRes?.badges ?? [];
-    let mostRecentBadge =
+    // 2. Parse Badges
+    const rawBadges = data?.matchedUser?.badges || [];
+    const badges = rawBadges.map((b: any) => ({
+      id: b.id || b.displayName,
+      displayName: b.displayName,
+      icon: b.icon?.startsWith("/") ? `https://leetcode.com${b.icon}` : b.icon,
+      creationDate: b.creationDate
+    }));
+    const badgesCount = badges.length;
+    const mostRecentBadge =
       badges.length > 0
         ? {
             displayName: badges[0].displayName,
@@ -152,12 +78,23 @@ export async function GET() {
           }
         : null;
 
-    // Parse contest
-    let contestTopPercentage = contestRes?.contestTopPercentage ?? null;
-    let contestRating = contestRes?.contestRating ?? null;
-    let contestGlobalRanking = contestRes?.contestGlobalRanking ?? null;
-    let totalParticipants = contestRes?.totalParticipants ?? null;
-    let contestAttend = contestRes?.contestAttend ?? null;
+    // 3. Parse Contest Data
+    const contestRanking = data?.userContestRanking;
+    const contestTopPercentage = contestRanking?.topPercentage ?? null;
+    const contestRating = contestRanking?.rating ? Math.round(contestRanking.rating) : null;
+    const contestGlobalRanking = contestRanking?.globalRanking ?? null;
+    const totalParticipants = contestRanking?.totalParticipants ?? null;
+    const contestAttend = contestRanking?.attendedContestsCount ?? null;
+
+    // 4. Parse Submissions
+    const rawSubmissions = data?.recentAcSubmissionList || [];
+    const submissionsList = rawSubmissions.map((item: any) => ({
+      id: item.id ? String(item.id) : "",
+      title: item.title || item.titleSlug,
+      titleSlug: item.titleSlug || "",
+      timestamp: item.timestamp,
+      statusDisplay: "Accepted"
+    }));
 
     return Response.json({
       calendar,
@@ -173,7 +110,19 @@ export async function GET() {
       submissions: submissionsList
     });
   } catch (error) {
-    console.error("Error fetching LeetCode data:", error);
-    return Response.json({ calendar: {} });
+    console.error("Error fetching LeetCode GraphQL data:", error);
+    return Response.json({
+      calendar: {},
+      badgesCount: 0,
+      badges: [],
+      mostRecentBadge: null,
+      contestTopPercentage: null,
+      contestRating: null,
+      contestGlobalRanking: null,
+      totalParticipants: null,
+      contestAttend: null,
+      sublissionsList: [],
+      submissions: []
+    });
   }
 }
