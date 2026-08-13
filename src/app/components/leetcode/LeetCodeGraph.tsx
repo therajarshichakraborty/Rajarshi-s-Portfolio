@@ -17,7 +17,17 @@ import {
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { LeetCode } from "@/components/ui/svgs/leetcode";
-import { Award, Trophy, Zap, TrendingUp, Users } from "lucide-react";
+import { Marquee } from "@/components/ui/marquee";
+import {
+  Award,
+  Trophy,
+  Zap,
+  TrendingUp,
+  Users,
+  Activity as ActivityIcon,
+  ExternalLink,
+  Code2
+} from "lucide-react";
 
 type Activity = {
   date: string;
@@ -31,6 +41,14 @@ type LeetCodeBadge = {
   displayName: string;
   icon: string;
   creationDate: string;
+};
+
+type Submissions = {
+  id?: string;
+  title: string;
+  titleSlug: string;
+  timestamp: number | string;
+  statusDisplay: string;
 };
 
 type LeetCodeData = {
@@ -47,9 +65,28 @@ type LeetCodeData = {
   contestGlobalRanking: number | null;
   totalParticipants: number | null;
   contestAttend: number | null;
+  submissions?: Array<Submissions>;
+  sublissionsList?: Array<Submissions>;
 };
 
-// ─── Badge Card ───────────────────────────────────────────────────────────────
+function formatRelativeTime(timestamp: number | string): string {
+  if (!timestamp) return "";
+  let ts = typeof timestamp === "string" ? parseInt(timestamp, 10) : timestamp;
+  if (isNaN(ts)) return "";
+  if (ts < 1e11) ts *= 1000;
+
+  const now = Date.now();
+  const diffMs = Math.max(0, now - ts);
+  const diffMins = Math.floor(diffMs / (1000 * 60));
+  const diffHours = Math.floor(diffMs / (1000 * 3600));
+  const diffDays = Math.floor(diffMs / (1000 * 3600 * 24));
+
+  if (diffMins < 1) return "just now";
+  if (diffMins < 60) return `${diffMins}m ago`;
+  if (diffHours < 24) return `${diffHours}h ago`;
+  return `${diffDays}d ago`;
+}
+
 function BadgeCard({
   badge,
   isMostRecent
@@ -124,7 +161,6 @@ function BadgeCard({
   );
 }
 
-// ─── Stats Bar (matches GitHub summary stats card template exactly) ────────────
 function StatsBar({
   topPercentage,
   rating,
@@ -214,7 +250,125 @@ function StatsBar({
   );
 }
 
-// ─── Main Component ────────────────────────────────────────────────────────────
+function RecentSubmissionsCard({
+  submissions,
+  loading
+}: {
+  submissions: Submissions[];
+  loading: boolean;
+}) {
+  const displaySubmissions = submissions.slice(0, 20);
+
+  return (
+    <div className="relative flex flex-col w-full rounded-xl bg-transparent text-card-foreground px-0 py-2 my-4 transition-all duration-300 dark:bg-transparent">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4 select-none shrink-0">
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <LeetCode />
+            <h3 className="text-sm font-semibold tracking-tight text-foreground">
+              LeetCode Activity
+            </h3>
+            <span className="inline-flex items-center gap-1.5 bg-transparent text-lime-600 dark:text-lime-400 border border-lime-500/25 dark:border-lime-500/35 text-[10px] font-bold px-2 py-0.5 rounded-full">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-lime-500"></span>
+              </span>
+              Live
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Checkout my latest solved problems
+          </p>
+        </div>
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="bg-background text-foreground border border-input transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md hover:shadow-primary/5 dark:hover:shadow-white/5 active:scale-[0.98] shrink-0"
+        >
+          <a
+            href="https://leetcode.com/u/rajarshi_2005/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5"
+          >
+            <span>View Profile</span>
+            <ExternalLink className="size-3" />
+          </a>
+        </Button>
+      </div>
+
+      {/* Content / Marquee Area */}
+      <div
+        className="flex-1 min-w-0 h-[220px] relative overflow-hidden flex items-center"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)"
+        }}
+      >
+        {loading ? (
+          <div className="w-full space-y-3 py-2 animate-pulse">
+            <div className="flex items-center gap-3 px-2">
+              <div className="size-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-full shrink-0" />
+              <div className="h-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-md w-1/3" />
+            </div>
+            <div className="flex items-center gap-3 px-2">
+              <div className="size-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-full shrink-0" />
+              <div className="h-3.5 bg-neutral-200 dark:bg-neutral-800 rounded-md w-1/2" />
+            </div>
+          </div>
+        ) : displaySubmissions.length === 0 ? (
+          <div className="text-[13px] text-muted-foreground w-full py-4 text-center">
+            No recent submissions found.
+          </div>
+        ) : (
+          <Marquee
+            vertical
+            pauseOnHover
+            className="[--duration:10s] [--gap:0.75rem] h-[220px] w-full"
+            repeat={6}
+          >
+            {displaySubmissions.map((sub, idx) => {
+              const submissionUrl = sub.id
+                ? `https://leetcode.com/submissions/detail/${sub.id}/`
+                : sub.titleSlug
+                  ? `https://leetcode.com/problems/${sub.titleSlug}/`
+                  : "https://leetcode.com/u/rajarshi_2005/";
+
+              return (
+                <a
+                  key={`${sub.id || sub.title}-${sub.timestamp}-${idx}`}
+                  href={submissionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 py-1.5 transition-all duration-300 ease-out cursor-pointer w-full min-w-0 justify-start hover:bg-neutral-100/60 dark:hover:bg-neutral-800/30 rounded-lg px-2.5"
+                >
+                  <Code2 className="size-4 text-muted-foreground group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors duration-300 ease-out shrink-0" />
+                  <div className="flex items-center justify-between min-w-0 flex-1 gap-4">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="text-[13px] font-medium text-muted-foreground transition-colors duration-300 ease-out truncate group-hover:text-black dark:group-hover:text-white">
+                        {sub.title}
+                      </span>
+                    </div>
+                    {sub.timestamp && (
+                      <span className="text-[10px] text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300 ease-out shrink-0 hidden sm:inline">
+                        {formatRelativeTime(sub.timestamp)}
+                      </span>
+                    )}
+                  </div>
+                </a>
+              );
+            })}
+          </Marquee>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function LeetCodeGraph() {
   const [data, setData] = useState<Activity[]>([]);
   const [total, setTotal] = useState(0);
@@ -237,6 +391,8 @@ export default function LeetCodeGraph() {
     null
   );
   const [contestAttend, setContestAttend] = useState<number | null>(null);
+
+  const [submissions, setSubmissions] = useState<Array<Submissions>>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -288,6 +444,9 @@ export default function LeetCodeGraph() {
         setContestGlobalRanking(json.contestGlobalRanking ?? null);
         setTotalParticipants(json.totalParticipants ?? null);
         setContestAttend(json.contestAttend ?? null);
+
+        // latest submissions
+        setSubmissions(json.submissions || json.sublissionsList || []);
       } catch (err) {
         console.error("Failed to fetch LeetCode data:", err);
       } finally {
@@ -322,27 +481,7 @@ export default function LeetCodeGraph() {
 
   return (
     <>
-      {/* ── Graph Section ─────────────────────────────────────────────────── */}
       <div className="w-full mt-6">
-        {/* Header row: button */}
-        <div className="mb-3 flex items-center justify-between flex-wrap gap-2">
-          <Link
-            href="https://leetcode.com/u/rajarshi_2005/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button
-              variant="outline"
-              size="sm"
-              className="cursor-pointer flex items-center gap-2 bg-background text-foreground border-neutral-200 dark:border-neutral-800 transition-all duration-300 ease-out hover:scale-[1.04] hover:-translate-y-0.5 hover:shadow-md"
-            >
-              <LeetCode />
-              Visit Rajarshi's LeetCode
-            </Button>
-          </Link>
-        </div>
-
-        {/* Horizontal stats bar — sits above the graph */}
         <StatsBar
           topPercentage={contestTopPercentage}
           rating={contestRating}
@@ -352,6 +491,8 @@ export default function LeetCodeGraph() {
           badgesCount={badgesCount}
           loading={loading}
         />
+
+        <RecentSubmissionsCard submissions={submissions} loading={loading} />
 
         {/* Contribution Graph (full width) */}
         <div className="w-full overflow-x-auto custom-scrollbar pb-2">
