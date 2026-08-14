@@ -4,14 +4,15 @@ import { useEffect, useState, useCallback, useRef, useMemo } from "react";
 import { Icons } from "@/components/icons";
 import {
   ExternalLink,
-  GitCommit,
   Activity,
   Flame,
   GitPullRequest,
   GitBranch,
   TrendingUp,
   Star,
-  FolderGit
+  FolderGit,
+  ChevronDown,
+  CalendarDays
 } from "lucide-react";
 import {
   ContributionGraph,
@@ -38,10 +39,119 @@ interface Contribution {
   level: 0 | 1 | 2 | 3 | 4;
 }
 
+interface CalendarData {
+  total: Record<string, number>;
+  contributions: Contribution[];
+  activeYears?: number[];
+}
+
 interface ApiResponse {
   total: Record<string, number>;
   contributions: Contribution[];
 }
+
+
+type YearOption = number | "current";
+
+function YearSelector({
+  activeYears,
+  selected,
+  onChange,
+  loading
+}: {
+  activeYears: number[];
+  selected: YearOption;
+  onChange: (y: YearOption) => void;
+  loading: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const options: YearOption[] = ["current", ...activeYears.slice().sort((a, b) => b - a)];
+  const label = selected === "current" ? "Current" : String(selected);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        disabled={loading || activeYears.length === 0}
+        className={`
+          inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold
+          border transition-all duration-200 select-none
+          ${
+            open
+              ? "border-lime-500/60 bg-transparent text-lime-600"
+              : "border-border bg-transparent text-foreground hover:border-lime-500/40 hover:bg-lime-500/5"
+          }
+          disabled:opacity-40 disabled:cursor-not-allowed
+        `}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        {loading ? (
+          <span className="inline-block w-12 h-3 bg-muted/60 animate-pulse rounded" />
+        ) : (
+          <>
+            {label}
+            <ChevronDown
+              className={`size-3 transition-transform duration-200 ${
+                open ? "rotate-180" : ""
+              }`}
+            />
+          </>
+        )}
+      </button>
+
+      {open && (
+        <div
+          className="absolute right-0 top-full mt-1.5 z-50 min-w-[110px] rounded-xl border border-border bg-background/95 backdrop-blur-md shadow-xl overflow-hidden animate-in fade-in-0 zoom-in-95 duration-150"
+          role="listbox"
+        >
+          {options.map((opt) => {
+            const isSelected = opt === selected;
+            const optLabel = opt === "current" ? "Current" : String(opt);
+            return (
+              <button
+                key={optLabel}
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => {
+                  onChange(opt);
+                  setOpen(false);
+                }}
+                className={`
+                  w-full flex items-center justify-between gap-3 px-3 py-2 text-xs
+                  transition-colors duration-150 text-left
+                  ${
+                    isSelected
+                      ? "bg-lime-500/10 text-lime-400 font-semibold"
+                      : "text-foreground hover:bg-muted/50"
+                  }
+                `}
+              >
+                {optLabel}
+                {isSelected && (
+                  <span className="size-1.5 rounded-full bg-transparent shrink-0" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 
 function formatDate(dateStr: string, includeYear = false) {
   if (!dateStr) return "";
@@ -394,6 +504,12 @@ export default function GithubContributionBadge({
   const [chartMounted, setChartMounted] = useState(false);
 
   const [streakLoaded, setStreakLoaded] = useState(false);
+
+  // ── Year selector state ──
+  const [selectedYear, setSelectedYear] = useState<YearOption>("current");
+  const [activeYears, setActiveYears] = useState<number[]>([]);
+  const [graphVisible, setGraphVisible] = useState(true);
+  const [graphLoading, setGraphLoading] = useState(false);
   const streakUrl = isDark
     ? `https://github-readme-streak-stats.herokuapp.com/?user=${username}&hide_border=true&background=090b11&stroke=1a1f2e&ring=3b82f6&fire=f97316&currStreakNum=f8fafc&sideNums=f8fafc&currStreakLabel=94a3b8&sideLabels=94a3b8&dates=64748b`
     : `https://github-readme-streak-stats.herokuapp.com/?user=${username}&hide_border=true&background=fefefe&stroke=e4e4e7&ring=3b82f6&fire=f97316&currStreakNum=18181b&sideNums=18181b&currStreakLabel=6b7280&sideLabels=6b7280&dates=9ca3af`;
@@ -435,6 +551,10 @@ export default function GithubContributionBadge({
         setContributions(data.calendar.contributions || []);
         const year = new Date().getFullYear().toString();
         setTotalThisYear(data.calendar.total[year] ?? 0);
+        // Parse activeYears returned by the API
+        if (Array.isArray(data.calendar.activeYears) && data.calendar.activeYears.length > 0) {
+          setActiveYears(data.calendar.activeYears);
+        }
       }
 
       if (data.stats) {
@@ -452,6 +572,33 @@ export default function GithubContributionBadge({
       setStatsLoading(false);
     }
   }, [username]);
+
+  // ── Year change handler ──
+  const handleYearChange = useCallback(async (year: YearOption) => {
+    if (year === selectedYear) return;
+    setSelectedYear(year);
+    setGraphVisible(false);
+    setGraphLoading(true);
+    try {
+      const url =
+        year === "current"
+          ? `/api/github-stats?username=${username}&t=${Date.now()}`
+          : `/api/github-stats?username=${username}&year=${year}&t=${Date.now()}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Failed to load.");
+      const data = await res.json();
+      if (data.calendar) {
+        setContributions(data.calendar.contributions || []);
+        const key = year === "current" ? new Date().getFullYear().toString() : String(year);
+        setTotalThisYear(data.calendar.total[key] ?? 0);
+      }
+    } catch (e: any) {
+      console.error("Year switch failed:", e);
+    } finally {
+      setGraphLoading(false);
+      setTimeout(() => setGraphVisible(true), 50);
+    }
+  }, [username, selectedYear]);
 
   useEffect(() => {
     fetchData();
@@ -557,28 +704,38 @@ export default function GithubContributionBadge({
       <div className="relative w-full overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-emerald-500/50 to-transparent" />
         <div className="px-5 pt-5 pb-4">
+          {/* Contribution Calendar section */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Icons.github className="size-4 text-foreground/70" />
               <span className="text-sm font-semibold text-foreground tracking-tight">
                 Contribution Calendar
               </span>
-              {/* {!loading && !error && (
-                <span className="inline-flex items-center gap-1 bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                  <GitCommit className="size-2.5" />
-                  {totalThisYear.toLocaleString()} this year
+              {!loading && !error && (
+                <span className="inline-flex items-center gap-1 bg-transparent text-lime-600 dark:text-lime-400 border border-lime-500/25 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <CalendarDays className="size-2.5" />
+                  {totalThisYear.toLocaleString()}{" "}
+                  {selectedYear === "current" ? "this year" : `in ${selectedYear}`}
                 </span>
-              )} */}
+              )}
             </div>
-            <a
-              href={`https://github.com/${username}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
-              <span>@{username}</span>
-              <ExternalLink className="size-3" />
-            </a>
+            <div className="flex items-center gap-2">
+              <YearSelector
+                activeYears={activeYears}
+                selected={selectedYear}
+                onChange={handleYearChange}
+                loading={loading}
+              />
+              <a
+                href={`https://github.com/${username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                <span>@{username}</span>
+                <ExternalLink className="size-3" />
+              </a>
+            </div>
           </div>
 
           {loading ? (
@@ -612,6 +769,10 @@ export default function GithubContributionBadge({
             <div
               ref={graphWrapRef}
               className="relative text-[11px] text-muted-foreground"
+              style={{
+                opacity: graphVisible ? 1 : 0,
+                transition: "opacity 0.3s ease"
+              }}
             >
               {tooltip && (
                 <div

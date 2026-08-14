@@ -16,6 +16,8 @@ interface CalendarData {
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const username = searchParams.get("username");
+  const yearParam = searchParams.get("year");
+  const requestedYear = yearParam ? parseInt(yearParam, 10) : null;
 
   if (!username) {
     return NextResponse.json(
@@ -42,8 +44,37 @@ export async function GET(request: NextRequest) {
     if (token) {
       try {
         const currentYear = new Date().getFullYear();
-        const from = `${currentYear}-01-01T00:00:00Z`;
-        const to = `${currentYear}-12-31T23:59:59Z`;
+        const targetYear = requestedYear ?? currentYear;
+
+        // Date range: if requestedYear is null → rolling window (last year),
+        // otherwise → Jan 1 – Dec 31 of that exact year.
+        let from: string, to: string;
+        if (requestedYear !== null) {
+          from = `${requestedYear}-01-01T00:00:00Z`;
+          to   = `${requestedYear}-12-31T23:59:59Z`;
+        } else {
+          // rolling: last 12 months
+          const toDate = new Date();
+          const fromDate = new Date(toDate);
+          fromDate.setFullYear(fromDate.getFullYear() - 1);
+          from = fromDate.toISOString();
+          to   = toDate.toISOString();
+        }
+
+        // Build from/to for each past year to get activeYears
+        const joinYear = 2024; // your GitHub join year
+        const yearsToCheck = Array.from(
+          { length: currentYear - joinYear + 1 },
+          (_, i) => joinYear + i
+        );
+
+        // Compose per-year fragments to discover activeYears
+        const yearFragments = yearsToCheck
+          .map(
+            (y) =>
+              `year${y}: contributionsCollection(from: "${y}-01-01T00:00:00Z", to: "${y}-12-31T23:59:59Z") { contributionCalendar { totalContributions } }`
+          )
+          .join("\n");
 
         const query = `
           query($username: String!, $from: DateTime!, $to: DateTime!) {
@@ -51,7 +82,7 @@ export async function GET(request: NextRequest) {
               repositories(ownerAffiliations: [OWNER, COLLABORATOR]) {
                 totalCount
               }
-              rollingCalendar: contributionsCollection {
+              rollingCalendar: contributionsCollection(from: $from, to: $to) {
                 contributionCalendar {
                   totalContributions
                   weeks {
@@ -63,11 +94,7 @@ export async function GET(request: NextRequest) {
                   }
                 }
               }
-              currentYearCalendar: contributionsCollection(from: $from, to: $to) {
-                contributionCalendar {
-                  totalContributions
-                }
-              }
+              ${yearFragments}
             }
           }
         `;
@@ -89,12 +116,17 @@ export async function GET(request: NextRequest) {
           const resBody = await graphqlRes.json();
           const rollingRaw =
             resBody?.data?.user?.rollingCalendar?.contributionCalendar;
-          const currentYearRaw =
-            resBody?.data?.user?.currentYearCalendar?.contributionCalendar;
 
           if (resBody?.data?.user?.repositories?.totalCount !== undefined) {
             gqlReposCount = resBody.data.user.repositories.totalCount;
           }
+
+          // Derive activeYears from per-year totalContributions
+          const activeYears: number[] = yearsToCheck.filter(
+            (y) =>
+              (resBody?.data?.user?.[`year${y}`]?.contributionCalendar
+                ?.totalContributions ?? 0) > 0
+          );
 
           if (rollingRaw) {
             const contributions: Contribution[] = [];
@@ -127,15 +159,13 @@ export async function GET(request: NextRequest) {
               });
             });
 
-            const currentYearStr = currentYear.toString();
             calendar = {
               total: {
-                [currentYearStr]:
-                  currentYearRaw?.totalContributions ??
-                  rollingRaw.totalContributions
+                [targetYear.toString()]: rollingRaw.totalContributions
               },
-              contributions
-            };
+              contributions,
+              activeYears
+            } as any;
           }
         }
       } catch (graphqlErr) {
@@ -149,9 +179,10 @@ export async function GET(request: NextRequest) {
     // Fallback if token is missing, or if GraphQL fetch failed
     if (!calendar) {
       try {
+        const yearStr = requestedYear ? String(requestedYear) : "last";
         const [rollingRes, fullRes] = await Promise.all([
           fetch(
-            `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+            `https://github-contributions-api.jogruber.de/v4/${username}?y=${yearStr}`,
             { next: { revalidate: 30 } }
           ),
           fetch(`https://github-contributions-api.jogruber.de/v4/${username}`, {
@@ -164,13 +195,20 @@ export async function GET(request: NextRequest) {
           const fullData = await fullRes.json();
           const currentYearStr = new Date().getFullYear().toString();
 
+          // Derive activeYears from jogruber total keys
+          const activeYears: number[] = Object.keys(fullData.total || {})
+            .map(Number)
+            .filter((y) => !isNaN(y) && fullData.total[y] > 0)
+            .sort((a, b) => b - a);
+
           calendar = {
             total: {
-              [currentYearStr]:
-                fullData.total[currentYearStr] ?? rollingData.total.lastYear
+              [requestedYear ?? currentYearStr]:
+                fullData.total[requestedYear ?? currentYearStr] ?? rollingData.total?.lastYear ?? 0
             },
-            contributions: rollingData.contributions
-          };
+            contributions: rollingData.contributions,
+            activeYears
+          } as any;
         }
       } catch (fallbackErr) {
         console.error(

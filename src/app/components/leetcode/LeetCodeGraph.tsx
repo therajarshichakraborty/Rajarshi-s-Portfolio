@@ -75,8 +75,6 @@ type LeetCodeData = {
   sublissionsList?: Array<Submissions>;
 };
 
-/* ────────────────────────────────── helpers ── */
-
 function formatRelativeTime(timestamp: number | string): string {
   if (!timestamp) return "";
   let ts = typeof timestamp === "string" ? parseInt(timestamp, 10) : timestamp;
@@ -101,10 +99,10 @@ function calendarToActivities(calendar: Record<string, number>): {
 } {
   let total = 0;
   const activities: Activity[] = Object.entries(calendar).map(([ts, count]) => {
-    const c = Number(count) || 0; 
+    const c = Number(count) || 0;
     total += c;
     const date = new Date(Number(ts) * 1000).toISOString().split("T")[0];
-    let level = 0; 
+    let level = 0;
     if (c > 0 && c < 2) level = 1;
     else if (c < 4) level = 2;
     else if (c < 7) level = 3;
@@ -113,8 +111,6 @@ function calendarToActivities(calendar: Record<string, number>): {
   });
   return { activities, total };
 }
-
-/* ────────────────────────────── BadgeCard ── */
 
 function BadgeCard({
   badge,
@@ -189,8 +185,6 @@ function BadgeCard({
     </TooltipProvider>
   );
 }
-
-/* ────────────────────────────── StatsBar ── */
 
 function StatsBar({
   topPercentage,
@@ -280,8 +274,6 @@ function StatsBar({
     </div>
   );
 }
-
-/* ─────────────────────────── RecentSubmissionsCard ── */
 
 function RecentSubmissionsCard({
   submissions,
@@ -402,8 +394,6 @@ function RecentSubmissionsCard({
   );
 }
 
-/* ─────────────────── YearSelector dropdown ── */
-
 type YearOption = number | "current";
 
 function YearSelector({
@@ -431,7 +421,10 @@ function YearSelector({
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const options: YearOption[] = ["current", ...activeYears.slice().sort((a, b) => b - a)];
+  const options: YearOption[] = [
+    "current",
+    ...activeYears.slice().sort((a, b) => b - a)
+  ];
   const label = selected === "current" ? "Current" : String(selected);
 
   return (
@@ -529,11 +522,19 @@ export default function LeetCodeGraph() {
   /* ── Badge / contest / submissions state ── */
   const [badgesCount, setBadgesCount] = useState<number>(0);
   const [badges, setBadges] = useState<LeetCodeBadge[]>([]);
-  const [mostRecentBadge, setMostRecentBadge] = useState<LeetCodeBadge | null>(null);
-  const [contestTopPercentage, setContestTopPercentage] = useState<number | null>(null);
+  const [mostRecentBadge, setMostRecentBadge] = useState<LeetCodeBadge | null>(
+    null
+  );
+  const [contestTopPercentage, setContestTopPercentage] = useState<
+    number | null
+  >(null);
   const [contestRating, setContestRating] = useState<number | null>(null);
-  const [contestGlobalRanking, setContestGlobalRanking] = useState<number | null>(null);
-  const [totalParticipants, setTotalParticipants] = useState<number | null>(null);
+  const [contestGlobalRanking, setContestGlobalRanking] = useState<
+    number | null
+  >(null);
+  const [totalParticipants, setTotalParticipants] = useState<number | null>(
+    null
+  );
   const [contestAttend, setContestAttend] = useState<number | null>(null);
   const [submissions, setSubmissions] = useState<Array<Submissions>>([]);
 
@@ -731,9 +732,7 @@ export default function LeetCodeGraph() {
                   <div className="text-xs text-muted-foreground flex items-center gap-1.5">
                     Total:
                     <Badge variant="outline">
-                      {loading || graphLoading
-                        ? "—"
-                        : total.toLocaleString()}{" "}
+                      {loading || graphLoading ? "—" : total.toLocaleString()}{" "}
                       Submissions
                     </Badge>
                   </div>
