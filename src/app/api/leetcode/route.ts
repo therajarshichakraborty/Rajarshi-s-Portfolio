@@ -1,11 +1,19 @@
-export async function GET() {
+export async function GET(request: Request) {
   const username = "rajarshi_2005";
 
+  // Read optional ?year=YYYY query param
+  const { searchParams } = new URL(request.url);
+  const yearParam = searchParams.get("year");
+  const year = yearParam ? parseInt(yearParam, 10) : null;
+
   const LEETCODE_GRAPHQL_QUERY = `
-    query getLeetCodeUserData($username: String!, $limit: Int!) {
+    query getLeetCodeUserData($username: String!, $limit: Int!, $year: Int) {
       matchedUser(username: $username) {
-        userCalendar {
+        userCalendar(year: $year) {
           submissionCalendar
+          activeYears
+          totalActiveDays
+          streak
         }
         badges {
           id
@@ -41,7 +49,7 @@ export async function GET() {
       },
       body: JSON.stringify({
         query: LEETCODE_GRAPHQL_QUERY,
-        variables: { username, limit: 50 }
+        variables: { username, limit: 50, ...(year !== null ? { year } : {}) }
       }),
       next: { revalidate: 300 }
     });
@@ -55,10 +63,14 @@ export async function GET() {
 
     // 1. Parse Calendar
     let calendar: Record<string, number> = {};
-    const rawCalendar = data?.matchedUser?.userCalendar?.submissionCalendar;
+    const userCalendar = data?.matchedUser?.userCalendar;
+    const rawCalendar = userCalendar?.submissionCalendar;
     if (rawCalendar) {
       calendar = typeof rawCalendar === "string" ? JSON.parse(rawCalendar) : rawCalendar;
     }
+    const activeYears: number[] = userCalendar?.activeYears ?? [];
+    const totalActiveDays: number = userCalendar?.totalActiveDays ?? 0;
+    const streak: number = userCalendar?.streak ?? 0;
 
     // 2. Parse Badges
     const rawBadges = data?.matchedUser?.badges || [];
@@ -98,6 +110,9 @@ export async function GET() {
 
     return Response.json({
       calendar,
+      activeYears,
+      totalActiveDays,
+      streak,
       badgesCount,
       badges,
       mostRecentBadge,
@@ -113,6 +128,9 @@ export async function GET() {
     console.error("Error fetching LeetCode GraphQL data:", error);
     return Response.json({
       calendar: {},
+      activeYears: [],
+      totalActiveDays: 0,
+      streak: 0,
       badgesCount: 0,
       badges: [],
       mostRecentBadge: null,
