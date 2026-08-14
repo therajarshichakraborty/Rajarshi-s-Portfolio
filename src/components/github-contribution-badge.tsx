@@ -50,7 +50,6 @@ interface ApiResponse {
   contributions: Contribution[];
 }
 
-
 type YearOption = number | "current";
 
 function YearSelector({
@@ -77,7 +76,10 @@ function YearSelector({
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const options: YearOption[] = ["current", ...activeYears.slice().sort((a, b) => b - a)];
+  const options: YearOption[] = [
+    "current",
+    ...activeYears.slice().sort((a, b) => b - a)
+  ];
   const label = selected === "current" ? "Current" : String(selected);
 
   return (
@@ -151,7 +153,6 @@ function YearSelector({
     </div>
   );
 }
-
 
 function formatDate(dateStr: string, includeYear = false) {
   if (!dateStr) return "";
@@ -552,7 +553,10 @@ export default function GithubContributionBadge({
         const year = new Date().getFullYear().toString();
         setTotalThisYear(data.calendar.total[year] ?? 0);
         // Parse activeYears returned by the API
-        if (Array.isArray(data.calendar.activeYears) && data.calendar.activeYears.length > 0) {
+        if (
+          Array.isArray(data.calendar.activeYears) &&
+          data.calendar.activeYears.length > 0
+        ) {
           setActiveYears(data.calendar.activeYears);
         }
       }
@@ -573,32 +577,37 @@ export default function GithubContributionBadge({
     }
   }, [username]);
 
-  // ── Year change handler ──
-  const handleYearChange = useCallback(async (year: YearOption) => {
-    if (year === selectedYear) return;
-    setSelectedYear(year);
-    setGraphVisible(false);
-    setGraphLoading(true);
-    try {
-      const url =
-        year === "current"
-          ? `/api/github-stats?username=${username}&t=${Date.now()}`
-          : `/api/github-stats?username=${username}&year=${year}&t=${Date.now()}`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error("Failed to load.");
-      const data = await res.json();
-      if (data.calendar) {
-        setContributions(data.calendar.contributions || []);
-        const key = year === "current" ? new Date().getFullYear().toString() : String(year);
-        setTotalThisYear(data.calendar.total[key] ?? 0);
+  const handleYearChange = useCallback(
+    async (year: YearOption) => {
+      if (year === selectedYear) return;
+      setSelectedYear(year);
+      setGraphVisible(false);
+      setGraphLoading(true);
+      try {
+        const url =
+          year === "current"
+            ? `/api/github-stats?username=${username}&t=${Date.now()}`
+            : `/api/github-stats?username=${username}&year=${year}&t=${Date.now()}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to load.");
+        const data = await res.json();
+        if (data.calendar) {
+          setContributions(data.calendar.contributions || []);
+          const key =
+            year === "current"
+              ? new Date().getFullYear().toString()
+              : String(year);
+          setTotalThisYear(data.calendar.total[key] ?? 0);
+        }
+      } catch (e: any) {
+        console.error("Year switch failed:", e);
+      } finally {
+        setGraphLoading(false);
+        setTimeout(() => setGraphVisible(true), 50);
       }
-    } catch (e: any) {
-      console.error("Year switch failed:", e);
-    } finally {
-      setGraphLoading(false);
-      setTimeout(() => setGraphVisible(true), 50);
-    }
-  }, [username, selectedYear]);
+    },
+    [username, selectedYear]
+  );
 
   useEffect(() => {
     fetchData();
@@ -715,7 +724,9 @@ export default function GithubContributionBadge({
                 <span className="inline-flex items-center gap-1 bg-transparent text-lime-600 dark:text-lime-400 border border-lime-500/25 text-[10px] font-bold px-2 py-0.5 rounded-full">
                   <CalendarDays className="size-2.5" />
                   {totalThisYear.toLocaleString()}{" "}
-                  {selectedYear === "current" ? "this year" : `in ${selectedYear}`}
+                  {selectedYear === "current"
+                    ? "this year"
+                    : `in ${selectedYear}`}
                 </span>
               )}
             </div>

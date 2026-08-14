@@ -35,10 +35,15 @@ export async function getLeetCodeStats(username: string) {
     }
 
     const json = await res.json();
-    const stats = json?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [];
-    const easy = stats.find((s: any) => s.difficulty.toUpperCase() === "EASY")?.count || 0;
-    const medium = stats.find((s: any) => s.difficulty.toUpperCase() === "MEDIUM")?.count || 0;
-    const hard = stats.find((s: any) => s.difficulty.toUpperCase() === "HARD")?.count || 0;
+    const stats =
+      json?.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [];
+    const easy =
+      stats.find((s: any) => s.difficulty.toUpperCase() === "EASY")?.count || 0;
+    const medium =
+      stats.find((s: any) => s.difficulty.toUpperCase() === "MEDIUM")?.count ||
+      0;
+    const hard =
+      stats.find((s: any) => s.difficulty.toUpperCase() === "HARD")?.count || 0;
     const total = easy + medium + hard;
 
     if (total === 0) {

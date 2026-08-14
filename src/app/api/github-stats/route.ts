@@ -51,14 +51,14 @@ export async function GET(request: NextRequest) {
         let from: string, to: string;
         if (requestedYear !== null) {
           from = `${requestedYear}-01-01T00:00:00Z`;
-          to   = `${requestedYear}-12-31T23:59:59Z`;
+          to = `${requestedYear}-12-31T23:59:59Z`;
         } else {
           // rolling: last 12 months
           const toDate = new Date();
           const fromDate = new Date(toDate);
           fromDate.setFullYear(fromDate.getFullYear() - 1);
           from = fromDate.toISOString();
-          to   = toDate.toISOString();
+          to = toDate.toISOString();
         }
 
         // Build from/to for each past year to get activeYears
@@ -112,6 +112,8 @@ export async function GET(request: NextRequest) {
           next: { revalidate: 60 }
         });
 
+        console.log("gh response : ", graphqlRes);
+
         if (graphqlRes.ok) {
           const resBody = await graphqlRes.json();
           const rollingRaw =
@@ -127,6 +129,8 @@ export async function GET(request: NextRequest) {
               (resBody?.data?.user?.[`year${y}`]?.contributionCalendar
                 ?.totalContributions ?? 0) > 0
           );
+
+          console.log("active years : ", activeYears);
 
           if (rollingRaw) {
             const contributions: Contribution[] = [];
@@ -204,7 +208,9 @@ export async function GET(request: NextRequest) {
           calendar = {
             total: {
               [requestedYear ?? currentYearStr]:
-                fullData.total[requestedYear ?? currentYearStr] ?? rollingData.total?.lastYear ?? 0
+                fullData.total[requestedYear ?? currentYearStr] ??
+                rollingData.total?.lastYear ??
+                0
             },
             contributions: rollingData.contributions,
             activeYears

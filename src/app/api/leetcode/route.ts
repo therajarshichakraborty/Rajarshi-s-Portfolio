@@ -55,7 +55,9 @@ export async function GET(request: Request) {
     });
 
     if (!gqlRes.ok) {
-      throw new Error(`LeetCode GraphQL request failed with status ${gqlRes.status}`);
+      throw new Error(
+        `LeetCode GraphQL request failed with status ${gqlRes.status}`
+      );
     }
 
     const gqlData = await gqlRes.json();
@@ -66,7 +68,8 @@ export async function GET(request: Request) {
     const userCalendar = data?.matchedUser?.userCalendar;
     const rawCalendar = userCalendar?.submissionCalendar;
     if (rawCalendar) {
-      calendar = typeof rawCalendar === "string" ? JSON.parse(rawCalendar) : rawCalendar;
+      calendar =
+        typeof rawCalendar === "string" ? JSON.parse(rawCalendar) : rawCalendar;
     }
     const activeYears: number[] = userCalendar?.activeYears ?? [];
     const totalActiveDays: number = userCalendar?.totalActiveDays ?? 0;
@@ -93,7 +96,9 @@ export async function GET(request: Request) {
     // 3. Parse Contest Data
     const contestRanking = data?.userContestRanking;
     const contestTopPercentage = contestRanking?.topPercentage ?? null;
-    const contestRating = contestRanking?.rating ? Math.round(contestRanking.rating) : null;
+    const contestRating = contestRanking?.rating
+      ? Math.round(contestRanking.rating)
+      : null;
     const contestGlobalRanking = contestRanking?.globalRanking ?? null;
     const totalParticipants = contestRanking?.totalParticipants ?? null;
     const contestAttend = contestRanking?.attendedContestsCount ?? null;
