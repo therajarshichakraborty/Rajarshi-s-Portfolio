@@ -121,10 +121,21 @@ Beyond traditional development, I’m deeply interested in **Generative & Agenti
 
   work: [
     {
+      company: "Brand Voy",
+      href: "https://brandvoy.co/",
+      badges: [],
+      location: "London, United Kingdom",
+      title: "Software Engineer",
+      logoUrl: "/brandvoy.png",
+      start: "August 2026",
+      end: "Present",
+      description: `As a Software Engineer at Brand Voy, I contribute to designing, developing, and maintaining scalable software solutions. I work across the development lifecycle, building reliable and user-focused applications while applying modern software engineering practices. I collaborate with the team to develop new features, improve existing systems, optimize application performance, and solve real-world technical challenges.`
+    },
+    {
       company: "Techno Main Salt Lake",
       href: "https://atomic.finance",
       badges: [],
-      location: "Remote",
+      location: "Kolkata, West Bengal",
       title: "Undergrad Engineering Fellow",
       logoUrl: "/techno.jpg",
       start: "June 2023",
@@ -234,11 +245,11 @@ PCCCS601: Database Management System
 PCCCS602: Ethical Hacking 
 PECICB601-D: Software Engineering 
 OECICB601-A: Human Resource Development & Organizational Behavior
+PROJICB681: Project I
 PECICB701-A: Blockchain and Cryptocurrency
 PECICB702-A: Machine Learning
 OECICB701-A: Soft skill and Interpersonal Communication
 HSMC701: Project Management and Entrepreneurship
-PROJICB681: Project I
 PROJICB781: Project II
 `
     },

@@ -22,6 +22,11 @@ import { SkLearn } from "./ui/svgs/sk-learn";
 import { CPP } from "./ui/svgs/c++";
 import { Pytorch } from "./ui/svgs/pytorch";
 import { NextJs } from "./ui/svgs/nextjs";
+import { Git } from "@/components/ui/svgs/git";
+import { Redis } from "@/components/ui/svgs/redis";
+import { Prisma } from "@/components/ui/svgs/prisma";
+import { Tailwind } from "@/components/ui/svgs/tailwind";
+import { NestJs } from "@/components/ui/svgs/nestjs";
 
 interface ExperienceItemProps {
   title: string;
@@ -75,6 +80,11 @@ const techConfig: Record<string, TechConfigItem> = {
     url: "https://www.postgresql.org/",
     icon: Postgres
   },
+  postgresql: {
+    name: "PostgreSQL",
+    url: "https://www.postgresql.org/",
+    icon: Postgres
+  },
   python: { name: "Python", url: "https://www.python.org/", icon: Python },
   kubernetes: {
     name: "Kubernetes",
@@ -84,6 +94,7 @@ const techConfig: Record<string, TechConfigItem> = {
   numpy: { name: "Numpy", url: "https://numpy.org/", icon: NumPy },
   pandas: { name: "Pandas", url: "https://pandas.pydata.org/", icon: Pandas },
   mongo: { name: "MongoDB", url: "https://www.mongodb.com/", icon: MongoDB },
+  mongodb: { name: "MongoDB", url: "https://www.mongodb.com/", icon: MongoDB },
   "sk-learn": {
     name: "Scikit Learn",
     url: "https://scikit-learn.org/stable/",
@@ -91,7 +102,21 @@ const techConfig: Record<string, TechConfigItem> = {
   },
   "c++": { name: "C++", url: "https://isocpp.org/", icon: CPP },
   pytorch: { name: "PyTorch", url: "https://pytorch.org/", icon: Pytorch },
-  nextjs: { name: "NextJs", url: "https://nextjs.org/", icon: NextJs }
+  nextjs: { name: "NextJs", url: "https://nextjs.org/", icon: NextJs },
+  git: { name: "Git", url: "https://git-scm.com/", icon: Git },
+  tailwind: {
+    name: "Tailwind CSS",
+    url: "https://tailwindcss.com/",
+    icon: Tailwind
+  },
+  tailwindcss: {
+    name: "Tailwind CSS",
+    url: "https://tailwindcss.com/",
+    icon: Tailwind
+  },
+  prisma: { name: "Prisma", url: "https://www.prisma.io/", icon: Prisma },
+  redis: { name: "Redis", url: "https://redis.io/", icon: Redis },
+  nestjs: { name: "NestJS", url: "https://nestjs.com/", icon: NestJs }
 };
 
 const ExperienceItem = ({
@@ -103,6 +128,16 @@ const ExperienceItem = ({
   Location
 }: ExperienceItemProps) => {
   const getCompanyLogo = () => {
+    if (company === "Brand Voy")
+      return (
+        <Image
+          src="/brandvoy.png"
+          alt={company}
+          className="size-full object-contain p-0.5"
+          width={36}
+          height={36}
+        />
+      );
     if (company === "Techno Main Salt Lake")
       return (
         <Image
@@ -238,6 +273,30 @@ const ExperienceItem = ({
 
 const Experience = () => {
   const experiences = [
+    {
+      title: "Software Engineer",
+      company: "Brand Voy",
+      period: "August 2026 - Present",
+      Location: "London, United Kingdom",
+      description: [
+        "As a Software Engineer at Brand Voy, I contribute to designing, developing, and maintaining scalable software solutions. I work across the development lifecycle, building reliable and user-focused applications while applying modern software engineering practices. I collaborate with the team to develop new features, improve existing systems, optimize application performance, and solve real-world technical challenges."
+      ],
+      technologies: [
+        "Typescript",
+        "NodeJs",
+        "Redis",
+        "NextJs",
+        "NestJS",
+        "Express",
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma",
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "Tailwind"
+      ]
+    },
     {
       title: "UnderGrad Student Researcher",
       company: "Techno Main Salt Lake",
