@@ -734,10 +734,10 @@ export function ProjectLightbox({
                         Building
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 dark:border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.25)] select-none backdrop-blur-md">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-widest uppercase font-bold rounded-full bg-lime-500/10 dark:bg-lime-400/15 text-lime-600 dark:text-lime-400 border border-lime-500/30 dark:border-lime-400/30 shadow-[0_0_12px_rgba(132,204,22,0.25)] select-none backdrop-blur-md">
                         <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500 shadow-[0_0_8px_rgba(132,204,22,0.9)]" />
                         </span>
                         Live
                       </span>
@@ -757,16 +757,16 @@ export function ProjectLightbox({
                       href={websiteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-semibold text-white bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 border border-emerald-400/30 transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] group select-none"
+                      className="inline-flex shrink-0 items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-semibold border border-lime-500/40 dark:border-lime-500/45 bg-transparent text-lime-600 dark:text-lime-400 hover:bg-lime-500/10 hover:border-lime-500/70 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] group select-none shadow-xs"
                     >
                       <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white shadow-[0_0_6px_#ffffff]" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-lime-500 shadow-[0_0_8px_rgba(132,204,22,0.9)] dark:bg-lime-400" />
                       </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-white transition-transform duration-300 group-hover:scale-110" />
+                      <ExternalLink className="w-3.5 h-3.5 text-lime-600 dark:text-lime-400 transition-transform duration-300 group-hover:scale-110" />
                       <span>Live Demo</span>
                       {/* @ts-ignore */}
-                      <ArrowUpRight className="w-3 h-3 text-white/80 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight className="w-3 h-3 text-lime-600/70 dark:text-lime-400/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   )}
                   {sourceLink && (

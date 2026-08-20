@@ -181,10 +181,10 @@ export function ProjectFolderCard({
             Building
           </span>
         ) : (
-          <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-wider uppercase font-bold rounded-full bg-emerald-500/10 dark:bg-emerald-400/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 dark:border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.25)] backdrop-blur-md select-none z-50">
+          <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 text-[10px] tracking-wider uppercase font-bold rounded-full bg-lime-500/10 dark:bg-lime-400/15 text-lime-600 dark:text-lime-400 border border-lime-500/30 dark:border-lime-400/30 shadow-[0_0_12px_rgba(132,204,22,0.25)] backdrop-blur-md select-none z-50">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500 shadow-[0_0_8px_rgba(132,204,22,0.9)]" />
             </span>
             Live
           </span>
@@ -304,14 +304,14 @@ export function ProjectFolderCard({
                     className={cn(
                       "inline-flex items-center gap-1.5 text-[11px] font-semibold px-3.5 py-1.5 rounded-xl border transition-all duration-300 hover:scale-[1.04] active:scale-[0.97] group select-none",
                       isLive
-                        ? "bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:via-teal-400 hover:to-cyan-400 text-white shadow-md shadow-emerald-500/20 hover:shadow-lg hover:shadow-emerald-500/30 border-emerald-400/30"
+                        ? "border border-lime-500/40 dark:border-lime-500/45 bg-transparent text-lime-600 dark:text-lime-400 hover:bg-lime-500/10 hover:border-lime-500/70 hover:scale-[1.03] hover:-translate-y-0.5 shadow-xs"
                         : "border-border bg-background text-foreground hover:bg-muted shadow-xs hover:border-neutral-300 dark:hover:border-neutral-700"
                     )}
                   >
                     {isLive ? (
                       <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white shadow-[0_0_6px_#ffffff]" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-lime-500 shadow-[0_0_8px_rgba(132,204,22,0.9)] dark:bg-lime-400" />
                       </span>
                     ) : (
                       link.icon

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { Building2, Calendar } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Golang } from "@/components/ui/svgs/golang";
 import { React } from "@/components/ui/svgs/react";
 import { Docker } from "@/components/ui/svgs/docker";
@@ -119,6 +120,82 @@ const techConfig: Record<string, TechConfigItem> = {
   nestjs: { name: "NestJS", url: "https://nestjs.com/", icon: NestJs }
 };
 
+const monthMap: Record<string, number> = {
+  jan: 0,
+  january: 0,
+  feb: 1,
+  february: 1,
+  mar: 2,
+  march: 2,
+  apr: 3,
+  april: 3,
+  may: 4,
+  jun: 5,
+  june: 5,
+  jul: 6,
+  july: 6,
+  aug: 7,
+  august: 7,
+  sep: 8,
+  sept: 8,
+  september: 8,
+  oct: 9,
+  october: 9,
+  nov: 10,
+  november: 10,
+  dec: 11,
+  december: 11
+};
+
+function parseMonthYear(str: string): Date | null {
+  if (!str) return null;
+  const clean = str.trim().toLowerCase();
+  if (/present|currently working|current/i.test(clean)) {
+    return new Date();
+  }
+  const parts = clean.replace(/[,.]/g, "").split(/\s+/);
+  if (parts.length >= 2) {
+    const month = monthMap[parts[0]];
+    const year = parseInt(parts[1], 10);
+    if (month !== undefined && !isNaN(year)) {
+      return new Date(year, month, 1);
+    }
+  }
+  return null;
+}
+
+function calculateDuration(periodStr: string): string | null {
+  const parts = periodStr.split(/\s*[-–—]\s*|\s+to\s+/i);
+  if (parts.length < 2) return null;
+
+  const startDate = parseMonthYear(parts[0]);
+  const isPresent = /present|currently working|current/i.test(parts[1]);
+  const endDate = isPresent ? new Date() : parseMonthYear(parts[1]);
+
+  if (!startDate || !endDate) return null;
+
+  let totalMonths =
+    (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+    (endDate.getMonth() - startDate.getMonth()) +
+    1;
+
+  if (totalMonths <= 0) totalMonths = 1;
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const segments: string[] = [];
+  if (years > 0) {
+    segments.push(`${years} ${years === 1 ? "yr" : "yrs"}`);
+  }
+  if (months > 0 || years === 0) {
+    segments.push(`${months} ${months === 1 ? "month" : "months"}`);
+  }
+
+  const result = segments.join(" ");
+  return isPresent ? `${result} +` : result;
+}
+
 const ExperienceItem = ({
   title,
   company,
@@ -127,6 +204,10 @@ const ExperienceItem = ({
   technologies,
   Location
 }: ExperienceItemProps) => {
+  const isCurrent = /present|currently working/i.test(period);
+  const displayPeriod = period.replace(/present/i, "Currently Working");
+  const duration = calculateDuration(period);
+
   const getCompanyLogo = () => {
     if (company === "Brand Voy")
       return (
@@ -181,26 +262,55 @@ const ExperienceItem = ({
             {getCompanyLogo()}
           </div>
 
-          {/* Company + title + meta */}
+          {/* Company + title + meta on left, Period + duration on right */}
           <div className="flex-1 min-w-0">
-            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-              <span className="text-lg sm:text-xl font-bold tracking-tight leading-tight">
-                {company}
-              </span>
-              {/* Animated Period pill */}
-              <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full border border-border/70 bg-muted/40 text-muted-foreground whitespace-nowrap transition-all duration-300 ease-out hover:scale-105 hover:border-primary/50 hover:bg-accent/60 hover:text-foreground cursor-default shadow-2xs">
-                <Calendar className="size-3 transition-transform duration-300 group-hover:rotate-12" />
-                {period}
-              </span>
-            </div>
+            <div className="flex items-start justify-between gap-x-3 gap-y-1">
+              {/* Left column: Company, Title, Location */}
+              <div className="flex flex-col min-w-0">
+                <span className="text-lg sm:text-xl font-bold tracking-tight leading-tight">
+                  {company}
+                </span>
+                <h3 className="mt-0.5 text-sm sm:text-base font-semibold text-muted-foreground">
+                  {title}
+                </h3>
+                <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground/70">
+                  <MapPin className="size-3 flex-shrink-0" />
+                  <span>{Location}</span>
+                </div>
+              </div>
 
-            <h3 className="mt-0.5 text-sm sm:text-base font-semibold text-muted-foreground">
-              {title}
-            </h3>
-
-            <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground/70">
-              <MapPin className="size-3 flex-shrink-0" />
-              <span>{Location}</span>
+              {/* Right column: Animated Period pill + dynamic duration */}
+              <div className="flex flex-col items-end gap-1 shrink-0">
+                {isCurrent ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-foreground whitespace-nowrap select-none">
+                    <span className="relative flex size-2 items-center justify-center">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-80" />
+                      <span className="relative inline-flex size-2 rounded-full bg-lime-500 shadow-[0_0_8px_rgba(132,204,22,0.9)]" />
+                    </span>
+                    <span className="tracking-tight">{displayPeriod}</span>
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-muted-foreground whitespace-nowrap select-none">
+                    <Calendar className="size-3.5 transition-transform duration-300 group-hover:rotate-12" />
+                    <span className="tracking-tight">{displayPeriod}</span>
+                  </span>
+                )}
+                {duration && (
+                  <span
+                    className={cn(
+                      "inline-flex items-center gap-1.5 text-xs font-medium tabular-nums select-none",
+                      isCurrent
+                        ? "text-lime-600 dark:text-lime-400 font-semibold"
+                        : "text-muted-foreground/80"
+                    )}
+                  >
+                    {isCurrent && (
+                      <span className="size-1 rounded-full bg-lime-500 shrink-0 shadow-[0_0_4px_rgba(132,204,22,0.8)]" />
+                    )}
+                    <span>{duration}</span>
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -276,7 +386,7 @@ const Experience = () => {
     {
       title: "Software Engineer",
       company: "Brand Voy",
-      period: "August 2026 - Present",
+      period: "August 2026 - Currently Working",
       Location: "London, United Kingdom",
       description: [
         "As a Software Engineer at Brand Voy, I contribute to designing, developing, and maintaining scalable software solutions. I work across the development lifecycle, building reliable and user-focused applications while applying modern software engineering practices. I collaborate with the team to develop new features, improve existing systems, optimize application performance, and solve real-world technical challenges."
@@ -286,21 +396,17 @@ const Experience = () => {
         "NodeJs",
         "Redis",
         "NextJs",
-        "NestJS",
         "Express",
-        "MongoDB",
         "PostgreSQL",
-        "Prisma",
         "Docker",
         "Kubernetes",
         "Git",
-        "Tailwind"
       ]
     },
     {
       title: "UnderGrad Student Researcher",
       company: "Techno Main Salt Lake",
-      period: "Jan 2026 - Present",
+      period: "Jan 2026 - Currently Working",
       Location: "Kolkata , West Bengal , India",
       description: [
         "Forecasting Accuracy: Built and benchmarked LSTM, ARIMA, and RNN models for weather time-series forecasting, achieving a 28.75% improvement in prediction reliability over baseline statistical methods through systematic backtesting on 3+ years of historical data.",
@@ -322,7 +428,7 @@ const Experience = () => {
     {
       title: "Co-Head , Content Writer of IGNITE",
       company: "Samarth TMSL",
-      period: "July 2023 - Present",
+      period: "July 2023 - Currently Working",
       Location: "Kolkata , West Bengal , India",
       description: [
         "Event Leadership: Co-led the IGNITE division of Samarth TMSL, orchestrating 6+ large-scale events including Educathon (national-level hackathon) and Safalya (annual academic-cultural fest), collectively drawing 500+ participants across all sessions.",
@@ -403,7 +509,7 @@ const Experience = () => {
         </div>
 
         {/* Cards stack with connecting line */}
-        <div className="relative flex flex-col gap-5">
+        <div className="relative flex flex-col gap-8">
           {/* Vertical timeline rule centered at 15px (half of 30px) */}
           <div className="absolute left-[15px] top-6 bottom-6 w-px bg-gradient-to-b from-border via-border/40 to-transparent hidden sm:block" />
 
